@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poptávkový formulář – brief</title>
+  <link rel="stylesheet" href="brief_form.css">
+</head>
+<body>
+<header class="site-header container">
+  <h1>Poptávkový formulář (brief)</h1>
+  <p class="lead">Pomozte mi pochopit, jak má váš web působit. Podle odpovědí vám připravím <strong>1‑stránkový náhled</strong> na první schůzku.</p>
+</header>
+
+<main class="container">
+  <form id="briefForm" novalidate class="card">
+    <!-- Progress -->
+    <div class="progress"><div class="bar" id="progressBar"></div></div>
+
+    <!-- Step 1: Základ -->
+    <section class="step active" data-step="1">
+      <h2>1) Základ projektu</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="brand">Název firmy / značky*</label>
+          <input id="brand" name="brand" required placeholder="Stavebniny Lhotský">
+          <small>Tak, jak se má zobrazovat na webu.</small>
+        </div>
+        <div class="field">
+          <label for="industry">Obor*</label>
+          <input id="industry" name="industry" required placeholder="Stavebniny, služby, SaaS…">
+        </div>
+        <div class="field">
+          <label for="goals">Hlavní cíl webu*</label>
+          <select id="goals" name="goals" required>
+            <option value="">Vyberte…</option>
+            <option>Generovat poptávky</option>
+            <option>Prodej (e‑shop)</option>
+            <option>Prezentace služeb / brand</option>
+            <option>Nábor zaměstnanců</option>
+            <option>Jiné</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="audience">Cílové publikum</label>
+          <input id="audience" name="audience" placeholder="Kdo má web používat?">
+        </div>
+        <div class="field full">
+          <label for="usp">Co dělá vaši nabídku jedinečnou?</label>
+          <textarea id="usp" name="usp" rows="2" placeholder="1–3 věty, klíčové výhody"></textarea>
+        </div>
+      </div>
+      <div class="actions"><button type="button" class="next">Pokračovat</button></div>
+    </section>
+
+    <!-- Step 2: Vizuál -->
+    <section class="step" data-step="2">
+      <h2>2) Styl & vizuál</h2>
+      <div class="grid">
+        <div class="field full">
+          <label>Jak má web působit? (zvolte až 5 adjektiv)</label>
+          <div class="chips" id="styleChips" aria-label="Stylové adjektiva">
+            <button type="button" data-val="Důvěryhodný">Důvěryhodný</button>
+            <button type="button" data-val="Moderní">Moderní</button>
+            <button type="button" data-val="Minimalistický">Minimalistický</button>
+            <button type="button" data-val="Luxusní">Luxusní</button>
+            <button type="button" data-val="Technický">Technický</button>
+            <button type="button" data-val="Přátelský">Přátelský</button>
+            <button type="button" data-val="Hravy">Hravy</button>
+            <button type="button" data-val="Tradiční">Tradiční</button>
+            <button type="button" data-val="Seriózní">Seriózní</button>
+            <button type="button" data-val="Dynamický">Dynamický</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="primaryColor">Primární barva</label>
+          <input type="color" id="primaryColor" name="primaryColor" value="#0ea5e9">
+        </div>
+        <div class="field">
+          <label for="fontVibe">Typografie</label>
+          <select id="fontVibe" name="fontVibe">
+            <option value="system-ui">Moderní bezpatkové</option>
+            <option value="serif">Elegantní patkové</option>
+            <option value="mono">Technické monospaced</option>
+            <option value="rounded">Přátelské zaoblené</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="inspo">Odkazy na inspiraci (weby, dribbble, behance…)</label>
+          <textarea id="inspo" name="inspo" rows="2" placeholder="https://… (1 odkaz na řádek)"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Zpět</button>
+        <button type="button" class="next">Pokračovat</button>
+      </div>
+    </section>
+
+    <!-- Step 3: Obsah & struktura -->
+    <section class="step" data-step="3">
+      <h2>3) Obsah & struktura</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="pagesCount">Odhad počtu stránek</label>
+          <input id="pagesCount" type="number" min="1" max="50" value="1">
+        </div>
+        <div class="field">
+          <label for="langs">Jazykové mutace</label>
+          <select id="langs">
+            <option>CZ</option>
+            <option>CZ + EN</option>
+            <option>Více jazyků</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="siteMap">Jaké sekce/stránky očekáváte?</label>
+          <textarea id="siteMap" rows="3" placeholder="Domů, Služby, O nás, Reference, Kontakt…"></textarea>
+        </div>
+        <div class="field full">
+          <label for="contentState">Máte připravené texty/fotky?</label>
+          <textarea id="contentState" rows="2" placeholder="Co máte hotové a co budete potřebovat?"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Zpět</button>
+        <button type="button" class="next">Pokračovat</button>
+      </div>
+    </section>
+
+    <!-- Step 4: Funkce -->
+    <section class="step" data-step="4">
+      <h2>4) Funkce</h2>
+      <div class="grid">
+        <div class="field full">
+          <label>Vyberte požadované moduly</label>
+          <div class="checks">
+            <label><input type="checkbox" name="module" value="Poptávkový formulář"> Poptávkový formulář</label>
+            <label><input type="checkbox" name="module" value="Košík / nabídka produktů"> Košík / nabídka produktů</label>
+            <label><input type="checkbox" name="module" value="Platební brána + sledování objednávek (do 20 produktů)"> Platební brána + sledování objednávek (do 20 produktů)</label>
+            <label><input type="checkbox" name="module" value="Více než 20 produktů"> Více než 20 produktů</label>
+            <label><input type="checkbox" name="module" value="Admin panel (správa objednávek)"> Admin panel (správa objednávek)</label>
+            <label><input type="checkbox" name="module" value="Jiná integrace (CRM, mailing…)"> Jiná integrace (CRM, mailing…)</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label for="features">Upřesnění funkcí / integrací</label>
+          <textarea id="features" rows="2" placeholder="Jak má fungovat poptávka / košík / napojení?"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Zpět</button>
+        <button type="button" class="next">Pokračovat</button>
+      </div>
+    </section>
+
+    <!-- Step 5: Rozpočet & termín -->
+    <section class="step" data-step="5">
+      <h2>5) Rozpočet & termín</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="budget">Orientační rozpočet</label>
+          <select id="budget">
+            <option>do 20 000 Kč</option>
+            <option>20–40 000 Kč</option>
+            <option>40–80 000 Kč</option>
+            <option>80 000+ Kč</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="deadline">Termín</label>
+          <select id="deadline">
+            <option>Do 2 týdnů</option>
+            <option>Do 1 měsíce</option>
+            <option>2–3 měsíce</option>
+            <option>Flexibilní</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="notes">Poznámky</label>
+          <textarea id="notes" rows="2" placeholder="Cokoliv dalšího, co bych měl vědět"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Zpět</button>
+        <button type="button" class="next">Pokračovat</button>
+      </div>
+    </section>
+
+    <!-- Step 6: Kontakty & odeslání -->
+    <section class="step" data-step="6">
+      <h2>6) Kontaktní údaje</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="name">Jméno*</label>
+          <input id="name" required placeholder="Jméno Příjmení">
+        </div>
+        <div class="field">
+          <label for="email">E‑mail*</label>
+          <input id="email" type="email" required placeholder="name@firma.cz">
+        </div>
+        <div class="field">
+          <label for="phone">Telefon</label>
+          <input id="phone" placeholder="+420 123 456 789">
+        </div>
+        <div class="field full">
+          <label><input id="consent" type="checkbox" required> Souhlasím se zpracováním osobních údajů pro účely poptávky.</label>
+        </div>
+      </div>
+
+      <div class="summaryBox" id="summaryBox">
+         <div class="pdf-header">
+           <div class="brand-block">
+             <div class="logo-mark" id="sLogo">SK</div>
+             <div class="brand-meta">
+               <h3 id="sBrand">Název projektu</h3>
+               <p id="sMeta" class="muted">Obor • Cíl • Jazyk</p>
+             </div>
+           </div>
+         </div>
+
+        <div class="pdf-body">
+          <section class="pdf-section">
+            <h4>Vizuál</h4>
+            <div class="chips-view" id="sStyle"></div>
+            <div class="two-col">
+              <div><span class="muted">Primární barva</span><div class="color-pill" id="sColor"></div></div>
+              <div><span class="muted">Typografie</span><div id="sFont">—</div></div>
+            </div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Obsah & struktura</h4>
+            <div class="two-col">
+              <div><span class="muted">Počet stránek</span><div id="sPages">—</div></div>
+              <div><span class="muted">Jazyky</span><div id="sLangs">—</div></div>
+            </div>
+            <div class="list" id="sMap"></div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Funkce</h4>
+            <div class="list" id="sModules"></div>
+            <div class="muted" id="sFeatNote"></div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Rozpočet & termín</h4>
+            <div class="two-col">
+              <div><span class="muted">Rozpočet</span><div id="sBudget">—</div></div>
+              <div><span class="muted">Termín</span><div id="sDeadline">—</div></div>
+            </div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Poznámky</h4>
+            <div id="sNotes">—</div>
+          </section>
+
+           <section class="pdf-section">
+             <h4>Další krok</h4>
+             <p>Hned se vám ozvu s termíny krátké konzultace. Na schůzku připravím 1‑stránkový náhled dle tohoto briefu.</p>
+             
+             <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #ddd;">
+               <h4 style="margin-bottom: 10px;">Kontakt</h4>
+               <div style="color: #333;">
+                 <strong>Stefan Kyzek</strong><br>
+                 stefan@kyzek.cz<br>
+                 +420 123 456 789
+               </div>
+             </div>
+           </section>
+         </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="prev">Zpět</button>
+        <button type="button" id="btnCopy" class="btn">Zkopírovat souhrn jako text</button>
+        <button type="button" id="btnPDF" class="btn">Stáhnout PDF</button>
+        <button type="submit" class="cta">Odeslat poptávku</button>
+      </div>
+      <p class="tiny">Po odeslání vám přijde rekapitulace e‑mailem (a mně také).</p>
+    </section>
+  </form>
+</main>
+
+<footer class="site-footer container">
+  <p>© 2025 – Brief & náhled. Připraveno pro Stefana.</p>
+</footer>
+
+<script src="brief_form.js"></script>
+</body>
+</html>

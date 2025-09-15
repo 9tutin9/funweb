@@ -1,0 +1,81 @@
+/* Base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial}
+:root{--bg:#0b0f17;--card:#121827;--muted:#9aa4b2;--text:#eef2f7;--accent:#60a5fa;--line:#263041}
+body{background:radial-gradient(900px 500px at 15% -10%,rgba(96,165,250,.08),transparent),var(--bg);color:var(--text)}
+.container{max-width:960px;margin:0 auto;padding:1.2rem}
+.site-header h1{margin:.4rem 0}
+.lead{color:var(--muted);margin:.2rem 0 1rem}
+
+.card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:16px;padding:1rem}
+.progress{height:8px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;margin-bottom:.8rem}
+.progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#22d3ee)}
+.step{display:none}
+.step.active{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.field.full{grid-column:1/-1}
+.field label{display:block;font-weight:700;margin-bottom:.3rem}
+.field small{color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;padding:.7rem;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text)}
+.field textarea{min-height:80px}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips button{padding:.45rem .7rem;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;color:var(--text);cursor:pointer}
+.chips button.active{background:var(--text);color:#0b0f17;border-color:transparent;font-weight:700}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.actions{display:flex;gap:.6rem;margin-top:.8rem;flex-wrap:wrap}
+.cta,.btn{padding:.8rem 1rem;border-radius:12px;border:1px solid var(--line);cursor:pointer}
+.cta{background:var(--text);color:#0b0f17;font-weight:800}
+.btn{background:rgba(255,255,255,.04);color:var(--text)}
+.summaryBox{background:rgba(255,255,255,.03);border:1px dashed var(--line);border-radius:14px;padding:.8rem;margin-top:1rem}
+summaryBox pre{white-space:pre-wrap}
+.tiny{color:var(--muted);font-size:.9rem}
+.site-footer{color:var(--muted);text-align:center;padding:1.5rem 0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+@media (max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .checks{grid-template-columns:1fr}
+}
+
+/* Improved checkbox layout */
+.checks{display:grid; grid-template-columns:1fr; gap:.35rem}
+.checks label{display:flex; align-items:center; gap:.55rem; padding:.5rem .6rem; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.03); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.checks input[type="checkbox"]{flex:0 0 auto; width:1.1rem; height:1.1rem}
+
+/* Styled summary for PDF */
+.summaryBox{position:relative; background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)), url('logo_watermark.png') center/200px no-repeat;}
+.pdf-header{display:flex; justify-content:space-between; align-items:center; gap:1rem; border-bottom:1px solid var(--line); padding-bottom:.6rem; margin-bottom:.6rem}
+.brand-block{display:flex; align-items:center; gap:.8rem}
+.logo-mark{width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#22d3ee); color:#06111f; font-weight:900; display:flex; align-items:center; justify-content:center}
+.brand-meta h3{margin:.1rem 0}
+.muted{color:var(--muted)}
+.contact-block{text-align:right}
+.contact-name{font-weight:800}
+.pdf-body{display:flex; flex-direction:column; gap:.7rem}
+.pdf-section h4{margin:.2rem 0 .2rem}
+.chips-view{display:flex; gap:.4rem; flex-wrap:wrap}
+.chips-view .chip{padding:.35rem .6rem; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.03)}
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:.6rem}
+.list{display:grid; gap:.3rem}
+.list .li{padding:.45rem .6rem; border:1px dashed var(--line); border-radius:10px; background:rgba(255,255,255,.02)}
+.color-pill{width:36px; height:18px; border-radius:999px; border:1px solid var(--line); display:inline-block}
+
+/* Print styles for PDF */
+@media print{
+  body{background:white;color:black}
+  .site-header, .actions, header.site-header, footer.site-footer { display:none !important; }
+  .card{border:none; padding:0}
+  .summaryBox{background:white; border:none}
+  .pdf-header{border-color:#ddd}
+  .list .li{border-color:#ccc; background:#fff}
+  .chips-view .chip{border-color:#ccc; background:#fff}
+  .two-col{gap:.4rem}
+  .pdf-section h4{color:#111}
+  
+  /* Customer contact info in step 6 - make visible */
+  .step[data-step="6"] input, .step[data-step="6"] label{color:#000 !important}
+  .step[data-step="6"] .field label{color:#000 !important; font-weight:600}
+  .step[data-step="6"] .field input{color:#000 !important; background:#fff !important; border:1px solid #ccc !important}
+}
