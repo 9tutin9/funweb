@@ -12,6 +12,11 @@ body[data-theme="moderni"]{
 /* Skryj canvas background ve stylu moderní, aby nerušil nové pozadí */
 body[data-theme="moderni"] #bg{ display:none !important; }
 
+/* Ensure blobs are visible ONLY on moderní; hard reset elsewhere */
+body:not([data-theme="moderni"])::before,
+body:not([data-theme="moderni"])::after{ content: none !important; display: none !important; }
+body:not([data-theme="moderni"]) #bg{ display: block !important; }
+
 /* Animated blobs overlay (inspired by T7 background) */
 body[data-theme="moderni"]::before,
 body[data-theme="moderni"]::after{
