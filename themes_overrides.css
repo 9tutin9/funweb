@@ -1,4 +1,7 @@
 /* THEMES OVERRIDES - Hard overrides with !important for theme fixes */
+/* Reset: no body pseudo-elements by default */
+body::before, body::after{ content:none !important; display:none !important; }
+
 /* Moderní: speciální pozadí z T7 (pouze pro tento styl) */
 body[data-theme="moderni"]{
   background:
