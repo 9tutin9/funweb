@@ -319,6 +319,11 @@
       restoreFromHash();
       calculate();
       initEventListeners();
+      // Ensure Mailing zdarma when Starter is selected
+      if(type && type.value === 'starter'){
+        const mailOpt = Array.from(integrations.options).find(o=>o.value==='mailing');
+        if(mailOpt){ integrations.value = 'mailing'; }
+      }
       
       // Show welcome message
       setTimeout(() => {

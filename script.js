@@ -276,3 +276,39 @@ function prefillServiceFromQuery(){
 }
 document.addEventListener('DOMContentLoaded', prefillServiceFromQuery);
 
+// Estimator mini preview: expand/collapse items
+(function initEstimatorPreview(){
+  const container = document.getElementById('estimatorPreview');
+  if(!container) return;
+  function toggleItem(el){
+    const expanded = el.getAttribute('aria-expanded') === 'true';
+    el.setAttribute('aria-expanded', String(!expanded));
+    const details = el.querySelector('.estimator-preview-details');
+    if(details){ details.hidden = expanded; }
+  }
+  container.addEventListener('click', function(e){
+    const item = e.target.closest('.estimator-preview-item');
+    if(item) toggleItem(item);
+  });
+  container.addEventListener('keydown', function(e){
+    const item = e.target.closest('.estimator-preview-item');
+    if(!item) return;
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      toggleItem(item);
+    }
+  });
+})();
+
+// Portfolio compact: toggle open on small screens
+(function initPortfolioCompact(){
+  const list = document.getElementById('cards');
+  if(!list) return;
+  function isCompact(){ return window.matchMedia('(max-width: 1000px)').matches; }
+  list.addEventListener('click', function(e){
+    if(!isCompact()) return;
+    const card = e.target.closest('.portfolio-card');
+    if(!card) return;
+    card.classList.toggle('open');
+  });
+})();

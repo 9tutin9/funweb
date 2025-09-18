@@ -291,6 +291,9 @@ main {
   letter-spacing: 0.5px;
 }
 
+/* Free badge for offers */
+.badge-free{ display:inline-block; margin-left:8px; padding:2px 8px; font-size:12px; font-weight:700; color:#0a7b2f; background:rgba(16,185,129,.15); border:1px solid rgba(16,185,129,.3); border-radius:999px; }
+
 .summary-value {
   font-size: 32px;
   font-weight: 700;

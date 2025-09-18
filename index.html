@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tvořím weby, které prodávají – design, marketing a obchod</title>
     <meta name="description" content="Weby na míru, grafika a marketingové strategie. Spojuji design, marketing a obchodní zkušenosti, abyste měli web, který nejen vypadá skvěle, ale i prodává." />
-
-    <!-- Open Graph -->
+    <link rel="stylesheet" href="themes.css">
+<!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Tvořím weby, které prodávají – design, marketing a obchod" />
     <meta property="og:description" content="Kompletní služby: web na míru, grafika, marketing a konzultace. Profesionálně, moderně a s lidským přístupem." />
@@ -20,8 +20,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@500;700&family=Nunito:wght@500;700;800&family=Poppins:wght@500;700;800&family=Merriweather:wght@400;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-  </head>
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
+  <link rel="stylesheet" href="themes_overrides.css?v=1">
+</head>
   <body>
     <canvas id="bg" aria-hidden="true"></canvas>
     <a href="#uvod" class="sr-only">Přeskočit na obsah</a>
@@ -58,8 +63,7 @@
             <div class="hero-actions">
               <div class="button-group">
                 <a href="#kontakt" class="cta">Domluvit konzultaci zdarma</a>
-                <a href="#estimator-title" class="cta secondary">Kalkulace</a>
-                <a href="#kontakt" class="cta secondary">Konzultovat</a>
+                <a href="#estimator-title" class="cta">Kalkulace</a>
               </div>
               <div class="chips" aria-label="Technologie a zkušenosti">
                 <span class="chip">Webflow</span>
@@ -84,6 +88,19 @@
               <li>Osobní přístup a jasnou komunikaci</li>
             </ul>
           </aside>
+        </div>
+        <h1>Vyzkoušejte si styl webu</h1>
+        <div class="style-pills" role="toolbar" aria-label="Zvolte styl webu">
+          <button class="pill" data-theme="duveryhodny">Důvěryhodný</button>
+          <button class="pill" data-theme="moderni" aria-pressed="true">Moderní</button>
+          <button class="pill" data-theme="minimalisticky">Minimalistický</button>
+          <button class="pill" data-theme="luxusni">Luxusní</button>
+          <button class="pill" data-theme="technicky">Technický</button>
+          <button class="pill" data-theme="pratelsky">Přátelský</button>
+          <button class="pill" data-theme="hravy">Hravý</button>
+          <button class="pill" data-theme="tradicni">Tradiční</button>
+          <button class="pill" data-theme="seriozni">Seriózní</button>
+          <button class="pill" data-theme="dynamicky">Dynamický</button>
         </div>
       </section>
 
@@ -203,9 +220,9 @@
     <p class="lead">Ukázky mých prací - weby, e-shopy a aplikace, které jsem vytvořil pro klienty.</p>
   </div>   
       <div class="container">
-         <ul id="cards">
+         <ul id="cards" class="grid">
              <li class="portfolio-card" id="card1">
-                 <div class="card-body"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
+                 <div class="card-body">
                      <div class="card-content">
                          <div class="card-thumb">
                              <a href="https://www.detidetem.eu" target="_blank" rel="noopener noreferrer" class="thumb-link">
@@ -231,7 +248,7 @@
                  </div>
              </li>
               <li class="portfolio-card" id="card2">
-                  <div class="card-body"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
+                  <div class="card-body">
                       <div class="card-content">
                           <div class="card-thumb">
                               <a href="https://www.stavebninylhotsky.cz" target="_blank" rel="noopener noreferrer" class="thumb-link">
@@ -257,7 +274,7 @@
                   </div>
               </li>
              <li class="portfolio-card" id="card3">
-                 <div class="card-body"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
+                 <div class="card-body">
                      <div class="card-content">
                          <div class="card-thumb">
                              <a href="https://www.systemwrap.cz" target="_blank" rel="noopener noreferrer" class="thumb-link">
@@ -282,7 +299,7 @@
                  </div>
              </li>
              <li class="portfolio-card" id="card4">
-                 <div class="card-body"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
+                 <div class="card-body">
                      <div class="card-content">
                          <div class="card-thumb">
                              <a href="https://www.vcely-med.cz" target="_blank" rel="noopener noreferrer" class="thumb-link">
@@ -313,15 +330,13 @@
   <!-- Jak probíhá spolupráce -->
   <section id="jak-spolupracujeme" class="collab-section" aria-labelledby="collab-title">
     <div class="collab-container">
-      <header class="collab-header">
-        <h2 id="collab-title">Jak probíhá spolupráce</h2>
-        <p class="collab-subtitle">
-          Transparentně, krok za krokem.
-        </p>
-        <p class="collab-subtitle">
-          Bez dobré komunikace to nejde – průběžně sdílím práci, ptám se na detaily a vše ladíme společně.
-        </p>
-      </header>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Proces</span>
+          <h2 id="collab-title">Jak probíhá spolupráce</h2>
+        </div>
+        <p class="lead">Transparentně, krok za krokem. Bez dobré komunikace to nejde – průběžně sdílím práci, ptám se na detaily a vše ladíme společně.</p>
+      </div>
 
       <div class="timeline" role="list">
         <!-- KROK 1 -->
@@ -527,21 +542,46 @@
             <h3>Rychlá kalkulace</h3>
             <p>Naklikejte si rozsah a ihned uvidíte orientační cenu i termín dodání. Plná verze kalkulátoru obsahuje všechny možnosti a rozšíření.</p>
             
-            <div class="estimator-preview">
-              <div class="estimator-preview-item">
+              <div class="estimator-preview" id="estimatorPreview" role="list">
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="true">
                 <div class="estimator-preview-label">Starter (one-page)</div>
                 <div class="estimator-preview-price">od 14 900 Kč</div>
                 <div class="estimator-preview-days">7 dní</div>
+                <div class="estimator-preview-details">
+                  <ul>
+                    <li>1 stránka (one‑page) s sekcemi</li>
+                    <li>Základní SEO + analytika</li>
+                    <li>Responzivní design</li>
+                    <li>Mailing (zdarma v balíčku Starter)</li>
+                    <li>Napojení na kontaktní formulář</li>
+                  </ul>
+                </div>
               </div>
-              <div class="estimator-preview-item">
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
                 <div class="estimator-preview-label">Pro (5–8 stránek)</div>
                 <div class="estimator-preview-price">od 34 900 Kč</div>
                 <div class="estimator-preview-days">24 dní</div>
+                <div class="estimator-preview-details" hidden>
+                  <ul>
+                    <li>5–8 obsahových stránek</li>
+                    <li>Blog/novinky, šablony podstránek</li>
+                    <li>Rozšířená analytika a měření</li>
+                    <li>Rychlostní optimalizace</li>
+                  </ul>
+                </div>
               </div>
-              <div class="estimator-preview-item">
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
                 <div class="estimator-preview-label">Na klíč (custom + CMS)</div>
                 <div class="estimator-preview-price">od 69 000 Kč</div>
                 <div class="estimator-preview-days">45 dní</div>
+                <div class="estimator-preview-details" hidden>
+                  <ul>
+                    <li>Vlastní design + komponenty</li>
+                    <li>CMS pro správu obsahu</li>
+                    <li>Integrace nástrojů (CRM, mailing, API)</li>
+                    <li>Konzultace a školení</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -631,7 +671,61 @@
     </script>
 
     <script defer src="script.js"></script>
-  </body>
+    <script defer src="themes_v2.js"></script>
+    <script src="theme_debug.js"></script>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Zpět nahoru" title="Zpět nahoru">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <script>
+      (function(){
+        var btn = document.getElementById('backToTop');
+        if(!btn) return;
+        function onScroll(){
+          var y = window.pageYOffset || document.documentElement.scrollTop;
+          btn.classList.toggle('visible', y > 500);
+        }
+        function toTop(e){
+          e.preventDefault();
+          // Prefer scroll to #uvod if present, else smooth to 0
+          var target = document.getElementById('uvod');
+          if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+          else { window.scrollTo({top:0, behavior:'smooth'}); }
+        }
+        window.addEventListener('scroll', onScroll, {passive:true});
+        window.addEventListener('load', onScroll);
+        btn.addEventListener('click', toTop);
+      })();
+    </script>
+  <script id="THEME_FALLBACK">
+  // Fallback in case themes_v2.js didn't bind
+  (function(){
+    function setDataTheme(slug){
+      document.body.setAttribute('data-theme', slug);
+      try { localStorage.setItem('siteTheme', slug); } catch(e){}
+    }
+    function onClick(e){
+      var b = e.target.closest('.style-pills .pill');
+      if(!b) return;
+      var slug = b.getAttribute('data-theme');
+      if(window.setTheme){ window.setTheme(slug); }
+      else { setDataTheme(slug); }
+      document.querySelectorAll('.style-pills .pill').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+    }
+    document.addEventListener('click', onClick);
+    // init default if none
+    if(!document.body.getAttribute('data-theme')){
+      var slug = (function(){ try{return localStorage.getItem('siteTheme')||'moderni';}catch(e){return 'moderni';} })();
+      setDataTheme(slug);
+    }
+  })();
+  </script>
+</body>
   </html>
 
 

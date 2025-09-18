@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Poptávkový formulář – brief</title>
+  <title>Poptávkový formulář – Funweb</title>
   <link rel="stylesheet" href="brief_form.css">
+  <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
 </head>
 <body>
 <header class="site-header container">
-  <h1>Poptávkový formulář (brief)</h1>
+<h1>Poptávkový formulář</h1>
   <p class="lead">Pomozte mi pochopit, jak má váš web působit. Podle odpovědí vám připravím <strong>1‑stránkový náhled</strong> na první schůzku.</p>
 </header>
 
@@ -284,9 +286,28 @@
 </main>
 
 <footer class="site-footer container">
-  <p>© 2025 – Brief & náhled. Připraveno pro Stefana.</p>
+  <p>© 2025 – Poptávkový formulář Funweb.</p>
 </footer>
 
 <script src="brief_form.js"></script>
+<script>
+  (function(){
+    function applyTheme(slug){
+      document.body.setAttribute('data-theme', slug);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if(!meta){ meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+      var accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ea5e9';
+      meta.setAttribute('content', accent);
+    }
+    window.addEventListener('message', function(e){
+      var m = e.data || {};
+      if(m && m.type === 'theme' && typeof m.value === 'string'){ applyTheme(m.value); }
+    });
+    try{
+      var slug = localStorage.getItem('siteTheme') || 'moderni';
+      applyTheme(slug);
+    }catch(e){}
+  })();
+</script>
 </body>
 </html>

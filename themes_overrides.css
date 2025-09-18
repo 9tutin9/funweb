@@ -1,0 +1,759 @@
+/* THEMES OVERRIDES - Hard overrides with !important for theme fixes */
+/* Moderní: speciální pozadí z T7 (pouze pro tento styl) */
+body[data-theme="moderni"]{
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,.18), transparent 40%),
+    radial-gradient(1000px 500px at 90% 90%, rgba(6,182,212,.12), transparent 30%),
+    linear-gradient(180deg,#0b1220,#0f172a) !important;
+  background-attachment: fixed !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+}
+/* Skryj canvas background ve stylu moderní, aby nerušil nové pozadí */
+body[data-theme="moderni"] #bg{ display:none !important; }
+
+/* Animated blobs overlay (inspired by T7 background) */
+body[data-theme="moderni"]::before,
+body[data-theme="moderni"]::after{
+  content: "";
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 48vmax;
+  height: 48vmax;
+  filter: blur(36px);
+  opacity: .7;
+  mix-blend-mode: normal;
+  pointer-events: none;
+  z-index: 0;
+}
+body[data-theme="moderni"]::before{
+  background: radial-gradient(circle, rgba(124,58,237,0.55), transparent 60%);
+  transform: translate(-10vmax, -10vmax);
+  animation: modernBlob1 20s infinite alternate ease-in-out;
+}
+body[data-theme="moderni"]::after{
+  background: radial-gradient(circle, rgba(6,182,212,0.45), transparent 60%);
+  inset: auto -8vmax 20vh auto;
+  width: 40vmax;
+  height: 40vmax;
+  animation: modernBlob2 22s infinite alternate ease-in-out;
+}
+
+/* Optional subtle stars layer using box-shadow trick */
+body[data-theme="moderni"] .modern-stars{ position:fixed; inset:0; pointer-events:none; z-index:0; }
+
+@keyframes modernBlob1{ to { transform: translate(6vw, 4vh) scale(1.08); } }
+@keyframes modernBlob2{ to { transform: translate(-4vw, -3vh) scale(1.06); } }
+
+/* Jednotné levé zarovnání a stabilní zalomení hero textu pro všechny styly */
+.hero .hero-grid > div:first-child { text-align: left !important; }
+.hero .hero-grid > div:first-child h1 { text-align: left !important; }
+.hero .hero-grid > div:first-child .subhead { text-align: left !important; }
+.hero .eyebrow, .hero .trustnote { text-align: left !important; }
+/* Zajištění správného zalomení */
+.hero .headline{ white-space: normal !important; overflow-wrap: anywhere !important; word-break: normal !important; }
+/* Rezervace šířky pro měnící se sloveso, aby se zbytek textu nehýbal při typování */
+.hero .headline #hero-verb{ display: inline-block !important; min-width: 10ch !important; }
+
+/* Světlé pozadí pro Minimalistický a Luxusní */
+body[data-theme="minimalisticky"] {
+  background: linear-gradient(135deg, #f7f8fb 0%, #e5e7eb 50%, #f7f8fb 100%) !important;
+  background-size: 400% 400% !important;
+  animation: gradientShift 15s ease infinite !important;
+  --bg: #f7f8fb !important;
+  --text: #1f2937 !important;
+  --muted: #6b7280 !important;
+  --card: #ffffff !important;
+  --line: #e5e7eb !important;
+  --accent: #4f46e5 !important;
+  --accent-contrast: #ffffff !important;
+}
+
+body[data-theme="luxusni"] {
+  background: linear-gradient(135deg, #faf7f2 0%, #f3f4f6 50%, #faf7f2 100%) !important;
+  background-size: 400% 400% !important;
+  animation: gradientShift 15s ease infinite !important;
+  --bg: #faf7f2 !important;
+  --text: #1f2937 !important;
+  --muted: #6b7280 !important;
+  --card: #ffffff !important;
+  --line: #f3f4f6 !important;
+  --accent: #d4af37 !important;
+  --accent-contrast: #1a1200 !important;
+}
+
+body[data-theme="tradicni"] {
+  background: linear-gradient(135deg, #f8f6f0 0%, #e8e4d8 50%, #f8f6f0 100%) !important;
+  background-size: 400% 400% !important;
+  animation: gradientShift 15s ease infinite !important;
+  --bg: #f8f6f0 !important;
+  --text: #1f2937 !important;
+  --muted: #6b7280 !important;
+  --card: #ffffff !important;
+  --line: #d4c4a8 !important;
+  --accent: #8b4513 !important;
+  --accent-contrast: #ffffff !important;
+}
+
+/* Animace pro pozadí */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Back to Top floating button */
+#backToTop{
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  color: var(--text);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease, box-shadow .2s ease;
+  z-index: 1000;
+}
+#backToTop.visible{ opacity: 1; pointer-events: auto; transform: translateY(0); }
+#backToTop:hover{ box-shadow: 0 12px 32px rgba(0,0,0,0.22); }
+#backToTop svg{ display:block; }
+
+/* =====================
+   Responsive breakpoints
+   XS 360, SM 480, MD 768, LG 1024, XL 1280, 2XL 1536
+   ===================== */
+
+/* Base mobile-first tweaks */
+.button-group{ display:flex; flex-wrap:wrap; gap:10px; }
+.style-pills{ 
+  display:flex; 
+  gap:8px; 
+  overflow:auto; 
+  -webkit-overflow-scrolling: touch; 
+  padding-bottom: 6px; 
+  scroll-snap-type: x proximity;
+  justify-content: center;
+  align-items: center;
+}
+.style-pills .pill{ flex:0 0 auto; scroll-snap-align: start; }
+
+/* XS ≥360px */
+@media (min-width: 360px){
+  .container{ padding-left: 18px; padding-right: 18px; }
+}
+
+/* SM ≥480px */
+@media (min-width: 480px){
+  .hero .headline{ font-size: clamp(1.6rem, 4.5vw, 2.2rem); }
+  .hero .subhead{ font-size: 1rem; }
+}
+
+/* MD ≥768px */
+@media (min-width: 768px){
+  /* Hero two columns on medium screens and up */
+  /* Restore original hero grid proportions to keep hero card placement */
+  .hero .hero-grid{ grid-template-columns: 1.2fr 0.8fr !important; gap: 32px !important; }
+
+  /* Cards grids */
+  .cards{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  #cards.grid{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+
+  /* Timeline layout breathing */
+  .timeline{ gap: 16px; }
+}
+
+/* LG ≥1024px */
+@media (min-width: 1024px){
+  .container{ padding-left: 24px; padding-right: 24px; }
+  .hero .headline{ font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+  .cards{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #cards.grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* XL ≥1280px */
+@media (min-width: 1280px){
+  .container{ max-width: 1200px; }
+  .hero .hero-grid{ grid-template-columns: 1fr 1fr; }
+}
+
+/* 2XL ≥1536px */
+@media (min-width: 1536px){
+  .container{ max-width: 1280px; }
+  .hero .headline{ font-size: clamp(2rem, 2.8vw, 3rem); }
+}
+
+/* Headline blocks: stack lead under title on narrow screens */
+@media (max-width: 500px){
+  .section-head{ display:flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  .section-head > div{ width: 100% !important; }
+  .section-head h2{ margin: 6px 0 0 !important; }
+  .section-head p.lead{ width: 100% !important; max-width: 100% !important; margin: 6px 0 0 !important; text-align: left !important; }
+}
+
+/* Process section: remove small icons next to text and realign content */
+.step-icon{ display: none !important; }
+.step-index{ display: none !important; }
+.step-number{ display: none !important; }
+.step-head{ grid-template-columns: 1fr !important; padding-left: 0 !important; }
+.step-lead{ padding-left: 0 !important; }
+.step-list{ padding-left: 0 !important; }
+.step-list li{ grid-template-columns: 1fr !important; }
+.step-list .dot{ display: none !important; }
+
+/* Portfolio grid: ALWAYS stacked (single column) */
+#cards{ display:grid !important; grid-template-columns: 1fr !important; gap: 18px !important; }
+/* Disable shadow behind stack cards in portfolio */
+.portfolio-card{ box-shadow: none !important; width: 100% !important; }
+/* Ensure portfolio-card and inner card-body share the same width/edge */
+.portfolio-card .card-body{ width: 100% !important; box-sizing: border-box !important; border-radius: inherit !important; margin: 0 !important; }
+
+/* Always remove background from portfolio thumbs so only logo is visible */
+.portfolio-card .thumb-link{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+/* Ensure card-body has same dimensions as portfolio-card */
+.portfolio-card .card-body{ 
+  width: 100% !important; 
+  height: 100% !important; 
+  min-height: 500px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Oprava badge-price pozicování - pouze badge, zbytek zůstává původní */
+.portfolio-card .card-info .badge-price {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+}
+
+/* =============================
+   Portfolio: compact cards under 1000px
+   Show only logo + pills; expand on tap to reveal details
+   ============================= */
+@media (max-width: 1000px){
+  /* turn off stack behavior */
+  #cards{ gap: 14px !important; grid-template-rows: none !important; }
+  .portfolio-card{ position: static !important; top: auto !important; transform: none !important; min-height: 0 !important; }
+  .portfolio-card .card-body{ 
+    box-sizing: border-box !important;
+    height: auto !important; 
+    min-height: 0 !important; 
+    position: relative !important; 
+    /* symmetric padding; badge is absolutely positioned, so don't offset content */
+    padding: 56px 20px 20px 20px !important; 
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important; /* vertical center */
+    justify-content: center !important; /* horizontal center */
+  }
+  .portfolio-card{ 
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 0 !important;
+  }
+  /* Compact row: logo (left) + pills (right); price in top-right */
+  .portfolio-card .card-content{ 
+    display: grid !important;
+    grid-template-columns: 88px 1fr !important; 
+    align-items: center !important; 
+    gap: 16px !important; 
+    padding: 0 !important;
+    grid-auto-rows: minmax(0, auto) !important;
+    width: 100% !important;
+    max-width: 760px !important; /* a bit wider to fit link under logo */
+    margin: 0 auto !important; /* center within body horizontally */
+  }
+  .portfolio-card .card-thumb{ display:flex !important; align-items:center !important; justify-content:center !important; }
+  .portfolio-card .thumb-link{ 
+    padding: 0 !important; 
+    background: transparent !important; 
+    border: 0 !important; 
+    width: 88px !important; 
+    height: auto !important; 
+    display:flex !important; 
+    flex-direction: column !important;
+    align-items:center !important; 
+    justify-content:flex-start !important; 
+    border-radius: 12px !important;
+  }
+  .portfolio-card .project-logo{ 
+    width: auto !important; 
+    height: auto !important; 
+    max-width: 72px !important; 
+    max-height: 48px !important; 
+    object-fit: contain !important;
+    display:block !important; 
+  }
+  .portfolio-card .thumb-label{
+    display:block !important;
+    margin-top: 6px !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    color: var(--muted) !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+  .portfolio-card .project-tags{ display:flex !important; gap:8px !important; flex-wrap: wrap !important; justify-content: flex-start !important; margin: 0 !important; max-width: 100% !important; }
+  .portfolio-card .badge-price{ position: absolute !important; top: 10px !important; right: 10px !important; display: inline-block !important; }
+
+  /* Hide heading/description/cta by default to keep it slim */
+  .portfolio-card h2,
+  .portfolio-card .card-info p,
+  .portfolio-card .project-cta{ display: none !important; }
+
+  /* Expanded: show full details under the row */
+  .portfolio-card.open h2,
+  .portfolio-card.open .card-info p{ 
+    display: block !important; 
+  text-align: left !important;
+    margin-top: 12px !important; 
+    grid-column: 1 / -1 !important; 
+    overflow-wrap: anywhere !important; 
+  }
+  .portfolio-card.open .project-cta{ display: inline-flex !important; margin-top: 10px !important; }
+}
+
+/* Smaller badge and text sizes for compact portfolio */
+@media (max-width: 1000px){
+  .portfolio-card .badge-price{ 
+    font-size: .75rem !important; 
+    padding: .25rem .5rem !important; 
+    border-radius: 999px !important;
+  }
+  .portfolio-card.open .card-info p{ 
+    font-size: 13px !important; 
+    line-height: 1.5 !important; 
+  }
+  .portfolio-card .project-tags .project-tag{ 
+    font-size: 12px !important; 
+    padding: 4px 8px !important; 
+  }
+}
+
+/* Force spacing between estimator preview cards (in case other styles override) */
+#estimatorPreview{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 20px !important;
+  row-gap: 20px !important;
+  column-gap: 20px !important;
+}
+#estimatorPreview .estimator-preview-item{ margin: 0 !important; }
+@media (max-width: 768px){
+  #estimatorPreview{ grid-template-columns: 1fr !important; gap: 14px !important; }
+}
+
+/* Ensure "Kompletní balíček" stays visible on small screens */
+.bundle{
+  display:block !important;
+  visibility: visible !important;
+  height:auto !important;
+  max-height:none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+/* Ensure bundle below services is always visible and not overlapped */
+.cards + .bundle{
+  display:block !important;
+  visibility:visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 16px !important;
+  clear: both !important;
+}
+@media (max-width: 650px){
+  .bundle{
+    display:block !important;
+    visibility: visible !important;
+    height:auto !important;
+    max-height:none !important;
+    opacity:1 !important;
+    overflow: visible !important;
+  }
+}
+
+/* HARD FIX: Always show Services + Bundle on very small screens */
+@media (max-width: 600px){
+  #sluzby.reveal{ opacity: 1 !important; transform: none !important; }
+  #sluzby .cards{ grid-template-columns: 1fr !important; }
+  #sluzby .cards .card{ transform: none !important; opacity: 1 !important; }
+  #sluzby .bundle{
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 16px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* Transparentní pozadí pro hlavní kontejnery - glass efekt bude viditelný */
+[data-theme="minimalisticky"] main,
+[data-theme="minimalisticky"] .container,
+[data-theme="minimalisticky"] .hero {
+  background: transparent !important;
+}
+
+[data-theme="luxusni"] main,
+[data-theme="luxusni"] .container,
+[data-theme="luxusni"] .hero {
+  background: transparent !important;
+}
+
+[data-theme="tradicni"] main,
+[data-theme="tradicni"] .container,
+[data-theme="tradicni"] .hero {
+  background: transparent !important;
+}
+
+/* Glass efekt karty pro Minimalistický, Luxusní a Tradiční */
+[data-theme="minimalisticky"] .card,
+[data-theme="minimalisticky"] .hero-card,
+[data-theme="minimalisticky"] .portfolio-card .card-body,
+[data-theme="minimalisticky"] .final-cta-card,
+[data-theme="minimalisticky"] .testimonials .quotes,
+[data-theme="minimalisticky"] .step {
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1)) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+}
+
+[data-theme="luxusni"] .card,
+[data-theme="luxusni"] .hero-card,
+[data-theme="luxusni"] .portfolio-card .card-body,
+[data-theme="luxusni"] .final-cta-card,
+[data-theme="luxusni"] .testimonials .quotes,
+[data-theme="luxusni"] .step {
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1)) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+}
+
+[data-theme="tradicni"] .card,
+[data-theme="tradicni"] .hero-card,
+[data-theme="tradicni"] .portfolio-card .card-body,
+[data-theme="tradicni"] .final-cta-card,
+[data-theme="tradicni"] .testimonials .quotes,
+[data-theme="tradicni"] .step {
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1)) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+}
+
+/* Glass efekt header pro Minimalistický, Luxusní a Tradiční */
+[data-theme="minimalisticky"] header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)) !important;
+  backdrop-filter: blur(15px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="minimalisticky"] header .brand,
+[data-theme="minimalisticky"] header .nav-links a {
+  color: #1f2937 !important;
+}
+
+[data-theme="luxusni"] header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)) !important;
+  backdrop-filter: blur(15px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="luxusni"] header .brand,
+[data-theme="luxusni"] header .nav-links a {
+  color: #1f2937 !important;
+}
+
+[data-theme="tradicni"] header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)) !important;
+  backdrop-filter: blur(15px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="tradicni"] header .brand,
+[data-theme="tradicni"] header .nav-links a {
+  color: #1f2937 !important;
+}
+
+/* Glass efekt footer pro Minimalistický, Luxusní a Tradiční */
+[data-theme="minimalisticky"] footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)) !important;
+  backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="minimalisticky"] footer,
+[data-theme="minimalisticky"] footer a {
+  color: #1f2937 !important;
+}
+
+[data-theme="luxusni"] footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)) !important;
+  backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="luxusni"] footer,
+[data-theme="luxusni"] footer a {
+  color: #1f2937 !important;
+}
+
+[data-theme="tradicni"] footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)) !important;
+  backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255,255,255,0.3) !important;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="tradicni"] footer,
+[data-theme="tradicni"] footer a {
+  color: #1f2937 !important;
+}
+
+/* Glass efekt chips pro Minimalistický styl */
+[data-theme="minimalisticky"] .chip {
+  background: linear-gradient(180deg, rgba(79, 70, 229, 0.15), rgba(79, 70, 229, 0.05)) !important;
+  backdrop-filter: blur(5px) !important;
+  color: #4f46e5 !important;
+  border: 1px solid rgba(79, 70, 229, 0.2) !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1) !important;
+}
+
+[data-theme="minimalisticky"] .cta {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+  border: 1px solid #4f46e5 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="minimalisticky"] .cta.secondary {
+  background-color: transparent !important;
+  color: #4f46e5 !important;
+  border: 1px solid #4f46e5 !important;
+}
+
+[data-theme="minimalisticky"] .cta:hover {
+  background-color: #4338ca !important;
+  border-color: #4338ca !important;
+}
+
+[data-theme="minimalisticky"] .cta.secondary:hover {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Glass efekt chips pro Luxusní styl */
+[data-theme="luxusni"] .chip {
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05)) !important;
+  backdrop-filter: blur(5px) !important;
+  color: #d4af37 !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1) !important;
+}
+
+[data-theme="luxusni"] .cta {
+  background-color: #d4af37 !important;
+  color: #1a1200 !important;
+  border: 1px solid #d4af37 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="luxusni"] .cta.secondary {
+  background-color: transparent !important;
+  color: #d4af37 !important;
+  border: 1px solid #d4af37 !important;
+}
+
+[data-theme="luxusni"] .cta:hover {
+  background-color: #b8941f !important;
+  border-color: #b8941f !important;
+}
+
+[data-theme="luxusni"] .cta.secondary:hover {
+  background-color: #d4af37 !important;
+  color: #1a1200 !important;
+}
+
+/* Zajištění čitelnosti textu na světlých pozadích - pouze pro světlé styly */
+[data-theme="minimalisticky"] .hero h1,
+[data-theme="minimalisticky"] .hero .subhead,
+[data-theme="minimalisticky"] .hero .eyebrow,
+[data-theme="minimalisticky"] .hero .trustnote,
+[data-theme="minimalisticky"] h1, h2, h3, h4, h5, h6,
+[data-theme="minimalisticky"] p, span, div,
+[data-theme="minimalisticky"] .section-head h2,
+[data-theme="minimalisticky"] .section-head .eyebrow {
+  color: #1f2937 !important;
+}
+
+[data-theme="luxusni"] .hero h1,
+[data-theme="luxusni"] .hero .subhead,
+[data-theme="luxusni"] .hero .eyebrow,
+[data-theme="luxusni"] .hero .trustnote,
+[data-theme="luxusni"] h1, h2, h3, h4, h5, h6,
+[data-theme="luxusni"] p, span, div,
+[data-theme="luxusni"] .section-head h2,
+[data-theme="luxusni"] .section-head .eyebrow {
+  color: #1f2937 !important;
+}
+
+/* Zajištění čitelnosti v kartách */
+[data-theme="minimalisticky"] .card h3,
+[data-theme="minimalisticky"] .card p,
+[data-theme="minimalisticky"] .card li,
+[data-theme="minimalisticky"] .card ul li::before {
+  color: #1f2937 !important;
+}
+
+[data-theme="minimalisticky"] .card ul li::before {
+  color: #4f46e5 !important;
+}
+
+[data-theme="luxusni"] .card h3,
+[data-theme="luxusni"] .card p,
+[data-theme="luxusni"] .card li,
+[data-theme="luxusni"] .card ul li::before {
+  color: #1f2937 !important;
+}
+
+[data-theme="luxusni"] .card ul li::before {
+  color: #d4af37 !important;
+}
+
+/* Portfolio karty */
+[data-theme="minimalisticky"] .portfolio-card h2,
+[data-theme="minimalisticky"] .portfolio-card p,
+[data-theme="minimalisticky"] .portfolio-card .project-tag,
+[data-theme="luxusni"] .portfolio-card h2,
+[data-theme="luxusni"] .portfolio-card p,
+[data-theme="luxusni"] .portfolio-card .project-tag {
+  color: #1f2937 !important;
+}
+
+/* Timeline a další sekce */
+[data-theme="minimalisticky"] .step-title,
+[data-theme="minimalisticky"] .step-lead,
+[data-theme="minimalisticky"] .step-list li,
+[data-theme="luxusni"] .step-title,
+[data-theme="luxusni"] .step-lead,
+[data-theme="luxusni"] .step-list li {
+  color: #1f2937 !important;
+}
+
+/* Testimonials */
+[data-theme="minimalisticky"] .quote p,
+[data-theme="minimalisticky"] .meta,
+[data-theme="luxusni"] .quote p,
+[data-theme="luxusni"] .meta {
+  color: #1f2937 !important;
+}
+
+
+/* Hero verb - accent barva pro každý styl */
+#hero-verb {
+  color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
+/* Anchor scroll offset so header is visible below sticky nav */
+#estimator-title { scroll-margin-top: 110px !important; }
+
+/* Zajištění čitelnosti textu pro tmavé styly */
+[data-theme="moderni"] h1, h2, h3, h4, h5, h6,
+[data-theme="moderni"] p, span, div,
+[data-theme="moderni"] .section-head h2,
+[data-theme="moderni"] .section-head .eyebrow,
+[data-theme="duveryhodny"] h1, h2, h3, h4, h5, h6,
+[data-theme="duveryhodny"] p, span, div,
+[data-theme="duveryhodny"] .section-head h2,
+[data-theme="duveryhodny"] .section-head .eyebrow,
+[data-theme="technicky"] h1, h2, h3, h4, h5, h6,
+[data-theme="technicky"] p, span, div,
+[data-theme="technicky"] .section-head h2,
+[data-theme="technicky"] .section-head .eyebrow,
+[data-theme="pratelsky"] h1, h2, h3, h4, h5, h6,
+[data-theme="pratelsky"] p, span, div,
+[data-theme="pratelsky"] .section-head h2,
+[data-theme="pratelsky"] .section-head .eyebrow,
+[data-theme="hravy"] h1, h2, h3, h4, h5, h6,
+[data-theme="hravy"] p, span, div,
+[data-theme="hravy"] .section-head h2,
+[data-theme="hravy"] .section-head .eyebrow,
+[data-theme="tradicni"] h1, h2, h3, h4, h5, h6,
+[data-theme="tradicni"] p, span, div,
+[data-theme="tradicni"] .section-head h2,
+[data-theme="tradicni"] .section-head .eyebrow,
+[data-theme="seriozni"] h1, h2, h3, h4, h5, h6,
+[data-theme="seriozni"] p, span, div,
+[data-theme="seriozni"] .section-head h2,
+[data-theme="seriozni"] .section-head .eyebrow,
+[data-theme="dynamicky"] h1, h2, h3, h4, h5, h6,
+[data-theme="dynamicky"] p, span, div,
+[data-theme="dynamicky"] .section-head h2,
+[data-theme="dynamicky"] .section-head .eyebrow {
+  color: var(--text) !important;
+}
+
+/* Tradiční chips/CTA s hnědou barvou */
+[data-theme="tradicni"] .chip {
+  background: linear-gradient(180deg, rgba(139, 69, 19, 0.15), rgba(139, 69, 19, 0.05)) !important;
+  backdrop-filter: blur(5px) !important;
+  color: #8b4513 !important;
+  border: 1px solid rgba(139, 69, 19, 0.2) !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1) !important;
+}
+
+[data-theme="tradicni"] .cta {
+  background-color: #8b4513 !important;
+  color: #ffffff !important;
+  border: 1px solid #8b4513 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="tradicni"] .cta.secondary {
+  background-color: transparent !important;
+  color: #8b4513 !important;
+  border: 1px solid #8b4513 !important;
+}
+
+[data-theme="tradicni"] .cta:hover {
+  background-color: #6b3410 !important;
+  border-color: #6b3410 !important;
+}
+
+[data-theme="tradicni"] .cta.secondary:hover {
+  background-color: #8b4513 !important;
+  color: #ffffff !important;
+}

@@ -939,15 +939,22 @@ h2 {
 .mini-social-proof .msp-item strong { font-size:1.1rem; line-height:1; }
 
 /* Price badge in service cards */
-.badge-price { display:inline-block; background:rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.08); padding:.35rem .6rem; border-radius:999px; font-size:.85rem; margin:.4rem 0 .2rem; }
-.badge-price span { font-weight:600; }
+.badge-price { display:inline-block; background:rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.08); padding:.75rem .6rem; border-radius:999px; font-size:.85rem; margin:.4rem 0 .2rem; }
+.badge-price span { font-weight:600; } padding: 12px 20px;
 
 /* Estimator preview on main page */
 .estimator-preview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  gap: 20px;
   margin: 24px 0;
+}
+
+/* Ensure visible spacing between cards on all layouts */
+.estimator-preview { row-gap: 20px; column-gap: 20px; }
+.estimator-preview-item { width: 100%; }
+@media (max-width: 768px){
+  .estimator-preview-item:not(:last-child){ margin-bottom: 12px; }
 }
 
 .estimator-preview-item {
@@ -960,6 +967,20 @@ h2 {
   overflow: hidden;
   transition: all 0.2s ease;
 }
+
+.estimator-preview-item[aria-expanded="true"]{
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(70, 189, 229, 0.15);
+}
+
+.estimator-preview-details{
+  text-align: left;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+.estimator-preview-details ul{ margin: 0; padding-left: 18px; }
+.estimator-preview-details li{ color: var(--muted); font-size: 14px; line-height: 1.5; }
 
 .estimator-preview-item:hover {
   transform: translateY(-2px);
@@ -991,6 +1012,17 @@ h2 {
   margin-bottom: 4px;
   letter-spacing: -0.02em;
 }
+.badge-free{
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0a7b2f;
+  background: rgba(16, 185, 129, .15);
+  border: 1px solid rgba(16, 185, 129, .3);
+  border-radius: 999px;
+}
 
 .estimator-preview-days {
   color: var(--muted);
@@ -1020,6 +1052,7 @@ h2 {
 @media (max-width: 768px) {
   .estimator-preview {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
   
   .estimator-actions {

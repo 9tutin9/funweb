@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
 </head>
 <body>
   <header class="site-header">
@@ -34,7 +36,7 @@
             <div class="field">
               <label for="type">Typ webu</label>
               <select id="type" name="type">
-                <option value="starter" data-base="14900" data-days="7">Starter (one-page)</option>
+              <option value="starter" data-base="14900" data-days="7">Starter (one-page) – Mailing zdarma</option>
                 <option value="pro" data-base="34900" data-days="24">Pro (5–8 stránek)</option>
                 <option value="full" data-base="69000" data-days="45">Na klíč (custom + CMS)</option>
               </select>
@@ -84,7 +86,7 @@
               <select id="integrations" name="integrations">
                 <option value="none" data-cost="0">Žádná</option>
                 <option value="crm" data-cost="4900">CRM (Pipedrive/HubSpot)</option>
-                <option value="mailing" data-cost="3900">Mailing (Mailerlite apod.)</option>
+                <option value="mailing" data-cost="0" selected>Mailing (zdarma u Starter)</option>
                 <option value="both" data-cost="7900">CRM + Mailing</option>
               </select>
             </div>
@@ -199,10 +201,29 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2025 – Konfigurátor webu (demo). Vytvořeno pro Stefana.</p>
+      <p>© 2025 – Konfigurátor webu funweb.</p>
     </div>
   </footer>
 
   <script src="estimator_v2.js"></script>
+<script>
+  (function(){
+    function applyTheme(slug){
+      document.body.setAttribute('data-theme', slug);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if(!meta){ meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+      var accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ea5e9';
+      meta.setAttribute('content', accent);
+    }
+    window.addEventListener('message', function(e){
+      var m = e.data || {};
+      if(m && m.type === 'theme' && typeof m.value === 'string'){ applyTheme(m.value); }
+    });
+    try{
+      var slug = localStorage.getItem('siteTheme') || 'moderni';
+      applyTheme(slug);
+    }catch(e){}
+  })();
+</script>
 </body>
 </html>
