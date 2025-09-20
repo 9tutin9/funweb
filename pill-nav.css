@@ -118,7 +118,7 @@
   justify-content: center;
   height: 100%;
   padding: 0 var(--pill-pad-x);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
   color: var(--text, #f3f6fb);
   text-decoration: none;
   border-radius: 9999px;
@@ -135,14 +135,14 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--line, rgba(255, 255, 255, 0.1));
 }
 
 .pill:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--line, rgba(255, 255, 255, 0.2));
 }
 
 .pill .hover-circle {
@@ -207,7 +207,8 @@
 .pill.is-active {
   background: var(--accent, #22d3ee);
   color: var(--accent-contrast, #03151a);
-  border-color: var(--accent, #22d3ee);
+  border-color: transparent;
+  font-weight: 800;
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
 }
 

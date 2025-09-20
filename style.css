@@ -1439,6 +1439,52 @@ h2 {
   margin: 0 auto;
 }
 
+/* Light theme styles for ProfileCard */
+[data-theme="minimalisticky"] .profile-card,
+[data-theme="tradicni"] .profile-card,
+[data-theme="luxusni"] .profile-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme text colors for ProfileCard */
+[data-theme="minimalisticky"] .profile-card .profile-card__name,
+[data-theme="tradicni"] .profile-card .profile-card__name,
+[data-theme="luxusni"] .profile-card .profile-card__name {
+  color: #1a1a1a !important;
+}
+
+[data-theme="minimalisticky"] .profile-card .profile-card__title,
+[data-theme="tradicni"] .profile-card .profile-card__title,
+[data-theme="luxusni"] .profile-card .profile-card__title {
+  color: #4a4a4a !important;
+}
+
+[data-theme="minimalisticky"] .profile-card .profile-card__handle,
+[data-theme="tradicni"] .profile-card .profile-card__handle,
+[data-theme="luxusni"] .profile-card .profile-card__handle {
+  color: #6b7280 !important;
+}
+
+[data-theme="minimalisticky"] .profile-card .profile-card__status-text,
+[data-theme="tradicni"] .profile-card .profile-card__status-text,
+[data-theme="luxusni"] .profile-card .profile-card__status-text {
+  color: #374151 !important;
+}
+
+[data-theme="minimalisticky"] .profile-card .profile-card__info-label,
+[data-theme="tradicni"] .profile-card .profile-card__info-label,
+[data-theme="luxusni"] .profile-card .profile-card__info-label {
+  color: #6b7280 !important;
+}
+
+[data-theme="minimalisticky"] .profile-card .profile-card__info-value,
+[data-theme="tradicni"] .profile-card .profile-card__info-value,
+[data-theme="luxusni"] .profile-card .profile-card__info-value {
+  color: #1a1a1a !important;
+}
+
 /* Center ProfileCard in hero section */
 .hero-card.col-media {
   display: flex;
@@ -1591,11 +1637,25 @@ h2 {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .profile-card__contact-btn:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.profile-card__contact-btn--secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.profile-card__contact-btn--secondary:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-600));
+  color: white;
+  border-color: var(--accent);
   box-shadow: var(--shadow);
 }
 

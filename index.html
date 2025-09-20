@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="themes_overrides.css?v=1">
   <link rel="stylesheet" href="gradual-blur.css">
   <link rel="stylesheet" href="pill-nav.css">
+  <link rel="stylesheet" href="animated-list.css">
 </head>
   <body>
     <canvas id="bg" aria-hidden="true"></canvas>
@@ -95,11 +96,18 @@
                   <div class="profile-card__status-dot"></div>
                   <span class="profile-card__status-text">Online</span>
                 </div>
-                <button class="profile-card__contact-btn" onclick="document.querySelector('#kontakt').scrollIntoView({behavior: 'smooth'})">
+                <button class="profile-card__contact-btn" onclick="window.location.href='tel:+420123456789'">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                   </svg>
-                  Domluvit konzultaci
+                  Zavolejte
+                </button>
+                <button class="profile-card__contact-btn profile-card__contact-btn--secondary" onclick="window.location.href='mailto:stefan@example.com'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Napište
                 </button>
                 <div class="profile-card__info">
                   <div class="profile-card__info-row">
@@ -552,10 +560,6 @@
                 </div>
                 <div class="step-item">
                   <div class="step-number">3</div>
-                  <div class="step-text">Můžete si stáhnout souhrn nebo mi ho poslat</div>
-                </div>
-                <div class="step-item">
-                  <div class="step-number">4</div>
                   <div class="step-text">Na schůzce pak upřesníme detaily</div>
                 </div>
               </div>
@@ -656,6 +660,7 @@
   </script>
   <script src="gradual-blur.js"></script>
   <script src="pill-nav.js"></script>
+  <script src="animated-list.js"></script>
 </body>
   </html>
 

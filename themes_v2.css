@@ -208,10 +208,13 @@ body[data-theme="dynamicky"] {
   border-radius: 999px;
   padding: .45rem .75rem;
   font-size: .95rem;
+  font-weight: 600;
   cursor: pointer;
   transition: transform var(--transition), background-color var(--transition);
   user-select: none;
   white-space: nowrap;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .style-pills .pill:hover { transform: translateY(-1px); }
 .style-pills .pill[aria-pressed="true"] {
@@ -219,4 +222,5 @@ body[data-theme="dynamicky"] {
   color: var(--accent-contrast);
   border-color: transparent;
   font-weight: 800;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
 }
