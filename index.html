@@ -26,37 +26,34 @@
   <link rel="stylesheet" href="themes_v2.css">
   <link rel="stylesheet" href="themes_pro.css">
   <link rel="stylesheet" href="themes_overrides.css?v=1">
+  <link rel="stylesheet" href="gradual-blur.css">
+  <link rel="stylesheet" href="pill-nav.css">
 </head>
   <body>
     <canvas id="bg" aria-hidden="true"></canvas>
     <a href="#uvod" class="sr-only">Přeskočit na obsah</a>
 
-    <header>
-      <div class="container nav">
-        <a class="brand" href="#uvod" aria-label="Domů">
-          <span class="brand-badge">F</span>
-          <span>Stefan Kyzek</span>
-        </a>
-        <nav aria-label="Hlavní navigace">
-          <button class="cta secondary menu-btn" id="menuBtn" aria-expanded="false" aria-controls="desktopNav">Domluvit konzultaci zdarma</button>
-          <div class="nav-links" id="desktopNav">
-            <a href="#o-mne">O mně</a>
-            <a href="#sluzby">Služby</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#jak-spolupracujeme">Proces</a>
-            <a href="#reference">Reference</a>
-            <a href="#estimator-title">Kalkulace</a>
-            <a href="#kontakt" class="cta" style="padding:8px 14px">Konzultovat</a>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <!-- Style Picker -->
+    <div class="style-pills" role="group" aria-label="Výběr stylu">
+      <button class="pill" data-theme="duveryhodny" aria-pressed="false">Důvěryhodný</button>
+      <button class="pill" data-theme="moderni" aria-pressed="true">Moderní</button>
+      <button class="pill" data-theme="minimalisticky" aria-pressed="false">Minimalistický</button>
+      <button class="pill" data-theme="luxusni" aria-pressed="false">Luxusní</button>
+      <button class="pill" data-theme="technicky" aria-pressed="false">Technický</button>
+      <button class="pill" data-theme="pratelsky" aria-pressed="false">Přátelský</button>
+      <button class="pill" data-theme="hravy" aria-pressed="false">Hravý</button>
+      <button class="pill" data-theme="tradicni" aria-pressed="false">Tradiční</button>
+      <button class="pill" data-theme="seriozni" aria-pressed="false">Seriózní</button>
+      <button class="pill" data-theme="dynamicky" aria-pressed="false">Dynamický</button>
+    </div>
+
+    <!-- PillNav will be inserted here by JavaScript -->
 
     <main id="uvod" class="container">
       <!-- Hero -->
       <section class="hero reveal visible" aria-labelledby="hero-title">
         <div class="hero-grid">
-          <div>
+          <div class="col-text">
             <span class="eyebrow">Web • Grafika • Marketing</span>
             <h1 id="hero-title" class="headline"><span id="hero-verb">Tvořím</span> weby, které prodávají – spojení designu, marketingu a obchodu.</h1>
             <div class="mini-social-proof"><div class="msp-item"><strong>+42&nbsp;%</strong><span>více poptávek</span></div><div class="msp-item"><strong>14&nbsp;dní</strong><span>k první verzi</span></div><div class="msp-item"><strong>100/100</strong><span>PageSpeed (MVP)</span></div></div><p class="subhead">Navrhnu a postavím moderní a rychlý web, sjednotím vizuální identitu a připravím marketingovou strategii, která dává smysl vašemu byznysu. Osobně, srozumitelně a s důrazem na výsledky.</p>
@@ -79,28 +76,44 @@
             </div>
             <p class="trustnote">Kombinuji obchodní praxi, grafiku a marketing. Výsledkem je web, který nejen vypadá dobře, ale skutečně prodává.</p>
           </div>
-          <aside class="hero-card" aria-label="Co získáte">
-            <h3>Co získáte</h3>
-            <ul class="hero-list">
-              <li>Web na míru – rychlý, bezpečný a přehledný</li>
-              <li>Kompletní vizuální identitu a podklady pro marketing</li>
-              <li>Praktickou strategii a konzultace bez zbytečných buzzwordů</li>
-              <li>Osobní přístup a jasnou komunikaci</li>
-            </ul>
+          <aside class="hero-card col-media" aria-label="Profil">
+            <div class="profile-card" id="heroProfileCard">
+              <div class="profile-card__background"></div>
+              <div class="profile-card__content">
+                <div class="profile-card__header">
+                  <div class="profile-card__avatar">
+                    <div class="profile-card__avatar-image" style="background-image: url('IMG_1620.jpg'); background-size: cover; background-position: center;"></div>
+                    <div class="profile-card__status" data-status="online"></div>
+                  </div>
+                  <div class="profile-card__user-info">
+                    <h3 class="profile-card__name">Stefan Kyzek</h3>
+                    <p class="profile-card__title">Web Developer & Designer</p>
+                    <p class="profile-card__handle">@stefankyzek</p>
+                  </div>
+                </div>
+                <div class="profile-card__status-info">
+                  <div class="profile-card__status-dot"></div>
+                  <span class="profile-card__status-text">Online</span>
+                </div>
+                <button class="profile-card__contact-btn" onclick="document.querySelector('#kontakt').scrollIntoView({behavior: 'smooth'})">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  Domluvit konzultaci
+                </button>
+                <div class="profile-card__info">
+                  <div class="profile-card__info-row">
+                    <span class="profile-card__info-label">Dostupnost</span>
+                    <span class="profile-card__info-value profile-card__info-value--online">Dostupný</span>
+                  </div>
+                  <div class="profile-card__info-row">
+                    <span class="profile-card__info-label">Odezva</span>
+                    <span class="profile-card__info-value">< 1 hodina</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </aside>
-        </div>
-        <h1>Vyzkoušejte si styl webu</h1>
-        <div class="style-pills" role="toolbar" aria-label="Zvolte styl webu">
-          <button class="pill" data-theme="duveryhodny">Důvěryhodný</button>
-          <button class="pill" data-theme="moderni" aria-pressed="true">Moderní</button>
-          <button class="pill" data-theme="minimalisticky">Minimalistický</button>
-          <button class="pill" data-theme="luxusni">Luxusní</button>
-          <button class="pill" data-theme="technicky">Technický</button>
-          <button class="pill" data-theme="pratelsky">Přátelský</button>
-          <button class="pill" data-theme="hravy">Hravý</button>
-          <button class="pill" data-theme="tradicni">Tradiční</button>
-          <button class="pill" data-theme="seriozni">Seriózní</button>
-          <button class="pill" data-theme="dynamicky">Dynamický</button>
         </div>
       </section>
 
@@ -211,121 +224,55 @@
       </section>
 
 
-<section id="portfolio" class="reveal visible" aria-labelledby="portfolio-title">   
-  <div class="section-head">
-    <div>
-      <span class="eyebrow">Portfolio</span>
-      <h2 id="portfolio-title">Vybrané projekty</h2>
-    </div>
-    <p class="lead">Ukázky mých prací - weby, e-shopy a aplikace, které jsem vytvořil pro klienty.</p>
-  </div>   
-      <div class="container">
-         <ul id="cards" class="grid">
-             <li class="portfolio-card" id="card1">
-                 <div class="card-body">
-                     <div class="card-content">
-                         <div class="card-thumb">
-                             <a href="https://www.detidetem.eu" target="_blank" rel="noopener noreferrer" class="thumb-link">
-                                 <img src="detidetem.logo.webp" alt="Děti dětem logo" class="project-logo" loading="lazy">
-                                 <div class="thumb-label">DetiDetem.eu</div>
-                             </a>
-                         </div>
-                         <div class="card-info"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
-                             <h2>Charitativní e-shop – Děti dětem</h2>
-                             <p>Kompletní modernizovaný e-shop pro charitativní projekt pomoci dětem v Jemenu. Obsahuje glassmorphism design, responzivní layout, platební systém, správu objednávek, transparentní reporting a pokročilé UX/UI prvky.</p>
-                             <div class="project-tags">
-                                 <span class="project-tag">HTML5/CSS3</span>
-                                 <span class="project-tag">Vanilla JS</span>
-                                 <span class="project-tag">Glassmorphism</span>
-                                 <span class="project-tag">E-shop</span>
-                                 <span class="project-tag">Charita</span>
-                                 <span class="project-tag">Responzivní</span>
-                                 <span class="project-tag">PWA Ready</span>
-                             </div>
-                             <a href="https://www.detidetem.eu" target="_blank" rel="noopener noreferrer" class="project-cta">Domluvit konzultaci zdarma</a>
-                         </div>
-                     </div>
-                 </div>
-             </li>
-              <li class="portfolio-card" id="card2">
-                  <div class="card-body">
-                      <div class="card-content">
-                          <div class="card-thumb">
-                              <a href="https://www.stavebninylhotsky.cz" target="_blank" rel="noopener noreferrer" class="thumb-link">
-                                  <img src="stavebniny-logo.png" alt="Stavebniny Lhotský logo" class="project-logo" loading="lazy">
-                                  <div class="thumb-label">Stavebniny Lhotský</div>
-                              </a>
-                          </div>
-                          <div class="card-info"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
-                              <h2>Renovace webu stavebninylhotsky.cz</h2>
-                              <p>Kompletní modernizace zastaralého webu s netradičními řešeními. Obsahuje pokročilý admin panel pro správu produktů, inovativní systém poptávek s automatizací, dynamický ceník s databází, dark/light mode, Supabase backend a efektivní workflow pro stavební firmy.</p>
-                              <div class="project-tags">
-                                  <span class="project-tag">Admin Panel</span>
-                                  <span class="project-tag">Supabase</span>
-                                  <span class="project-tag">Poptávky</span>
-                                  <span class="project-tag">Databáze</span>
-                                  <span class="project-tag">Dark Mode</span>
-                                  <span class="project-tag">Workflow</span>
-                                  <span class="project-tag">Automatizace</span>
-                              </div>
-                              <a href="https://www.stavebninylhotsky.cz" target="_blank" rel="noopener noreferrer" class="project-cta">Domluvit konzultaci zdarma</a>
-                          </div>
-                      </div>
-                  </div>
-              </li>
-             <li class="portfolio-card" id="card3">
-                 <div class="card-body">
-                     <div class="card-content">
-                         <div class="card-thumb">
-                             <a href="https://www.systemwrap.cz" target="_blank" rel="noopener noreferrer" class="thumb-link">
-                                 <img src="systemwrap-logo.png" alt="SYSTEMWRAP logo" class="project-logo" loading="lazy">
-                                 <div class="thumb-label">SYSTEMWRAP</div>
-                             </a>
-                         </div>
-                         <div class="card-info"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
-                             <h2>Web pro polepy aut - SYSTEMWRAP</h2>
-                             <p>Moderní one-page web pro automobilové služby, který nakopnul business. Obsahuje interaktivní portfolio prací, animované sekce, kontaktní formulář a responzivní design s pokročilými CSS efekty a JavaScript animacemi.</p>
-                             <div class="project-tags">
-                                 <span class="project-tag">One-Page</span>
-                                 <span class="project-tag">Animace</span>
-                                 <span class="project-tag">Portfolio</span>
-                                 <span class="project-tag">Formulář</span>
-                                 <span class="project-tag">Canvas</span>
-                                 <span class="project-tag">Parallax</span>
-                             </div>
-                             <a href="https://www.systemwrap.cz" target="_blank" rel="noopener noreferrer" class="project-cta">Domluvit konzultaci zdarma</a>
-                         </div>
-                     </div>
-                 </div>
-             </li>
-             <li class="portfolio-card" id="card4">
-                 <div class="card-body">
-                     <div class="card-content">
-                         <div class="card-thumb">
-                             <a href="https://www.vcely-med.cz" target="_blank" rel="noopener noreferrer" class="thumb-link">
-                                 <img src="bee-logo.svg" alt="Včely logo" class="project-logo" loading="lazy">
-                                 <div class="thumb-label">Včely & Med</div>
-                             </a>
-                         </div>
-                         <div class="card-info"><div class="badge-price">Balíček <span>od 19&nbsp;900 Kč</span></div>
-                             <h2>E-shop pro prodej medu</h2>
-                             <p>Moderní e-shop pro prodej poctivého českého medu. Obsahuje interaktivní košík, animované včelky, canvas pozadí s plástvemi a responzivní design s důrazem na přírodní estetiku.</p>
-                             <div class="project-tags">
-                                 <span class="project-tag">E-shop</span>
-                                 <span class="project-tag">Canvas</span>
-                                 <span class="project-tag">Animace</span>
-                                 <span class="project-tag">Košík</span>
-                                 <span class="project-tag">Přírodní</span>
-                                 <span class="project-tag">Responsive</span>
-                             </div>
-                             <a href="https://www.vcely-med.cz" target="_blank" rel="noopener noreferrer" class="project-cta">Domluvit konzultaci zdarma</a>
-                         </div>
-                     </div>
-                 </div>
-             </li>
-         </ul>
+<section class="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-label">Portfolio</span>
+        <h2>Ukázky mé práce</h2>
       </div>
-  </section>
+      <p class="lead">Projekty, které jsem vytvořil pro klienty. Každý web je jedinečný a přizpůsobený potřebám daného byznysu.</p>
+    </div>
+  </div>
+  <div class="portfolio-grid">
+    <div class="card">
+      <video muted loop preload="metadata">
+        <source src="video.mov" type="video/quicktime">
+        <source src="video.mov" type="video/mp4">
+        Váš prohlížeč nepodporuje video.
+      </video>
+      <div class="overlay">
+        <h3>DetiDetem.eu</h3>
+      </div>
+    </div>
+    <div class="card">
+      <video src="video2.mov" muted loop preload="metadata"></video>
+      <div class="overlay">
+        <h3>Stavebniny Lhotský</h3>
+      </div>
+    </div>
+    <div class="card">
+      <video muted loop preload="metadata">
+        <source src="video3.mov" type="video/quicktime">
+        <source src="video3.mov" type="video/mp4">
+        Váš prohlížeč nepodporuje video.
+      </video>
+      <div class="overlay">
+        <h3>SYSTEMWRAP</h3>
+      </div>
+    </div>
+    <div class="card">
+      <video muted loop preload="metadata">
+        <source src="video4.mov" type="video/quicktime">
+        <source src="video4.mov" type="video/mp4">
+        Váš prohlížeč nepodporuje video.
+      </video>
+      <div class="overlay">
+        <h3>MedoMed.cz</h3>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Jak probíhá spolupráce -->
   <section id="jak-spolupracujeme" class="collab-section" aria-labelledby="collab-title">
@@ -338,150 +285,132 @@
         <p class="lead">Transparentně, krok za krokem. Bez dobré komunikace to nejde – průběžně sdílím práci, ptám se na detaily a vše ladíme společně.</p>
       </div>
 
-      <div class="timeline" role="list">
+      <div class="chroma-grid" role="list">
         <!-- KROK 1 -->
-        <article class="step" role="listitem" aria-labelledby="krok1-title">
-          <div class="step-index" aria-hidden="true">1</div>
-          <div class="step-head">
-            <div class="step-icon" aria-hidden="true">
-              <!-- icon: chat -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 8h10M7 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M5 19l3-3h9a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v4a4 4 0 0 0 2 3v4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="step-title" id="krok1-title">Úvodní konzultace</h3>
+        <article class="chroma-card" role="listitem" aria-labelledby="krok1-title">
+          <div class="step-icon" aria-hidden="true">
+            <!-- icon: chat -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 8h10M7 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M5 19l3-3h9a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v4a4 4 0 0 0 2 3v4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <p class="step-lead">
-            Projdeme vaše cíle, rozpočet a prioritu výstupů (web, e-mailing, databáze, grafika). Doporučím vhodnou platformu (Webflow, Shoptet, WordPress).
-          </p>
-          <ul class="step-list">
-            <li><span class="dot" aria-hidden="true"></span><span>Krátký call / meeting (30–45 min)</span></li>
-            <li><span class="dot" aria-hidden="true"></span><span>Sepsání zadání a očekávání</span></li>
-            <li><span class="dot" aria-hidden="true"></span><span>Předběžný odhad času a rozpočtu</span></li>
-          </ul>
-          <div class="chip"><span class="pulse" aria-hidden="true"></span> Výstup: jasný cíl a rozsah</div>
+          <footer class="chroma-info">
+            <h3 class="name" id="krok1-title">Úvodní konzultace</h3>
+            <p class="role">Projdeme vaše cíle, rozpočet a prioritu výstupů (web, e-mailing, databáze, grafika). Doporučím vhodnou platformu (Webflow, Shoptet, WordPress).</p>
+            <ul class="step-list">
+              <li><span class="dot" aria-hidden="true"></span><span>Krátký call / meeting (30–45 min)</span></li>
+              <li><span class="dot" aria-hidden="true"></span><span>Sepsání zadání a očekávání</span></li>
+              <li><span class="dot" aria-hidden="true"></span><span>Předběžný odhad času a rozpočtu</span></li>
+            </ul>
+            <div class="chip"><span class="pulse" aria-hidden="true"></span> Výstup: jasný cíl a rozsah</div>
+          </footer>
         </article>
 
         <!-- KROK 2 -->
-        <article class="step" role="listitem" aria-labelledby="krok2-title">
-          <div class="step-index" aria-hidden="true">2</div>
-          <div class="step-head">
-            <div class="step-icon" aria-hidden="true">
-              <!-- icon: plan -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3.5" y="4.5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M7 9h10M7 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="step-title" id="krok2-title">Návrh a plán</h3>
+        <article class="chroma-card" role="listitem" aria-labelledby="krok2-title">
+          <div class="step-icon" aria-hidden="true">
+            <!-- icon: plan -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3.5" y="4.5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M7 9h10M7 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-          <p class="step-lead">
-            Připravím strukturu webu/obsahu, wireframy a plán milníků. U tech projektů specifikace integrací (API, databáze, CRM).
-          </p>
-          <ul class="step-list">
-            <li><span class="dot"></span><span>Informační architektura &amp; wireframe</span></li>
-            <li><span class="dot"></span><span>Roadmapa s milníky a termíny</span></li>
-            <li><span class="dot"></span><span>Technické požadavky a přístupy</span></li>
-          </ul>
-          <div class="chip"><span class="pulse"></span> Výstup: odsouhlasený plán</div>
+          <footer class="chroma-info">
+            <h3 class="name" id="krok2-title">Návrh a plán</h3>
+            <p class="role">Připravím strukturu webu/obsahu, wireframy a plán milníků. U tech projektů specifikace integrací (API, databáze, CRM).</p>
+            <ul class="step-list">
+              <li><span class="dot"></span><span>Informační architektura &amp; wireframe</span></li>
+              <li><span class="dot"></span><span>Roadmapa s milníky a termíny</span></li>
+              <li><span class="dot"></span><span>Technické požadavky a přístupy</span></li>
+            </ul>
+            <div class="chip"><span class="pulse"></span> Výstup: odsouhlasený plán</div>
+          </footer>
         </article>
 
         <!-- KROK 3 -->
-        <article class="step" role="listitem" aria-labelledby="krok3-title">
-          <div class="step-index" aria-hidden="true">3</div>
-          <div class="step-head">
-            <div class="step-icon" aria-hidden="true">
-              <!-- icon: build -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M11 3l-1 4 9 9 4-1-12-12zM3 21l5-1-4-4-1 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M12 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="step-title" id="krok3-title">Realizace</h3>
+        <article class="chroma-card" role="listitem" aria-labelledby="krok3-title">
+          <div class="step-icon" aria-hidden="true">
+            <!-- icon: build -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M11 3l-1 4 9 9 4-1-12-12zM3 21l5-1-4-4-1 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M12 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-          <p class="step-lead">
-            Tvořím web/grafiku/databázi a průběžně sdílím ukázky. Vítám krátkou zpětnou vazbu, aby práce plynula bez záseků.
-          </p>
-          <ul class="step-list">
-            <li><span class="dot"></span><span>Průběžné náhledy (sdílené odkazy)</span></li>
-            <li><span class="dot"></span><span>Rychlé úpravy podle feedbacku</span></li>
-            <li><span class="dot"></span><span>Práce v iteracích (sprinty)</span></li>
-          </ul>
-          <div class="chip"><span class="pulse"></span> Výstup: funkční prototyp/ukázky</div>
+          <footer class="chroma-info">
+            <h3 class="name" id="krok3-title">Realizace</h3>
+            <p class="role">Tvořím web/grafiku/databázi a průběžně sdílím ukázky. Vítám krátkou zpětnou vazbu, aby práce plynula bez záseků.</p>
+            <ul class="step-list">
+              <li><span class="dot"></span><span>Průběžné náhledy (sdílené odkazy)</span></li>
+              <li><span class="dot"></span><span>Rychlé úpravy podle feedbacku</span></li>
+              <li><span class="dot"></span><span>Práce v iteracích (sprinty)</span></li>
+            </ul>
+            <div class="chip"><span class="pulse"></span> Výstup: funkční prototyp/ukázky</div>
+          </footer>
         </article>
 
         <!-- KROK 4 -->
-        <article class="step" role="listitem" aria-labelledby="krok4-title">
-          <div class="step-index" aria-hidden="true">4</div>
-          <div class="step-head">
-            <div class="step-icon" aria-hidden="true">
-              <!-- icon: chat-check -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 18l-2 3v-4a8 8 0 1 1 8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M9.5 12.5l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="step-title" id="krok4-title">Komunikace &amp; zpětná vazba</h3>
+        <article class="chroma-card" role="listitem" aria-labelledby="krok4-title">
+          <div class="step-icon" aria-hidden="true">
+            <!-- icon: chat-check -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 18l-2 3v-4a8 8 0 1 1 8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.5 12.5l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-          <p class="step-lead">
-            Bez komunikace to nejde. Domluvíme si rytmus (např. 1× týdně krátký sync) a jasné kanály (e-mail, Slack, Trello).
-          </p>
-          <ul class="step-list">
-            <li><span class="dot"></span><span>Průběžné statusy bez omáčky</span></li>
-            <li><span class="dot"></span><span>Rychlé rozhodování na základě ukázek</span></li>
-            <li><span class="dot"></span><span>Transparentní přehled úkolů a termínů</span></li>
-          </ul>
-          <div class="chip"><span class="pulse"></span> Výstup: žádná překvapení</div>
+          <footer class="chroma-info">
+            <h3 class="name" id="krok4-title">Komunikace &amp; zpětná vazba</h3>
+            <p class="role">Bez komunikace to nejde. Domluvíme si rytmus (např. 1× týdně krátký sync) a jasné kanály (e-mail, Slack, Trello).</p>
+            <ul class="step-list">
+              <li><span class="dot"></span><span>Průběžné statusy bez omáčky</span></li>
+              <li><span class="dot"></span><span>Rychlé rozhodování na základě ukázek</span></li>
+              <li><span class="dot"></span><span>Transparentní přehled úkolů a termínů</span></li>
+            </ul>
+            <div class="chip"><span class="pulse"></span> Výstup: žádná překvapení</div>
+          </footer>
         </article>
 
         <!-- KROK 5 -->
-        <article class="step" role="listitem" aria-labelledby="krok5-title">
-          <div class="step-index" aria-hidden="true">5</div>
-          <div class="step-head">
-            <div class="step-icon" aria-hidden="true">
-              <!-- icon: launch -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 19l6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M7 7l10-4-4 10L7 7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M4 20c2-1 4-1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="step-title" id="krok5-title">Odevzdání &amp; spuštění</h3>
+        <article class="chroma-card" role="listitem" aria-labelledby="krok5-title">
+          <div class="step-icon" aria-hidden="true">
+            <!-- icon: launch -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 19l6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 7l10-4-4 10L7 7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M4 20c2-1 4-1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-          <p class="step-lead">
-            Finalizace, testy a nasazení. Předám přístupy a krátký manuál, případně zaškolím tým.
-          </p>
-          <ul class="step-list">
-            <li><span class="dot"></span><span>Finální kontrola kvality (rychlost, SEO základ, bezpečnost)</span></li>
-            <li><span class="dot"></span><span>Přístupová práva &amp; dokumentace</span></li>
-            <li><span class="dot"></span><span>Check-list před spuštěním</span></li>
-          </ul>
-          <div class="chip"><span class="pulse"></span> Výstup: projekt připraven k použití</div>
+          <footer class="chroma-info">
+            <h3 class="name" id="krok5-title">Odevzdání &amp; spuštění</h3>
+            <p class="role">Finalizace, testy a nasazení. Předám přístupy a krátký manuál, případně zaškolím tým.</p>
+            <ul class="step-list">
+              <li><span class="dot"></span><span>Finální kontrola kvality (rychlost, SEO základ, bezpečnost)</span></li>
+              <li><span class="dot"></span><span>Přístupová práva &amp; dokumentace</span></li>
+              <li><span class="dot"></span><span>Check-list před spuštěním</span></li>
+            </ul>
+            <div class="chip"><span class="pulse"></span> Výstup: projekt připraven k použití</div>
+          </footer>
         </article>
 
         <!-- KROK 6 -->
-        <article class="step" role="listitem" aria-labelledby="krok6-title">
-          <div class="step-index" aria-hidden="true">6</div>
-          <div class="step-head">
-            <div class="step-icon" aria-hidden="true">
-              <!-- icon: loop -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M17 1v4h-4M7 23v-4h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M3 13a8 8 0 0 1 14-5m4 3a8 8 0 0 1-14 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="step-title" id="krok6-title">Podpora &amp; rozvoj</h3>
+        <article class="chroma-card" role="listitem" aria-labelledby="krok6-title">
+          <div class="step-icon" aria-hidden="true">
+            <!-- icon: loop -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M17 1v4h-4M7 23v-4h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M3 13a8 8 0 0 1 14-5m4 3a8 8 0 0 1-14 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-          <p class="step-lead">
-            Nabízím dlouhodobou správu, optimalizace a marketing (kampaně, e-mailing, automatizace), podle toho, co dává byznysově smysl.
-          </p>
-          <ul class="step-list">
-            <li><span class="dot"></span><span>Pravidelné reporty a doporučení</span></li>
-            <li><span class="dot"></span><span>Iterativní vylepšování výkonu</span></li>
-            <li><span class="dot"></span><span>Rychlá technická podpora</span></li>
-          </ul>
-          <div class="chip"><span class="pulse"></span> Výstup: udržitelný růst</div>
+          <footer class="chroma-info">
+            <h3 class="name" id="krok6-title">Podpora &amp; rozvoj</h3>
+            <p class="role">Nabízím dlouhodobou správu, optimalizace a marketing (kampaně, e-mailing, automatizace), podle toho, co dává byznysově smysl.</p>
+            <ul class="step-list">
+              <li><span class="dot"></span><span>Pravidelné reporty a doporučení</span></li>
+              <li><span class="dot"></span><span>Iterativní vylepšování výkonu</span></li>
+              <li><span class="dot"></span><span>Rychlá technická podpora</span></li>
+            </ul>
+            <div class="chip"><span class="pulse"></span> Výstup: udržitelný růst</div>
+          </footer>
         </article>
       </div>
 
@@ -543,11 +472,11 @@
             <p>Naklikejte si rozsah a ihned uvidíte orientační cenu i termín dodání. Plná verze kalkulátoru obsahuje všechny možnosti a rozšíření.</p>
             
               <div class="estimator-preview" id="estimatorPreview" role="list">
-              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="true">
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
                 <div class="estimator-preview-label">Starter (one-page)</div>
                 <div class="estimator-preview-price">od 14 900 Kč</div>
                 <div class="estimator-preview-days">7 dní</div>
-                <div class="estimator-preview-details">
+                <div class="estimator-preview-details" hidden>
                   <ul>
                     <li>1 stránka (one‑page) s sekcemi</li>
                     <li>Základní SEO + analytika</li>
@@ -725,6 +654,8 @@
     }
   })();
   </script>
+  <script src="gradual-blur.js"></script>
+  <script src="pill-nav.js"></script>
 </body>
   </html>
 

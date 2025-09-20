@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfileCard - Stefan Kyzek</title>
+    <link rel="stylesheet" href="profile-card.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>ProfileCard Komponenta</h1>
+        <p>Shadcn-inspirovaná ProfileCard s tilt efektem a animacemi</p>
+        
+        <!-- ProfileCard -->
+        <div class="profile-card" id="profileCard">
+            <!-- Background gradient -->
+            <div class="profile-card__background"></div>
+            
+            <!-- Content -->
+            <div class="profile-card__content">
+                <!-- Avatar and status -->
+                <div class="profile-card__header">
+                    <div class="profile-card__avatar">
+                            <div class="profile-card__avatar-image" style="background-image: url('IMG_1620.jpg'); background-size: cover; background-position: center;">
+                            </div>
+                        <!-- Status indicator -->
+                        <div class="profile-card__status" data-status="online"></div>
+                    </div>
+                    
+                    <div class="profile-card__user-info">
+                        <h3 class="profile-card__name">Stefan Kyzek</h3>
+                        <p class="profile-card__title">Web Developer & Designer</p>
+                        <p class="profile-card__handle">@stefankyzek</p>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="profile-card__status-info">
+                    <div class="profile-card__status-dot"></div>
+                    <span class="profile-card__status-text">Online</span>
+                </div>
+
+                <!-- Contact button -->
+                <button class="profile-card__contact-btn" id="contactBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    Kontaktovat
+                </button>
+
+                <!-- Additional info -->
+                <div class="profile-card__info">
+                    <div class="profile-card__info-row">
+                        <span class="profile-card__info-label">Dostupnost</span>
+                        <span class="profile-card__info-value profile-card__info-value--online">Dostupný</span>
+                    </div>
+                    
+                    <div class="profile-card__info-row">
+                        <span class="profile-card__info-label">Odezva</span>
+                        <span class="profile-card__info-value">< 1 hodina</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo controls -->
+        <div class="demo-controls">
+            <h3>Demo ovládání</h3>
+            <div class="demo-buttons">
+                <button id="toggleTilt" class="demo-btn">Toggle Tilt</button>
+                <button id="toggleStatus" class="demo-btn">Toggle Status</button>
+                <button id="toggleUserInfo" class="demo-btn">Toggle User Info</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile-card.js"></script>
+</body>
+</html>

@@ -12,6 +12,17 @@ Assumes your markup uses these hooks:
 You can rename selectors to match your site.
 */
 
+/* Google Fonts imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neue+Montreal:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Canela:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eurostile+Next:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&display=swap');
+
 /* --- Shared layout tokens (can vary per theme) --- */
 :root{
   --container-max: 1100px;
@@ -32,35 +43,32 @@ You can rename selectors to match your site.
 /* --- Theme-specific fonts + layout variants --- */
 
 /* Důvěryhodný: Inter, vyvážený dvousloupec */
-600;800&display=swap');
 body[data-theme="duveryhodny"]{
   --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto;
-  --container-max: 1100px;
-  --space: 16px;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(1.9rem, 3.2vw, 2.7rem);
-  --hero-gap: 28px;
-  --hero-cols: 1.1fr .9fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
 body[data-theme="duveryhodny"] .nav .nav-links{justify-content: flex-end; gap: 14px;}
 body[data-theme="duveryhodny"] .features .grid{grid-template-columns: repeat(3, minmax(0, 1fr));}
 
-/* Moderní: SF/Inter, velký hero, dvousloupec, media vpravo */
-700;900&display=swap');
+/* Moderní: Satoshi, velký hero, dvousloupec, media vpravo */
 body[data-theme="moderni"]{
-  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto;
-  --container-max: 1180px;
-  --space: 18px;
+  --font: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(2rem, 4vw, 3rem);
-  --hero-gap: 30px;
-  --hero-cols: 1.2fr .8fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
 body[data-theme="moderni"] .hero .col-text{order:1}
 body[data-theme="moderni"] .hero .col-media{order:2}
 
-/* Minimalistický: Inter, jednokolonové zarovnání na střed, větší whitespace */
-500;700&display=swap');
+/* Minimalistický: Neue Montreal, jednokolonové zarovnání na střed, větší whitespace */
 body[data-theme="minimalisticky"]{
-  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto;
+  --font: "Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto;
   --container-max: 980px;
   --space: 20px;
   --heading-size: clamp(1.9rem, 3.4vw, 2.5rem);
@@ -71,91 +79,84 @@ body[data-theme="minimalisticky"] .hero{text-align:center}
 body[data-theme="minimalisticky"] .hero .col-media{order:1}
 body[data-theme="minimalisticky"] .features .grid{grid-template-columns: repeat(2, minmax(0, 1fr));}
 
-/* Luxusní: Playfair + Inter, asymetrické rozložení, větší typografie */
-700&family=Inter:wght@400;600&display=swap');
+/* Luxusní: Canela, asymetrické rozložení, větší typografie */
 body[data-theme="luxusni"]{
-  --font: "Playfair Display", Georgia, "Times New Roman", serif;
-  --container-max: 1200px;
-  --space: 18px;
+  --font: "Canela", Georgia, "Times New Roman", serif;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(2.2rem, 4.2vw, 3.2rem);
-  --hero-gap: 34px;
-  --hero-cols: 1fr 1fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
-body[data-theme="luxusni"] .hero .col-text{order:2}
-body[data-theme="luxusni"] .hero .col-media{order:1}
+body[data-theme="luxusni"] .hero .col-text{order:1}
+body[data-theme="luxusni"] .hero .col-media{order:2}
 body[data-theme="luxusni"] .features .grid{grid-template-columns: repeat(3, minmax(0, 1fr));}
 
-/* Technický: Monospace, hustší mřížka, media vlevo */
-600&display=swap');
+/* Technický: Eurostile Next, hustší mřížka, media vlevo */
 body[data-theme="technicky"]{
-  --font: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --container-max: 1140px;
-  --space: 14px;
+  --font: "Eurostile Next", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  --hero-gap: 22px;
-  --hero-cols: .9fr 1.1fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
-body[data-theme="technicky"] .hero .col-text{order:2}
-body[data-theme="technicky"] .hero .col-media{order:1}
+body[data-theme="technicky"] .hero .col-text{order:1}
+body[data-theme="technicky"] .hero .col-media{order:2}
 body[data-theme="technicky"] .features .grid{grid-template-columns: repeat(3, minmax(0, 1fr));}
 
-/* Přátelský: Nunito, zaoblenější, jednokolona na střed, větší spacing */
-700;800&display=swap');
+/* Přátelský: Baloo 2, zaoblenější, jednokolona na střed, větší spacing */
 body[data-theme="pratelsky"]{
-  --font: "Nunito", system-ui, -apple-system, Segoe UI, Roboto;
-  --container-max: 1040px;
-  --space: 22px;
+  --font: "Baloo 2", system-ui, -apple-system, Segoe UI, Roboto;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(2rem, 4vw, 3rem);
-  --hero-gap: 26px;
+  --hero-gap: 20px;
   --hero-cols: 1fr;
 }
 body[data-theme="pratelsky"] .hero{text-align:center}
 body[data-theme="pratelsky"] .features .grid{grid-template-columns: repeat(2, minmax(0, 1fr));}
 
-/* Hravý: Poppins, média pod textem na mobilu, výrazné karty */
-700;800&display=swap');
+/* Hravý: Fredoka, média pod textem na mobilu, výrazné karty */
 body[data-theme="hravy"]{
-  --font: "Poppins", system-ui, -apple-system, Segoe UI, Roboto;
-  --container-max: 1100px;
+  --font: "Fredoka", system-ui, -apple-system, Segoe UI, Roboto;
+  --container-max: 980px;
   --space: 20px;
   --heading-size: clamp(2rem, 4vw, 3rem);
-  --hero-gap: 26px;
-  --hero-cols: 1.1fr .9fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
 body[data-theme="hravy"] .features .grid{grid-template-columns: repeat(3, minmax(0, 1fr));}
 
 /* Tradiční: Merriweather, seriózní typografie, tři sloupce */
-700&display=swap');
 body[data-theme="tradicni"]{
   --font: "Merriweather", Georgia, "Times New Roman", serif;
-  --container-max: 1000px;
-  --space: 18px;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(2rem, 3.5vw, 2.8rem);
-  --hero-gap: 24px;
-  --hero-cols: 1fr 1fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
 body[data-theme="tradicni"] .features .grid{grid-template-columns: repeat(3, minmax(0, 1fr));}
 
-/* Seriózní: Inter, dvousloupec, konzervativní spacing */
-700;900&display=swap');
+/* Seriózní: Libre Baskerville, dvousloupec, konzervativní spacing */
 body[data-theme="seriozni"]{
-  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto;
-  --container-max: 1120px;
-  --space: 16px;
+  --font: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(1.9rem, 3.3vw, 2.7rem);
-  --hero-gap: 26px;
-  --hero-cols: 1.1fr .9fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
 
-/* Dynamický: Inter, širší kontejner, asymetrie */
-800&display=swap');
+/* Dynamický: Urbanist, širší kontejner, asymetrie */
 body[data-theme="dynamicky"]{
-  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto;
-  --container-max: 1240px;
-  --space: 18px;
+  --font: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto;
+  --container-max: 980px;
+  --space: 20px;
   --heading-size: clamp(2.1rem, 4.4vw, 3.2rem);
-  --hero-gap: 30px;
-  --hero-cols: 1.3fr .7fr;
+  --hero-gap: 20px;
+  --hero-cols: 1fr;
 }
 body[data-theme="dynamicky"] .hero .col-text{order:1}
 body[data-theme="dynamicky"] .hero .col-media{order:2}

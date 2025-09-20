@@ -280,35 +280,266 @@ document.addEventListener('DOMContentLoaded', prefillServiceFromQuery);
 (function initEstimatorPreview(){
   const container = document.getElementById('estimatorPreview');
   if(!container) return;
-  function toggleItem(el){
-    const expanded = el.getAttribute('aria-expanded') === 'true';
-    el.setAttribute('aria-expanded', String(!expanded));
-    const details = el.querySelector('.estimator-preview-details');
-    if(details){ details.hidden = expanded; }
+  
+  let allOpen = false;
+  
+  function toggleAllItems(){
+    const allItems = container.querySelectorAll('.estimator-preview-item');
+    allItems.forEach(item => {
+      item.setAttribute('aria-expanded', String(!allOpen));
+      const details = item.querySelector('.estimator-preview-details');
+      if(details) details.hidden = allOpen;
+    });
+    allOpen = !allOpen;
   }
+  
   container.addEventListener('click', function(e){
     const item = e.target.closest('.estimator-preview-item');
-    if(item) toggleItem(item);
+    if(item) toggleAllItems(); // Přepni všechny karty
   });
+  
   container.addEventListener('keydown', function(e){
     const item = e.target.closest('.estimator-preview-item');
     if(!item) return;
     if(e.key === 'Enter' || e.key === ' '){
       e.preventDefault();
-      toggleItem(item);
+      toggleAllItems(); // Přepni všechny karty
     }
   });
 })();
 
-// Portfolio compact: toggle open on small screens
-(function initPortfolioCompact(){
-  const list = document.getElementById('cards');
-  if(!list) return;
-  function isCompact(){ return window.matchMedia('(max-width: 1000px)').matches; }
-  list.addEventListener('click', function(e){
-    if(!isCompact()) return;
-    const card = e.target.closest('.portfolio-card');
-    if(!card) return;
-    card.classList.toggle('open');
+// Portfolio video hover functionality
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, looking for cards...');
+  const cards = document.querySelectorAll('.card');
+  console.log('Found cards:', cards.length);
+
+  cards.forEach((card, index) => {
+    const video = card.querySelector('video');
+    console.log(`Card ${index}:`, card, 'Video:', video);
+    
+    if (!video) {
+      console.log(`No video found in card ${index}`);
+      return;
+    }
+
+    card.addEventListener('mouseenter', () => {
+      console.log('Mouse enter, playing video...');
+      console.log('Video src:', video.src);
+      console.log('Video readyState:', video.readyState);
+      video.play().catch(e => console.log('Video play failed:', e));
+    });
+
+    card.addEventListener('mouseleave', () => {
+      console.log('Mouse leave, pausing video...');
+      video.pause();
+      video.currentTime = 0; // reset na začátek
+    });
   });
-})();
+
+  // Chroma Grid effect for process steps
+  const chromaGrid = document.querySelector('.chroma-grid');
+  const chromaCards = document.querySelectorAll('.chroma-card');
+  console.log('Found chroma cards:', chromaCards.length);
+
+  if (chromaGrid) {
+    // Global mouse tracking for grid overlay
+    chromaGrid.addEventListener('mousemove', (e) => {
+      const rect = chromaGrid.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      chromaGrid.style.setProperty('--x', `${x}px`);
+      chromaGrid.style.setProperty('--y', `${y}px`);
+      
+      // Check which cards are in spotlight radius - larger for better card activation
+      const radius = 250; // CSS --r value
+      chromaCards.forEach(card => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2 - rect.left;
+        const cardCenterY = cardRect.top + cardRect.height / 2 - rect.top;
+        
+        const distance = Math.sqrt(
+          Math.pow(x - cardCenterX, 2) + Math.pow(y - cardCenterY, 2)
+        );
+        
+        if (distance <= radius) {
+          card.classList.add('in-spotlight');
+        } else {
+          card.classList.remove('in-spotlight');
+        }
+      });
+    });
+
+    chromaGrid.addEventListener('mouseleave', () => {
+      // Reset to center when mouse leaves
+      const rect = chromaGrid.getBoundingClientRect();
+      chromaGrid.style.setProperty('--x', `${rect.width / 2}px`);
+      chromaGrid.style.setProperty('--y', `${rect.height / 2}px`);
+      
+      // Remove spotlight from all cards
+      chromaCards.forEach(card => {
+        card.classList.remove('in-spotlight');
+      });
+    });
+  }
+});
+
+// ProfileCard functionality
+class ProfileCard {
+  constructor(element, options = {}) {
+    this.element = element;
+    this.options = {
+      enableTilt: true,
+      enableMobileTilt: false,
+      tiltIntensity: 10,
+      ...options
+    };
+    
+    this.isHovered = false;
+    this.tilt = { x: 0, y: 0 };
+    this.status = 'online';
+    this.showUserInfo = true;
+    
+    this.init();
+  }
+  
+  init() {
+    this.bindEvents();
+    this.updateStatus();
+  }
+  
+  bindEvents() {
+    // Mouse move for tilt effect
+    this.element.addEventListener('mousemove', (e) => {
+      if (!this.options.enableTilt) return;
+      
+      const rect = this.element.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const rotateX = (e.clientY - centerY) / this.options.tiltIntensity;
+      const rotateY = (centerX - e.clientX) / this.options.tiltIntensity;
+      
+      this.tilt = { x: rotateX, y: rotateY };
+      this.updateTransform();
+    });
+    
+    // Mouse leave
+    this.element.addEventListener('mouseleave', () => {
+      this.tilt = { x: 0, y: 0 };
+      this.isHovered = false;
+      this.updateTransform();
+    });
+    
+    // Mouse enter
+    this.element.addEventListener('mouseenter', () => {
+      this.isHovered = true;
+    });
+  }
+  
+  updateTransform() {
+    if (this.options.enableTilt) {
+      this.element.style.transform = `perspective(1000px) rotateX(${this.tilt.x}deg) rotateY(${this.tilt.y}deg)`;
+    }
+  }
+  
+  updateStatus() {
+    const statusElement = this.element.querySelector('.profile-card__status');
+    const statusDot = this.element.querySelector('.profile-card__status-dot');
+    const statusText = this.element.querySelector('.profile-card__status-text');
+    const statusValue = this.element.querySelector('.profile-card__info-value--online');
+    
+    if (statusElement) {
+      statusElement.setAttribute('data-status', this.status);
+    }
+    
+    // Update status text
+    if (statusText) {
+      switch (this.status) {
+        case 'online':
+          statusText.textContent = 'Online';
+          break;
+        case 'away':
+          statusText.textContent = 'Away';
+          break;
+        case 'offline':
+          statusText.textContent = 'Offline';
+          break;
+      }
+    }
+    
+    // Update status value
+    if (statusValue) {
+      switch (this.status) {
+        case 'online':
+          statusValue.textContent = 'Dostupný';
+          break;
+        case 'away':
+          statusValue.textContent = 'Nedostupný';
+          break;
+        case 'offline':
+          statusValue.textContent = 'Nedostupný';
+          break;
+      }
+    }
+    
+    // Update response time
+    const responseValue = this.element.querySelector('.profile-card__info-value:not(.profile-card__info-value--online)');
+    if (responseValue) {
+      switch (this.status) {
+        case 'online':
+          responseValue.textContent = '< 1 hodina';
+          break;
+        case 'away':
+          responseValue.textContent = '1-2 hodiny';
+          break;
+        case 'offline':
+          responseValue.textContent = '1-2 dny';
+          break;
+      }
+    }
+    
+    // Update classes
+    this.element.className = this.element.className.replace(/profile-card--status-\w+/g, '');
+    this.element.classList.add(`profile-card--status-${this.status}`);
+  }
+  
+  setStatus(status) {
+    this.status = status;
+    this.updateStatus();
+  }
+  
+  getStatus() {
+    return this.status;
+  }
+  
+  isTiltEnabled() {
+    return this.options.enableTilt;
+  }
+  
+  isUserInfoVisible() {
+    return this.showUserInfo;
+  }
+}
+
+// Initialize ProfileCard when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const heroProfileCard = document.getElementById('heroProfileCard');
+  
+  if (heroProfileCard) {
+    // Create ProfileCard instance for hero section
+    const profileCard = new ProfileCard(heroProfileCard, {
+      enableTilt: true,
+      enableMobileTilt: false,
+      tiltIntensity: 8
+    });
+    
+    console.log('Hero ProfileCard initialized!');
+    
+    // Expose to global scope for debugging
+    window.heroProfileCard = profileCard;
+  }
+});
+
+

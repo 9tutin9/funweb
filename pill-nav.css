@@ -1,0 +1,375 @@
+/* PillNav CSS */
+.pill-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (max-width: 768px) {
+  .pill-nav-container {
+    padding: 0.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.15), transparent);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+  }
+}
+
+.pill-nav {
+  --nav-h: 42px;
+  --logo: 36px;
+  --pill-pad-x: 18px;
+  --pill-gap: 3px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 3px;
+  pointer-events: auto;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+@media (max-width: 768px) {
+  .pill-nav {
+    width: 100%;
+    justify-content: space-between;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+.pill-nav-items {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--nav-h);
+}
+
+.pill-logo {
+  width: var(--nav-h);
+  height: var(--nav-h);
+  border-radius: 50%;
+  background: var(--base, #000);
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: 12px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.pill-logo:hover {
+  transform: scale(1.05);
+}
+
+.pill-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pill-logo .logo-text {
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pill-list {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  gap: var(--pill-gap);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.pill-list > li {
+  display: flex;
+  height: 100%;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 var(--pill-pad-x);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text, #f3f6fb);
+  text-decoration: none;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.pill .hover-circle {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border-radius: 50%;
+  background: var(--accent, #22d3ee);
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  transform: scale(0) translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.pill:hover .hover-circle {
+  opacity: 1;
+  transform: scale(1) translateX(-50%);
+}
+
+.pill .label-stack {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  z-index: 2;
+}
+
+.pill .pill-label {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 1;
+  will-change: transform;
+  transition: all 0.3s ease;
+}
+
+.pill .pill-label-hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-contrast, #03151a);
+  z-index: 3;
+  display: inline-block;
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.pill:hover .pill-label {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.pill:hover .pill-label-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pill.is-active {
+  background: var(--accent, #22d3ee);
+  color: var(--accent-contrast, #03151a);
+  border-color: var(--accent, #22d3ee);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.pill.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--accent-contrast, #03151a);
+  border-radius: 50px;
+  z-index: 4;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+.mobile-menu-button {
+  width: var(--nav-h);
+  height: var(--nav-h);
+  border-radius: 50%;
+  background: var(--base, #000);
+  border: none;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: flex;
+  }
+}
+
+.hamburger-line {
+  width: 16px;
+  height: 2px;
+  background: var(--pill-bg, #fff);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-button.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(3px, 3px);
+}
+
+.mobile-menu-button.active .hamburger-line:nth-child(2) {
+  transform: rotate(-45deg) translate(3px, -3px);
+}
+
+.mobile-menu-popover {
+  position: absolute;
+  top: 3em;
+  left: 1rem;
+  right: 1rem;
+  background: var(--base, #f0f0f0);
+  border-radius: 27px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 998;
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-popover.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
+.mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mobile-menu-popover .mobile-menu-link {
+  display: block;
+  padding: 12px 16px;
+  color: var(--pill-text, #fff);
+  background-color: var(--pill-bg, #fff);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-popover .mobile-menu-link:hover {
+  cursor: pointer;
+  background-color: var(--base);
+  color: var(--hover-text, #fff);
+  transform: translateX(4px);
+}
+
+.mobile-menu-popover .mobile-menu-link.is-active {
+  background-color: var(--base);
+  color: var(--hover-text, #fff);
+}
+
+/* Animation keyframes */
+@keyframes pillHover {
+  0% {
+    transform: scale(0) translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateX(-50%);
+    opacity: 1;
+  }
+}
+
+@keyframes labelSlideUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes labelSlideDown {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

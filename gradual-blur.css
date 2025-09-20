@@ -1,0 +1,91 @@
+/* GradualBlur CSS */
+.gradual-blur {
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  isolation: isolate;
+}
+
+.gradual-blur-parent {
+  overflow: hidden;
+}
+
+.gradual-blur-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.gradual-blur-inner > div {
+  -webkit-backdrop-filter: inherit;
+  backdrop-filter: inherit;
+}
+
+.gradual-blur-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(1px)) {
+  .gradual-blur-inner > div {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.5;
+  }
+}
+
+/* Bottom glass effect specific styles */
+.glass-effect-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* Top glass effect specific styles */
+.glass-effect-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.glass-effect-bottom .gradual-blur-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.glass-effect-bottom .blur-layer {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .glass-effect-bottom {
+    height: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-effect-bottom {
+    height: 3rem;
+  }
+}
