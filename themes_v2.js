@@ -70,4 +70,7 @@ function broadcastTheme(slug){
   document.querySelectorAll('iframe').forEach(f=>{
     try { f.contentWindow.postMessage({ type:'theme', value: slug }, '*'); } catch(e){}
   });
+  
+  // Dispatch themeChanged event for LightRays
+  document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: slug } }));
 }

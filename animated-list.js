@@ -207,14 +207,15 @@ class PortfolioAnimated {
     this.portfolioItems = [
       {
         name: 'DetiDetem.eu',
-        video: 'video.mov',
+        video: 'video_opt.mp4',
         description: 'E-shop pro dětské oblečení',
         previewTitle: 'Domovská stránka',
         expanded: false,
         subPages: [
           {
             name: 'Domovská stránka',
-            video: 'video.mov',
+            video: 'video_opt.mp4',
+            thumbnail: 'video-thumb.jpg',
             previewTitle: 'Domovská stránka',
             isMain: true,
             info: {
@@ -226,7 +227,8 @@ class PortfolioAnimated {
           },
           {
             name: 'Platby',
-            video: 'video-payments.mov',
+            video: 'video-payments_opt.mp4',
+            thumbnail: 'video-payments-thumb.jpg',
             previewTitle: 'Platby',
             info: {
               price: 'Platby od 5 900 Kč',
@@ -237,7 +239,8 @@ class PortfolioAnimated {
           },
           {
             name: 'Administrace',
-            video: 'video-admin.mov',
+            video: 'video-admin_opt.mp4',
+            thumbnail: 'video-admin-thumb.jpg',
             previewTitle: 'Administrace',
             info: {
               price: 'Admin panel od 8 900 Kč',
@@ -250,14 +253,15 @@ class PortfolioAnimated {
       },
       {
         name: 'Stavebniny Lhotský',
-        video: 'video2.mov',
+        video: 'video2_opt.mp4',
         description: 'Web pro stavební firmu',
         previewTitle: 'Domovská stránka',
         expanded: false,
         subPages: [
           {
             name: 'Domovská stránka',
-            video: 'video2.mov',
+            video: 'video2_opt.mp4',
+            thumbnail: 'video2-thumb.jpg',
             previewTitle: 'Domovská stránka',
             isMain: true,
             info: {
@@ -269,7 +273,8 @@ class PortfolioAnimated {
           },
           {
             name: 'Platby',
-            video: 'video2-payments.mov',
+            video: 'video2-payments_opt.mp4',
+            thumbnail: 'video2-payments-thumb.jpg',
             previewTitle: 'Platby',
             info: {
               price: 'Platby od 5 900 Kč',
@@ -280,7 +285,8 @@ class PortfolioAnimated {
           },
           {
             name: 'Administrace',
-            video: 'video2-admin.mov',
+            video: 'video2-admin_opt.mp4',
+            thumbnail: 'video2-admin-thumb.jpg',
             previewTitle: 'Administrace',
             info: {
               price: 'Admin panel od 8 900 Kč',
@@ -293,14 +299,15 @@ class PortfolioAnimated {
       },
       {
         name: 'SYSTEMWRAP',
-        video: 'video3.mov',
+        video: 'video3_opt.mp4',
         description: 'Technologické řešení',
         previewTitle: 'Domovská stránka',
         expanded: false,
         subPages: [
           {
             name: 'Domovská stránka',
-            video: 'video3.mov',
+            video: 'video3_opt.mp4',
+            thumbnail: 'video3-thumb.jpg',
             previewTitle: 'Domovská stránka',
             isMain: true,
             info: {
@@ -312,7 +319,8 @@ class PortfolioAnimated {
           },
           {
             name: 'Formulář',
-            video: 'video3-payments.mov',
+            video: 'video3-payments_opt.mp4',
+            thumbnail: 'video3-payments-thumb.jpg',
             previewTitle: 'Formulář',
             info: {
               price: 'Formulář od 3 900 Kč',
@@ -325,25 +333,28 @@ class PortfolioAnimated {
       },
       {
         name: 'MedoMed.cz',
-        video: 'video4.mov',
+        video: 'video4_opt.mp4',
         description: 'Zdravotnický portál',
         previewTitle: 'Domovská stránka',
         expanded: false,
         subPages: [
           {
             name: 'Domovská stránka',
-            video: 'video4.mov',
+            video: 'video4_opt.mp4',
+            thumbnail: 'video4-thumb.jpg',
             previewTitle: 'Domovská stránka',
             isMain: true
           },
           {
             name: 'Platby',
-            video: 'video4.mov',
+            video: 'video4_opt.mp4',
+            thumbnail: 'video4-thumb.jpg',
             previewTitle: 'Platby'
           },
           {
             name: 'Administrace',
-            video: 'video4.mov',
+            video: 'video4_opt.mp4',
+            thumbnail: 'video4-thumb.jpg',
             previewTitle: 'Administrace'
           }
         ]
@@ -495,18 +506,17 @@ class PortfolioAnimated {
     const previewContainer = document.getElementById('portfolioPreview');
     if (!previewContainer) return;
     
-    previewContainer.innerHTML = `
-      <div class="portfolio-preview-card">
-        <video muted loop preload="metadata">
-          <source src="${subPage.video}" type="video/quicktime">
-          <source src="${subPage.video}" type="video/mp4">
-          Váš prohlížeč nepodporuje video.
-        </video>
-        <div class="portfolio-preview-overlay">
-          <h3>${subPage.previewTitle}</h3>
-        </div>
-      </div>
-    `;
+         previewContainer.innerHTML = `
+           <div class="portfolio-preview-card">
+             <video muted loop preload="none" poster="${subPage.thumbnail || 'video-thumb.jpg'}" loading="lazy">
+               <source src="${subPage.video}" type="video/mp4">
+               Váš prohlížeč nepodporuje video.
+             </video>
+             <div class="portfolio-preview-overlay">
+               <h3>${subPage.previewTitle}</h3>
+             </div>
+           </div>
+         `;
     
     this.currentPreview = previewContainer.querySelector('video');
     this.setupVideoEvents();
@@ -546,7 +556,14 @@ class PortfolioAnimated {
     const card = this.currentPreview.closest('.portfolio-preview-card');
     if (!card) return;
     
+    // Load video only when needed
+    let videoLoaded = false;
+    
     card.addEventListener('mouseenter', () => {
+      if (!videoLoaded) {
+        this.currentPreview.load();
+        videoLoaded = true;
+      }
       this.currentPreview.play().catch(e => console.log('Video play failed:', e));
     });
     

@@ -310,37 +310,28 @@ document.addEventListener('DOMContentLoaded', prefillServiceFromQuery);
 
 // Portfolio video hover functionality
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, looking for cards...');
   const cards = document.querySelectorAll('.card');
-  console.log('Found cards:', cards.length);
 
-  cards.forEach((card, index) => {
-    const video = card.querySelector('video');
-    console.log(`Card ${index}:`, card, 'Video:', video);
-    
-    if (!video) {
-      console.log(`No video found in card ${index}`);
-      return;
-    }
+        cards.forEach((card, index) => {
+          const video = card.querySelector('video');
+          
+          if (!video) {
+            return;
+          }
 
-    card.addEventListener('mouseenter', () => {
-      console.log('Mouse enter, playing video...');
-      console.log('Video src:', video.src);
-      console.log('Video readyState:', video.readyState);
-      video.play().catch(e => console.log('Video play failed:', e));
-    });
+          card.addEventListener('mouseenter', () => {
+            video.play().catch(e => console.log('Video play failed:', e));
+          });
 
-    card.addEventListener('mouseleave', () => {
-      console.log('Mouse leave, pausing video...');
-      video.pause();
-      video.currentTime = 0; // reset na začátek
-    });
+          card.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // reset na začátek
+          });
   });
 
   // Chroma Grid effect for process steps
   const chromaGrid = document.querySelector('.chroma-grid');
   const chromaCards = document.querySelectorAll('.chroma-card');
-  console.log('Found chroma cards:', chromaCards.length);
 
   if (chromaGrid) {
     // Global mouse tracking for grid overlay

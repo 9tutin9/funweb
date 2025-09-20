@@ -71,6 +71,38 @@ class PillNav {
     document.body.appendChild(this.container);
   }
   
+  bindEvents() {
+    // Bind events to navigation items
+    const navItems = this.container.querySelectorAll('.pill');
+    navItems.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.selectPill(index);
+        
+        const href = item.dataset.href;
+        if (href) {
+          if (href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            window.location.href = href;
+          }
+        }
+      });
+      
+      item.addEventListener('mouseenter', () => this.handleEnter(index));
+      item.addEventListener('mouseleave', () => this.handleLeave(index));
+    });
+    
+    // Bind mobile menu events
+    const mobileButton = this.container.querySelector('.mobile-menu-button');
+    if (mobileButton) {
+      mobileButton.addEventListener('click', () => this.toggleMobileMenu());
+    }
+  }
+  
   createLogo() {
     const logo = document.createElement('a');
     logo.className = 'pill-logo';
@@ -112,6 +144,8 @@ class PillNav {
       
       const link = document.createElement('a');
       link.href = item.href;
+      link.dataset.href = item.href; // Add data-href for bindEvents
+      link.dataset.index = i; // Add data-index for selectPill
       link.className = `pill${this.config.activeHref === item.href ? ' is-active' : ''}`;
       link.setAttribute('role', 'menuitem');
       link.setAttribute('aria-label', item.ariaLabel || item.label);
@@ -181,12 +215,24 @@ class PillNav {
       
       const link = document.createElement('a');
       link.href = item.href;
+      link.dataset.href = item.href; // Add data-href for consistency
       link.className = `mobile-menu-link${this.config.activeHref === item.href ? ' is-active' : ''}`;
       link.textContent = item.label;
       
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
         this.isMobileMenuOpen = false;
         this.updateMobileMenu();
+        
+        // Handle navigation
+        if (item.href.startsWith('#')) {
+          const target = document.querySelector(item.href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          window.location.href = item.href;
+        }
       });
       
       li.appendChild(link);
@@ -214,6 +260,21 @@ class PillNav {
       circle.style.left = '50%';
       circle.style.transform = 'translateX(-50%) scale(0)';
     });
+  }
+  
+  selectPill(index) {
+    // Remove active class from all pills
+    const allPills = this.container.querySelectorAll('.pill');
+    allPills.forEach(pill => pill.classList.remove('active'));
+    
+    // Add active class to selected pill
+    const selectedPill = this.container.querySelector(`.pill[data-index="${index}"]`);
+    if (selectedPill) {
+      selectedPill.classList.add('active');
+    }
+    
+    // Update active index
+    this.activeIndex = index;
   }
   
   handleEnter(i) {

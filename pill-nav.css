@@ -23,6 +23,15 @@
   }
 }
 
+@media (max-width: 640px) {
+  .pill-nav-container {
+    padding: 0.25rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  }
+}
+
 .pill-nav {
   --nav-h: 42px;
   --logo: 36px;
@@ -52,6 +61,43 @@
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 640px) {
+  .pill-nav {
+    --nav-h: 38px;
+    --logo: 32px;
+    --pill-pad-x: 14px;
+    --pill-gap: 2px;
+    padding: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pill-nav {
+    --nav-h: 36px;
+    --logo: 28px;
+    --pill-pad-x: 12px;
+    --pill-gap: 1px;
+  }
+}
+
+@media (max-width: 375px) {
+  .pill-nav {
+    --nav-h: 34px;
+    --logo: 26px;
+    --pill-pad-x: 10px;
+    --pill-gap: 0px;
+  }
+}
+
+@media (max-width: 320px) {
+  .pill-nav {
+    --nav-h: 32px;
+    --logo: 24px;
+    --pill-pad-x: 8px;
+    --pill-gap: 0px;
   }
 }
 
@@ -289,7 +335,7 @@
 
 .mobile-menu-popover {
   position: absolute;
-  top: 3em;
+  bottom: 3em; /* Changed from top to bottom for navbar at bottom */
   left: 1rem;
   right: 1rem;
   background: var(--base, #f0f0f0);
@@ -297,9 +343,45 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   z-index: 998;
   opacity: 0;
-  transform: translateY(-10px) scale(0.95);
+  transform: translateY(10px) scale(0.95); /* Changed direction for bottom navbar */
   visibility: hidden;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .mobile-menu-popover {
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 2.5em;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-menu-popover {
+    left: 0.25rem;
+    right: 0.25rem;
+    bottom: 2em;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .mobile-menu-popover {
+    left: 0.125rem;
+    right: 0.125rem;
+    bottom: 1.5em;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .mobile-menu-popover {
+    left: 0.0625rem;
+    right: 0.0625rem;
+    bottom: 1.25em;
+    border-radius: 10px;
+  }
 }
 
 .mobile-menu-popover.show {
