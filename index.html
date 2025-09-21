@@ -568,92 +568,50 @@
     <script defer src="themes_v2.js"></script>
     <script src="theme_debug.js"></script>
 
-    <!-- Mobile Hamburger Menu Button -->
-    <button class="mobile-menu-button mobile-only" aria-label="Toggle menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
+    <!-- Mobile Hamburger Menu -->
+    <input type="checkbox" id="navi-toggle" class="checkbox mobile-only" />
+    <label for="navi-toggle" class="button mobile-only">
+      <span class="icon">&nbsp;</span>
+    </label>
+    <div class="background mobile-only">&nbsp;</div>
+
+    <!-- nav -->
+    <nav class="nav mobile-only">
+      <ul class="list">
+        <li class="item"> <a href="#uvod" class="link">Úvod</a> </li>
+        <li class="item"> <a href="#o-mne" class="link">O mně</a> </li>
+        <li class="item"> <a href="#sluzby" class="link">Služby</a> </li>
+        <li class="item"> <a href="#portfolio" class="link">Portfolio</a> </li>
+        <li class="item"> <a href="#jak-spolupracujeme" class="link">Proces</a> </li>
+        <li class="item"> <a href="#reference" class="link">Reference</a> </li>
+        <li class="item"> <a href="#kontakt" class="link">Kontakt</a> </li>
+      </ul>
+    </nav>
 
     <script>
       // Mobile hamburger menu functionality
       (function(){
-        // Wait for DOM to be ready
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initMobileMenu);
-        } else {
-          initMobileMenu();
-        }
-        
-        function initMobileMenu() {
-          const mobileButton = document.querySelector('.mobile-menu-button');
-          if(!mobileButton) {
-            console.log('Mobile button not found');
-            return;
-          }
-          
-          console.log('Mobile button found:', mobileButton);
-        
-          // Create mobile menu popover
-          const mobileMenu = document.createElement('div');
-          mobileMenu.className = 'mobile-menu-popover mobile-only';
-          mobileMenu.innerHTML = `
-            <ul class="mobile-menu-list">
-              <li><a href="#uvod" class="mobile-menu-link">Úvod</a></li>
-              <li><a href="#o-mne" class="mobile-menu-link">O mně</a></li>
-              <li><a href="#sluzby" class="mobile-menu-link">Služby</a></li>
-              <li><a href="#portfolio" class="mobile-menu-link">Portfolio</a></li>
-              <li><a href="#jak-spolupracujeme" class="mobile-menu-link">Proces</a></li>
-              <li><a href="#reference" class="mobile-menu-link">Reference</a></li>
-              <li><a href="#kontakt" class="mobile-menu-link">Kontakt</a></li>
-            </ul>
-          `;
-          
-          // Add to body
-          document.body.appendChild(mobileMenu);
-          
-          let isMenuOpen = false;
-          
-          // Toggle menu
-          mobileButton.addEventListener('click', (e) => {
+        // Handle menu links
+        document.addEventListener('click', (e) => {
+          if (e.target.classList.contains('link')) {
             e.preventDefault();
-            e.stopPropagation();
-            isMenuOpen = !isMenuOpen;
             
-            mobileButton.classList.toggle('active', isMenuOpen);
-            mobileMenu.classList.toggle('show', isMenuOpen);
-            console.log('Menu toggled:', isMenuOpen);
-          });
-          
-          // Close menu when clicking outside
-          document.addEventListener('click', (e) => {
-            if (isMenuOpen && !mobileButton.contains(e.target) && !mobileMenu.contains(e.target)) {
-              isMenuOpen = false;
-              mobileButton.classList.remove('active');
-              mobileMenu.classList.remove('show');
+            // Close menu
+            const checkbox = document.getElementById('navi-toggle');
+            if (checkbox) {
+              checkbox.checked = false;
             }
-          });
-          
-          // Handle menu links
-          mobileMenu.addEventListener('click', (e) => {
-            if (e.target.classList.contains('mobile-menu-link')) {
-              e.preventDefault();
-              isMenuOpen = false;
-              mobileButton.classList.remove('active');
-              mobileMenu.classList.remove('show');
-              
-              const href = e.target.getAttribute('href');
-              if (href.startsWith('#')) {
-                const target = document.querySelector(href);
-                if (target) {
-                  target.scrollIntoView({ behavior: 'smooth' });
-                }
+            
+            // Navigate to section
+            const href = e.target.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
               }
             }
-          });
-        }
+          }
+        });
       })();
     </script>
 
