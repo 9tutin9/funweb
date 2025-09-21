@@ -466,10 +466,25 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Touch feedback for mobile */
+@media (max-width: 768px) {
+  .mobile-menu-popover .mobile-menu-link:active {
+    transform: scale(0.95);
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.1s ease;
+  }
+  
+  .mobile-menu-popover .mobile-menu-link:focus {
+    outline: 2px solid rgba(34, 211, 238, 0.5);
+    outline-offset: 2px;
+  }
+}
+
 /* Ensure links are clickable on mobile */
 @media (max-width: 768px) {
   .mobile-menu-popover {
     pointer-events: auto !important;
+    touch-action: manipulation;
   }
   
   .mobile-menu-popover .mobile-menu-link {
@@ -480,6 +495,11 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    min-height: 44px; /* Apple's recommended minimum touch target */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

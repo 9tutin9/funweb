@@ -315,11 +315,17 @@ class PillNav {
         }
       });
       
-      // Add touch event for mobile
+      // Add touch events for mobile
+      link.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile menu link touch start:', item.href);
+      });
+      
       link.addEventListener('touchend', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Mobile menu link touched:', item.href);
+        console.log('Mobile menu link touch end:', item.href);
         
         // Close menu immediately
         this.isMobileMenuOpen = false;
@@ -340,6 +346,13 @@ class PillNav {
         } else {
           window.location.href = item.href;
         }
+      });
+      
+      // Add touchcancel for better mobile support
+      link.addEventListener('touchcancel', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile menu link touch cancel:', item.href);
       });
       
       li.appendChild(link);
