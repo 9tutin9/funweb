@@ -570,8 +570,11 @@
 
     <!-- Mobile Hamburger Menu Button -->
     <button class="mobile-menu-button mobile-only" aria-label="Toggle menu">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
     </button>
 
     <script>
@@ -585,6 +588,7 @@
         mobileMenu.className = 'mobile-menu-popover mobile-only';
         mobileMenu.innerHTML = `
           <ul class="mobile-menu-list">
+            <li><a href="#uvod" class="mobile-menu-link">Úvod</a></li>
             <li><a href="#o-mne" class="mobile-menu-link">O mně</a></li>
             <li><a href="#sluzby" class="mobile-menu-link">Služby</a></li>
             <li><a href="#portfolio" class="mobile-menu-link">Portfolio</a></li>

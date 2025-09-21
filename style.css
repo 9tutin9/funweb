@@ -1029,28 +1029,29 @@ html, body { overflow-x: hidden; }
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Hamburger lines */
-.mobile-menu-button .hamburger-line {
-  width: 16px;
-  height: 2px;
-  background: white;
-  border-radius: 1px;
+/* Hamburger SVG icon */
+.mobile-menu-button svg {
+  width: 20px;
+  height: 20px;
+  color: white;
   transition: all 0.3s ease;
-  transform-origin: center;
-  display: block;
 }
 
-.mobile-menu-button .hamburger-line:first-child {
-  margin-bottom: 4px;
+/* Hamburger animation - rotate to X */
+.mobile-menu-button.active svg {
+  transform: rotate(90deg);
 }
 
-/* Hamburger animation */
-.mobile-menu-button.active .hamburger-line:first-child {
-  transform: rotate(45deg) translate(3px, 3px);
+.mobile-menu-button.active svg path:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
-.mobile-menu-button.active .hamburger-line:last-child {
-  transform: rotate(-45deg) translate(3px, -3px);
+.mobile-menu-button.active svg path:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-button.active svg path:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 
