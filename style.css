@@ -1063,6 +1063,10 @@ html, body { overflow-x: hidden; }
     width: calc(100vw - 20px);
     padding: 12px 15px;
     gap: 8px;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10001 !important;
   }
   
   .style-pills .pill {
