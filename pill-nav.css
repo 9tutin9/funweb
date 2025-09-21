@@ -12,6 +12,7 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  transition: bottom 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -346,10 +347,12 @@
   transform: translateY(10px) scale(0.95); /* Changed direction for bottom navbar */
   visibility: hidden;
   transition: all 0.3s ease;
+  display: none; /* Hide by default */
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .mobile-menu-popover {
+    display: block; /* Show on mobile */
     left: 0.5rem;
     right: 0.5rem;
     bottom: 2.5em;

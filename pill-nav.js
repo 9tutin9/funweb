@@ -27,12 +27,67 @@ class PillNav {
   
   init() {
     this.createContainer();
-    this.bindEvents();
     this.layout();
+    this.bindEvents();
+    this.setupViewportHandling();
     
     if (this.config.initialLoadAnimation) {
       this.animateInitialLoad();
     }
+  }
+  
+  setupViewportHandling() {
+    // Track viewport height changes for mobile browsers
+    let lastViewportHeight = window.innerHeight;
+    let isScrolling = false;
+    
+    const handleViewportChange = () => {
+      const currentHeight = window.innerHeight;
+      const heightDifference = lastViewportHeight - currentHeight;
+      
+      // If viewport height decreased (address bar hidden), adjust navbar position
+      if (heightDifference > 50) { // Threshold to detect address bar hiding
+        this.container.style.bottom = `${heightDifference}px`;
+        console.log('Address bar hidden, adjusting navbar position:', heightDifference);
+      } else if (heightDifference < -50) { // Address bar shown
+        this.container.style.bottom = '0px';
+        console.log('Address bar shown, resetting navbar position');
+      }
+      
+      lastViewportHeight = currentHeight;
+    };
+    
+    // Handle scroll events to detect address bar changes
+    let scrollTimeout;
+    this.handleScroll = () => {
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+      
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+        handleViewportChange();
+      }, 150);
+    };
+    
+    // Handle resize events
+    this.handleResize = () => {
+      if (!isScrolling) {
+        handleViewportChange();
+      }
+    };
+    
+    // Handle orientation change
+    this.handleOrientationChange = () => {
+      setTimeout(handleViewportChange, 500);
+    };
+    
+    // Add event listeners
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('orientationchange', this.handleOrientationChange);
+    
+    // Initial check
+    setTimeout(handleViewportChange, 100);
   }
   
   createContainer() {
@@ -67,8 +122,15 @@ class PillNav {
     const mobileMenu = this.createMobileMenu();
     this.container.appendChild(mobileMenu);
     
-    // Add to page
-    document.body.appendChild(this.container);
+    // Add to page - find the insertion point
+    const insertionPoint = document.querySelector('main#uvod').previousElementSibling;
+    if (insertionPoint) {
+      insertionPoint.insertAdjacentElement('afterend', this.container);
+      console.log('PillNav inserted after:', insertionPoint);
+    } else {
+      document.body.appendChild(this.container);
+      console.log('PillNav appended to body');
+    }
   }
   
   bindEvents() {
@@ -77,12 +139,14 @@ class PillNav {
     navItems.forEach((item, index) => {
       item.addEventListener('click', (e) => {
         e.preventDefault();
+        console.log('Desktop nav link clicked:', item.dataset.href);
         this.selectPill(index);
         
         const href = item.dataset.href;
         if (href) {
           if (href.startsWith('#')) {
             const target = document.querySelector(href);
+            console.log('Desktop target found:', !!target, href);
             if (target) {
               target.scrollIntoView({ behavior: 'smooth' });
             }
@@ -98,8 +162,14 @@ class PillNav {
     
     // Bind mobile menu events
     const mobileButton = this.container.querySelector('.mobile-menu-button');
+    console.log('Mobile button found:', !!mobileButton);
     if (mobileButton) {
-      mobileButton.addEventListener('click', () => this.toggleMobileMenu());
+      mobileButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile button clicked!');
+        this.toggleMobileMenu();
+      });
     }
   }
   
@@ -198,8 +268,7 @@ class PillNav {
     line2.className = 'hamburger-line';
     button.appendChild(line2);
     
-    button.addEventListener('click', () => this.toggleMobileMenu());
-    
+    console.log('Mobile menu button created');
     return button;
   }
   
@@ -221,18 +290,22 @@ class PillNav {
       
       link.addEventListener('click', (e) => {
         e.preventDefault();
+        console.log('Mobile menu link clicked:', item.href);
         this.isMobileMenuOpen = false;
         this.updateMobileMenu();
         
-        // Handle navigation
-        if (item.href.startsWith('#')) {
-          const target = document.querySelector(item.href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+        // Handle navigation with small delay to ensure menu closes
+        setTimeout(() => {
+          if (item.href.startsWith('#')) {
+            const target = document.querySelector(item.href);
+            console.log('Target found:', !!target, item.href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            window.location.href = item.href;
           }
-        } else {
-          window.location.href = item.href;
-        }
+        }, 100);
       });
       
       li.appendChild(link);
@@ -340,6 +413,7 @@ class PillNav {
   }
   
   toggleMobileMenu() {
+    console.log('Toggle mobile menu clicked, current state:', this.isMobileMenuOpen);
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     this.updateMobileMenu();
     this.config.onMobileMenuClick?.();
@@ -348,6 +422,12 @@ class PillNav {
   updateMobileMenu() {
     const button = this.container.querySelector('.mobile-menu-button');
     const menu = this.container.querySelector('.mobile-menu-popover');
+    
+    console.log('Update mobile menu:', {
+      button: !!button,
+      menu: !!menu,
+      isOpen: this.isMobileMenuOpen
+    });
     
     if (button) {
       button.classList.toggle('active', this.isMobileMenuOpen);
@@ -387,6 +467,11 @@ class PillNav {
   }
   
   destroy() {
+    // Remove event listeners
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('orientationchange', this.handleOrientationChange);
+    
     if (this.container && this.container.parentNode) {
       this.container.parentNode.removeChild(this.container);
     }
@@ -395,6 +480,8 @@ class PillNav {
 
 // Auto-initialize PillNav
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, initializing PillNav...');
+  
   const pillNav = new PillNav({
     items: [
       { label: 'O mně', href: '#o-mne' },
@@ -411,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
     pillTextColor: '#000000'
   });
   
-  console.log('PillNav initialized!');
+  console.log('PillNav initialized!', pillNav);
   
   // Expose to global scope
   window.pillNav = pillNav;
