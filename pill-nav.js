@@ -45,13 +45,14 @@ class PillNav {
       const currentHeight = window.innerHeight;
       const heightDifference = lastViewportHeight - currentHeight;
       
-      // If viewport height decreased (address bar hidden), adjust navbar position
-      if (heightDifference > 50) { // Threshold to detect address bar hiding
-        this.container.style.bottom = `${heightDifference}px`;
-        console.log('Address bar hidden, adjusting navbar position:', heightDifference);
-      } else if (heightDifference < -50) { // Address bar shown
-        this.container.style.bottom = '0px';
-        console.log('Address bar shown, resetting navbar position');
+      // Always keep navbar at bottom, regardless of viewport changes
+      this.container.style.bottom = '0px';
+      this.container.style.position = 'fixed';
+      
+      // If viewport height changed significantly, log it
+      if (Math.abs(heightDifference) > 50) {
+        console.log('Viewport height changed:', heightDifference, 'px');
+        console.log('Navbar position reset to bottom: 0px');
       }
       
       lastViewportHeight = currentHeight;

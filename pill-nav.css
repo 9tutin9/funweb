@@ -12,6 +12,19 @@ body {
   padding-bottom: 80px; /* Space for navbar */
 }
 
+/* Ensure navbar is always at bottom on mobile */
+@media (max-width: 768px) {
+  .pill-nav-container {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 /* Ensure navbar is always at bottom */
 .pill-nav-container {
   position: fixed !important;
