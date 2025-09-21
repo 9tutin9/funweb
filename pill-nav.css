@@ -12,29 +12,32 @@ body {
   padding-bottom: 80px; /* Space for navbar */
 }
 
-/* Ensure navbar is always at bottom on mobile */
+/* Hide navbar completely on mobile */
 @media (max-width: 768px) {
   .pill-nav-container {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 9999 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0.5rem !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
   }
   
-  /* Force navbar to stay at bottom even when address bar hides */
+  /* Hide all navbar elements */
+  .pill-nav,
+  .pill-nav-items,
+  .pill-logo,
+  .pill-list,
+  .pill {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Remove body padding since navbar is hidden */
   body {
     padding-bottom: 0 !important;
-  }
-  
-  /* Ensure navbar is always visible at bottom */
-  .pill-nav-container {
-    transform: translateY(0) !important;
-    transition: none !important;
+    margin-bottom: 0 !important;
   }
 }
 
@@ -577,9 +580,20 @@ body {
   }
 }
 
-/* Hide navbar on mobile - use hamburger menu instead */
+/* Hide navbar completely on mobile - use hamburger menu instead */
 @media (max-width: 768px) {
   .pill-nav-container {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  /* Hide all navbar elements */
+  .pill-nav,
+  .pill-nav-items,
+  .pill-logo,
+  .pill-list {
     display: none !important;
   }
   
