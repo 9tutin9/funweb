@@ -439,6 +439,9 @@ body {
   border-radius: 50px;
   transition: all 0.2s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu-popover .mobile-menu-link:hover {
@@ -453,6 +456,21 @@ body {
   background-color: rgba(34, 211, 238, 0.3);
   color: #ffffff;
   border-color: rgba(34, 211, 238, 0.5);
+}
+
+/* Touch/click feedback */
+.mobile-menu-popover .mobile-menu-link:active {
+  transform: scale(0.95);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure links are clickable on mobile */
+@media (max-width: 768px) {
+  .mobile-menu-popover .mobile-menu-link {
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+  }
 }
 
 /* Animation keyframes */

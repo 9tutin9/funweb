@@ -290,22 +290,26 @@ class PillNav {
       
       link.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         console.log('Mobile menu link clicked:', item.href);
+        
+        // Close menu immediately
         this.isMobileMenuOpen = false;
         this.updateMobileMenu();
         
-        // Handle navigation with small delay to ensure menu closes
-        setTimeout(() => {
-          if (item.href.startsWith('#')) {
-            const target = document.querySelector(item.href);
-            console.log('Target found:', !!target, item.href);
-            if (target) {
+        // Handle navigation immediately
+        if (item.href.startsWith('#')) {
+          const target = document.querySelector(item.href);
+          console.log('Target found:', !!target, item.href);
+          if (target) {
+            // Small delay to ensure menu is closed
+            setTimeout(() => {
               target.scrollIntoView({ behavior: 'smooth' });
-            }
-          } else {
-            window.location.href = item.href;
+            }, 150);
           }
-        }, 100);
+        } else {
+          window.location.href = item.href;
+        }
       });
       
       li.appendChild(link);
