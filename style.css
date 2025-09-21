@@ -991,51 +991,97 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 html, body { overflow-x: hidden; }
 
 /* Style Picker */
+/* Style Pills - Theme Picker */
 .style-pills {
   position: fixed;
   top: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-width: 300px;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 15px 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(100vw - 40px);
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
 }
 
 .style-pills .pill {
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 10px 16px;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
   transition: all 0.3s ease;
   white-space: nowrap;
+  min-width: fit-content;
+  flex: 0 0 auto;
 }
 
 .style-pills .pill:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .style-pills .pill[aria-pressed="true"] {
   background: var(--accent, #22d3ee);
-  color: var(--accent-contrast, #000);
-  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
 }
 
-/* Hide style picker on mobile */
+/* Desktop - 1 řádek */
+@media (min-width: 769px) {
+  .style-pills {
+    max-width: 1200px;
+    padding: 12px 20px;
+  }
+  
+  .style-pills .pill {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}
+
+/* Mobile - 2 řádky */
 @media (max-width: 768px) {
   .style-pills {
-    display: none;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    max-width: none;
+    width: calc(100vw - 20px);
+    padding: 12px 15px;
+    gap: 8px;
+  }
+  
+  .style-pills .pill {
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 15px;
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 480px) {
+  .style-pills {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+  
+  .style-pills .pill {
+    font-size: 11px;
+    padding: 6px 10px;
   }
 }
 
