@@ -568,34 +568,76 @@
     <script defer src="themes_v2.js"></script>
     <script src="theme_debug.js"></script>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" aria-label="Zpět nahoru" title="Zpět nahoru">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <!-- Mobile Hamburger Menu Button -->
+    <button class="mobile-menu-button mobile-only" aria-label="Toggle menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
     </button>
 
     <script>
+      // Mobile hamburger menu functionality
       (function(){
-        var btn = document.getElementById('backToTop');
-        if(!btn) return;
-        function onScroll(){
-          var y = window.pageYOffset || document.documentElement.scrollTop;
-          btn.classList.toggle('visible', y > 500);
-        }
-        function toTop(e){
+        const mobileButton = document.querySelector('.mobile-menu-button');
+        if(!mobileButton) return;
+        
+        // Create mobile menu popover
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'mobile-menu-popover mobile-only';
+        mobileMenu.innerHTML = `
+          <ul class="mobile-menu-list">
+            <li><a href="#o-mne" class="mobile-menu-link">O mně</a></li>
+            <li><a href="#sluzby" class="mobile-menu-link">Služby</a></li>
+            <li><a href="#portfolio" class="mobile-menu-link">Portfolio</a></li>
+            <li><a href="#jak-spolupracujeme" class="mobile-menu-link">Proces</a></li>
+            <li><a href="#reference" class="mobile-menu-link">Reference</a></li>
+            <li><a href="#kontakt" class="mobile-menu-link">Kontakt</a></li>
+          </ul>
+        `;
+        
+        // Add to body
+        document.body.appendChild(mobileMenu);
+        
+        let isMenuOpen = false;
+        
+        // Toggle menu
+        mobileButton.addEventListener('click', (e) => {
           e.preventDefault();
-          // Prefer scroll to #uvod if present, else smooth to 0
-          var target = document.getElementById('uvod');
-          if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
-          else { window.scrollTo({top:0, behavior:'smooth'}); }
-        }
-        window.addEventListener('scroll', onScroll, {passive:true});
-        window.addEventListener('load', onScroll);
-        btn.addEventListener('click', toTop);
+          e.stopPropagation();
+          isMenuOpen = !isMenuOpen;
+          
+          mobileButton.classList.toggle('active', isMenuOpen);
+          mobileMenu.classList.toggle('show', isMenuOpen);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (isMenuOpen && !mobileButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+            isMenuOpen = false;
+            mobileButton.classList.remove('active');
+            mobileMenu.classList.remove('show');
+          }
+        });
+        
+        // Handle menu links
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target.classList.contains('mobile-menu-link')) {
+            e.preventDefault();
+            isMenuOpen = false;
+            mobileButton.classList.remove('active');
+            mobileMenu.classList.remove('show');
+            
+            const href = e.target.getAttribute('href');
+            if (href.startsWith('#')) {
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }
+        });
       })();
     </script>
+
   <script id="THEME_FALLBACK">
   // Fallback in case themes_v2.js didn't bind
   (function(){

@@ -990,11 +990,11 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 /* remove giant horizontal scroll risk */
 html, body { overflow-x: hidden; }
 
-/* Back to Top Button */
-#backToTop {
+/* Mobile Hamburger Menu Button - positioned like back-to-top */
+.mobile-menu-button {
   position: fixed;
-  bottom: 120px; /* Higher position above navbar with margin */
-  right: 20px;
+  bottom: 80px; /* Above navbar on mobile */
+  right: 15px;
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.8);
@@ -1002,54 +1002,45 @@ html, body { overflow-x: hidden; }
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 10000; /* Higher than navbar */
-  display: flex;
+  z-index: 10001; /* Higher than navbar */
+  display: none; /* Hidden by default */
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
-#backToTop.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-#backToTop:hover {
+.mobile-menu-button:hover {
   background: rgba(0, 0, 0, 0.9);
   transform: translateY(-2px);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Mobile adjustments */
+/* Show on mobile only */
 @media (max-width: 768px) {
-  #backToTop {
-    bottom: 80px; /* Above navbar on mobile */
+  .mobile-menu-button {
+    display: flex;
+    bottom: 80px;
     right: 15px;
     width: 45px;
     height: 45px;
-    z-index: 10001 !important; /* Higher than navbar */
   }
 }
 
 @media (max-width: 480px) {
-  #backToTop {
-    bottom: 70px; /* Above navbar on small screens */
+  .mobile-menu-button {
+    bottom: 70px;
     right: 10px;
     width: 40px;
     height: 40px;
-    z-index: 10001 !important; /* Higher than navbar */
   }
 }
 
-/* Ultra small screens */
 @media (max-width: 375px) {
-  #backToTop {
-    bottom: 65px; /* Adjust for very small screens */
+  .mobile-menu-button {
+    bottom: 65px;
     right: 8px;
     width: 38px;
     height: 38px;
