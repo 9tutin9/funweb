@@ -591,5 +591,20 @@ body {
     padding: 0.5rem !important;
     transform: translateY(0) !important;
     transition: none !important;
+    will-change: auto !important;
+  }
+  
+  /* Prevent any movement on mobile */
+  body {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Force navbar to stay at bottom during scroll */
+  .pill-nav-container {
+    position: fixed !important;
+    bottom: 0 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
   }
 }

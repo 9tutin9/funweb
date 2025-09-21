@@ -45,14 +45,28 @@ class PillNav {
       const currentHeight = window.innerHeight;
       const heightDifference = lastViewportHeight - currentHeight;
       
-      // Always keep navbar at bottom, regardless of viewport changes
-      this.container.style.bottom = '0px';
-      this.container.style.position = 'fixed';
+      // Force navbar to stay at bottom on mobile
+      if (window.innerWidth <= 768) {
+        this.container.style.bottom = '0px';
+        this.container.style.position = 'fixed';
+        this.container.style.transform = 'translateY(0)';
+        this.container.style.transition = 'none';
+        
+        // Force immediate positioning
+        requestAnimationFrame(() => {
+          this.container.style.bottom = '0px';
+          this.container.style.transform = 'translateY(0)';
+        });
+      } else {
+        // Desktop behavior - keep at bottom
+        this.container.style.bottom = '0px';
+        this.container.style.position = 'fixed';
+      }
       
       // If viewport height changed significantly, log it
       if (Math.abs(heightDifference) > 50) {
         console.log('Viewport height changed:', heightDifference, 'px');
-        console.log('Navbar position reset to bottom: 0px');
+        console.log('Navbar position forced to bottom: 0px');
       }
       
       lastViewportHeight = currentHeight;
@@ -63,6 +77,13 @@ class PillNav {
     this.handleScroll = () => {
       isScrolling = true;
       clearTimeout(scrollTimeout);
+      
+      // On mobile, force navbar position immediately
+      if (window.innerWidth <= 768) {
+        this.container.style.bottom = '0px';
+        this.container.style.transform = 'translateY(0)';
+        this.container.style.transition = 'none';
+      }
       
       scrollTimeout = setTimeout(() => {
         isScrolling = false;
