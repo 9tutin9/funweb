@@ -1,0 +1,64 @@
+/* responsive-portfolio.css
+Stack portfolio grid to single column under 1000px and add safe paddings */
+:root { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+.section-portfolio,
+#portfolio,
+.portfolio,
+.portfolio-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+/* Default grid */
+.portfolio-grid,
+#portfolio .grid,
+.portfolio .grid,
+.portfolio-section .grid {
+  min-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.portfolio-card,
+.project-card,
+.card { width: 100%; min-width: 300px; margin: 0; display: block; }
+
+/* Breakpoint - stack under 1000px */
+@media (max-width: 1000px) {
+  .section-portfolio,
+  #portfolio,
+  .portfolio,
+  .portfolio-section { padding: 36px 16px; }
+
+  .portfolio-grid,
+  #portfolio .grid,
+  .portfolio .grid,
+  .portfolio-section .grid { display: block !important; }
+
+  .portfolio-card,
+  .project-card,
+  .card {
+    display: block;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto 20px;
+  }
+
+  #portfolio h2, #portfolio h3, .portfolio h2, .portfolio p {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    word-break: break-word;
+  }
+  html, body { overflow-x: hidden; }
+}
+
+/* safety overrides */
+@media (max-width: 1000px) {
+  [style*="width:"] { width: 100% !important; max-width: 100% !important; }
+}
