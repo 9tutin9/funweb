@@ -1,11 +1,25 @@
 /* PillNav CSS */
+/* Ensure navbar is always visible at bottom */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Force navbar to be visible */
+body {
+  position: relative;
+  padding-bottom: 80px; /* Space for navbar */
+}
+
+/* Ensure navbar is always at bottom */
 .pill-nav-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  display: flex;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  display: flex !important;
   justify-content: center;
   padding: 1rem;
   pointer-events: none;
@@ -13,6 +27,8 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: bottom 0.3s ease;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 @media (max-width: 768px) {
@@ -339,24 +355,33 @@
   bottom: 3em; /* Changed from top to bottom for navbar at bottom */
   left: 1rem;
   right: 1rem;
-  background: var(--base, #f0f0f0);
+  background: rgba(0, 0, 0, 0.9);
   border-radius: 27px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  z-index: 998;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
   opacity: 0;
   transform: translateY(10px) scale(0.95); /* Changed direction for bottom navbar */
   visibility: hidden;
   transition: all 0.3s ease;
   display: none; /* Hide by default */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
   .mobile-menu-popover {
-    display: block; /* Show on mobile */
+    display: block !important; /* Show on mobile */
     left: 0.5rem;
     right: 0.5rem;
     bottom: 2.5em;
     border-radius: 20px;
+  }
+  
+  .mobile-menu-popover.show {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 
@@ -388,9 +413,10 @@
 }
 
 .mobile-menu-popover.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  visibility: visible;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
 .mobile-menu-list {
@@ -405,25 +431,28 @@
 .mobile-menu-popover .mobile-menu-link {
   display: block;
   padding: 12px 16px;
-  color: var(--pill-text, #fff);
-  background-color: var(--pill-bg, #fff);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
   border-radius: 50px;
   transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
-  background-color: var(--base);
-  color: var(--hover-text, #fff);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   transform: translateX(4px);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .mobile-menu-popover .mobile-menu-link.is-active {
-  background-color: var(--base);
-  color: var(--hover-text, #fff);
+  background-color: rgba(34, 211, 238, 0.3);
+  color: #ffffff;
+  border-color: rgba(34, 211, 238, 0.5);
 }
 
 /* Animation keyframes */
@@ -457,5 +486,17 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Ultra small screens - ensure navbar is always visible */
+@media (max-width: 240px) {
+  .pill-nav-container {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    padding: 0.125rem;
   }
 }
