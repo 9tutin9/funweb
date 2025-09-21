@@ -993,7 +993,7 @@ html, body { overflow-x: hidden; }
 /* Back to Top Button */
 #backToTop {
   position: fixed;
-  bottom: 100px; /* Higher position above navbar */
+  bottom: 120px; /* Higher position above navbar with margin */
   right: 20px;
   width: 50px;
   height: 50px;
@@ -1005,7 +1005,7 @@ html, body { overflow-x: hidden; }
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  z-index: 9998;
+  z-index: 10000; /* Higher than navbar */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1028,7 +1028,7 @@ html, body { overflow-x: hidden; }
 /* Mobile adjustments */
 @media (max-width: 768px) {
   #backToTop {
-    bottom: 120px; /* Even higher on mobile */
+    bottom: 140px; /* Even higher on mobile with more margin */
     right: 15px;
     width: 45px;
     height: 45px;
@@ -1037,7 +1037,7 @@ html, body { overflow-x: hidden; }
 
 @media (max-width: 480px) {
   #backToTop {
-    bottom: 110px; /* Adjust for smaller screens */
+    bottom: 130px; /* Higher on small screens with margin */
     right: 10px;
     width: 40px;
     height: 40px;
