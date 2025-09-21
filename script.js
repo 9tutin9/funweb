@@ -4,9 +4,20 @@ let lastY = 0;
 function onScroll() {
   const y = window.scrollY || document.documentElement.scrollTop;
   header?.classList.toggle('scrolled', y > 6);
+  
+  // Ensure header stays at bottom on mobile
+  if (window.innerWidth <= 768 && header) {
+    header.style.position = 'fixed';
+    header.style.bottom = '0';
+    header.style.top = 'auto';
+    header.style.left = '0';
+    header.style.right = '0';
+  }
+  
   lastY = y;
 }
 window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll, { passive: true });
 onScroll();
 
 // Mobile menu toggle
@@ -32,6 +43,15 @@ navLinks.forEach(link => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Ensure header stays at bottom after scroll
+      setTimeout(() => {
+        const header = document.querySelector('header');
+        if (header) {
+          header.style.position = 'fixed';
+          header.style.bottom = '0';
+          header.style.top = 'auto';
+        }
+      }, 100);
       if (mobileNav.classList.contains('open')) {
         mobileNav.classList.remove('open');
         menuBtn.setAttribute('aria-expanded', 'false');
