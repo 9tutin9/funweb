@@ -998,10 +998,7 @@ html, body { overflow-x: hidden; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 10000;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: transparent;
   padding: 15px 20px;
   display: flex !important;
   gap: 10px;
@@ -1009,7 +1006,6 @@ html, body { overflow-x: hidden; }
   justify-content: center;
   max-width: calc(100vw - 40px);
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
   visibility: visible !important;
   opacity: 1 !important;
@@ -1072,11 +1068,7 @@ html, body { overflow-x: hidden; }
     opacity: 1 !important;
     z-index: 10001 !important;
     position: fixed !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-radius: 20px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: transparent !important;
     box-sizing: border-box !important;
   }
   
@@ -2496,6 +2488,17 @@ h2 {
 .final-cta-container {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.final-cta-text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.final-cta-text .lead {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .final-cta-card {
