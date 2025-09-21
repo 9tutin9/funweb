@@ -990,55 +990,80 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 /* remove giant horizontal scroll risk */
 html, body { overflow-x: hidden; }
 
-/* ========== RESPONSIVE: STACK under 1000px ========== */
-@media (max-width: 1000px) {
+/* ========== RESPONSIVE: MOBILE LAYOUT from 1024px down ========== */
+@media (max-width: 1024px) {
   .portfolio-animated {
-    grid-template-columns: 1fr;    /* everything stacked vertically */
-    gap: 18px;
-    padding: 18px;
+    display: block !important;    /* single column layout like mobile */
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 18px !important;
   }
 
   /* make list, preview and info visually separated and full width */
   .portfolio-animated > .portfolio-list,
   .portfolio-animated > .portfolio-preview,
   .portfolio-animated > .portfolio-info {
-    width: 100%;
-    margin: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 20px 0 !important;
+    display: block !important;
   }
 
   /* remove scroll constraint: show full list (or smaller max-height) */
   .scroll-list-container {
-    max-height: none;
-    overflow: visible;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  /* center preview card and limit width for readability */
+  /* preview card full width */
   .portfolio-preview-card {
-    max-width: 820px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
   }
 
   /* ensure preview video stays responsive */
   .portfolio-preview-card video,
   .portfolio-preview video {
-    max-height: 420px;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 400px !important;
   }
 
-  /* adjust info card spacing */
+  /* info card full width */
   .portfolio-info-card {
-    padding: 16px;
-    text-align: left;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    text-align: left !important;
+    margin: 0 !important;
   }
 
   /* each web-item becomes full width and spaced */
   .web-item {
-    margin-bottom: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 8px !important;
+    display: block !important;
   }
 
   /* avoid inline widths causing overflow */
   [style*="width:"] {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Force override any conflicting grid/flex rules */
+  .portfolio-animated * {
+    min-width: 0 !important;
     max-width: 100% !important;
   }
 }
@@ -1085,8 +1110,8 @@ html, body { overflow-x: hidden; }
   color: white;
 }
 
-/* RESPONSIVE GRID - stack cards under 1000px */
-@media (max-width: 1000px) {
+/* RESPONSIVE GRID - stack cards under 1024px */
+@media (max-width: 1024px) {
   .cards {
     display: grid;
     grid-template-columns: 1fr; /* pouze jeden sloupec */
@@ -1144,6 +1169,58 @@ html, body { overflow-x: hidden; }
   }
   .cards .card h3 {
     font-size: 0.6rem;
+  }
+}
+
+/* ========== ULTRA STRONG OVERRIDES FOR PORTFOLIO ========== */
+/* These rules have maximum specificity and !important to override everything */
+/* Mobile layout from 1024px down to 1px */
+
+@media (max-width: 1024px) {
+  /* Force portfolio layout - highest specificity */
+  body .portfolio-animated {
+    display: block !important;    /* mobile layout - single column */
+    padding: 18px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Force all direct children */
+  body .portfolio-animated > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 20px 0 !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Force scroll containers */
+  body .scroll-list-container {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Force all elements inside portfolio */
+  body .portfolio-animated * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Override any inline styles */
+  body .portfolio-animated [style] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 
