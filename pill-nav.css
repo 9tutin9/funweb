@@ -367,6 +367,7 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: auto !important;
 }
 
 @media (max-width: 768px) {
@@ -417,6 +418,7 @@ body {
   transform: translateY(0) scale(1) !important;
   visibility: visible !important;
   display: block !important;
+  pointer-events: auto !important;
 }
 
 .mobile-menu-list {
@@ -466,10 +468,18 @@ body {
 
 /* Ensure links are clickable on mobile */
 @media (max-width: 768px) {
+  .mobile-menu-popover {
+    pointer-events: auto !important;
+  }
+  
   .mobile-menu-popover .mobile-menu-link {
-    pointer-events: auto;
+    pointer-events: auto !important;
     touch-action: manipulation;
     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
 

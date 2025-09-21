@@ -305,7 +305,37 @@ class PillNav {
             // Small delay to ensure menu is closed
             setTimeout(() => {
               target.scrollIntoView({ behavior: 'smooth' });
+              console.log('Scrolled to target:', item.href);
             }, 150);
+          } else {
+            console.error('Target not found:', item.href);
+          }
+        } else {
+          window.location.href = item.href;
+        }
+      });
+      
+      // Add touch event for mobile
+      link.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile menu link touched:', item.href);
+        
+        // Close menu immediately
+        this.isMobileMenuOpen = false;
+        this.updateMobileMenu();
+        
+        // Handle navigation immediately
+        if (item.href.startsWith('#')) {
+          const target = document.querySelector(item.href);
+          console.log('Target found (touch):', !!target, item.href);
+          if (target) {
+            setTimeout(() => {
+              target.scrollIntoView({ behavior: 'smooth' });
+              console.log('Scrolled to target (touch):', item.href);
+            }, 150);
+          } else {
+            console.error('Target not found (touch):', item.href);
           }
         } else {
           window.location.href = item.href;
