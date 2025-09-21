@@ -1052,7 +1052,7 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* Mobile - 2 řádky */
+/* Mobile - 2 řádky - jen 3 styly */
 @media (max-width: 768px) {
   .style-pills {
     top: 10px;
@@ -1069,6 +1069,11 @@ html, body { overflow-x: hidden; }
     font-size: 12px;
     padding: 8px 12px;
     border-radius: 15px;
+  }
+  
+  /* Skrýt všechny styly kromě důvěryhodný, moderní, minimalistický */
+  .style-pills .pill:not([data-theme="duveryhodny"]):not([data-theme="moderni"]):not([data-theme="minimalisticky"]) {
+    display: none !important;
   }
 }
 
