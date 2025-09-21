@@ -909,6 +909,149 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 
 /* Portfolio section now uses .cards class like other sections */
 
+/* ---------- Responsive fix for portfolio-animated layout ---------- */
+/* Add near the end of your main CSS (or in a new file linked after main CSS) */
+
+/* safe box-sizing */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Root grid: list | preview | info (desktop) */
+.portfolio-animated {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px; /* left list / middle preview / right info */
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ensure children fill columns and have sensible defaults */
+.portfolio-animated > .portfolio-list,
+.portfolio-animated > .portfolio-preview,
+.portfolio-animated > .portfolio-info {
+  width: 100%;
+}
+
+/* scroll list container base */
+.scroll-list-container {
+  max-height: 640px;           /* desktop: scrollable list */
+  overflow: auto;
+  position: relative;
+}
+
+/* preview card */
+.portfolio-preview-card {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+
+/* responsive video inside preview */
+.portfolio-preview-card video,
+.portfolio-preview video {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+/* info card padding so text isn't glued to the edge */
+.portfolio-info-card {
+  padding: 18px;
+  background: transparent;
+  text-align: left;
+}
+
+/* web items and sub-pages sizing */
+.web-item {
+  width: 100%;
+  display: block;
+}
+
+.web-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px 8px;
+}
+
+.sub-pages {
+  padding-left: 12px;
+  padding-right: 4px;
+  margin-bottom: 10px;
+}
+
+/* remove giant horizontal scroll risk */
+html, body { overflow-x: hidden; }
+
+/* ========== RESPONSIVE: STACK under 1000px ========== */
+@media (max-width: 1000px) {
+  .portfolio-animated {
+    grid-template-columns: 1fr;    /* everything stacked vertically */
+    gap: 18px;
+    padding: 18px;
+  }
+
+  /* make list, preview and info visually separated and full width */
+  .portfolio-animated > .portfolio-list,
+  .portfolio-animated > .portfolio-preview,
+  .portfolio-animated > .portfolio-info {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* remove scroll constraint: show full list (or smaller max-height) */
+  .scroll-list-container {
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* center preview card and limit width for readability */
+  .portfolio-preview-card {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ensure preview video stays responsive */
+  .portfolio-preview-card video,
+  .portfolio-preview video {
+    max-height: 420px;
+  }
+
+  /* adjust info card spacing */
+  .portfolio-info-card {
+    padding: 16px;
+    text-align: left;
+  }
+
+  /* each web-item becomes full width and spaced */
+  .web-item {
+    margin-bottom: 8px;
+  }
+
+  /* avoid inline widths causing overflow */
+  [style*="width:"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ========== FURTHER SMALLER SCREEN ADJUSTS ========== */
+@media (max-width: 480px) {
+  .portfolio-animated { padding: 12px; gap: 12px; }
+  .portfolio-preview-card video { max-height: 320px; }
+  .web-header { padding: 8px 6px; }
+  .sub-pages { padding-left: 8px; padding-right: 8px; }
+  .portfolio-info-card { padding: 12px; }
+}
+
 /* General service cards - exclude portfolio cards */
 /* Card styling */
 .cards .card {

@@ -624,6 +624,44 @@
   <script src="animated-list.js"></script>
   <script src="stepper.js"></script>
   <script src="light-rays.js"></script>
+  
+  <!-- Portfolio responsive fallback script -->
+  <script>
+  (function(){
+    const root = document.querySelector('.portfolio-animated');
+    const scrollContainers = document.querySelectorAll('.scroll-list-container');
+
+    function adjustForMobile(){
+      if (!root) return;
+      if (window.innerWidth <= 1000){
+        scrollContainers.forEach(c => {
+          c.style.maxHeight = null;
+          c.style.height = null;
+          c.style.overflow = 'visible';
+        });
+        document.documentElement.classList.add('portfolio-stacked');
+      } else {
+        // restore to default behaviour (you can set a desktop maxHeight here if desired)
+        scrollContainers.forEach(c => {
+          // remove only if we added it before
+          if(c.dataset._wasFixed !== 'true') return;
+          c.style.maxHeight = c.dataset._desktopMax ?? '';
+          c.style.overflow = 'auto';
+        });
+        document.documentElement.classList.remove('portfolio-stacked');
+      }
+    }
+
+    // remember original desktop max-height (optional)
+    scrollContainers.forEach(c => {
+      c.dataset._desktopMax = c.style.maxHeight || '';
+    });
+
+    window.addEventListener('resize', adjustForMobile);
+    window.addEventListener('load', adjustForMobile);
+    adjustForMobile();
+  })();
+  </script>
 </body>
   </html>
 
