@@ -1024,6 +1024,8 @@ html, body { overflow-x: hidden; }
   white-space: nowrap;
   min-width: fit-content;
   flex: 0 0 auto;
+  outline: none;
+  box-shadow: none;
 }
 
 .style-pills .pill:hover {
@@ -1077,6 +1079,9 @@ html, body { overflow-x: hidden; }
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
   
   /* Skrýt všechny styly kromě důvěryhodný, moderní, minimalistický */
