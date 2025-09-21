@@ -580,65 +580,80 @@
     <script>
       // Mobile hamburger menu functionality
       (function(){
-        const mobileButton = document.querySelector('.mobile-menu-button');
-        if(!mobileButton) return;
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+          initMobileMenu();
+        }
         
-        // Create mobile menu popover
-        const mobileMenu = document.createElement('div');
-        mobileMenu.className = 'mobile-menu-popover mobile-only';
-        mobileMenu.innerHTML = `
-          <ul class="mobile-menu-list">
-            <li><a href="#uvod" class="mobile-menu-link">Úvod</a></li>
-            <li><a href="#o-mne" class="mobile-menu-link">O mně</a></li>
-            <li><a href="#sluzby" class="mobile-menu-link">Služby</a></li>
-            <li><a href="#portfolio" class="mobile-menu-link">Portfolio</a></li>
-            <li><a href="#jak-spolupracujeme" class="mobile-menu-link">Proces</a></li>
-            <li><a href="#reference" class="mobile-menu-link">Reference</a></li>
-            <li><a href="#kontakt" class="mobile-menu-link">Kontakt</a></li>
-          </ul>
-        `;
-        
-        // Add to body
-        document.body.appendChild(mobileMenu);
-        
-        let isMenuOpen = false;
-        
-        // Toggle menu
-        mobileButton.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          isMenuOpen = !isMenuOpen;
-          
-          mobileButton.classList.toggle('active', isMenuOpen);
-          mobileMenu.classList.toggle('show', isMenuOpen);
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-          if (isMenuOpen && !mobileButton.contains(e.target) && !mobileMenu.contains(e.target)) {
-            isMenuOpen = false;
-            mobileButton.classList.remove('active');
-            mobileMenu.classList.remove('show');
+        function initMobileMenu() {
+          const mobileButton = document.querySelector('.mobile-menu-button');
+          if(!mobileButton) {
+            console.log('Mobile button not found');
+            return;
           }
-        });
+          
+          console.log('Mobile button found:', mobileButton);
         
-        // Handle menu links
-        mobileMenu.addEventListener('click', (e) => {
-          if (e.target.classList.contains('mobile-menu-link')) {
+          // Create mobile menu popover
+          const mobileMenu = document.createElement('div');
+          mobileMenu.className = 'mobile-menu-popover mobile-only';
+          mobileMenu.innerHTML = `
+            <ul class="mobile-menu-list">
+              <li><a href="#uvod" class="mobile-menu-link">Úvod</a></li>
+              <li><a href="#o-mne" class="mobile-menu-link">O mně</a></li>
+              <li><a href="#sluzby" class="mobile-menu-link">Služby</a></li>
+              <li><a href="#portfolio" class="mobile-menu-link">Portfolio</a></li>
+              <li><a href="#jak-spolupracujeme" class="mobile-menu-link">Proces</a></li>
+              <li><a href="#reference" class="mobile-menu-link">Reference</a></li>
+              <li><a href="#kontakt" class="mobile-menu-link">Kontakt</a></li>
+            </ul>
+          `;
+          
+          // Add to body
+          document.body.appendChild(mobileMenu);
+          
+          let isMenuOpen = false;
+          
+          // Toggle menu
+          mobileButton.addEventListener('click', (e) => {
             e.preventDefault();
-            isMenuOpen = false;
-            mobileButton.classList.remove('active');
-            mobileMenu.classList.remove('show');
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
             
-            const href = e.target.getAttribute('href');
-            if (href.startsWith('#')) {
-              const target = document.querySelector(href);
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+            mobileButton.classList.toggle('active', isMenuOpen);
+            mobileMenu.classList.toggle('show', isMenuOpen);
+            console.log('Menu toggled:', isMenuOpen);
+          });
+          
+          // Close menu when clicking outside
+          document.addEventListener('click', (e) => {
+            if (isMenuOpen && !mobileButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+              isMenuOpen = false;
+              mobileButton.classList.remove('active');
+              mobileMenu.classList.remove('show');
+            }
+          });
+          
+          // Handle menu links
+          mobileMenu.addEventListener('click', (e) => {
+            if (e.target.classList.contains('mobile-menu-link')) {
+              e.preventDefault();
+              isMenuOpen = false;
+              mobileButton.classList.remove('active');
+              mobileMenu.classList.remove('show');
+              
+              const href = e.target.getAttribute('href');
+              if (href.startsWith('#')) {
+                const target = document.querySelector(href);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
               }
             }
-          }
-        });
+          });
+        }
       })();
     </script>
 

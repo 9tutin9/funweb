@@ -1065,10 +1065,22 @@ html, body { overflow-x: hidden; }
 @media (max-width: 768px) {
   .mobile-menu-button {
     display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     bottom: 80px;
     right: 15px;
     width: 45px;
     height: 45px;
+    z-index: 10001 !important;
+  }
+}
+
+/* Force visibility on all mobile sizes */
+@media (max-width: 1024px) {
+  .mobile-menu-button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
