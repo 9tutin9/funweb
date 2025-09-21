@@ -1028,19 +1028,31 @@ html, body { overflow-x: hidden; }
 /* Mobile adjustments */
 @media (max-width: 768px) {
   #backToTop {
-    bottom: 140px; /* Even higher on mobile with more margin */
+    bottom: 80px; /* Above navbar on mobile */
     right: 15px;
     width: 45px;
     height: 45px;
+    z-index: 10001 !important; /* Higher than navbar */
   }
 }
 
 @media (max-width: 480px) {
   #backToTop {
-    bottom: 130px; /* Higher on small screens with margin */
+    bottom: 70px; /* Above navbar on small screens */
     right: 10px;
     width: 40px;
     height: 40px;
+    z-index: 10001 !important; /* Higher than navbar */
+  }
+}
+
+/* Ultra small screens */
+@media (max-width: 375px) {
+  #backToTop {
+    bottom: 65px; /* Adjust for very small screens */
+    right: 8px;
+    width: 38px;
+    height: 38px;
   }
 }
 
