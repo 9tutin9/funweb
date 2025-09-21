@@ -990,6 +990,55 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 /* remove giant horizontal scroll risk */
 html, body { overflow-x: hidden; }
 
+/* Style Picker */
+.style-pills {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 300px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.style-pills .pill {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.style-pills .pill:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.style-pills .pill[aria-pressed="true"] {
+  background: var(--accent, #22d3ee);
+  color: var(--accent-contrast, #000);
+  border-color: transparent;
+}
+
+/* Hide style picker on mobile */
+@media (max-width: 768px) {
+  .style-pills {
+    display: none;
+  }
+}
+
 /* Mobile Hamburger Menu Button - positioned like back-to-top */
 .mobile-menu-button {
   position: fixed;
