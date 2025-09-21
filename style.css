@@ -51,7 +51,8 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 20px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 /* Header */
@@ -165,6 +166,7 @@ header.scrolled {
   grid-template-columns: 1.2fr 0.8fr; 
   gap: 32px; 
   align-items: center;
+  justify-items: stretch;
 }
 
 /* Hero responsive breakpoints */
@@ -357,20 +359,7 @@ header.scrolled {
 .hero-list { margin: 0; padding-left: 18px; color: var(--muted); }
 
 /* Sections */
-.container { 
-  padding-left: 24px; 
-  padding-right: 24px; 
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-@media (min-width: 1200px) { 
-  .container { 
-    padding-left: 24px; 
-    padding-right: 24px; 
-  } 
-}
-
+/* Responsive container padding */
 @media (max-width: 768px) {
   .container {
     padding-left: 20px;
@@ -392,10 +381,17 @@ header.scrolled {
   }
 }
 
+@media (max-width: 390px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 @media (max-width: 375px) {
   .container {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
@@ -403,6 +399,33 @@ header.scrolled {
   .container {
     padding-left: 8px;
     padding-right: 8px;
+  }
+}
+
+/* iPhone 13 specific fixes */
+@media (max-width: 390px) and (min-width: 375px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+  }
+  
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
   }
 }
 
@@ -550,6 +573,7 @@ p.lead {
   margin-left: 0;
   padding-left: 0;
   width: 100%;
+  justify-items: stretch;
 }
 
 @media (max-width: 1200px) { 
@@ -609,6 +633,7 @@ p.lead {
   margin-left: 0;
   padding-left: 0;
   width: 100%;
+  justify-items: stretch;
 }
 
 @media (max-width: 1000px) { 
@@ -987,6 +1012,7 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  justify-items: stretch;
 }
 
 .card {
