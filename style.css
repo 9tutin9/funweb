@@ -558,55 +558,14 @@ p.lead {
 }
 
 /* Services */
+/* Default grid (3 karty vedle sebe) */
 .cards { 
   display: grid; 
   grid-template-columns: repeat(3, 1fr); 
   gap: 18px; 
   padding: 0; 
-  /* Ensure consistent alignment */
-  margin-left: 0;
-  padding-left: 0;
-  width: 100%;
+  margin: 0 auto;
   justify-items: stretch;
-}
-
-@media (max-width: 1200px) { 
-  .cards { 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 16px;
-  } 
-}
-
-@media (max-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-}
-
-@media (max-width: 640px) { 
-  .cards { 
-    grid-template-columns: 1fr; 
-    gap: 12px;
-  } 
-}
-
-@media (max-width: 480px) {
-  .cards {
-    gap: 10px;
-  }
-}
-
-@media (max-width: 375px) {
-  .cards {
-    gap: 8px;
-  }
-}
-
-@media (max-width: 320px) {
-  .cards {
-    gap: 6px;
-  }
 }
 
 .bundle {
@@ -951,123 +910,112 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 /* Portfolio section now uses .cards class like other sections */
 
 /* General service cards - exclude portfolio cards */
-.cards .card,
-.work-grid .card,
-.testimonials .card,
-.estimator-preview .card {
-	position: relative;
-	padding: 18px;
-	border-radius: var(--radius);
-	background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
-	overflow: hidden;
-	transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s, background 0.35s;
-	backdrop-filter: blur(14px);
-	-webkit-backdrop-filter: blur(14px);
-	text-align: center;
+/* Card styling */
+.cards .card {
+  position: relative;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s, background 0.35s;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: center;
 }
 
-/* Portfolio cards specific styling for videos */
-#portfolio .cards .card {
-	text-align: left;
+/* Video a text */
+.cards .card video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: block;
 }
 
-#portfolio .cards .card video {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-	border-radius: 8px;
-	margin-bottom: 12px;
-	display: block;
+.cards .card h3 {
+  margin: 8px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
 }
 
-#portfolio .cards .card h3 {
-	margin: 8px 0 8px 0;
-	font-size: 1.2rem;
-	font-weight: 600;
-	color: white;
+/* RESPONSIVE GRID - stack cards under 1000px */
+@media (max-width: 1000px) {
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr; /* pouze jeden sloupec */
+    gap: 18px;
+    justify-items: center; /* centrovat karty */
+  }
+
+  .cards .card {
+    width: 90%; /* přizpůsobit šířku mobilní obrazovce */
+    max-width: 500px;
+    text-align: center; /* karty zůstanou centrované */
+  }
 }
 
-/* Responsive properties for portfolio cards */
+/* Další responsivity pro videa a text */
 @media (max-width: 480px) {
-	#portfolio .cards .card video {
-		height: 150px;
-	}
-	
-	#portfolio .cards .card h3 {
-		font-size: 1rem;
-	}
+  .cards .card video {
+    height: 150px;
+  }
+  .cards .card h3 {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 375px) {
-	#portfolio .cards .card video {
-		height: 120px;
-	}
-	
-	#portfolio .cards .card h3 {
-		font-size: 0.9rem;
-	}
+  .cards .card video {
+    height: 120px;
+  }
+  .cards .card h3 {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 320px) {
-	#portfolio .cards .card video {
-		height: 100px;
-	}
-	
-	#portfolio .cards .card h3 {
-		font-size: 0.8rem;
-	}
+  .cards .card video {
+    height: 100px;
+  }
+  .cards .card h3 {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 280px) {
-	#portfolio .cards .card video {
-		height: 80px;
-	}
-	
-	#portfolio .cards .card h3 {
-		font-size: 0.7rem;
-	}
+  .cards .card video {
+    height: 80px;
+  }
+  .cards .card h3 {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 240px) {
-	#portfolio .cards .card video {
-		height: 60px;
-	}
-	
-	#portfolio .cards .card h3 {
-		font-size: 0.6rem;
-	}
+  .cards .card video {
+    height: 60px;
+  }
+  .cards .card h3 {
+    font-size: 0.6rem;
+  }
 }
 
-.cards .card:hover,
-.work-grid .card:hover,
-.testimonials .card:hover,
-.estimator-preview .card:hover {
+.cards .card:hover {
 	transform: translateY(-2px);
 	border-color: rgba(79, 70, 229, 0.5);
 	box-shadow: 0 10px 22px rgba(0,0,0,0.25);
 }
 
-.cards .card h3,
-.work-grid .card h3,
-.testimonials .card h3,
-.estimator-preview .card h3 {
-	margin: 8px 0 8px 0;
-}
-
-.cards .card p,
-.work-grid .card p,
-.testimonials .card p,
-.estimator-preview .card p {
+.cards .card p {
 	color: var(--muted);
 	margin-top: 4px;
 }
 
-.cards .card ul,
-.work-grid .card ul,
-.testimonials .card ul,
-.estimator-preview .card ul {
+.cards .card ul {
 	margin: 10px 0 0;
 	padding-left: 18px;
 	color: var(--muted);
