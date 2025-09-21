@@ -948,229 +948,7 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
   margin-bottom: clamp(1rem, 4vw, 2rem);
 }
 
-/* Portfolio section - use exact same styling as services */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 18px;
-  padding: 0;
-  margin-left: 0;
-  padding-left: 0;
-  width: 100%;
-  justify-items: stretch;
-  /* Responsive properties */
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-@media (max-width: 1200px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    min-width: 0;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 14px;
-    min-width: 0;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 640px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    min-width: 0;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr !important;
-    gap: 10px;
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 375px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr !important;
-    gap: 8px;
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 320px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr !important;
-    gap: 6px;
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 280px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr !important;
-    gap: 4px;
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 240px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2px;
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-}
-
-
-/* Portfolio cards - use same styling as service cards */
-.portfolio-grid .card {
-  position: relative;
-  padding: 18px;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s, background 0.35s;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  /* Responsive properties */
-  min-width: 0;
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.portfolio-grid .card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(79, 70, 229, 0.5);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-}
-
-.portfolio-grid .card video {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  /* Responsive properties */
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.portfolio-grid .card h3 {
-  margin: 8px 0 8px 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
-}
-
-/* Responsive media queries for portfolio cards */
-@media (max-width: 480px) {
-  .portfolio-grid .card {
-    padding: 12px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card video {
-    height: 150px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card h3 {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 375px) {
-  .portfolio-grid .card {
-    padding: 10px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card video {
-    height: 120px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card h3 {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 320px) {
-  .portfolio-grid .card {
-    padding: 8px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card video {
-    height: 100px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card h3 {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 280px) {
-  .portfolio-grid .card {
-    padding: 6px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card video {
-    height: 80px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card h3 {
-    font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 240px) {
-  .portfolio-grid .card {
-    padding: 4px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card video {
-    height: 60px;
-    min-width: 0;
-    max-width: 100%;
-  }
-  
-  .portfolio-grid .card h3 {
-    font-size: 0.6rem;
-  }
-}
+/* Portfolio section now uses .cards class like other sections */
 
 /* General service cards - exclude portfolio cards */
 .cards .card,
@@ -1188,6 +966,78 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
 	text-align: center;
+}
+
+/* Portfolio cards specific styling for videos */
+#portfolio .cards .card {
+	text-align: left;
+}
+
+#portfolio .cards .card video {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 8px;
+	margin-bottom: 12px;
+	display: block;
+}
+
+#portfolio .cards .card h3 {
+	margin: 8px 0 8px 0;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: white;
+}
+
+/* Responsive properties for portfolio cards */
+@media (max-width: 480px) {
+	#portfolio .cards .card video {
+		height: 150px;
+	}
+	
+	#portfolio .cards .card h3 {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 375px) {
+	#portfolio .cards .card video {
+		height: 120px;
+	}
+	
+	#portfolio .cards .card h3 {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 320px) {
+	#portfolio .cards .card video {
+		height: 100px;
+	}
+	
+	#portfolio .cards .card h3 {
+		font-size: 0.8rem;
+	}
+}
+
+@media (max-width: 280px) {
+	#portfolio .cards .card video {
+		height: 80px;
+	}
+	
+	#portfolio .cards .card h3 {
+		font-size: 0.7rem;
+	}
+}
+
+@media (max-width: 240px) {
+	#portfolio .cards .card video {
+		height: 60px;
+	}
+	
+	#portfolio .cards .card h3 {
+		font-size: 0.6rem;
+	}
 }
 
 .cards .card:hover,
