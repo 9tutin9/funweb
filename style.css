@@ -1012,22 +1012,47 @@ html, body { overflow-x: hidden; }
   transition: all 0.3s ease;
 }
 
-.mobile-menu-button:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Show on mobile only */
+/* Always show on mobile */
 @media (max-width: 768px) {
   .mobile-menu-button {
-    display: flex;
+    display: flex !important;
     bottom: 80px;
     right: 15px;
     width: 45px;
     height: 45px;
   }
 }
+
+.mobile-menu-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Hamburger lines */
+.mobile-menu-button .hamburger-line {
+  width: 16px;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  display: block;
+}
+
+.mobile-menu-button .hamburger-line:first-child {
+  margin-bottom: 4px;
+}
+
+/* Hamburger animation */
+.mobile-menu-button.active .hamburger-line:first-child {
+  transform: rotate(45deg) translate(3px, 3px);
+}
+
+.mobile-menu-button.active .hamburger-line:last-child {
+  transform: rotate(-45deg) translate(3px, -3px);
+}
+
 
 @media (max-width: 480px) {
   .mobile-menu-button {
