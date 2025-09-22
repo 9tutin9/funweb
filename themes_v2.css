@@ -199,7 +199,7 @@ body[data-theme="dynamicky"] {
 .style-pills {
   display: flex; gap: .5rem; align-items: center; flex-wrap: wrap;
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-  border: 1px solid var(--line); border-radius: var(--radius); padding: .6rem .7rem;
+  border-radius: var(--radius); padding: .6rem .7rem;
 }
 .style-pills .pill {
   border: 1px solid var(--line);

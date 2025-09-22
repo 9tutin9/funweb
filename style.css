@@ -1009,6 +1009,15 @@ html, body { overflow-x: hidden; }
   box-sizing: border-box;
   visibility: visible !important;
   opacity: 1 !important;
+  transition: transform .28s ease, opacity .28s ease, visibility .28s ease;
+}
+
+/* Hide pills when scrolling down */
+.style-pills.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate(-50%, -120%);
+  pointer-events: none;
 }
 
 .style-pills .pill {
@@ -1165,16 +1174,16 @@ html, body { overflow-x: hidden; }
 }
 
 .item {
-  margin: 1rem;
-  font-size: 36px;
+  margin: 0.5rem;
+  font-size: 18px;
 }
 
 .link:link,
 .link:visited {
   display: inline-block;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   color: white;
   text-decoration: none;
   text-transform: uppercase;

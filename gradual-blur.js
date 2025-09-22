@@ -254,6 +254,29 @@ document.addEventListener('DOMContentLoaded', function() {
     target: 'page'
   });
   
+  // Mobile-specific behavior: adjust position based on scroll
+  function adjustMobilePosition() {
+    if (window.innerWidth <= 768) {
+      const isScrolled = window.scrollY > 100;
+      const container = navbarGlassEffect.container;
+      
+      if (isScrolled) {
+        // When scrolled, move to actual bottom
+        container.style.bottom = '0px';
+      } else {
+        // When at top, move up to avoid browser UI
+        container.style.bottom = 'max(env(safe-area-inset-bottom, 0px), 60px)';
+      }
+    }
+  }
+  
+  // Listen for scroll events
+  window.addEventListener('scroll', adjustMobilePosition, { passive: true });
+  window.addEventListener('resize', adjustMobilePosition, { passive: true });
+  
+  // Initial adjustment
+  adjustMobilePosition();
+  
   console.log('Navbar glass effect initialized!');
   
   // Expose to global scope

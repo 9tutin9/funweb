@@ -81,11 +81,32 @@
 @media (max-width: 768px) {
   .glass-effect-bottom {
     height: 4rem;
+    bottom: env(safe-area-inset-bottom, 0px);
+    /* Add padding to avoid browser UI */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
 @media (max-width: 480px) {
   .glass-effect-bottom {
     height: 3rem;
+    bottom: env(safe-area-inset-bottom, 0px);
+    /* Add padding to avoid browser UI */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* Mobile-specific adjustments for browser UI */
+@media (max-width: 768px) {
+  .glass-effect-bottom {
+    /* Move up to avoid browser search bar */
+    bottom: max(env(safe-area-inset-bottom, 0px), 60px);
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-effect-bottom {
+    /* Move up more on smaller screens */
+    bottom: max(env(safe-area-inset-bottom, 0px), 80px);
   }
 }
