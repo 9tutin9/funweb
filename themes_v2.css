@@ -198,13 +198,22 @@ body[data-theme="dynamicky"] {
 /* Pill UI */
 .style-pills {
   display: flex; gap: .5rem; align-items: center; flex-wrap: wrap;
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  background: transparent;
   border-radius: var(--radius); padding: .6rem .7rem;
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  z-index: 10;
+  max-width: 100%;
+  width: auto;
+  box-sizing: border-box;
+  justify-content: center;
 }
 .style-pills .pill {
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.02);
-  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: white;
   border-radius: 999px;
   padding: .45rem .75rem;
   font-size: .95rem;
@@ -223,4 +232,69 @@ body[data-theme="dynamicky"] {
   border-color: transparent;
   font-weight: 800;
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+/* Mobile styles for pills */
+@media (max-width: 768px) {
+  .style-pills {
+    padding: 6px 0 10px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: visible;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+  }
+  
+  .style-pills .pill {
+    font-size: 11px !important;
+    padding: 5px 8px !important;
+    border-radius: 12px !important;
+    display: inline-block !important;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  
+  /* Skrýt všechny styly kromě důvěryhodný, moderní, minimalistický */
+  .style-pills .pill:not([data-theme="duveryhodny"]):not([data-theme="moderni"]):not([data-theme="minimalisticky"]) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .style-pills {
+    padding: 4px 0 6px;
+    gap: 3px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: visible;
+  }
+  
+  .style-pills .pill {
+    font-size: 10px;
+    padding: 4px 6px;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 350px) {
+  .style-pills {
+    padding: 3px 0 5px;
+    gap: 2px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  
+  .style-pills .pill {
+    font-size: 9px;
+    padding: 3px 5px;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
 }

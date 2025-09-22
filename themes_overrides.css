@@ -160,11 +160,38 @@ body[data-theme="tradicni"] {
   overflow:auto; 
   -webkit-overflow-scrolling: touch; 
   padding-bottom: 6px; 
-  scroll-snap-type: x proximity;
   justify-content: center;
   align-items: center;
 }
-.style-pills .pill{ flex:0 0 auto; scroll-snap-align: start; }
+.style-pills .pill{ flex:0 0 auto; }
+
+/* Ensure pills are visible on mobile */
+@media (max-width: 768px){
+  .style-pills{
+    display:flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-radius: 14px !important;
+    padding: 8px 12px !important;
+    margin: 10px auto !important;
+    width: fit-content !important;
+    max-width: calc(100vw - 20px) !important;
+    justify-content: center !important;
+  }
+  .style-pills .pill{
+    color:#fff !important;
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    box-shadow: none !important;
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+  }
+}
 
 /* XS ≥360px */
 @media (min-width: 360px){

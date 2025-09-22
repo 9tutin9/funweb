@@ -1009,16 +1009,10 @@ html, body { overflow-x: hidden; }
   box-sizing: border-box;
   visibility: visible !important;
   opacity: 1 !important;
-  transition: transform .28s ease, opacity .28s ease, visibility .28s ease;
 }
 
-/* Hide pills when scrolling down */
-.style-pills.is-hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translate(-50%, -120%);
-  pointer-events: none;
-}
+/* No hide-on-scroll when inside hero */
+.style-pills.is-hidden { transform: none; opacity: 1; visibility: visible; }
 
 .style-pills .pill {
   background: rgba(255, 255, 255, 0.2);
@@ -1044,7 +1038,7 @@ html, body { overflow-x: hidden; }
 
 .style-pills .pill[aria-pressed="true"] {
   background: var(--accent, #22d3ee);
-  color: white;
+  color: var(--accent-contrast, #03151a);
   box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
 }
 
@@ -1052,7 +1046,8 @@ html, body { overflow-x: hidden; }
 @media (min-width: 769px) {
   .style-pills {
     max-width: 1200px;
-    padding: 12px 20px;
+    padding: 8px 0 16px;
+    justify-content: center;
   }
   
   .style-pills .pill {
@@ -1061,7 +1056,7 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* Mobile - 2 řádky - jen 3 styly */
+/* Mobile - jen 3 styly, vždy v jednom řádku */
 @media (max-width: 768px) {
   .style-pills {
     top: 10px !important;
@@ -1099,16 +1094,40 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* Very small mobile */
+/* Very small mobile - stále jen 3 styly v jednom řádku */
 @media (max-width: 480px) {
   .style-pills {
-    padding: 10px 12px;
-    gap: 6px;
+    padding: 4px 0 6px;
+    gap: 3px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: visible;
   }
   
   .style-pills .pill {
-    font-size: 11px;
-    padding: 6px 10px;
+    font-size: 10px;
+    padding: 4px 6px;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+}
+
+/* Extra small screens - stále 3 styly v jednom řádku */
+@media (max-width: 350px) {
+  .style-pills {
+    padding: 3px 0 5px;
+    gap: 2px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  
+  .style-pills .pill {
+    font-size: 9px;
+    padding: 3px 5px;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-width: 0;
   }
 }
 
@@ -1207,8 +1226,7 @@ html, body { overflow-x: hidden; }
 /* Show on mobile only */
 @media (max-width: 768px) {
   .button,
-  .background,
-  .nav {
+  .background {
     display: block;
   }
 }
@@ -1221,6 +1239,7 @@ html, body { overflow-x: hidden; }
   opacity: 1;
   width: 100%;
   right: 0;
+  display: block;
 }
 
 /* Hamburger icon styling */

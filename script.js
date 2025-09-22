@@ -99,32 +99,7 @@ form?.addEventListener('submit', e => {
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Hide style pills on scroll down, show on scroll up
-(function hidePillsOnScroll(){
-  const pills = document.querySelector('.style-pills');
-  if(!pills) return;
-  let lastY = window.scrollY || 0;
-  let ticking = false;
-  function onScroll(){
-    const y = window.scrollY || document.documentElement.scrollTop || 0;
-    const delta = y - lastY;
-    // Only react after small threshold to avoid jitter
-    if(Math.abs(delta) > 6){
-      if(delta > 0){
-        pills.classList.add('is-hidden');
-      } else {
-        pills.classList.remove('is-hidden');
-      }
-      lastY = y;
-    }
-    ticking = false;
-  }
-  window.addEventListener('scroll', function(){
-    if(!ticking){
-      window.requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
+// Pills are now in hero; do not hide on scroll
 
 // Typewriter loop for hero verb
 (function initHeroTypewriter() {
