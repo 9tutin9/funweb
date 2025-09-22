@@ -259,14 +259,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth <= 768) {
       const isScrolled = window.scrollY > 100;
       const container = navbarGlassEffect.container;
-      
-      if (isScrolled) {
-        // When scrolled, move to actual bottom
-        container.style.bottom = '0px';
-      } else {
-        // When at top, move up to avoid browser UI
-        container.style.bottom = 'max(env(safe-area-inset-bottom, 0px), 60px)';
-      }
+
+      // Always stick to the bottom edge, but respect safe area inset
+      container.style.bottom = 'env(safe-area-inset-bottom, 0px)';
+
+      // Hide when near the physical page bottom to avoid floating over footer
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      const nearBottom = (docHeight - scrollBottom) < 24; // px threshold
+      container.style.opacity = nearBottom ? '0' : '1';
     }
   }
   

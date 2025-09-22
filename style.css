@@ -1004,8 +1004,8 @@ html, body { overflow-x: hidden; }
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: calc(100vw - 40px);
-  width: 100%;
+  max-width: none;
+  width: fit-content;
   box-sizing: border-box;
   visibility: visible !important;
   opacity: 1 !important;
@@ -1060,12 +1060,12 @@ html, body { overflow-x: hidden; }
 @media (max-width: 768px) {
   .style-pills {
     top: 10px !important;
-    left: 10px !important;
-    right: 10px !important;
-    transform: none !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
     max-width: none !important;
-    width: calc(100vw - 20px) !important;
-    padding: 12px 15px !important;
+    width: fit-content !important;
+    padding: 10px 12px !important;
     gap: 8px !important;
     display: flex !important;
     visibility: visible !important;
@@ -1074,6 +1074,7 @@ html, body { overflow-x: hidden; }
     position: fixed !important;
     background: transparent !important;
     box-sizing: border-box !important;
+    justify-content: center !important;
   }
   
   .style-pills .pill {
