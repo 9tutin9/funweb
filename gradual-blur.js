@@ -257,17 +257,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile-specific behavior: adjust position based on scroll
   function adjustMobilePosition() {
     if (window.innerWidth <= 768) {
-      const isScrolled = window.scrollY > 100;
       const container = navbarGlassEffect.container;
-
-      // Always stick to the bottom edge, but respect safe area inset
-      container.style.bottom = 'env(safe-area-inset-bottom, 0px)';
-
-      // Hide when near the physical page bottom to avoid floating over footer
-      const scrollBottom = window.innerHeight + window.scrollY;
-      const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      const nearBottom = (docHeight - scrollBottom) < 24; // px threshold
-      container.style.opacity = nearBottom ? '0' : '1';
+      
+      // Always stick to the bottom edge, no offset
+      container.style.bottom = '0px';
     }
   }
   

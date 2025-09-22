@@ -96,17 +96,15 @@
   }
 }
 
-/* Mobile-specific adjustments for browser UI */
+/* Mobile-specific adjustments - stick to bottom */
 @media (max-width: 768px) {
   .glass-effect-bottom {
-    /* Move up to avoid browser search bar */
-    bottom: max(env(safe-area-inset-bottom, 0px), 60px);
+    bottom: 0px;
   }
 }
 
 @media (max-width: 480px) {
   .glass-effect-bottom {
-    /* Move up more on smaller screens */
-    bottom: max(env(safe-area-inset-bottom, 0px), 80px);
+    bottom: 0px;
   }
 }

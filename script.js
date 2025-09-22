@@ -98,8 +98,7 @@ form?.addEventListener('submit', e => {
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Hide style pills on scroll down, show on scroll up
-// Pills are now in hero; do not hide on scroll
+// Pills: just stay at top, no JavaScript effects
 
 // Typewriter loop for hero verb
 (function initHeroTypewriter() {

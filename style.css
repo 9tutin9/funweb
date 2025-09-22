@@ -993,26 +993,23 @@ html, body { overflow-x: hidden; }
 /* Style Picker */
 /* Style Pills - Theme Picker */
 .style-pills {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10000;
+  position: static;
+  margin: 12px auto;
+  transform: none;
+  z-index: 10;
   background: transparent;
   padding: 15px 20px;
   display: flex !important;
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: none;
   width: fit-content;
   box-sizing: border-box;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-/* No hide-on-scroll when inside hero */
-.style-pills.is-hidden { transform: none; opacity: 1; visibility: visible; }
+/* Pills always visible - no JavaScript states */
 
 .style-pills .pill {
   background: rgba(255, 255, 255, 0.2);
@@ -1048,6 +1045,7 @@ html, body { overflow-x: hidden; }
     max-width: 1200px;
     padding: 8px 0 16px;
     justify-content: center;
+    margin: 0 auto;
   }
   
   .style-pills .pill {
@@ -1059,22 +1057,18 @@ html, body { overflow-x: hidden; }
 /* Mobile - jen 3 styly, vždy v jednom řádku */
 @media (max-width: 768px) {
   .style-pills {
-    top: 10px !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    max-width: none !important;
+    position: static !important;
+    margin: 10px auto !important;
+    transform: none !important;
     width: fit-content !important;
-    padding: 10px 12px !important;
+    padding: 12px 15px !important;
     gap: 8px !important;
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    z-index: 10001 !important;
-    position: fixed !important;
+    z-index: 10 !important;
     background: transparent !important;
     box-sizing: border-box !important;
-    justify-content: center !important;
   }
   
   .style-pills .pill {
