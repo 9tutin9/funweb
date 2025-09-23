@@ -70,8 +70,9 @@
 .glass-effect-bottom .blur-layer {
   position: absolute;
   inset: 0;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  /* Anchor gradient to the bottom edge so the strongest blur is nearest the bottom */
+  mask-image: linear-gradient(to top, transparent 0%, black 25%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%, black 85%, transparent 100%);
   backdrop-filter: blur(0.5rem);
   -webkit-backdrop-filter: blur(0.5rem);
   opacity: 0.8;
@@ -81,30 +82,17 @@
 @media (max-width: 768px) {
   .glass-effect-bottom {
     height: 4rem;
-    bottom: env(safe-area-inset-bottom, 0px);
-    /* Add padding to avoid browser UI */
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    bottom: 0px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
   }
 }
 
 @media (max-width: 480px) {
   .glass-effect-bottom {
     height: 3rem;
-    bottom: env(safe-area-inset-bottom, 0px);
-    /* Add padding to avoid browser UI */
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-}
-
-/* Mobile-specific adjustments - stick to bottom */
-@media (max-width: 768px) {
-  .glass-effect-bottom {
-    bottom: 0px;
-  }
-}
-
-@media (max-width: 480px) {
-  .glass-effect-bottom {
-    bottom: 0px;
+    bottom: 0px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
   }
 }
