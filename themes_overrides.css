@@ -57,11 +57,12 @@ body[data-theme="moderni"] .style-pills {
   left: 50% !important;
   transform: translateX(-50%) !important;
   z-index: 1000 !important;
-  background: rgba(0, 0, 0, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
-  border-radius: 20px !important;
-  padding: 8px 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(15px) !important;
+  border-radius: 25px !important;
+  padding: 10px 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
 body[data-theme="moderni"] .style-pills .pill {
@@ -85,6 +86,26 @@ body[data-theme="moderni"] .style-pills .pill[aria-pressed="true"] {
   box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3) !important;
 }
 
+/* Debug - zobrazit navbar pro Moderní styl */
+body[data-theme="moderni"] .style-pills {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: fixed !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 30px !important;
+  padding: 12px 24px !important;
+  border: 2px solid rgba(34, 211, 238, 0.3) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
 /* Vypnout staré blob vrstvy pro Moderní styl - používáme aurora */
 body[data-theme="moderni"]::before,
 body[data-theme="moderni"]::after{
@@ -96,6 +117,28 @@ body[data-theme="moderni"] .modern-stars{ position:fixed; inset:0; pointer-event
 
 @keyframes modernBlob1{ to { transform: translate(6vw, 4vh) scale(1.08); } }
 @keyframes modernBlob2{ to { transform: translate(-4vw, -3vh) scale(1.06); } }
+
+/* FINAL OVERRIDE - navbar pro Moderní styl */
+body[data-theme="moderni"] .style-pills {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: fixed !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 99999 !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(25px) !important;
+  border-radius: 35px !important;
+  padding: 15px 30px !important;
+  border: 2px solid rgba(34, 211, 238, 0.4) !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6) !important;
+  max-width: none !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+}
 
 /* Jednotné levé zarovnání a stabilní zalomení hero textu pro všechny styly */
 .hero .hero-grid > div:first-child { text-align: left !important; }
