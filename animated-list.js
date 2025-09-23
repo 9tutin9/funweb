@@ -207,6 +207,7 @@ class PortfolioAnimated {
     this.portfolioItems = [
       {
         name: 'DetiDetem.eu',
+        baseUrl: 'https://detidetem.eu',
         video: 'video_opt.mp4',
         description: 'E-shop pro dětské oblečení',
         previewTitle: 'Domovská stránka',
@@ -215,8 +216,9 @@ class PortfolioAnimated {
           {
             name: 'Domovská stránka',
             video: 'video_opt.mp4',
-            thumbnail: 'video-thumb.jpg',
+            thumbnail: 'video-thumb.webp',
             previewTitle: 'Domovská stránka',
+            url: 'https://detidetem.eu',
             isMain: true,
             info: {
               price: 'Balíček od 19 900 Kč',
@@ -228,8 +230,9 @@ class PortfolioAnimated {
           {
             name: 'Platby',
             video: 'video-payments_opt.mp4',
-            thumbnail: 'video-payments-thumb.jpg',
+            thumbnail: 'video-payments-thumb.webp',
             previewTitle: 'Platby',
+            url: 'https://detidetem.eu',
             info: {
               price: 'Platby od 5 900 Kč',
               title: 'Systém plateb a fakturace',
@@ -240,8 +243,9 @@ class PortfolioAnimated {
           {
             name: 'Administrace',
             video: 'video-admin_opt.mp4',
-            thumbnail: 'video-admin-thumb.jpg',
+            thumbnail: 'video-admin-thumb.webp',
             previewTitle: 'Administrace',
+            url: 'https://detidetem.eu',
             info: {
               price: 'Admin panel od 8 900 Kč',
               title: 'Pokročilý administrační panel',
@@ -253,6 +257,7 @@ class PortfolioAnimated {
       },
       {
         name: 'Stavebniny Lhotský',
+        baseUrl: 'https://stavebninylhotsky.cz',
         video: 'video2_opt.mp4',
         description: 'Web pro stavební firmu',
         previewTitle: 'Domovská stránka',
@@ -261,8 +266,9 @@ class PortfolioAnimated {
           {
             name: 'Domovská stránka',
             video: 'video2_opt.mp4',
-            thumbnail: 'video2-thumb.jpg',
+            thumbnail: 'video2-thumb.webp',
             previewTitle: 'Domovská stránka',
+            url: 'https://stavebninylhotsky.cz',
             isMain: true,
             info: {
               price: 'Balíček od 19 900 Kč',
@@ -274,8 +280,9 @@ class PortfolioAnimated {
           {
             name: 'Platby',
             video: 'video2-payments_opt.mp4',
-            thumbnail: 'video2-payments-thumb.jpg',
+            thumbnail: 'video2-payments-thumb.webp',
             previewTitle: 'Platby',
+            url: 'https://stavebninylhotsky.cz',
             info: {
               price: 'Platby od 5 900 Kč',
               title: 'Systém plateb a fakturace',
@@ -286,8 +293,9 @@ class PortfolioAnimated {
           {
             name: 'Administrace',
             video: 'video2-admin_opt.mp4',
-            thumbnail: 'video2-admin-thumb.jpg',
+            thumbnail: 'video2-admin-thumb.webp',
             previewTitle: 'Administrace',
+            url: 'https://stavebninylhotsky.cz',
             info: {
               price: 'Admin panel od 8 900 Kč',
               title: 'Pokročilý administrační panel',
@@ -299,6 +307,7 @@ class PortfolioAnimated {
       },
       {
         name: 'SYSTEMWRAP',
+        baseUrl: 'https://systemwrap.cz',
         video: 'video3_opt.mp4',
         description: 'Technologické řešení',
         previewTitle: 'Domovská stránka',
@@ -307,8 +316,9 @@ class PortfolioAnimated {
           {
             name: 'Domovská stránka',
             video: 'video3_opt.mp4',
-            thumbnail: 'video3-thumb.jpg',
+            thumbnail: 'video3-thumb.webp',
             previewTitle: 'Domovská stránka',
+            url: 'https://systemwrap.cz',
             isMain: true,
             info: {
               price: 'Balíček od 19 900 Kč',
@@ -320,8 +330,9 @@ class PortfolioAnimated {
           {
             name: 'Formulář',
             video: 'video3-payments_opt.mp4',
-            thumbnail: 'video3-payments-thumb.jpg',
+            thumbnail: 'video3-payments-thumb.webp',
             previewTitle: 'Formulář',
+            url: 'https://systemwrap.cz',
             info: {
               price: 'Formulář od 3 900 Kč',
               title: 'Interaktivní kontaktní formulář',
@@ -333,6 +344,7 @@ class PortfolioAnimated {
       },
       {
         name: 'MedoMed.cz',
+        baseUrl: 'https://medomed.cz',
         video: 'video4_opt.mp4',
         description: 'Zdravotnický portál',
         previewTitle: 'Domovská stránka',
@@ -341,21 +353,24 @@ class PortfolioAnimated {
           {
             name: 'Domovská stránka',
             video: 'video4_opt.mp4',
-            thumbnail: 'video4-thumb.jpg',
+            thumbnail: 'video4-thumb.webp',
             previewTitle: 'Domovská stránka',
+            url: 'https://medomed.cz',
             isMain: true
           },
           {
             name: 'Platby',
             video: 'video4_opt.mp4',
-            thumbnail: 'video4-thumb.jpg',
-            previewTitle: 'Platby'
+            thumbnail: 'video4-thumb.webp',
+            previewTitle: 'Platby',
+            url: 'https://medomed.cz'
           },
           {
             name: 'Administrace',
             video: 'video4_opt.mp4',
-            thumbnail: 'video4-thumb.jpg',
-            previewTitle: 'Administrace'
+            thumbnail: 'video4-thumb.webp',
+            previewTitle: 'Administrace',
+            url: 'https://medomed.cz'
           }
         ]
       }
@@ -387,11 +402,11 @@ class PortfolioAnimated {
       </div>
       
       <div class="portfolio-animated">
-        <div class="portfolio-list">
+        <div>
           <div class="animated-list-container" id="portfolioList"></div>
         </div>
-        <div class="portfolio-preview">
-          <div class="portfolio-preview-placeholder" id="portfolioPreview">
+        <div>
+          <div id="portfolioPreview">
             <p>Vyberte projekt z seznamu pro zobrazení náhledu</p>
           </div>
         </div>
@@ -506,14 +521,15 @@ class PortfolioAnimated {
     const previewContainer = document.getElementById('portfolioPreview');
     if (!previewContainer) return;
     
-         previewContainer.innerHTML = `
+        const targetUrl = (subPage && (subPage.url || (web && web.baseUrl))) || '#';
+        previewContainer.innerHTML = `
            <div class="portfolio-preview-card">
              <video muted loop preload="none" poster="${subPage.thumbnail || 'video-thumb.jpg'}" loading="lazy">
                <source src="${subPage.video}" type="video/mp4">
                Váš prohlížeč nepodporuje video.
              </video>
              <div class="portfolio-preview-overlay">
-               <h3>${subPage.previewTitle}</h3>
+               <h3><a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${subPage.previewTitle}</a></h3>
              </div>
            </div>
          `;

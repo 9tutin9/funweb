@@ -45,7 +45,7 @@ summaryBox pre{white-space:pre-wrap}
 .checks input[type="checkbox"]{flex:0 0 auto; width:1.1rem; height:1.1rem}
 
 /* Styled summary for PDF */
-.summaryBox{position:relative; background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)), url('logo_watermark.png') center/200px no-repeat;}
+.summaryBox{position:relative; background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)), url('logo_watermark.webp') center/200px no-repeat;}
 .pdf-header{display:flex; justify-content:space-between; align-items:center; gap:1rem; border-bottom:1px solid var(--line); padding-bottom:.6rem; margin-bottom:.6rem}
 .brand-block{display:flex; align-items:center; gap:.8rem}
 .logo-mark{width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#22d3ee); color:#06111f; font-weight:900; display:flex; align-items:center; justify-content:center}

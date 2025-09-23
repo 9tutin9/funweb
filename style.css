@@ -55,6 +55,11 @@ a { color: inherit; text-decoration: none; }
   padding-right: 24px;
 }
 
+/* Unified inner padding for all section contents */
+section .container {
+  padding: 24px 18px !important; /* top/bottom 24, left/right 18 */
+}
+
 /* Header */
 header {
   position: fixed;
@@ -428,6 +433,30 @@ section {
 }
 
 @media (max-width: 1024px) {
+  /* Ensure vertical rhythm between stacked sections */
+  .portfolio-animated > * + * {
+    margin-top: 18px !important;
+  }
+  /* Explicit spacing for stacked portfolio parts */
+  body .portfolio-animated > .portfolio-info,
+  body .portfolio-info,
+  body .scroll-list-container,
+  body .portfolio-preview-card {
+    margin: 0 0 18px 0 !important;
+    display: block !important;
+  }
+  /* Ensure static flow for list/preview containers to avoid overlap */
+  body .scroll-list-container,
+  body .portfolio-preview-card {
+    position: static !important;
+    float: none !important;
+    clear: both !important;
+  }
+  /* Disable overlay gradients in mobile to prevent covering margins */
+  body .scroll-list-container .top-gradient,
+  body .scroll-list-container .bottom-gradient {
+    display: none !important;
+  }
   section {
     padding: 48px 0;
   }
@@ -1416,7 +1445,7 @@ html, body { overflow-x: hidden; }
   .cards {
     display: grid;
     grid-template-columns: 1fr; /* pouze jeden sloupec */
-    gap: 18px;
+    gap: 18px; /* hlavní odsazení mezi kartami */
     justify-items: center; /* centrovat karty */
   }
 
@@ -1424,6 +1453,9 @@ html, body { overflow-x: hidden; }
     width: 90%; /* přizpůsobit šířku mobilní obrazovce */
     max-width: 500px;
     text-align: center; /* karty zůstanou centrované */
+    /* Fallback odsazení pro případ, že grid gap je přepsán jinými styly */
+    margin-bottom: 18px;
+    box-sizing: border-box;
   }
 }
 
