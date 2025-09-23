@@ -116,8 +116,8 @@ class PillNav {
     this.container = document.createElement('div');
     this.container.className = `pill-nav-container ${this.config.className}`;
     
-    // Hide navbar on mobile (only if not Moderní theme)
-    if (window.innerWidth <= 768 && !document.body.getAttribute('data-theme')?.includes('moderni')) {
+    // Hide navbar on mobile
+    if (window.innerWidth <= 768) {
       this.container.style.display = 'none';
       this.container.style.visibility = 'hidden';
       this.container.style.opacity = '0';

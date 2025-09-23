@@ -58,64 +58,6 @@ body:not([data-theme="moderni"])::before,
 body:not([data-theme="moderni"])::after{ content: none !important; display: none !important; }
 body:not([data-theme="moderni"]) #bg{ display: block !important; }
 
-/* Obnov navbar pro Moderní styl */
-body[data-theme="moderni"] .style-pills {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: fixed !important;
-  top: 20px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 1000 !important;
-  background: rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(15px) !important;
-  border-radius: 25px !important;
-  padding: 10px 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
-}
-
-body[data-theme="moderni"] .style-pills .pill {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  font-size: 13px !important;
-  padding: 8px 12px !important;
-  transition: all 0.3s ease !important;
-}
-
-body[data-theme="moderni"] .style-pills .pill:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  transform: translateY(-1px) !important;
-}
-
-body[data-theme="moderni"] .style-pills .pill[aria-pressed="true"] {
-  background: var(--accent) !important;
-  color: var(--accent-contrast) !important;
-  border-color: var(--accent) !important;
-  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3) !important;
-}
-
-/* Debug - zobrazit navbar pro Moderní styl */
-body[data-theme="moderni"] .style-pills {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: fixed !important;
-  top: 20px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 9999 !important;
-  background: rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  border-radius: 30px !important;
-  padding: 12px 24px !important;
-  border: 2px solid rgba(34, 211, 238, 0.3) !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
-  max-width: none !important;
-  margin: 0 !important;
-}
 
 
 /* Optional subtle stars layer using box-shadow trick */
@@ -124,37 +66,6 @@ body[data-theme="moderni"] .modern-stars{ position:fixed; inset:0; pointer-event
 @keyframes modernBlob1{ to { transform: translate(6vw, 4vh) scale(1.08); } }
 @keyframes modernBlob2{ to { transform: translate(-4vw, -3vh) scale(1.06); } }
 
-/* FINAL OVERRIDE - navbar pro Moderní styl (dole) */
-body[data-theme="moderni"] .pill-nav-container {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: fixed !important;
-  bottom: 20px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 99999 !important;
-  background: rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(30px) !important;
-  border-radius: 40px !important;
-  padding: 18px 36px !important;
-  border: 2px solid rgba(34, 211, 238, 0.5) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
-  max-width: none !important;
-  margin: 0 !important;
-  width: auto !important;
-  height: auto !important;
-  pointer-events: auto !important;
-}
-
-/* Zajistit, že se navbar zobrazí i když je okno úzké */
-@media (min-width: 769px) {
-  body[data-theme="moderni"] .pill-nav-container {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-}
 
 /* Jednotné levé zarovnání a stabilní zalomení hero textu pro všechny styly */
 .hero .hero-grid > div:first-child { text-align: left !important; }
