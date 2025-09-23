@@ -2,18 +2,43 @@
 /* Reset: no body pseudo-elements by default */
 body::before, body::after{ content:none !important; display:none !important; }
 
-/* Moderní: speciální pozadí z T7 (pouze pro tento styl) */
+/* Moderní: Aurora Borealis pozadí */
 body[data-theme="moderni"]{
-  background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,.18), transparent 40%),
-    radial-gradient(1000px 500px at 90% 90%, rgba(6,182,212,.12), transparent 30%),
-    linear-gradient(180deg,#0b1220,#0f172a) !important;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(0, 255, 150, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(0, 200, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 70%, rgba(150, 0, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(255, 100, 200, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 25%, #0a0a0f 50%, #0f0f1a 75%, #0a0a0f 100%) !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 400% 400% !important;
   background-attachment: fixed !important;
+  animation: auroraShift 25s ease-in-out infinite !important;
   position: relative !important;
   overflow-x: hidden !important;
 }
 /* Skryj canvas background ve stylu moderní, aby nerušil nové pozadí */
 body[data-theme="moderni"] #bg{ display:none !important; }
+
+/* Interaktivní Aurora Borealis efekty */
+body[data-theme="moderni"]::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(600px 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 150, 0.2) 0%, transparent 60%),
+    radial-gradient(400px 200px at calc(100% - var(--mouse-x, 50%)) calc(100% - var(--mouse-y, 50%)), rgba(0, 200, 255, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+body[data-theme="moderni"]:hover::before {
+  opacity: 1;
+}
 
 /* Ensure blobs are visible ONLY on moderní; hard reset elsewhere */
 body:not([data-theme="moderni"])::before,
@@ -155,6 +180,30 @@ body[data-theme="pratelsky"] {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Aurora Borealis animace pro Moderní styl */
+@keyframes auroraShift {
+  0% { 
+    background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%, 0% 50%;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% { 
+    background-position: 25% 25%, 75% 75%, 75% 25%, 25% 75%, 25% 25%;
+    filter: hue-rotate(15deg) brightness(1.1);
+  }
+  50% { 
+    background-position: 50% 0%, 50% 100%, 0% 50%, 100% 0%, 50% 50%;
+    filter: hue-rotate(30deg) brightness(1.2);
+  }
+  75% { 
+    background-position: 75% 25%, 25% 75%, 25% 75%, 75% 25%, 75% 75%;
+    filter: hue-rotate(15deg) brightness(1.1);
+  }
+  100% { 
+    background-position: 100% 0%, 0% 100%, 50% 50%, 0% 0%, 100% 50%;
+    filter: hue-rotate(0deg) brightness(1);
+  }
 }
 
 /* Back to Top floating button */
