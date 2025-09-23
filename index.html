@@ -561,48 +561,19 @@
     <script defer src="themes_v2.js"></script>
     <script src="theme_debug.js"></script>
 
-    <!-- Mobile Hamburger Menu -->
-    <input type="checkbox" id="navi-toggle" class="checkbox mobile-only" />
-    <label for="navi-toggle" class="button mobile-only">
-      <span class="icon">&nbsp;</span>
-    </label>
-    <div class="background mobile-only">&nbsp;</div>
-
-    <!-- nav -->
-    <nav class="nav mobile-only">
-      <ul class="list">
-        <li class="item"> <a href="#uvod" class="link">Úvod</a> </li>
-        <li class="item"> <a href="#o-mne" class="link">O mně</a> </li>
-        <li class="item"> <a href="#sluzby" class="link">Služby</a> </li>
-        <li class="item"> <a href="#portfolio" class="link">Portfolio</a> </li>
-        <li class="item"> <a href="#jak-spolupracujeme" class="link">Proces</a> </li>
-        <li class="item"> <a href="#reference" class="link">Reference</a> </li>
-        <li class="item"> <a href="#kontakt" class="link">Kontakt</a> </li>
-      </ul>
-    </nav>
+    <!-- Mobile nav removed -->
 
     <script>
-      // Mobile hamburger menu functionality
+      // Smooth scroll for anchor links
       (function(){
-        // Handle menu links
         document.addEventListener('click', (e) => {
-          if (e.target.classList.contains('link')) {
+          const link = e.target.closest('a[href^="#"]');
+          if (!link) return;
+          const href = link.getAttribute('href');
+          const target = document.querySelector(href);
+          if (target) {
             e.preventDefault();
-            
-            // Close menu
-            const checkbox = document.getElementById('navi-toggle');
-            if (checkbox) {
-              checkbox.checked = false;
-            }
-            
-            // Navigate to section
-            const href = e.target.getAttribute('href');
-            if (href && href.startsWith('#')) {
-              const target = document.querySelector(href);
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-              }
-            }
+            target.scrollIntoView({ behavior: 'smooth' });
           }
         });
       })();
