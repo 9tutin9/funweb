@@ -256,12 +256,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Mobile-specific behavior: adjust position based on scroll
   function adjustMobilePosition() {
-    if (window.innerWidth <= 768) {
-      const container = navbarGlassEffect.container;
-      
-      // Always stick to the bottom edge, no offset
-      container.style.bottom = '0px';
-    }
+    const container = navbarGlassEffect.container;
+    // Always keep fixed at bottom on all devices
+    container.style.position = 'fixed';
+    container.style.bottom = '0px';
+    container.style.top = 'auto';
+    container.style.left = '0px';
+    container.style.right = '0px';
+    container.style.width = '100%';
+    container.style.opacity = '1';
+    container.style.display = 'block';
   }
   
   // Listen for scroll events
