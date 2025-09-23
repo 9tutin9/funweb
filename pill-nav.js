@@ -570,9 +570,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const pillNav = new PillNav({
     items: [
       { label: 'O mně', href: '#o-mne' },
-      { label: 'Služby', href: '#sluzby' },
       { label: 'Portfolio', href: '#portfolio' },
       { label: 'Proces', href: '#jak-spolupracujeme' },
+      { label: 'Služby', href: '#sluzby' },
+      { label: 'Kalkulace', href: '#estimator-title' },
       { label: 'Reference', href: '#reference' },
       { label: 'Kontakt', href: '#kontakt' }
     ],
