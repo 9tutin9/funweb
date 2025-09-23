@@ -970,7 +970,8 @@ footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px
   position: relative;
 }
 
-/* preview card */
+/* pr
+eview card */
 .portfolio-preview-card {
   max-width: 100%;
   width: 100%;

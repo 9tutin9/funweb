@@ -116,15 +116,6 @@ class PillNav {
     this.container = document.createElement('div');
     this.container.className = `pill-nav-container ${this.config.className}`;
     
-    // Hide navbar on mobile
-    if (window.innerWidth <= 768) {
-      this.container.style.display = 'none';
-      this.container.style.visibility = 'hidden';
-      this.container.style.opacity = '0';
-      this.container.style.pointerEvents = 'none';
-      return; // Don't create navbar on mobile
-    }
-    
     const nav = document.createElement('nav');
     nav.className = 'pill-nav';
     nav.setAttribute('aria-label', 'Primary');

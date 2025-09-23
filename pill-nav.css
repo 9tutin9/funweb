@@ -12,32 +12,17 @@ body {
   padding-bottom: 80px; /* Space for navbar */
 }
 
-/* Hide navbar completely on mobile */
+/* Keep navbar visible on mobile */
 @media (max-width: 768px) {
   .pill-nav-container {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    left: -9999px !important;
-    top: -9999px !important;
-  }
-  
-  /* Hide all navbar elements */
-  .pill-nav,
-  .pill-nav-items,
-  .pill-logo,
-  .pill-list,
-  .pill {
-    display: none !important;
-    visibility: hidden !important;
-  }
-  
-  /* Remove body padding since navbar is hidden */
-  body {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
   }
 }
 
@@ -580,26 +565,19 @@ body {
   }
 }
 
-/* Hide navbar completely on mobile - use hamburger menu instead */
+/* Ensure navbar stays visible on mobile */
 @media (max-width: 768px) {
-  .pill-nav-container {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-  
-  /* Hide all navbar elements */
+  .pill-nav-container,
   .pill-nav,
   .pill-nav-items,
   .pill-logo,
   .pill-list {
-    display: none !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
-  
-  /* Remove body padding since navbar is hidden */
   body {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+    padding-bottom: 80px !important;
   }
 }
