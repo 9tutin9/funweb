@@ -29,6 +29,26 @@ html, body {
   line-height: 1.6;
   scroll-behavior: smooth;
 }
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.headline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+}
+
+.lead {
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+}
+
+code, pre {
+  font-family: 'Source Code Pro', monospace;
+}
 /* Background canvas */
 #bg {
   position: fixed;
