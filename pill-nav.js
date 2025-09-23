@@ -560,6 +560,13 @@ class PillNav {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded, initializing PillNav...');
   
+  // Check if container exists
+  const container = document.querySelector('.container');
+  if (!container) {
+    console.error('PillNav: Container not found!');
+    return;
+  }
+  
   const pillNav = new PillNav({
     items: [
       { label: 'O mně', href: '#o-mne' },
