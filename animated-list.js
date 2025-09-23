@@ -524,7 +524,7 @@ class PortfolioAnimated {
         const targetUrl = (subPage && (subPage.url || (web && web.baseUrl))) || '#';
         previewContainer.innerHTML = `
            <div class="portfolio-preview-card">
-             <video muted loop preload="none" poster="${subPage.thumbnail || 'video-thumb.jpg'}" loading="lazy">
+            <video muted loop preload="none" poster="${subPage.thumbnail || 'video-thumb.jpg'}" loading="lazy" playsinline webkit-playsinline>
                <source src="${subPage.video}" type="video/mp4">
                Váš prohlížeč nepodporuje video.
              </video>
@@ -587,6 +587,39 @@ class PortfolioAnimated {
       this.currentPreview.pause();
       this.currentPreview.currentTime = 0;
     });
+
+    // Mobile: single tap = play inline; double tap = fullscreen
+    let lastTapMs = 0;
+    const onTouch = (ev) => {
+      const now = Date.now();
+      // Prevent default zoom behaviors
+      ev.preventDefault();
+      // Single tap behavior: play inline
+      if (now - lastTapMs > 300) {
+        lastTapMs = now;
+        if (!videoLoaded) {
+          this.currentPreview.load();
+          videoLoaded = true;
+        }
+        this.currentPreview.play().catch(() => {});
+        return;
+      }
+      // Double tap within threshold → try fullscreen
+      lastTapMs = 0;
+      const v = this.currentPreview;
+      if (v.requestFullscreen) {
+        v.requestFullscreen().catch(() => {});
+      } else if (v.webkitEnterFullscreen) {
+        try { v.webkitEnterFullscreen(); } catch (_) {}
+      } else if (v.webkitRequestFullscreen) {
+        try { v.webkitRequestFullscreen(); } catch (_) {}
+      }
+    };
+    // Attach on both touchend and pointerup to cover platforms
+    card.addEventListener('touchend', onTouch, { passive: false });
+    card.addEventListener('pointerup', (e) => {
+      if (e.pointerType === 'touch') onTouch(e);
+    }, { passive: false });
   }
 }
 

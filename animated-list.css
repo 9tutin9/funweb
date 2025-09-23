@@ -249,6 +249,22 @@
   color: white;
 }
 
+/* Ensure overlay link title is always readable: white text with dark edge */
+.portfolio-preview-overlay a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 700;
+  text-shadow:
+    0 0 3px rgba(0,0,0,0.9),
+    0 0 6px rgba(0,0,0,0.8),
+    0 2px 4px rgba(0,0,0,0.7);
+}
+.portfolio-preview-overlay a:visited,
+.portfolio-preview-overlay a:hover,
+.portfolio-preview-overlay a:focus {
+  color: #ffffff !important;
+}
+
 /* Ensure text is visible in light mode */
 [data-theme="minimalisticky"] .portfolio-preview-overlay h3,
 [data-theme="luxusni"] .portfolio-preview-overlay h3,

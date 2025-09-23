@@ -2692,49 +2692,62 @@ h2 {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
+/* Friendly theme: warm, soft card styling */
+[data-theme="pratelsky"] .profile-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 183, 3, 0.22);
+  box-shadow: 0 10px 30px rgba(255, 183, 3, 0.08), 0 6px 18px rgba(0,0,0,0.06);
+}
+
 /* Light theme text colors for ProfileCard */
 [data-theme="minimalisticky"] .profile-card .profile-card__name,
 [data-theme="tradicni"] .profile-card .profile-card__name,
 [data-theme="luxusni"] .profile-card .profile-card__name {
   color: #1a1a1a !important;
 }
+[data-theme="pratelsky"] .profile-card .profile-card__name { color: #1a1a1a !important; }
 
 [data-theme="minimalisticky"] .profile-card .profile-card__title,
 [data-theme="tradicni"] .profile-card .profile-card__title,
 [data-theme="luxusni"] .profile-card .profile-card__title {
   color: #4a4a4a !important;
 }
+[data-theme="pratelsky"] .profile-card .profile-card__title { color: #4a4a4a !important; }
 
 [data-theme="minimalisticky"] .profile-card .profile-card__handle,
 [data-theme="tradicni"] .profile-card .profile-card__handle,
 [data-theme="luxusni"] .profile-card .profile-card__handle {
   color: #6b7280 !important;
 }
+[data-theme="pratelsky"] .profile-card .profile-card__handle { color: #6b7280 !important; }
 
 [data-theme="minimalisticky"] .profile-card .profile-card__status-text,
 [data-theme="tradicni"] .profile-card .profile-card__status-text,
 [data-theme="luxusni"] .profile-card .profile-card__status-text {
   color: #374151 !important;
 }
+[data-theme="pratelsky"] .profile-card .profile-card__status-text { color: #374151 !important; }
 
 [data-theme="minimalisticky"] .profile-card .profile-card__info-label,
 [data-theme="tradicni"] .profile-card .profile-card__info-label,
 [data-theme="luxusni"] .profile-card .profile-card__info-label {
   color: #6b7280 !important;
 }
+[data-theme="pratelsky"] .profile-card .profile-card__info-label { color: #6b7280 !important; }
 
 [data-theme="minimalisticky"] .profile-card .profile-card__info-value,
 [data-theme="tradicni"] .profile-card .profile-card__info-value,
 [data-theme="luxusni"] .profile-card .profile-card__info-value {
   color: #1a1a1a !important;
 }
+[data-theme="pratelsky"] .profile-card .profile-card__info-value { color: #1a1a1a !important; }
 
 /* Center ProfileCard in hero section */
 .hero-card.col-media {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
+  padding: 24px 0; /* Same vertical padding as other sections */
   background: none;
   border: none;
   box-shadow: none;

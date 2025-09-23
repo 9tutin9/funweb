@@ -133,6 +133,23 @@ body[data-theme="tradicni"] {
   --accent-contrast: #ffffff !important;
 }
 
+/* Přátelský styl - unikátní béžové pozadí s jemným vzorem */
+body[data-theme="pratelsky"] {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 183, 3, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 183, 3, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, #fef7ed 0%, #f3f4f6 25%, #fef7ed 50%, #f9fafb 75%, #fef7ed 100%) !important;
+  background-size: 100% 100%, 100% 100%, 400% 400% !important;
+  animation: gradientShift 20s ease infinite !important;
+  --bg: #fef7ed !important;
+  --text: #1f2937 !important;
+  --muted: #6b7280 !important;
+  --card: #ffffff !important;
+  --line: #f3f4f6 !important;
+  --accent: #ffb703 !important;
+  --accent-contrast: #1b1200 !important;
+}
+
 /* Animace pro pozadí */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -209,6 +226,25 @@ body[data-theme="tradicni"] {
     box-shadow: none !important;
     font-size: 12px !important;
     padding: 6px 10px !important;
+  }
+  
+  /* Light themes - dark text on mobile */
+  [data-theme="minimalisticky"] .style-pills .pill,
+  [data-theme="luxusni"] .style-pills .pill,
+  [data-theme="pratelsky"] .style-pills .pill,
+  [data-theme="tradicni"] .style-pills .pill {
+    color: #1f2937 !important;
+    background: rgba(255,255,255,0.8) !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+  }
+  
+  [data-theme="minimalisticky"] .style-pills .pill[aria-pressed="true"],
+  [data-theme="luxusni"] .style-pills .pill[aria-pressed="true"],
+  [data-theme="pratelsky"] .style-pills .pill[aria-pressed="true"],
+  [data-theme="tradicni"] .style-pills .pill[aria-pressed="true"] {
+    color: #ffffff !important;
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
   }
 }
 
@@ -560,13 +596,19 @@ body[data-theme="tradicni"] {
   background: transparent !important;
 }
 
+/* Disable animated background (light-rays) in Process for Friendly theme as well */
+[data-theme="pratelsky"] .light-rays-container{ display:none !important; }
+[data-theme="pratelsky"] .collab-section{ background: transparent !important; }
+
 /* Force white process panel/steps on light themes */
 [data-theme="minimalisticky"] .stepper-container,
 [data-theme="luxusni"] .stepper-container,
 [data-theme="minimalisticky"] .step-content-default,
 [data-theme="luxusni"] .step-content-default,
 [data-theme="minimalisticky"] .step-content,
-[data-theme="luxusni"] .step-content{
+[data-theme="luxusni"] .step-content,
+[data-theme="minimalisticky"] .step-circle-container,
+[data-theme="luxusni"] .step-circle-container{
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
   border-radius: 20px !important;
@@ -615,6 +657,61 @@ body[data-theme="tradicni"] {
 [data-theme="luxusni"] footer,
 [data-theme="luxusni"] footer a {
   color: #1f2937 !important;
+}
+
+/* =============================
+   Accent‑tinted glassmorphism (all themes)
+   Všechna "skleněná" okna používají tónování akcentní barvou stylu
+   ============================= */
+.glass-accent,
+.card,
+.hero-card,
+.portfolio-card .card-body,
+.final-cta-card,
+.testimonials .quotes,
+.step,
+.stepper-container,
+.step-content-default,
+.step-content {
+  /* Tónování podle var(--accent) – moderní prohlížeče */
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    color-mix(in srgb, var(--accent) 6%, transparent)
+  ) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12) !important;
+}
+
+/* Jemnější kontrast u světlých stylů, aby sklo zůstalo světlé */
+[data-theme="minimalisticky"] .glass-accent,
+[data-theme="minimalisticky"] .card,
+[data-theme="minimalisticky"] .hero-card,
+[data-theme="minimalisticky"] .portfolio-card .card-body,
+[data-theme="minimalisticky"] .final-cta-card,
+[data-theme="minimalisticky"] .testimonials .quotes,
+[data-theme="minimalisticky"] .step,
+[data-theme="minimalisticky"] .stepper-container,
+[data-theme="minimalisticky"] .step-content-default,
+[data-theme="minimalisticky"] .step-content,
+[data-theme="luxusni"] .glass-accent,
+[data-theme="luxusni"] .card,
+[data-theme="luxusni"] .hero-card,
+[data-theme="luxusni"] .portfolio-card .card-body,
+[data-theme="luxusni"] .final-cta-card,
+[data-theme="luxusni"] .testimonials .quotes,
+[data-theme="luxusni"] .step,
+[data-theme="luxusni"] .stepper-container,
+[data-theme="luxusni"] .step-content-default,
+[data-theme="luxusni"] .step-content {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 14%, rgba(255,255,255,0)),
+    color-mix(in srgb, var(--accent) 5%, rgba(255,255,255,0))
+  ) !important;
+  border-color: color-mix(in srgb, var(--accent) 18%, #e5e7eb) !important;
 }
 
 [data-theme="tradicni"] footer {
