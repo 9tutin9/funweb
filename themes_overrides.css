@@ -82,6 +82,8 @@ body[data-theme="minimalisticky"] {
   --bg: #f7f8fb !important;
   --text: #1f2937 !important;
   --muted: #6b7280 !important;
+  --panel: #ffffff !important;
+  --border: #e5e7eb !important;
   --card: #ffffff !important;
   --line: #e5e7eb !important;
   --accent: #4f46e5 !important;
@@ -95,6 +97,8 @@ body[data-theme="luxusni"] {
   --bg: #faf7f2 !important;
   --text: #1f2937 !important;
   --muted: #6b7280 !important;
+  --panel: #ffffff !important;
+  --border: #f3f4f6 !important;
   --card: #ffffff !important;
   --line: #f3f4f6 !important;
   --accent: #d4af37 !important;
