@@ -25,30 +25,11 @@ html, body {
   padding: 0;
   background: linear-gradient(180deg, #0a0b0e 0%, #0b0c10 100%);
   color: var(--text);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font, Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
   line-height: 1.6;
   scroll-behavior: smooth;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-}
-
-.headline {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-}
-
-.lead {
-  font-family: 'Merriweather', serif;
-  font-weight: 400;
-}
-
-code, pre {
-  font-family: 'Source Code Pro', monospace;
-}
 /* Background canvas */
 #bg {
   position: fixed;
