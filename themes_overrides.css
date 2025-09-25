@@ -1,62 +1,107 @@
 /* THEMES OVERRIDES - Hard overrides with !important for theme fixes */
-/* Reset: no body pseudo-elements by default */
-body::before, body::after{ content:none !important; display:none !important; }
 
-/* Moderní: Aurora Borealis pozadí */
+/* Moderní: Čisté černé pozadí bez efektů */
 body[data-theme="moderni"]{
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(0, 255, 150, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 30%, rgba(0, 200, 255, 0.22) 0%, transparent 60%),
-    radial-gradient(ellipse at 40% 70%, rgba(150, 0, 255, 0.2) 0%, transparent 60%),
-    radial-gradient(ellipse at 90% 80%, rgba(255, 100, 200, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse at 60% 40%, rgba(255, 255, 100, 0.15) 0%, transparent 50%),
-    linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 25%, #0a0a0f 50%, #0f0f1a 75%, #0a0a0f 100%) !important;
-  background-size: 120% 120%, 120% 120%, 120% 120%, 120% 120%, 120% 120%, 400% 400% !important;
-  background-attachment: fixed !important;
-  animation: auroraShift 12s ease-in-out infinite !important;
+  background: #000000 !important;
+  animation: none !important;
   position: relative !important;
   overflow-x: hidden !important;
 }
-/* Skryj canvas background ve stylu moderní, aby nerušil nové pozadí */
-body[data-theme="moderni"] #bg{ display:none !important; }
 
-/* Smazat všechna stará pozadí pro Moderní styl */
-body[data-theme="moderni"] {
-  background: #0c0f14 !important;
-}
-
-/* Vypnout staré blob vrstvy pro Moderní styl - používáme aurora */
+/* Hide all background effects for modern theme */
+body[data-theme="moderni"]::before,
 body[data-theme="moderni"]::after {
   display: none !important;
   content: none !important;
 }
 
-/* Interaktivní Aurora Borealis efekty - pouze pozadí, neovlivňuje prvky */
-body[data-theme="moderni"]::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Hide canvas background for modern theme */
+body[data-theme="moderni"] #bg{ 
+  display: none !important; 
+}
+
+/* Hero section setup for WebGL aurora in modern theme */
+body[data-theme="moderni"] .hero {
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  z-index: 2;
   width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(600px 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 150, 0.15) 0%, transparent 60%),
-    radial-gradient(400px 200px at calc(100% - var(--mouse-x, 50%)) calc(100% - var(--mouse-y, 50%)), rgba(0, 200, 255, 0.12) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1; /* Za všemi prvky */
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-  mix-blend-mode: screen; /* Jemnější míchání */
 }
 
-body[data-theme="moderni"]:hover::before {
-  opacity: 0.8;
+
+/* Ensure hero content is above WebGL aurora with glassmorphism */
+body[data-theme="moderni"] .hero .hero-grid {
+  position: relative;
+  z-index: 3;
+  width: 100%;
 }
 
-/* Ensure blobs are visible ONLY on moderní; hard reset elsewhere */
-body:not([data-theme="moderni"])::before,
-body:not([data-theme="moderni"])::after{ content: none !important; display: none !important; }
-body:not([data-theme="moderni"]) #bg{ display: block !important; }
+/* Glassmorphism effect for hero content */
+body[data-theme="moderni"] .hero .col-text {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism for tech scroll */
+body[data-theme="moderni"] .hero .col-media {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced text contrast for glassmorphism */
+body[data-theme="moderni"] .hero h1,
+body[data-theme="moderni"] .hero .headline,
+body[data-theme="moderni"] .hero .subhead,
+body[data-theme="moderni"] .hero .eyebrow,
+body[data-theme="moderni"] .hero .trustnote {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Glassmorphism buttons */
+body[data-theme="moderni"] .hero .cta {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+body[data-theme="moderni"] .hero .cta:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Ensure blobs are visible for duveryhodny and other themes, hidden only for moderni */
+body[data-theme="duveryhodny"]::before,
+body[data-theme="duveryhodny"]::after{ content: '' !important; display: block !important; }
+body[data-theme="duveryhodny"] #bg{ display: block !important; }
+
+/* Hide blobs for moderni theme only */
+body[data-theme="moderni"]::before,
+body[data-theme="moderni"]::after{ content: none !important; display: none !important; }
+body[data-theme="moderni"] #bg{ display: none !important; }
 
 
 
@@ -171,7 +216,7 @@ body[data-theme="pratelsky"] {
   100% { background-position: 0% 50%; }
 }
 
-/* Aurora Borealis animace pro Moderní styl */
+/* Aurora Borealis animation for hero section */
 @keyframes auroraShift {
   0% { 
     background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%, 60% 40%, 0% 50%;
@@ -202,6 +247,7 @@ body[data-theme="pratelsky"] {
     filter: hue-rotate(0deg) brightness(1) saturate(1);
   }
 }
+
 
 /* Back to Top floating button */
 #backToTop{
@@ -1045,4 +1091,57 @@ body[data-theme="pratelsky"] {
 [data-theme="tradicni"] .cta.secondary:hover {
   background-color: #8b4513 !important;
   color: #ffffff !important;
+}
+
+/* Language Switcher Styles */
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.lang-btn {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn[aria-current="true"] {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.lang-switch span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+/* Mobile adjustments for language switcher */
+@media (max-width: 768px) {
+  .lang-switch {
+    top: 60px; /* Move up a bit */
+    right: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 }

@@ -204,6 +204,8 @@ class AnimatedList {
 // Portfolio Integration
 class PortfolioAnimated {
   constructor() {
+    this.translationMap = new Map();
+    this.loadTranslations();
     this.portfolioItems = [
       {
         name: 'DetiDetem.eu',
@@ -221,7 +223,7 @@ class PortfolioAnimated {
             url: 'https://detidetem.eu',
             isMain: true,
             info: {
-              price: 'Balíček od 19 900 Kč',
+              price: 'Balíček od 45 000 Kč',
               title: 'Charitativní e-shop – Děti dětem',
               description: 'Kompletní modernizovaný e-shop pro charitativní projekt pomoci dětem v Jemenu. Obsahuje glassmorphism design, responzivní layout, platební systém, správu objednávek, transparentní reporting a pokročilé UX/UI prvky.',
               tags: ['HTML5/CSS3', 'Vanilla JS', 'Glassmorphism', 'E-shop', 'Charita', 'Responzivní', 'PWA Ready']
@@ -234,7 +236,7 @@ class PortfolioAnimated {
             previewTitle: 'Platby',
             url: 'https://detidetem.eu',
             info: {
-              price: 'Platby od 5 900 Kč',
+              price: 'Platby od 240 EUR',
               title: 'Systém plateb a fakturace',
               description: 'Bezpečný platební systém s integrací do stávajícího webu. Podpora všech platebních metod, automatická fakturace a sledování plateb.',
               tags: ['Platební brána', 'Fakturace', 'Bezpečnost', 'API', 'Automatizace']
@@ -247,7 +249,7 @@ class PortfolioAnimated {
             previewTitle: 'Administrace',
             url: 'https://detidetem.eu',
             info: {
-              price: 'Admin panel od 8 900 Kč',
+              price: 'Admin panel od 360 EUR',
               title: 'Pokročilý administrační panel',
               description: 'Kompletní řešení pro správu obsahu, produktů a zákazníků. Intuitivní rozhraní s pokročilými funkcemi pro efektivní správu webu.',
               tags: ['CMS', 'Databáze', 'Uživatelé', 'Obsah', 'Statistiky']
@@ -256,7 +258,7 @@ class PortfolioAnimated {
         ]
       },
       {
-        name: 'Stavebniny Lhotský',
+        name: 'stavebninylhotsky.cz',
         baseUrl: 'https://stavebninylhotsky.cz',
         video: 'video2_opt.mp4',
         description: 'Web pro stavební firmu',
@@ -271,7 +273,7 @@ class PortfolioAnimated {
             url: 'https://stavebninylhotsky.cz',
             isMain: true,
             info: {
-              price: 'Balíček od 19 900 Kč',
+              price: 'Balíček od 23 000 Kč',
               title: 'Renovace webu stavebninylhotsky.cz',
               description: 'Kompletní modernizace zastaralého webu s netradičními řešeními. Obsahuje pokročilý admin panel pro správu produktů, inovativní systém poptávek s automatizací, dynamický ceník s databází, dark/light mode, Supabase backend a efektivní workflow pro stavební firmy.',
               tags: ['Admin Panel', 'Supabase', 'Poptávky', 'Databáze', 'Dark Mode', 'Workflow', 'Automatizace']
@@ -284,7 +286,7 @@ class PortfolioAnimated {
             previewTitle: 'Platby',
             url: 'https://stavebninylhotsky.cz',
             info: {
-              price: 'Platby od 5 900 Kč',
+              price: 'Platby od 240 EUR',
               title: 'Systém plateb a fakturace',
               description: 'Bezpečný platební systém s integrací do stávajícího webu. Podpora všech platebních metod, automatická fakturace a sledování plateb.',
               tags: ['Platební brána', 'Fakturace', 'Bezpečnost', 'API', 'Automatizace']
@@ -297,7 +299,7 @@ class PortfolioAnimated {
             previewTitle: 'Administrace',
             url: 'https://stavebninylhotsky.cz',
             info: {
-              price: 'Admin panel od 8 900 Kč',
+              price: 'Admin panel od 360 EUR',
               title: 'Pokročilý administrační panel',
               description: 'Kompletní řešení pro správu obsahu, produktů a zákazníků. Intuitivní rozhraní s pokročilými funkcemi pro efektivní správu webu.',
               tags: ['CMS', 'Databáze', 'Uživatelé', 'Obsah', 'Statistiky']
@@ -306,7 +308,7 @@ class PortfolioAnimated {
         ]
       },
       {
-        name: 'SYSTEMWRAP',
+        name: 'systemwrap.cz',
         baseUrl: 'https://systemwrap.cz',
         video: 'video3_opt.mp4',
         description: 'Technologické řešení',
@@ -321,7 +323,7 @@ class PortfolioAnimated {
             url: 'https://systemwrap.cz',
             isMain: true,
             info: {
-              price: 'Balíček od 19 900 Kč',
+              price: 'Balíček od 23 000 Kč',
               title: 'Web pro polepy aut - SYSTEMWRAP',
               description: 'Moderní one-page web pro automobilové služby, který nakopnul business. Obsahuje interaktivní portfolio prací, animované sekce, kontaktní formulář a responzivní design s pokročilými CSS efekty a JavaScript animacemi.',
               tags: ['One-Page', 'Animace', 'Portfolio', 'Formulář', 'Canvas', 'Parallax']
@@ -334,7 +336,7 @@ class PortfolioAnimated {
             previewTitle: 'Formulář',
             url: 'https://systemwrap.cz',
             info: {
-              price: 'Formulář od 3 900 Kč',
+              price: 'Formulář od 160 EUR',
               title: 'Interaktivní kontaktní formulář',
               description: 'Chytrý formulář s pokročilými funkcemi. Kliknutím na ikonu telefonu se otevře aplikace volání, kliknutím na email se spustí poštovní klient. Responzivní design s validací a animacemi.',
               tags: ['Formulář', 'Telefon', 'Email', 'Validace', 'Animace', 'Responzivní', 'UX/UI']
@@ -343,7 +345,7 @@ class PortfolioAnimated {
         ]
       },
       {
-        name: 'MedoMed.cz',
+        name: 'medomed.cz',
         baseUrl: 'https://medomed.cz',
         video: 'video4_opt.mp4',
         description: 'Zdravotnický portál',
@@ -356,21 +358,13 @@ class PortfolioAnimated {
             thumbnail: 'video4-thumb.webp',
             previewTitle: 'Domovská stránka',
             url: 'https://medomed.cz',
-            isMain: true
-          },
-          {
-            name: 'Platby',
-            video: 'video4_opt.mp4',
-            thumbnail: 'video4-thumb.webp',
-            previewTitle: 'Platby',
-            url: 'https://medomed.cz'
-          },
-          {
-            name: 'Administrace',
-            video: 'video4_opt.mp4',
-            thumbnail: 'video4-thumb.webp',
-            previewTitle: 'Administrace',
-            url: 'https://medomed.cz'
+            isMain: true,
+            info: {
+              price: 'Balíček od 16 000 Kč',
+              title: 'Zdravotnický portál MedoMed.cz',
+              description: 'Moderní zdravotnický portál s pokročilými funkcemi pro zdravotníky a pacienty. Obsahuje responzivní design, intuitivní navigaci a specializované funkce pro zdravotnický sektor.',
+              tags: ['Zdravotnictví', 'Portál', 'Responzivní', 'UX/UI', 'Specializované funkce']
+            }
           }
         ]
       }
@@ -390,14 +384,16 @@ class PortfolioAnimated {
     const portfolioSection = document.querySelector('.portfolio');
     if (!portfolioSection) return;
     
+    const currentLang = document.documentElement.lang || 'cs';
+    
     portfolioSection.innerHTML = `
       <div class="container">
         <div class="section-header">
           <div class="section-title">
-            <span class="section-label">Portfolio</span>
-            <h2>Ukázky mé práce</h2>
+            <span class="section-label">${this.getTranslation('Portfolio', currentLang)}</span>
+            <h2>${this.getTranslation('Ukázky mé práce', currentLang)}</h2>
           </div>
-          <p class="lead">Projekty, které jsem vytvořil pro klienty. Každý web je jedinečný a přizpůsobený potřebám daného byznysu.</p>
+          <p class="lead">${this.getTranslation('Projekty, které jsem vytvořil pro klienty. Každý web je jedinečný a přizpůsobený potřebám daného byznysu.', currentLang)}</p>
         </div>
       </div>
       
@@ -407,12 +403,12 @@ class PortfolioAnimated {
         </div>
         <div>
           <div id="portfolioPreview">
-            <p>Vyberte projekt z seznamu pro zobrazení náhledu</p>
+            <p>${this.getTranslation('Vyberte projekt z seznamu pro zobrazení náhledu', currentLang)}</p>
           </div>
         </div>
         <div class="portfolio-info">
           <div class="portfolio-info-card" id="portfolioInfo">
-            <p>Vyberte projekt z seznamu pro zobrazení informací</p>
+            <p>${this.getTranslation('Vyberte projekt z seznamu pro zobrazení informací', currentLang)}</p>
           </div>
         </div>
       </div>
@@ -430,6 +426,8 @@ class PortfolioAnimated {
   }
   
   createExpandableList(listContainer) {
+    const currentLang = document.documentElement.lang || 'cs';
+    
     listContainer.innerHTML = `
       <div class="scroll-list-container">
         <div class="scroll-list">
@@ -442,7 +440,7 @@ class PortfolioAnimated {
                    <div class="sub-pages" data-sub-pages="${webIndex}">
                 ${web.subPages.map((subPage, subIndex) => `
                   <div class="sub-page-item" data-web-index="${webIndex}" data-sub-index="${subIndex}">
-                    <div class="sub-page-name">${subPage.name}</div>
+                    <div class="sub-page-name">${this.getTranslation(subPage.name, currentLang)}</div>
                   </div>
                 `).join('')}
               </div>
@@ -521,18 +519,19 @@ class PortfolioAnimated {
     const previewContainer = document.getElementById('portfolioPreview');
     if (!previewContainer) return;
     
-        const targetUrl = (subPage && (subPage.url || (web && web.baseUrl))) || '#';
-        previewContainer.innerHTML = `
-           <div class="portfolio-preview-card">
-            <video muted loop preload="none" poster="${subPage.thumbnail || 'video-thumb.jpg'}" loading="lazy" playsinline webkit-playsinline>
-               <source src="${subPage.video}" type="video/mp4">
-               Váš prohlížeč nepodporuje video.
-             </video>
-             <div class="portfolio-preview-overlay">
-               <h3><a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${subPage.previewTitle}</a></h3>
-             </div>
-           </div>
-         `;
+    const currentLang = document.documentElement.lang || 'cs';
+    const targetUrl = (subPage && (subPage.url || (web && web.baseUrl))) || '#';
+    previewContainer.innerHTML = `
+       <div class="portfolio-preview-card">
+        <video muted loop preload="none" poster="${subPage.thumbnail || 'video-thumb.jpg'}" loading="lazy" playsinline webkit-playsinline>
+           <source src="${subPage.video}" type="video/mp4">
+           ${this.getTranslation('Váš prohlížeč nepodporuje video.', currentLang)}
+         </video>
+         <div class="portfolio-preview-overlay">
+           <h3><a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${this.getTranslation(subPage.previewTitle, currentLang)}</a></h3>
+         </div>
+       </div>
+     `;
     
     this.currentPreview = previewContainer.querySelector('video');
     this.setupVideoEvents();
@@ -548,16 +547,17 @@ class PortfolioAnimated {
     
     if (!subPage || !subPage.info || !infoContainer) return;
     
+    const currentLang = document.documentElement.lang || 'cs';
     const info = subPage.info;
     infoContainer.innerHTML = `
-      <div class="info-price">${info.price}</div>
-      <div class="info-title">${info.title}</div>
-      <div class="info-description">${info.description}</div>
+      <div class="info-price">${this.getTranslation(info.price, currentLang)}</div>
+      <div class="info-title">${this.getTranslation(info.title, currentLang)}</div>
+      <div class="info-description">${this.getTranslation(info.description, currentLang)}</div>
       <div class="info-tags">
-        ${info.tags.map(tag => `<span class="info-tag">${tag}</span>`).join('')}
+        ${info.tags.map(tag => `<span class="info-tag">${this.getTranslation(tag, currentLang)}</span>`).join('')}
       </div>
       <button class="info-cta" onclick="document.querySelector('#kontakt').scrollIntoView({behavior: 'smooth'})">
-        Domluvit konzultaci zdarma
+        ${this.getTranslation('Domluvit konzultaci zdarma', currentLang)}
       </button>
     `;
   }
@@ -621,11 +621,62 @@ class PortfolioAnimated {
       if (e.pointerType === 'touch') onTouch(e);
     }, { passive: false });
   }
+  
+  async loadTranslations() {
+    try {
+      const response = await fetch('translations_cz_en.json');
+      const translationData = await response.json();
+      
+      // Convert array format to Map for easy lookup
+      translationData.forEach(item => {
+        if (item.CZ && item.EN) {
+          this.translationMap.set(item.CZ, item.EN);
+        }
+      });
+    } catch (error) {
+      console.error('Failed to load translations:', error);
+    }
+  }
+  
+  getTranslation(czText, lang = 'cs') {
+    if (lang === 'cs') return czText;
+    return this.translationMap.get(czText) || czText;
+  }
+  
+  updateLanguage(lang) {
+    // Recreate portfolio section with new language
+    this.createPortfolioSection();
+    this.initAnimatedList();
+    
+    // Update current preview if exists
+    const currentWebIndex = this.getCurrentWebIndex();
+    const currentSubIndex = this.getCurrentSubIndex();
+    if (currentWebIndex !== -1 && currentSubIndex !== -1) {
+      this.showPreview(currentWebIndex, currentSubIndex);
+    }
+  }
+  
+  getCurrentWebIndex() {
+    const selectedItem = document.querySelector('.sub-page-item.selected');
+    if (selectedItem) {
+      return parseInt(selectedItem.dataset.webIndex);
+    }
+    return 0;
+  }
+  
+  getCurrentSubIndex() {
+    const selectedItem = document.querySelector('.sub-page-item.selected');
+    if (selectedItem) {
+      return parseInt(selectedItem.dataset.subIndex);
+    }
+    return 0;
+  }
 }
 
 // Auto-initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   const portfolioAnimated = new PortfolioAnimated();
+  await portfolioAnimated.loadTranslations();
   console.log('Portfolio Animated List initialized!');
   window.portfolioAnimated = portfolioAnimated;
 });

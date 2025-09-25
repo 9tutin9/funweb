@@ -182,31 +182,60 @@
   document.querySelectorAll('.next').forEach(b=> b.addEventListener('click', next));
   document.querySelectorAll('.prev').forEach(b=> b.addEventListener('click', prev));
 
-  document.getElementById('btnCopy').addEventListener('click', ()=>{
+  const btnCopy = document.getElementById('btnCopy');
+  if(btnCopy) btnCopy.addEventListener('click', ()=>{
     const text = summaryAsText();
     navigator.clipboard.writeText(text).then(()=> alert('Souhrn zkopírován do schránky.'));
   });
 
-  document.getElementById('btnPDF').addEventListener('click', ()=>{
+  const btnPDF = document.getElementById('btnPDF');
+  if(btnPDF) btnPDF.addEventListener('click', ()=>{
     renderSummary();
     window.print();
   });
 
-  document.getElementById('btnPreview').addEventListener('click', ()=>{
+  const btnPreview = document.getElementById('btnPreview');
+  if(btnPreview) btnPreview.addEventListener('click', ()=>{
     if(!validateStep(5)) return;
     const data = collectData();
     const hash = b64encodeJson(data);
     // Preview functionality removed
   });
 
-  form.addEventListener('submit', (e)=>{
+  if(form) form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(!validateStep(5)) return;
     const data = collectData();
-    const subject = encodeURIComponent('Nová poptávka z briefu: '+data.brand);
-    const body = encodeURIComponent(summaryAsText());
-    // Option 1: mailto (rychlé)
-    window.location.href = `mailto:stefan@kyzek.cz?subject=${subject}&body=${body}`;
+    // Derive lang from html tag
+    const lang = (document.documentElement.getAttribute('lang')||'cs').toLowerCase().startsWith('en')?'en':'cs';
+    const payload = { ...data, lang };
+    try{
+      const resp = await fetch('/api/send-brief',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      // Show confirmation screen instead of jumping to step 1
+      const thanksTitle = lang==='en' ? 'Thanks! Your inquiry was sent ✅' : 'Děkuji! Poptávka byla odeslána ✅';
+      const thanksText = lang==='en'
+        ? 'I\'ll get back to you within 1 hour with next steps.'
+        : 'Do 1 hodiny se ozvu s dalším postupem.';
+      const backLabel = lang==='en' ? 'Back to homepage' : 'Zpět na domovskou stránku';
+      const homeHref = lang==='en' ? 'index_en.html' : 'index.html';
+      form.innerHTML = `
+        <div class="card" style="text-align:center; padding:40px 24px;">
+          <h2 style="margin-bottom:8px;">${thanksTitle}</h2>
+          <p style="color:#555; margin-bottom:20px;">${thanksText}</p>
+          <a class="cta" href="${homeHref}">${backLabel}</a>
+        </div>
+      `;
+      return;
+    }catch(err){
+      const subject = encodeURIComponent((lang==='en'?'New inquiry: ':'Nová poptávka: ')+data.brand);
+      const body = encodeURIComponent(summaryAsText());
+      window.location.href = `mailto:stefan@funweb.cz?subject=${subject}&body=${body}`;
+    }
   });
 
   // Init

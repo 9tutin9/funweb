@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stefan Kyzek — Web Developer & Designer</title>
+    <meta name="description" content="Custom websites, graphics and marketing strategies. I combine design, marketing and business experience to give you a website that not only looks great but also sells." />
+<!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Stefan Kyzek — Web Developer & Designer" />
+    <meta property="og:description" content="Complete services: custom websites, graphics, marketing and consulting. Professional, modern and with a human approach." />
+    <meta property="og:url" content="https://kyzek.cz/" />
+    <meta property="og:image" content="https://kyzek.cz/og-image.jpg" />
+
+    <!-- Favicon (volitelně nahraďte vlastními) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%234f46e5'/%3E%3Ctext x='50' y='58' font-size='44' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3EF%3C/text%3E%3C/svg%3E" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Now:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Eurostile+Next:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
+  <link rel="stylesheet" href="themes_overrides.css?v=1">
+  <link rel="stylesheet" href="gradual-blur.css">
+  <link rel="stylesheet" href="pill-nav.css">
+    <link rel="stylesheet" href="animated-list.css">
+  <link rel="stylesheet" href="stepper.css">
+  <link rel="stylesheet" href="light-rays.css">
+</head>
+  <body>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <!-- Language Switcher -->
+    <nav class="lang-switch" aria-label="Language switcher">
+      <a href="#" data-lang="cs" class="lang-btn">CZ</a>
+      <span>·</span>
+      <a href="#" data-lang="en" class="lang-btn" aria-current="true">EN</a>
+    </nav>
+    <a href="#home" class="sr-only">Skip to content</a>
+
+    <!-- Style Picker (stays at very top and scrolls normally) -->
+    <div class="style-pills" role="group" aria-label="Style selection">
+      <button class="pill" data-theme="duveryhodny" aria-pressed="false">Trusted</button>
+      <button class="pill" data-theme="moderni" aria-pressed="true">Modern</button>
+      <button class="pill" data-theme="minimalisticky" aria-pressed="false">Minimalist</button>
+      <button class="pill" data-theme="luxusni" aria-pressed="false">Luxury</button>
+      <button class="pill" data-theme="technicky" aria-pressed="false">Technical</button>
+      <button class="pill" data-theme="pratelsky" aria-pressed="false">Friendly</button>
+      <button class="pill" data-theme="tradicni" aria-pressed="false">Traditional</button>
+      <button class="pill" data-theme="seriozni" aria-pressed="false">Serious</button>
+    </div>
+
+    <!-- PillNav will be inserted here by JavaScript -->
+
+    <main id="home" class="container">
+      <!-- Hero -->
+      <section class="hero reveal visible" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="col-text">
+            <span class="eyebrow">Web • Graphics • Marketing</span>
+            <h1 id="hero-title" class="headline">I <span id="hero-verb">create</span> websites that sell – combining design, marketing and business.</h1>
+            <div class="mini-social-proof"><div class="msp-item"><strong>+42&nbsp;%</strong><span>more inquiries</span></div><div class="msp-item"><strong>14&nbsp;days</strong><span>to first version</span></div><div class="msp-item"><strong>100/100</strong><span>PageSpeed (MVP)</span></div></div><p class="subhead">I design and build modern and fast websites, unify visual identity and prepare marketing strategy that makes sense for your business. Personally, clearly and with focus on results.</p>
+            <div class="hero-actions">
+              <div class="button-group">
+                <a href="#contact" class="cta">Book a free consultation</a>
+                <a href="#estimator-title" class="cta">Calculator</a>
+              </div>
+            </div>
+            <p class="trustnote">I combine business practice, graphics and marketing. The result is a website that not only looks good, but actually sells.</p>
+          </div>
+          <div class="col-media">
+            <div class="tech-scroll-container" id="heroTechScroll">
+              <div class="tech-scroll-content">
+                <div class="tech-item">Webflow</div>
+                <div class="tech-item">Shoptet</div>
+                <div class="tech-item">WordPress</div>
+                <div class="tech-item">Database & CRM</div>
+                <div class="tech-item">E-mailing</div>
+                <div class="tech-item">Order tracking</div>
+                <div class="tech-item">SEO & Analytics</div>
+                <div class="tech-item">Vector graphics</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="tech-item">Webflow</div>
+                <div class="tech-item">Shoptet</div>
+                <div class="tech-item">WordPress</div>
+                <div class="tech-item">Database & CRM</div>
+                <div class="tech-item">E-mailing</div>
+                <div class="tech-item">Order tracking</div>
+                <div class="tech-item">SEO & Analytics</div>
+                <div class="tech-item">Vector graphics</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="reveal" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">About me</span>
+              <h2 id="about-title">I understand people, products and business</h2>
+            </div>
+          </div>
+          <div class="about">
+            <div class="profile-card" id="aboutProfileCard">
+              <div class="profile-card__background"></div>
+              <div class="profile-card__content">
+                <div class="profile-card__header">
+                  <div class="profile-card__avatar">
+                    <div class="profile-card__avatar-image" style="background-image: url('IMG_1620.webp'); background-size: cover; background-position: center;"></div>
+                    <div class="profile-card__status" data-status="online"></div>
+                  </div>
+                  <div class="profile-card__user-info">
+                    <h3 class="profile-card__name">Stefan Kyzek</h3>
+                    <p class="profile-card__title">Web Developer & Designer</p>
+                    <p class="profile-card__handle">@stefankyzek</p>
+                  </div>
+                </div>
+                <div class="profile-card__status-info">
+                  <div class="profile-card__status-dot"></div>
+                  <span class="profile-card__status-text">Online</span>
+                </div>
+                <button class="profile-card__contact-btn" onclick="window.location.href='tel:+420705920948'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  Call
+                </button>
+                <button class="profile-card__contact-btn profile-card__contact-btn--secondary" onclick="window.location.href='mailto:stefan@funweb.cz'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Message
+                </button>
+                <div class="profile-card__info">
+                  <div class="profile-card__info-row">
+                    <span class="profile-card__info-label">Availability</span>
+                    <span class="profile-card__info-value profile-card__info-value--online">Available</span>
+                  </div>
+                  <div class="profile-card__info-row">
+                    <span class="profile-card__info-label">Response time</span>
+                    <span class="profile-card__info-value">< 1 hour</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+            <p class="lead">I've been through various environments – from selling Apple and Xiaomi products through family construction companies to creating websites and marketing. Thanks to this, I understand the real needs of customers and companies of different sizes.</p>
+            <p>In practice, I combine the approach of a businessman, designer and marketer. I design solutions that are both beautiful and functional. I don't unnecessarily complicate things – the goal is for you to have a website and communication that brings results.</p>
+              <div class="chips" style="margin-top:12px;">
+              <span class="chip">Customer empathy</span>
+                <span class="chip">Clear communication</span>
+                <span class="chip">Fast delivery</span>
+              <span class="chip">Long-term cooperation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="portfolio reveal" aria-labelledby="portfolio-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Portfolio</span>
+        <h2 id="portfolio-title">My work samples</h2>
+            </div>
+      <p class="lead">Projects I created for clients. Each website is unique and tailored to the needs of the given business.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <video muted loop playsinline preload="none" poster="video-thumb.webp">
+                <source src="video_opt.mp4" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <h3>DetiDetem.eu</h3>
+            </article>
+            <article class="card">
+              <video muted loop playsinline preload="none" poster="video2-thumb.webp">
+                <source src="video2_opt.mp4" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <h3>Stavebniny Lhotský</h3>
+            </article>
+            <article class="card">
+              <video muted loop playsinline preload="none" poster="video3-thumb.webp">
+          <source src="video3-payments_opt.mp4" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <h3>SYSTEMWRAP</h3>
+            </article>
+            <article class="card">
+              <video muted loop playsinline preload="none" poster="video4-thumb.webp">
+                <source src="video4_opt.mp4" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <h3>MedoMed.cz</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+  <!-- Jak probíhá spolupráce -->
+      <section id="process" class="collab-section" aria-labelledby="collab-title">
+        <div class="light-rays-container"></div>
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Process</span>
+          <h2 id="collab-title">How we work together</h2>
+            </div>
+        <p class="lead">Transparently, step by step. Without good communication it doesn't work – I continuously share work, ask for details and we fine-tune everything together.</p>
+          </div>
+
+        <div class="step-circle-container stepper-container">
+          <div class="step-indicator-row"></div>
+          
+          <div class="step-content-default">
+            <!-- KROK 1 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Initial consultation</h3>
+              <p class="step-description">We'll go through your goals, budget and priority outputs (website, emailing, database, graphics). I'll recommend a suitable platform (Webflow, Shoptet, WordPress).</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Short call / meeting (30–45 min)</span></li>
+                <li><span class="dot"></span><span>Writing down requirements and expectations</span></li>
+                <li><span class="dot"></span><span>Preliminary time and budget estimate</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Output: clear goal and scope</div>
+                <button class="step-next-button" data-action="next">Next step</button>
+              </div>
+            </div>
+
+            <!-- KROK 2 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Design and plan</h3>
+              <p class="step-description">I'll prepare the website/content structure, wireframes and milestone plan. For tech projects, integration specifications (API, database, CRM).</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Information architecture &amp; wireframe</span></li>
+                <li><span class="dot"></span><span>Roadmap with milestones and deadlines</span></li>
+                <li><span class="dot"></span><span>Technical requirements and approaches</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Output: approved plan</div>
+                <button class="step-next-button" data-action="next">Next step</button>
+              </div>
+            </div>
+
+            <!-- KROK 3 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Implementation</h3>
+              <p class="step-description">I create the website/graphics/database and continuously share samples. I welcome short feedback so work flows without hiccups.</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Continuous previews (shared links)</span></li>
+                <li><span class="dot"></span><span>Quick adjustments based on feedback</span></li>
+                <li><span class="dot"></span><span>Work in iterations (sprints)</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Output: functional prototype/samples</div>
+                <button class="step-next-button" data-action="next">Next step</button>
+              </div>
+            </div>
+
+            <!-- KROK 4 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Communication &amp; feedback</h3>
+              <p class="step-description">Without communication it doesn't work. We'll agree on a rhythm (e.g. 1× per week short sync) and clear channels (email, Slack, Trello).</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Continuous status without fluff</span></li>
+                <li><span class="dot"></span><span>Quick decisions based on samples</span></li>
+                <li><span class="dot"></span><span>Transparent overview of tasks and deadlines</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Output: no surprises</div>
+                <button class="step-next-button" data-action="next">Next step</button>
+              </div>
+            </div>
+
+            <!-- KROK 5 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Delivery &amp; launch</h3>
+              <p class="step-description">Finalization, testing and deployment. I'll hand over access and a short manual, possibly train the team.</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Final quality check (speed, SEO basics, security)</span></li>
+                <li><span class="dot"></span><span>Access rights &amp; documentation</span></li>
+                <li><span class="dot"></span><span>Pre-launch checklist</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Output: project ready to use</div>
+                <button class="step-next-button" data-action="next">Next step</button>
+              </div>
+            </div>
+
+            <!-- KROK 6 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Support &amp; development</h3>
+              <p class="step-description">I offer long-term management, optimization and marketing (campaigns, emailing, automation), according to what makes business sense.</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Regular reports and recommendations</span></li>
+                <li><span class="dot"></span><span>Iterative performance improvements</span></li>
+                <li><span class="dot"></span><span>Quick technical support</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Output: sustainable growth</div>
+                <button class="step-next-button" data-action="complete">Complete</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="reveal" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Services</span>
+              <h2 id="services-title">Complete package</h2>
+            </div>
+            <p class="lead">From strategy through graphics to launch and measurement. You can choose individual services or combine them into one functional solution.</p>
+          </div>
+          <div class="cards">
+            <article class="card" aria-labelledby="svc-web">
+              <h3 id="svc-web">Websites</h3>
+            <p>I write websites manually from scratch, or use platforms like Webflow, Shoptet or WordPress – according to your goals and budget.</p>
+            <ul>
+              <li>Responsive and fast websites</li>
+              <li>SEO basics and analytics</li>
+              <li>Copy and content structure</li>
+              <li>Tool integration</li>
+              </ul>
+            </article>
+            <article class="card" aria-labelledby="svc-db">
+            <h3 id="svc-db">Database & CRM</h3>
+            <p>I create a custom database for tracking orders, customers and business processes.</p>
+              <ul>
+                <li>Order tracking</li>
+                <li>Customer database</li>
+                <li>Process automation</li>
+              <li>Reports and statistics</li>
+              </ul>
+            </article>
+            <article class="card" aria-labelledby="svc-email">
+            <h3 id="svc-email">E-mailing</h3>
+            <p>Complete email campaigns and automation for your business growth.</p>
+              <ul>
+              <li>Newsletter and campaigns</li>
+              <li>Email automation</li>
+                <li>Customer segmentation</li>
+              <li>Open and click analysis</li>
+              </ul>
+            </article>
+            <article class="card" aria-labelledby="svc-gfx">
+              <h3 id="svc-gfx">Graphics</h3>
+            <p>Visual identity, banners, logos and vector graphics for web and print.</p>
+              <ul>
+              <li>Logo and brand manual</li>
+              <li>Banners and social media</li>
+                <li>Vector illustrations</li>
+                <li>Print materials</li>
+              </ul>
+            </article>
+            <article class="card" aria-labelledby="svc-mkt">
+              <h3 id="svc-mkt">Marketing</h3>
+            <p>Practical strategies that make sense for your target group and budget.</p>
+            <ul>
+              <li>Content and social media</li>
+              <li>Advertising (Meta, Google)</li>
+              <li>Emailing and automation</li>
+              <li>Consulting and mentoring</li>
+              </ul>
+            </article>
+            <article class="card" aria-labelledby="svc-tech">
+              <h3 id="svc-tech">Technical services</h3>
+            <p>Integrations, API, automation and other technical solutions for your business.</p>
+              <ul>
+                <li>API integrations</li>
+                <li>Process automation</li>
+              <li>Backup and security</li>
+                <li>Technical support</li>
+              </ul>
+            </article>
+          </div>
+          <div class="bundle">
+          <strong>Turnkey package:</strong> I'll unify the visual style, build the website and set up marketing so everything works as a whole.
+        </div>
+      </section>
+
+      
+
+      <!-- Estimator -->
+      <section class="reveal visible" aria-labelledby="estimator-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Calculator</span>
+              <h2 id="estimator-title">Rough estimate</h2>
+            </div>
+            <p class="lead">Click through the scope and immediately see the rough price and delivery time.</p>
+          </div>
+
+          <div class="cards" style="grid-template-columns: 1fr;">
+            <div class="card">
+            <h3>Quick calculator</h3>
+            <p>Click through the scope and immediately see the rough price and delivery time. The full version of the calculator contains all options and extensions.</p>
+
+              <div class="estimator-preview" id="estimatorPreview" role="list">
+                <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
+                  <div class="estimator-preview-label">Starter (one-page)</div>
+                <div class="estimator-preview-price">from 14 900 CZK</div>
+                <div class="estimator-preview-days">7 days</div>
+                  <div class="estimator-preview-details" hidden>
+                    <ul>
+                    <li>1 page (one‑page) with sections</li>
+                    <li>Basic SEO + analytics</li>
+                    <li>Responsive design</li>
+                    <li>Mailing (free in Starter package)</li>
+                    <li>Contact form integration</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
+                <div class="estimator-preview-label">Pro (5–8 pages)</div>
+                <div class="estimator-preview-price">from 34 900 CZK</div>
+                <div class="estimator-preview-days">24 days</div>
+                  <div class="estimator-preview-details" hidden>
+                    <ul>
+                    <li>5–8 content pages</li>
+                    <li>Blog/news, subpage templates</li>
+                    <li>Extended analytics and measurement</li>
+                    <li>Speed optimization</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
+                <div class="estimator-preview-label">Custom (custom + CMS)</div>
+                <div class="estimator-preview-price">from 69 000 CZK</div>
+                <div class="estimator-preview-days">45 days</div>
+                  <div class="estimator-preview-details" hidden>
+                    <ul>
+                    <li>Custom design + components</li>
+                    <li>CMS for content management</li>
+                    <li>Tool integration (CRM, mailing, API)</li>
+                    <li>Consulting and training</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="estimator-actions">
+              <a href="estimator_v2_en.html" class="cta primary">Open full calculator</a>
+              <a href="#contact" class="cta secondary">Consult</a>
+              </div>
+
+              <p class="estimator-disclaimer">
+              The prices listed are indicative. I will refine the final offer after a short consultation (15 min).
+              </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA - Brief Form -->
+      <section id="contact" class="reveal" aria-labelledby="brief-title">
+        <div class="container">
+          <div class="final-cta-container">
+            <div class="final-cta-text">
+              <span class="eyebrow">Quick start</span>
+              <h2 id="brief-title">Let's start your website</h2>
+              <p class="lead">Fill out a short questionnaire (5 minutes) and I'll get back to you immediately with a consultation date and a custom approach proposal.</p>
+              <p class="lead">Without good communication it doesn't work – I continuously share work, ask for details and we fine-tune everything together.</p>
+            </div>
+
+            <div class="final-cta-card">
+              <div class="final-cta-content">
+              <h3>How does it work?</h3>
+                <div class="steps-grid">
+                  <div class="step-item">
+                    <div class="step-number">1</div>
+                  <div class="step-text">Fill out 6 simple steps (5 minutes)</div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-number">2</div>
+                  <div class="step-text">Get an immediate preview of the website according to your requirements</div>
+                  </div>
+                  <div class="step-item">
+                    <div class="step-number">3</div>
+                  <div class="step-text">We'll clarify details at the meeting</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="final-cta-actions">
+              <a href="brief_form_en.html" class="cta primary large">Book a free consultation</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot">
+        <div>
+          © <span id="year"></span> Stefan Kyzek • Websites, databases, marketing
+        </div>
+        <div class="socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="#">Behance</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JSON-LD Person schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Stefan Kyzek",
+        "jobTitle": "Freelancer – websites, databases, marketing",
+        "url": "https://kyzek.cz/",
+        "email": "mailto:stefan@funweb.cz",
+        "telephone": "+420705920948",
+        "sameAs": [
+          "https://www.linkedin.com/in/uzivatelske-jmeno",
+          "https://www.instagram.com/uzivatelske_jmeno"
+        ]
+      }
+    </script>
+
+    <script defer src="script.js"></script>
+    <script defer src="themes_v2.js"></script>
+    <script defer src="aurora-effects.js"></script>
+    <script src="theme_debug.js"></script>
+
+    <!-- Mobile nav removed -->
+
+    <script>
+      // Smooth scroll for anchor links
+      (function(){
+        document.addEventListener('click', (e) => {
+          const link = e.target.closest('a[href^="#"]');
+          if (!link) return;
+          const href = link.getAttribute('href');
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      })();
+    </script>
+
+  <script id="THEME_FALLBACK">
+  // Fallback in case themes_v2.js didn't bind
+  (function(){
+    function setDataTheme(slug){
+      document.body.setAttribute('data-theme', slug);
+      try { localStorage.setItem('siteTheme', slug); } catch(e){}
+    }
+    function onClick(e){
+      var b = e.target.closest('.style-pills .pill');
+      if(!b) return;
+      var slug = b.getAttribute('data-theme');
+      if(window.setTheme){ window.setTheme(slug); }
+      else { setDataTheme(slug); }
+      document.querySelectorAll('.style-pills .pill').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+    }
+    document.addEventListener('click', onClick);
+    // init default if none
+    if(!document.body.getAttribute('data-theme')){
+      var slug = (function(){ try{return localStorage.getItem('siteTheme')||'moderni';}catch(e){return 'moderni';} })();
+      setDataTheme(slug);
+    }
+  })();
+  </script>
+  <script src="gradual-blur.js"></script>
+  <script src="pill-nav.js"></script>
+  <script src="animated-list.js"></script>
+  <script src="stepper.js"></script>
+  <script src="light-rays.js"></script>
+  
+  
+  <!-- Portfolio responsive fallback script -->
+  <script>
+  (function(){
+    const root = document.querySelector('.portfolio-animated');
+    const scrollContainers = document.querySelectorAll('.scroll-list-container');
+    const portfolioElements = document.querySelectorAll('.portfolio-animated > *');
+
+    function forceMobileLayout(){
+      if (!root) return;
+      
+      // Force block layout (single column like mobile)
+      root.style.display = 'block';
+      root.style.padding = '18px';
+      root.style.width = '100%';
+      root.style.maxWidth = '100%';
+      root.style.minWidth = '0';
+      
+      // Force all children to full width and block display
+      portfolioElements.forEach(el => {
+        el.style.width = '100%';
+        el.style.maxWidth = '100%';
+        el.style.minWidth = '0';
+        el.style.margin = '0 0 20px 0';
+        el.style.display = 'block';
+      });
+      
+      // Force scroll containers
+      scrollContainers.forEach(c => {
+        c.style.maxHeight = 'none';
+        c.style.height = 'auto';
+        c.style.overflow = 'visible';
+        c.style.width = '100%';
+        c.style.maxWidth = '100%';
+      });
+      
+      // Force all child elements
+      const allChildren = root.querySelectorAll('*');
+      allChildren.forEach(el => {
+        el.style.minWidth = '0';
+        el.style.maxWidth = '100%';
+      });
+      
+      document.documentElement.classList.add('portfolio-stacked');
+    }
+
+    function restoreDesktopLayout(){
+      if (!root) return;
+      
+      // Restore desktop grid
+      root.style.display = 'grid';
+      root.style.gridTemplateColumns = '320px 1fr 320px';
+      root.style.gap = '24px';
+      root.style.padding = '24px';
+      
+      // Restore scroll containers
+      scrollContainers.forEach(c => {
+        c.style.maxHeight = '640px';
+        c.style.overflow = 'auto';
+      });
+      
+      document.documentElement.classList.remove('portfolio-stacked');
+    }
+
+    function adjustForMobile(){
+      if (window.innerWidth <= 1024){
+        forceMobileLayout();
+      } else {
+        restoreDesktopLayout();
+      }
+    }
+
+    // Run immediately and on resize
+    window.addEventListener('resize', adjustForMobile);
+    window.addEventListener('load', adjustForMobile);
+    adjustForMobile();
+    
+    // Debug function - call in console to check what's overriding
+    window.debugPortfolio = function(){
+      console.log('=== PORTFOLIO DEBUG ===');
+      console.log('Root element:', root);
+      console.log('Root computed styles:', window.getComputedStyle(root));
+      console.log('Scroll containers:', scrollContainers);
+      scrollContainers.forEach((c, i) => {
+        console.log(`Container ${i}:`, window.getComputedStyle(c));
+      });
+      console.log('Window width:', window.innerWidth);
+      console.log('Is mobile:', window.innerWidth <= 1024);
+    };
+  })();
+  </script>
+  <script src="lang.js"></script>
+  <script src="aurora-webgl.js"></script>
+</body>
+</html>
+
+

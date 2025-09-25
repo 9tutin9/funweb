@@ -105,7 +105,11 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const el = document.getElementById('hero-verb');
   if (!el) return;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const words = ['Tvořím', 'Designuji', 'Navrhuji'];
+  
+  // Detect language and set appropriate words
+  const isEnglish = document.documentElement.lang === 'en';
+  const words = isEnglish ? ['create', 'design', 'develop'] : ['Tvořím', 'Designuji', 'Navrhuji'];
+  
   let idx = 0;
   let pos = words[0].length;
   let deleting = true;
@@ -160,6 +164,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
 (function initBackground() {
   const canvas = document.getElementById('bg');
   if (!canvas) return;
+  
+  // Skip dot grid for modern theme - use aurora instead
+  if (document.body.getAttribute('data-theme') === 'moderni') {
+    return;
+  }
+  
   const ctx = canvas.getContext('2d');
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let width = 0, height = 0;
@@ -254,6 +264,25 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
   // init
   resize();
+  
+  // Listen for theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        const theme = document.body.getAttribute('data-theme');
+        if (theme === 'moderni') {
+          // Clear canvas for modern theme
+          ctx.clearRect(0, 0, width, height);
+        } else {
+          // Rebuild grid for other themes
+          buildGrid();
+          render();
+        }
+      }
+    });
+  });
+  
+  observer.observe(document.body, { attributes: true });
 })();
 
 
@@ -400,6 +429,11 @@ class ProfileCard {
   init() {
     this.bindEvents();
     this.updateStatus();
+    
+    // Add tilt-enabled class for CSS transitions
+    if (this.options.enableTilt) {
+      this.element.classList.add('profile-card--tilt-enabled');
+    }
   }
   
   bindEvents() {
@@ -480,12 +514,13 @@ class ProfileCard {
     // Update response time
     const responseValue = this.element.querySelector('.profile-card__info-value:not(.profile-card__info-value--online)');
     if (responseValue) {
+      const isEN = document.documentElement.lang === 'en' || document.body.getAttribute('data-lang') === 'en';
       switch (this.status) {
         case 'online':
-          responseValue.textContent = '< 1 hodina';
+          responseValue.textContent = isEN ? '< 1 hour' : '< 1 hodina';
           break;
         case 'away':
-          responseValue.textContent = '1-2 hodiny';
+          responseValue.textContent = isEN ? '1-2 hours' : '1-2 hodiny';
           break;
         case 'offline':
           responseValue.textContent = '1-2 dny';
@@ -518,20 +553,29 @@ class ProfileCard {
 
 // Initialize ProfileCard when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  const heroProfileCard = document.getElementById('heroProfileCard');
+  const aboutProfileCard = document.getElementById('aboutProfileCard');
+  const heroTechScroll = document.getElementById('heroTechScroll');
   
-  if (heroProfileCard) {
-    // Create ProfileCard instance for hero section
-    const profileCard = new ProfileCard(heroProfileCard, {
+  if (aboutProfileCard) {
+    // Create ProfileCard instance for about section
+    const aboutCard = new ProfileCard(aboutProfileCard, {
       enableTilt: true,
       enableMobileTilt: false,
       tiltIntensity: 8
     });
     
-    console.log('Hero ProfileCard initialized!');
+    console.log('About ProfileCard initialized!');
     
     // Expose to global scope for debugging
-    window.heroProfileCard = profileCard;
+    window.aboutProfileCard = aboutCard;
+  }
+  
+  if (heroTechScroll) {
+    // Initialize hero tech scroll animation
+    console.log('Hero tech scroll initialized!');
+    
+    // Expose to global scope for debugging
+    window.heroTechScroll = heroTechScroll;
   }
 });
 

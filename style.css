@@ -162,7 +162,7 @@ header.scrolled {
 
 /* Hero */
 .hero { 
-  padding: 64px 0 28px; 
+  padding: 20px 0 28px; 
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -177,13 +177,13 @@ header.scrolled {
 
 /* Hero responsive breakpoints */
 @media (max-width: 1200px) {
-  .hero { padding: 48px 0 24px; }
+  .hero { padding: 20px 0 24px; }
   .hero-grid { gap: 24px; }
 }
 
 @media (max-width: 860px) {
   .hero { 
-    padding: 32px 0 20px; 
+    padding: 20px 0 20px; 
     min-height: auto;
   }
   .hero-grid { 
@@ -193,13 +193,13 @@ header.scrolled {
 }
 
 @media (max-width: 640px) {
-  .hero { padding: 24px 0 16px; }
+  .hero { padding: 20px 0 16px; }
   .hero-grid { gap: 16px; }
 }
 
 @media (max-width: 480px) {
   .hero { 
-    padding: 20px 0 12px; 
+    padding: 16px 0 12px; 
     min-height: auto;
   }
   .hero-grid { gap: 12px; }
@@ -207,14 +207,14 @@ header.scrolled {
 
 @media (max-width: 375px) {
   .hero { 
-    padding: 16px 0 8px; 
+    padding: 12px 0 8px; 
   }
   .hero-grid { gap: 8px; }
 }
 
 @media (max-width: 320px) {
   .hero { 
-    padding: 12px 0 6px; 
+    padding: 10px 0 6px; 
   }
   .hero-grid { gap: 6px; }
 }
@@ -253,7 +253,7 @@ header.scrolled {
     margin: 4px 0 6px;
   }
 }
-.headline #hero-verb { position: relative; color: var(--accent); display: inline-block; min-width: 8ch; }
+.headline #hero-verb { position: relative; color: var(--accent); display: inline-block; width: 10ch; text-align: left; text-transform: uppercase; font-weight: bold; }
 .headline #hero-verb::after {
   content: '';
   display: inline-block;
@@ -2762,8 +2762,157 @@ h2 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Modern theme: keep cards neutral over aurora background */
+[data-theme="moderni"] .hero-card,
+[data-theme="moderni"] .cards .card,
+[data-theme="moderni"] .work-card,
+[data-theme="moderni"] .portfolio-card,
+[data-theme="moderni"] .profile-card,
+[data-theme="moderni"] .chroma-card {
+  background: var(--panel) !important;
+  border-color: var(--border) !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Keep inner profile card blocks opaque in modern theme */
+[data-theme="moderni"] .profile-card__status-info,
+[data-theme="moderni"] .profile-card__info {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: none !important;
+}
+
+/* Ensure buttons show original gradient without blend/filter */
+[data-theme="moderni"] .profile-card__contact-btn {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Modern theme: disable spotlight color-shift on service cards */
+[data-theme="moderni"] .chroma-card {
+  filter: none !important;
+  opacity: 1 !important;
+}
+[data-theme="moderni"] .chroma-card.in-spotlight {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Disable colored glass overlays on chroma cards in modern theme */
+[data-theme="moderni"] .chroma-card::before {
+  content: none !important;
+}
+
+/* Strong safeguard: remove any filters/blends from profile card subtree in modern theme */
+[data-theme="moderni"] .profile-card,
+[data-theme="moderni"] .profile-card * {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Global safeguard for modern theme: eliminate any residual color-shift sources */
+[data-theme="moderni"] *,
+[data-theme="moderni"] *::before,
+[data-theme="moderni"] *::after {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Modern theme: remove all decorative backgrounds */
+[data-theme="moderni"] #bg { display: none !important; }
+[data-theme="moderni"] .collab-section { background: transparent !important; }
+[data-theme="moderni"] .collab-section::before,
+[data-theme="moderni"] .collab-section::after { display: none !important; }
+[data-theme="moderni"] .profile-card__background { display: none !important; }
+[data-theme="moderni"] .profile-card__status-info,
+[data-theme="moderni"] .profile-card__info { background: transparent !important; border-color: var(--border) !important; }
+[data-theme="moderni"] .estimator-preview-item::before { display: none !important; }
+[data-theme="moderni"] .scroll-list-container .top-gradient,
+[data-theme="moderni"] .scroll-list-container .bottom-gradient { display: none !important; }
+[data-theme="moderni"] .hero-card { background: var(--panel) !important; }
+[data-theme="moderni"] .work-card { background: var(--panel) !important; }
+[data-theme="moderni"] .cards .card { background: var(--panel) !important; }
+
+.profile-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
 .profile-card--tilt-enabled {
   transition: transform 0.1s ease;
+}
+
+/* Move entire website up */
+body {
+  margin-top: -40px;
+}
+
+/* Tech Scroll Container Styles */
+.tech-scroll-container {
+  height: 496px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.tech-scroll-content {
+  display: flex;
+  flex-direction: column;
+  animation: scrollDown 20s linear infinite;
+  gap: 16px;
+}
+
+.tech-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.tech-scroll-container:hover .tech-scroll-content {
+  animation-play-state: paused;
 }
 
 .profile-card__background {
@@ -2798,7 +2947,7 @@ h2 {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-600));
+  background-color: transparent; /* allow real avatar image without tint */
   background-size: cover;
   background-position: center;
   display: flex;

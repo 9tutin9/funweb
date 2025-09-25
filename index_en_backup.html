@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tvořím weby, které prodávají – design, marketing a obchod</title>
+    <meta name="description" content="Weby na míru, grafika a marketingové strategie. Spojuji design, marketing a obchodní zkušenosti, abyste měli web, který nejen vypadá skvěle, ale i prodává." />
+<!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tvořím weby, které prodávají – design, marketing a obchod" />
+    <meta property="og:description" content="Kompletní služby: web na míru, grafika, marketing a konzultace. Profesionálně, moderně a s lidským přístupem." />
+    <meta property="og:url" content="https://kyzek.cz/" />
+    <meta property="og:image" content="https://kyzek.cz/og-image.jpg" />
+
+    <!-- Favicon (volitelně nahraďte vlastními) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%234f46e5'/%3E%3Ctext x='50' y='58' font-size='44' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3EF%3C/text%3E%3C/svg%3E" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Now:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Eurostile+Next:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
+  <link rel="stylesheet" href="themes_overrides.css?v=1">
+  <link rel="stylesheet" href="gradual-blur.css">
+  <link rel="stylesheet" href="pill-nav.css">
+  <link rel="stylesheet" href="animated-list.css">
+  <link rel="stylesheet" href="stepper.css">
+  <link rel="stylesheet" href="light-rays.css">
+</head>
+  <body>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <!-- Language Switcher -->
+    <nav class="lang-switch" aria-label="Language switcher">
+      <a href="#" data-lang="cs" class="lang-btn" aria-current="true">CZ</a>
+      <span>·</span>
+      <a href="#" data-lang="en" class="lang-btn">EN</a>
+    </nav>
+    <a href="#uvod" class="sr-only">Přeskočit na obsah</a>
+
+    <!-- Style Picker (stays at very top and scrolls normally) -->
+    <div class="style-pills" role="group" aria-label="Výběr stylu">
+      <button class="pill" data-theme="duveryhodny" aria-pressed="false">Důvěryhodný</button>
+      <button class="pill" data-theme="moderni" aria-pressed="true">Moderní</button>
+      <button class="pill" data-theme="minimalisticky" aria-pressed="false">Minimalistický</button>
+      <button class="pill" data-theme="luxusni" aria-pressed="false">Luxusní</button>
+      <button class="pill" data-theme="technicky" aria-pressed="false">Technický</button>
+      <button class="pill" data-theme="pratelsky" aria-pressed="false">Přátelský</button>
+      <button class="pill" data-theme="seriozni" aria-pressed="false">Seriózní</button>
+    </div>
+
+    <!-- PillNav will be inserted here by JavaScript -->
+
+    <main id="uvod" class="container">
+      <!-- Hero -->
+      <section class="hero reveal visible" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="col-text">
+            <span class="eyebrow">Web • Grafika • Marketing</span>
+            <h1 id="hero-title" class="headline"><span id="hero-verb">Tvořím</span> weby, které prodávají – spojení designu, marketingu a obchodu.</h1>
+            <div class="mini-social-proof"><div class="msp-item"><strong>+42&nbsp;%</strong><span>více poptávek</span></div><div class="msp-item"><strong>14&nbsp;dní</strong><span>k první verzi</span></div><div class="msp-item"><strong>100/100</strong><span>PageSpeed (MVP)</span></div></div><p class="subhead">Navrhnu a postavím moderní a rychlý web, sjednotím vizuální identitu a připravím marketingovou strategii, která dává smysl vašemu byznysu. Osobně, srozumitelně a s důrazem na výsledky.</p>
+            <div class="hero-actions">
+              <div class="button-group">
+                <a href="#kontakt" class="cta">Domluvit konzultaci zdarma</a>
+                <a href="#estimator-title" class="cta">Kalkulace</a>
+              </div>
+              <div class="chips" aria-label="Technologie a zkušenosti">
+                <span class="chip">Webflow</span>
+                <span class="chip">Shoptet</span>
+                <span class="chip">WordPress</span>
+                <span class="chip">Databáze & CRM</span>
+                <span class="chip">E-mailing</span>
+                <span class="chip">Sledování objednávek</span>
+                <span class="chip">SEO & Analytics</span>
+                <span class="chip">Vektorová grafika</span>
+                <span class="chip">Sociální sítě</span>
+              </div>
+            </div>
+            <p class="trustnote">Kombinuji obchodní praxi, grafiku a marketing. Výsledkem je web, který nejen vypadá dobře, ale skutečně prodává.</p>
+          </div>
+          <aside class="hero-card col-media" aria-label="Profil">
+            <div class="profile-card" id="heroProfileCard">
+              <div class="profile-card__background"></div>
+              <div class="profile-card__content">
+                <div class="profile-card__header">
+                  <div class="profile-card__avatar">
+                    <div class="profile-card__avatar-image" style="background-image: url('IMG_1620.webp'); background-size: cover; background-position: center;"></div>
+                    <div class="profile-card__status" data-status="online"></div>
+                  </div>
+                  <div class="profile-card__user-info">
+                    <h3 class="profile-card__name">Stefan Kyzek</h3>
+                    <p class="profile-card__title">Web Developer & Designer</p>
+                    <p class="profile-card__handle">@stefankyzek</p>
+                  </div>
+                </div>
+                <div class="profile-card__status-info">
+                  <div class="profile-card__status-dot"></div>
+                  <span class="profile-card__status-text">Online</span>
+                </div>
+                <button class="profile-card__contact-btn" onclick="window.location.href='tel:+420705920948'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  Zavolejte
+                </button>
+                <button class="profile-card__contact-btn profile-card__contact-btn--secondary" onclick="window.location.href='mailto:stefan@funweb.cz'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Napište
+                </button>
+                <div class="profile-card__info">
+                  <div class="profile-card__info-row">
+                    <span class="profile-card__info-label">Dostupnost</span>
+                    <span class="profile-card__info-value profile-card__info-value--online">Dostupný</span>
+                  </div>
+                  <div class="profile-card__info-row">
+                    <span class="profile-card__info-label">Odezva</span>
+                    <span class="profile-card__info-value">< 1 hodina</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="o-mne" class="reveal" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">O mně</span>
+              <h2 id="about-title">Rozumím lidem, produktům i podnikání</h2>
+            </div>
+          </div>
+          <div class="about">
+          <div class="avatar" aria-label="Fotografie">
+            <div>
+              <div style="font-weight:700; font-size:18px;">Stefan Kyzek</div>
+              <div class="muted">Freelancer – weby, databáze, marketing</div>
+              <div class="spacer"></div>
+              <div class="muted" style="max-width: 32ch; margin: 0 auto;">Specializuji se na kompletní webová řešení s databázemi a automatizací.</div>
+            </div>
+          </div>
+          <div>
+            <p class="lead">Prošel jsem různými prostředími – od prodeje Apple a Xiaomi produktů přes rodinné stavebniny až po tvorbu webů a marketing. Díky tomu rozumím reálným potřebám zákazníků i firmám různé velikosti.</p>
+            <p>V praxi kombinuji přístup obchodníka, designéra a marketéra. Navrhnu řešení, které je krásné i funkční. Zbytečně nekomplikuji – cílem je, abyste měli web a komunikaci, která přináší výsledky.</p>
+            <div class="chips" style="margin-top:12px;">
+              <span class="chip">Empatie k zákazníkům</span>
+              <span class="chip">Srozumitelná komunikace</span>
+              <span class="chip">Rychlé dodání</span>
+              <span class="chip">Dlouhodobá spolupráce</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section id="portfolio" class="portfolio reveal" aria-labelledby="portfolio-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Portfolio</span>
+        <h2 id="portfolio-title">Ukázky mé práce</h2>
+      </div>
+      <p class="lead">Projekty, které jsem vytvořil pro klienty. Každý web je jedinečný a přizpůsobený potřebám daného byznysu.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <video muted loop playsinline preload="none" poster="video-thumb.webp">
+          <source src="video_opt.mp4" type="video/mp4">
+          Váš prohlížeč nepodporuje video.
+        </video>
+        <h3>DetiDetem.eu</h3>
+      </article>
+      <article class="card">
+        <video muted loop playsinline preload="none" poster="video2-thumb.webp">
+          <source src="video2_opt.mp4" type="video/mp4">
+          Váš prohlížeč nepodporuje video.
+        </video>
+        <h3>Stavebniny Lhotský</h3>
+      </article>
+      <article class="card">
+        <video muted loop playsinline preload="none" poster="video3-thumb.webp">
+          <source src="video3-payments_opt.mp4" type="video/mp4">
+          Váš prohlížeč nepodporuje video.
+        </video>
+        <h3>SYSTEMWRAP</h3>
+      </article>
+      <article class="card">
+        <video muted loop playsinline preload="none" poster="video4-thumb.webp">
+          <source src="video4_opt.mp4" type="video/mp4">
+          Váš prohlížeč nepodporuje video.
+        </video>
+        <h3>MedoMed.cz</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+  <!-- Jak probíhá spolupráce -->
+  <section id="jak-spolupracujeme" class="collab-section" aria-labelledby="collab-title">
+    <div class="light-rays-container"></div>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Proces</span>
+          <h2 id="collab-title">Jak probíhá spolupráce</h2>
+        </div>
+        <p class="lead">Transparentně, krok za krokem. Bez dobré komunikace to nejde – průběžně sdílím práci, ptám se na detaily a vše ladíme společně.</p>
+      </div>
+
+        <div class="step-circle-container stepper-container">
+          <div class="step-indicator-row"></div>
+          
+          <div class="step-content-default">
+            <!-- KROK 1 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Úvodní konzultace</h3>
+              <p class="step-description">Projdeme vaše cíle, rozpočet a prioritu výstupů (web, e-mailing, databáze, grafika). Doporučím vhodnou platformu (Webflow, Shoptet, WordPress).</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Krátký call / meeting (30–45 min)</span></li>
+                <li><span class="dot"></span><span>Sepsání zadání a očekávání</span></li>
+                <li><span class="dot"></span><span>Předběžný odhad času a rozpočtu</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Výstup: jasný cíl a rozsah</div>
+                <button class="step-next-button" data-action="next">Další krok</button>
+              </div>
+            </div>
+
+            <!-- KROK 2 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Návrh a plán</h3>
+              <p class="step-description">Připravím strukturu webu/obsahu, wireframy a plán milníků. U tech projektů specifikace integrací (API, databáze, CRM).</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Informační architektura &amp; wireframe</span></li>
+                <li><span class="dot"></span><span>Roadmapa s milníky a termíny</span></li>
+                <li><span class="dot"></span><span>Technické požadavky a přístupy</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Výstup: odsouhlasený plán</div>
+                <button class="step-next-button" data-action="next">Další krok</button>
+              </div>
+            </div>
+
+            <!-- KROK 3 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Realizace</h3>
+              <p class="step-description">Tvořím web/grafiku/databázi a průběžně sdílím ukázky. Vítám krátkou zpětnou vazbu, aby práce plynula bez záseků.</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Průběžné náhledy (sdílené odkazy)</span></li>
+                <li><span class="dot"></span><span>Rychlé úpravy podle feedbacku</span></li>
+                <li><span class="dot"></span><span>Práce v iteracích (sprinty)</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Výstup: funkční prototyp/ukázky</div>
+                <button class="step-next-button" data-action="next">Další krok</button>
+              </div>
+            </div>
+
+            <!-- KROK 4 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Komunikace &amp; zpětná vazba</h3>
+              <p class="step-description">Bez komunikace to nejde. Domluvíme si rytmus (např. 1× týdně krátký sync) a jasné kanály (e-mail, Slack, Trello).</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Průběžné statusy bez omáčky</span></li>
+                <li><span class="dot"></span><span>Rychlé rozhodování na základě ukázek</span></li>
+                <li><span class="dot"></span><span>Transparentní přehled úkolů a termínů</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Výstup: žádná překvapení</div>
+                <button class="step-next-button" data-action="next">Další krok</button>
+              </div>
+            </div>
+
+            <!-- KROK 5 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Odevzdání &amp; spuštění</h3>
+              <p class="step-description">Finalizace, testy a nasazení. Předám přístupy a krátký manuál, případně zaškolím tým.</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Finální kontrola kvality (rychlost, SEO základ, bezpečnost)</span></li>
+                <li><span class="dot"></span><span>Přístupová práva &amp; dokumentace</span></li>
+                <li><span class="dot"></span><span>Check-list před spuštěním</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Výstup: projekt připraven k použití</div>
+                <button class="step-next-button" data-action="next">Další krok</button>
+              </div>
+            </div>
+
+            <!-- KROK 6 -->
+            <div class="step-content step-default">
+              <h3 class="step-title">Podpora &amp; rozvoj</h3>
+              <p class="step-description">Nabízím dlouhodobou správu, optimalizace a marketing (kampaně, e-mailing, automatizace), podle toho, co dává byznysově smysl.</p>
+              <ul class="step-list">
+                <li><span class="dot"></span><span>Pravidelné reporty a doporučení</span></li>
+                <li><span class="dot"></span><span>Iterativní vylepšování výkonu</span></li>
+                <li><span class="dot"></span><span>Rychlá technická podpora</span></li>
+              </ul>
+              <div class="step-actions">
+                <div class="step-chip"><span class="pulse"></span> Výstup: udržitelný růst</div>
+                <button class="step-next-button" data-action="complete">Dokončit</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+  </section>
+
+      <!-- Services -->
+      <section id="sluzby" class="reveal" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Služby</span>
+              <h2 id="services-title">Kompletní balíček</h2>
+            </div>
+            <p class="lead">Od strategie přes grafiku až po spuštění a měření. Můžete si vybrat jednotlivé služby, nebo je kombinovat do jednoho funkčního řešení.</p>
+          </div>
+          <div class="cards">
+          <article class="card" aria-labelledby="svc-web">
+            <h3 id="svc-web">Webové stránky</h3>
+            <p>Píšu weby ručně od nuly, nebo použiji platformy jako Webflow, Shoptet či WordPress – podle vašich cílů a rozpočtu.</p>
+            <ul>
+              <li>Responzivní a rychlé weby</li>
+              <li>SEO základ a analytika</li>
+              <li>Copy a struktura obsahu</li>
+              <li>Napojení na nástroje</li>
+            </ul>
+          </article>
+          <article class="card" aria-labelledby="svc-db">
+            <h3 id="svc-db">Databáze & CRM</h3>
+            <p>Vytvořím databázi na míru pro sledování objednávek, zákazníků a obchodních procesů.</p>
+            <ul>
+              <li>Sledování objednávek</li>
+              <li>Zákaznická databáze</li>
+              <li>Automatizace procesů</li>
+              <li>Reporty a statistiky</li>
+            </ul>
+          </article>
+          <article class="card" aria-labelledby="svc-email">
+            <h3 id="svc-email">E-mailing</h3>
+            <p>Kompletní e-mailové kampaně a automatizace pro růst vašeho byznysu.</p>
+            <ul>
+              <li>Newsletter a kampaně</li>
+              <li>Automatizace e-mailů</li>
+              <li>Segmentace zákazníků</li>
+              <li>Analýza otevření a kliků</li>
+            </ul>
+          </article>
+          <article class="card" aria-labelledby="svc-gfx">
+            <h3 id="svc-gfx">Grafika</h3>
+            <p>Vizuální identita, bannery, logotypy a vektorová grafika pro web i tisk.</p>
+            <ul>
+              <li>Logo a brand manuál</li>
+              <li>Bannery a sociální sítě</li>
+              <li>Vektorové ilustrace</li>
+              <li>Podklady pro tisk</li>
+            </ul>
+          </article>
+          <article class="card" aria-labelledby="svc-mkt">
+            <h3 id="svc-mkt">Marketing</h3>
+            <p>Praktické strategie, které dávají smysl vaší cílové skupině a rozpočtu.</p>
+            <ul>
+              <li>Obsah a sociální sítě</li>
+              <li>Reklama (Meta, Google)</li>
+              <li>E-mailing a automatizace</li>
+              <li>Konzultace a mentoring</li>
+            </ul>
+          </article>
+          <article class="card" aria-labelledby="svc-tech">
+            <h3 id="svc-tech">Technické služby</h3>
+            <p>Integrace, API, automatizace a další technické řešení pro váš byznys.</p>
+            <ul>
+              <li>API integrace</li>
+              <li>Automatizace procesů</li>
+              <li>Backup a bezpečnost</li>
+              <li>Technická podpora</li>
+            </ul>
+          </article>
+        </div>
+        <div class="bundle">
+          <strong>Balíček na klíč:</strong> sjednotím vizuální styl, postavím web a nastavím marketing tak, aby vše fungovalo jako celek.
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="reference" class="reveal" aria-labelledby="ref-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Reference</span>
+              <h2 id="ref-title">Co říkají klienti</h2>
+            </div>
+            <p class="lead">Reálné citace doplňte postupně. Níže je demo obsah.</p>
+          </div>
+          <div class="testimonials" aria-live="polite">
+          <div class="quotes" id="quotes">
+            <figure class="quote active">
+              <p>Spolupráce od prvního hovoru až po spuštění byla velmi profesionální a lidská. Web nám přináší nové poptávky.</p>
+              <figcaption class="meta">Jana, majitelka e‑shopu</figcaption>
+            </figure>
+            <figure class="quote">
+              <p>Líbí se mi, že řešení je jednoduché a dává obchodně smysl. Zbytečně se nic nekomplikovalo.</p>
+              <figcaption class="meta">Martin, stavební firma</figcaption>
+            </figure>
+            <figure class="quote">
+              <p>Dostali jsme jasný plán a hezký vizuál. Sociální sítě i reklama začaly konečně fungovat.</p>
+              <figcaption class="meta">Petra, službová značka</figcaption>
+            </figure>
+          </div>
+          <div class="quote-nav" id="quoteDots" role="tablist" aria-label="Přepínání referencí">
+            <button class="dot active" aria-label="1. reference" role="tab"></button>
+            <button class="dot" aria-label="2. reference" role="tab"></button>
+            <button class="dot" aria-label="3. reference" role="tab"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Estimator -->
+      <section class="reveal visible" aria-labelledby="estimator-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Kalkulace</span>
+              <h2 id="estimator-title">Orientační kalkulace</h2>
+            </div>
+            <p class="lead">Naklikejte si rozsah a ihned uvidíte orientační cenu i termín dodání.</p>
+          </div>
+          
+          <div class="cards" style="grid-template-columns: 1fr;">
+          <div class="card">
+            <h3>Rychlá kalkulace</h3>
+            <p>Naklikejte si rozsah a ihned uvidíte orientační cenu i termín dodání. Plná verze kalkulátoru obsahuje všechny možnosti a rozšíření.</p>
+            
+              <div class="estimator-preview" id="estimatorPreview" role="list">
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
+                <div class="estimator-preview-label">Starter (one-page)</div>
+                <div class="estimator-preview-price">od 14 900 Kč</div>
+                <div class="estimator-preview-days">7 dní</div>
+                <div class="estimator-preview-details" hidden>
+                  <ul>
+                    <li>1 stránka (one‑page) s sekcemi</li>
+                    <li>Základní SEO + analytika</li>
+                    <li>Responzivní design</li>
+                    <li>Mailing (zdarma v balíčku Starter)</li>
+                    <li>Napojení na kontaktní formulář</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
+                <div class="estimator-preview-label">Pro (5–8 stránek)</div>
+                <div class="estimator-preview-price">od 34 900 Kč</div>
+                <div class="estimator-preview-days">24 dní</div>
+                <div class="estimator-preview-details" hidden>
+                  <ul>
+                    <li>5–8 obsahových stránek</li>
+                    <li>Blog/novinky, šablony podstránek</li>
+                    <li>Rozšířená analytika a měření</li>
+                    <li>Rychlostní optimalizace</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="estimator-preview-item" role="button" tabindex="0" aria-expanded="false">
+                <div class="estimator-preview-label">Na klíč (custom + CMS)</div>
+                <div class="estimator-preview-price">od 69 000 Kč</div>
+                <div class="estimator-preview-days">45 dní</div>
+                <div class="estimator-preview-details" hidden>
+                  <ul>
+                    <li>Vlastní design + komponenty</li>
+                    <li>CMS pro správu obsahu</li>
+                    <li>Integrace nástrojů (CRM, mailing, API)</li>
+                    <li>Konzultace a školení</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="estimator-actions">
+              <a href="estimator_v2.html" class="cta primary">Otevřít plný kalkulátor</a>
+              <a href="#kontakt" class="cta secondary">Konzultovat</a>
+            </div>
+
+            <p class="estimator-disclaimer">
+              Uvedené ceny jsou orientační. Finální nabídku zpřesním po krátké konzultaci (15 min).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA - Brief Form -->
+      <section id="kontakt" class="reveal" aria-labelledby="brief-title">
+        <div class="container">
+          <div class="final-cta-container">
+            <div class="final-cta-text">
+              <span class="eyebrow">Rychlý start</span>
+              <h2 id="brief-title">Pojďme nastartovat váš web</h2>
+              <p class="lead">Vyplňte krátký dotazník (5 minut) a já se vám hned ozvu s termínem konzultace a návrhem postupu na míru.</p>
+              <p class="lead">Bez dobré komunikace to nejde – průběžně sdílím práci, ptám se na detaily a vše ladíme společně.</p>
+            </div>
+            
+            <div class="final-cta-card">
+            <div class="final-cta-content">
+              <h3>Jak to funguje?</h3>
+              <div class="steps-grid">
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-text">Vyplníte 6 jednoduchých kroků (5 minut)</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-text">Získáte okamžitý náhled webu podle vašich požadavků</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-text">Na schůzce pak upřesníme detaily</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="final-cta-actions">
+              <a href="brief_form.html" class="cta primary large">Domluvit konzultaci zdarma</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot">
+        <div>
+          © <span id="year"></span> Stefan Kyzek • Weby, databáze, marketing
+        </div>
+        <div class="socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="#">Behance</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JSON-LD Person schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Stefan Kyzek",
+        "jobTitle": "Freelancer – weby, databáze, marketing",
+        "url": "https://kyzek.cz/",
+        "email": "mailto:stefan@funweb.cz",
+        "telephone": "+420705920948",
+        "sameAs": [
+          "https://www.linkedin.com/in/uzivatelske-jmeno",
+          "https://www.instagram.com/uzivatelske_jmeno"
+        ]
+      }
+    </script>
+
+    <script defer src="script.js"></script>
+    <script defer src="themes_v2.js"></script>
+    <script defer src="aurora-effects.js"></script>
+    <script src="theme_debug.js"></script>
+
+    <!-- Mobile nav removed -->
+
+    <script>
+      // Smooth scroll for anchor links
+      (function(){
+        document.addEventListener('click', (e) => {
+          const link = e.target.closest('a[href^="#"]');
+          if (!link) return;
+          const href = link.getAttribute('href');
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      })();
+    </script>
+
+  <script id="THEME_FALLBACK">
+  // Fallback in case themes_v2.js didn't bind
+  (function(){
+    function setDataTheme(slug){
+      document.body.setAttribute('data-theme', slug);
+      try { localStorage.setItem('siteTheme', slug); } catch(e){}
+    }
+    function onClick(e){
+      var b = e.target.closest('.style-pills .pill');
+      if(!b) return;
+      var slug = b.getAttribute('data-theme');
+      if(window.setTheme){ window.setTheme(slug); }
+      else { setDataTheme(slug); }
+      document.querySelectorAll('.style-pills .pill').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+    }
+    document.addEventListener('click', onClick);
+    // init default if none
+    if(!document.body.getAttribute('data-theme')){
+      var slug = (function(){ try{return localStorage.getItem('siteTheme')||'moderni';}catch(e){return 'moderni';} })();
+      setDataTheme(slug);
+    }
+  })();
+  </script>
+  <script src="gradual-blur.js"></script>
+  <script src="pill-nav.js"></script>
+  <script src="animated-list.js"></script>
+  <script src="stepper.js"></script>
+  <script src="light-rays.js"></script>
+  
+  <!-- Portfolio responsive fallback script -->
+  <script>
+  (function(){
+    const root = document.querySelector('.portfolio-animated');
+    const scrollContainers = document.querySelectorAll('.scroll-list-container');
+    const portfolioElements = document.querySelectorAll('.portfolio-animated > *');
+
+    function forceMobileLayout(){
+      if (!root) return;
+      
+      // Force block layout (single column like mobile)
+      root.style.display = 'block';
+      root.style.padding = '18px';
+      root.style.width = '100%';
+      root.style.maxWidth = '100%';
+      root.style.minWidth = '0';
+      
+      // Force all children to full width and block display
+      portfolioElements.forEach(el => {
+        el.style.width = '100%';
+        el.style.maxWidth = '100%';
+        el.style.minWidth = '0';
+        el.style.margin = '0 0 20px 0';
+        el.style.display = 'block';
+      });
+      
+      // Force scroll containers
+      scrollContainers.forEach(c => {
+        c.style.maxHeight = 'none';
+        c.style.height = 'auto';
+        c.style.overflow = 'visible';
+        c.style.width = '100%';
+        c.style.maxWidth = '100%';
+      });
+      
+      // Force all child elements
+      const allChildren = root.querySelectorAll('*');
+      allChildren.forEach(el => {
+        el.style.minWidth = '0';
+        el.style.maxWidth = '100%';
+      });
+      
+      document.documentElement.classList.add('portfolio-stacked');
+    }
+
+    function restoreDesktopLayout(){
+      if (!root) return;
+      
+      // Restore desktop grid
+      root.style.display = 'grid';
+      root.style.gridTemplateColumns = '320px 1fr 320px';
+      root.style.gap = '24px';
+      root.style.padding = '24px';
+      
+      // Restore scroll containers
+      scrollContainers.forEach(c => {
+        c.style.maxHeight = '640px';
+        c.style.overflow = 'auto';
+      });
+      
+      document.documentElement.classList.remove('portfolio-stacked');
+    }
+
+    function adjustForMobile(){
+      if (window.innerWidth <= 1024){
+        forceMobileLayout();
+      } else {
+        restoreDesktopLayout();
+      }
+    }
+
+    // Run immediately and on resize
+    window.addEventListener('resize', adjustForMobile);
+    window.addEventListener('load', adjustForMobile);
+    adjustForMobile();
+    
+    // Debug function - call in console to check what's overriding
+    window.debugPortfolio = function(){
+      console.log('=== PORTFOLIO DEBUG ===');
+      console.log('Root element:', root);
+      console.log('Root computed styles:', window.getComputedStyle(root));
+      console.log('Scroll containers:', scrollContainers);
+      scrollContainers.forEach((c, i) => {
+        console.log(`Container ${i}:`, window.getComputedStyle(c));
+      });
+      console.log('Window width:', window.innerWidth);
+      console.log('Is mobile:', window.innerWidth <= 1024);
+    };
+  })();
+  </script>
+</body>
+  </html>
+
+

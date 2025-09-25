@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Configurator v2 – price estimate</title>
+  <link rel="stylesheet" href="estimator_v2.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="brand">
+          <span class="brand-badge">F</span>
+          <span>Stefan Kyzek</span>
+        </div>
+        <a href="index_en.html" class="back-link">← Back to homepage</a>
+      </div>
+      <h1>Website configurator</h1>
+      <p class="lead">Click your scope and instantly see an estimated price and delivery time.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <form id="configForm" class="card">
+      <div class="form-sections">
+        <!-- Basic setup -->
+        <section class="form-section">
+          <h3>Basic setup</h3>
+          <div class="grid">
+            <div class="field">
+              <label for="type">Website type</label>
+              <select id="type" name="type">
+                <option value="starter" data-base="14900" data-days="7">Starter (one‑page) – Mailing included</option>
+                <option value="pro" data-base="34900" data-days="24">Pro (5–8 pages)</option>
+                <option value="full" data-base="69000" data-days="45">Custom (tailored + CMS)</option>
+              </select>
+              <small>Select the base scope. The price adapts to the options below.</small>
+            </div>
+
+            <div class="field">
+              <label for="pages">Number of pages</label>
+              <input id="pages" name="pages" type="number" min="1" max="50" value="1" />
+              <small>For Starter, 1 page (one‑page) is common. Higher packages typically 5–8.</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features & add-ons -->
+        <section class="form-section">
+          <h3>Features & add‑ons</h3>
+          <div class="grid">
+            <div class="field">
+              <label for="cms">Content management (CMS)</label>
+              <select id="cms" name="cms">
+                <option value="none" data-cost="0">No CMS</option>
+                <option value="basic" data-cost="6000">Basic CMS (portfolio/news)</option>
+                <option value="blog" data-cost="12000">CMS + blog / case studies</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="copy">Copywriting</label>
+              <select id="copy" name="copy">
+                <option value="none" data-cost="0">I have content ready</option>
+                <option value="polish" data-cost="3900">Polish (up to 600 words)</option>
+                <option value="full" data-cost="9900">Complete copy (up to 2,000 words)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="seo">SEO & analytics</label>
+              <select id="seo" name="seo">
+                <option value="basic" data-cost="0">Basics (title/desc, H1–H3, GA4, conversions)</option>
+                <option value="plus" data-cost="4900">SEO+ (schema, internal links, 1× landing)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="integrations">Integrations</label>
+              <select id="integrations" name="integrations">
+                <option value="none" data-cost="0">None</option>
+                <option value="crm" data-cost="4900">CRM (Pipedrive/HubSpot)</option>
+                <option value="mailing" data-cost="0" selected>Mailing (free with Starter)</option>
+                <option value="both" data-cost="7900">CRM + Mailing</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Languages & speed -->
+        <section class="form-section">
+          <h3>Languages & delivery speed</h3>
+          <div class="grid">
+            <div class="field">
+              <label for="lang">Language versions</label>
+              <select id="lang" name="lang">
+                <option value="cz" data-mult="1">CZ only</option>
+                <option value="cz-en" data-mult="1.25">CZ + EN</option>
+                <option value="multi" data-mult="1.5">CZ + 2+ languages</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="speed">Delivery speed</label>
+              <select id="speed" name="speed">
+                <option value="standard" data-mult="1">Standard</option>
+                <option value="fast" data-mult="1.15">Faster (–25% time)</option>
+                <option value="express" data-mult="1.3">Express (–40% time)</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Care -->
+        <section class="form-section">
+          <h3>Hosting & care</h3>
+          <div class="field">
+            <label for="hosting">Hosting & maintenance</label>
+            <select id="hosting" name="hosting">
+              <option value="none" data-monthly="0">Own hosting</option>
+              <option value="mini" data-monthly="1900">Mini care (1.9k/mo)</option>
+              <option value="growth" data-monthly="4900">Growth (4.9k/mo)</option>
+            </select>
+            <small>Monthly plan is optional; we can agree after delivery.</small>
+          </div>
+        </section>
+
+        <!-- Extras -->
+        <section class="form-section">
+          <h3>Extras</h3>
+          <div class="addons">
+            <label class="addon-item">
+              <input type="checkbox" id="abtest" data-cost="2500" />
+              <div class="addon-content">
+                <div class="addon-title">A/B test of hero section</div>
+                <div class="addon-price">+2 500 CZK</div>
+              </div>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="photos" data-cost="4900" />
+              <div class="addon-content">
+                <div class="addon-title">Micro photos (coordination + 5 retouches)</div>
+                <div class="addon-price">+4 900 CZK</div>
+              </div>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="access" data-cost="2500" />
+              <div class="addon-content">
+                <div class="addon-title">Accessibility quick‑wins (WCAG)</div>
+                <div class="addon-price">+2 500 CZK</div>
+              </div>
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <div class="summary">
+        <div class="summary-card price-card">
+          <div class="summary-header">
+            <h4>Estimated price</h4>
+            <div class="price-badge">excl. VAT</div>
+          </div>
+          <div class="summary-value">
+            <span id="price">—</span> CZK
+          </div>
+          <div class="summary-note">
+            Monthly care: <strong id="monthly">0</strong> CZK/mo.
+          </div>
+        </div>
+        
+        <div class="summary-card deadline-card">
+          <div class="summary-header">
+            <h4>Estimated delivery</h4>
+          </div>
+          <div class="summary-value">
+            <span id="days">—</span> days
+          </div>
+          <div class="summary-note">
+            Delivery depends on the base type and selected speed.
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="toContact" class="cta primary">Get a free quote</button>
+        <button type="button" id="share" class="cta secondary">Share configuration</button>
+        <button type="button" id="reset" class="cta tertiary">Reset</button>
+      </div>
+
+      <p class="disclaimer">
+        Prices are indicative. I’ll refine the offer after a short intro call (15 min).
+      </p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 – Website Configurator funweb.</p>
+    </div>
+  </footer>
+
+  <script src="estimator_v2.js"></script>
+  <script>
+    (function(){
+      function applyTheme(slug){
+        document.body.setAttribute('data-theme', slug);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if(!meta){ meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+        var accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ea5e9';
+        meta.setAttribute('content', accent);
+      }
+      window.addEventListener('message', function(e){
+        var m = e.data || {};
+        if(m && m.type === 'theme' && typeof m.value === 'string'){ applyTheme(m.value); }
+      });
+      try{
+        var slug = localStorage.getItem('siteTheme') || 'moderni';
+        applyTheme(slug);
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
+
+

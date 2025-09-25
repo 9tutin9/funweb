@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brief received</title>
+  <style>
+    body{margin:0;padding:0;background:#f6f7f9;color:#111;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:640px;margin:0 auto;background:#fff}
+    .section{padding:24px 24px 16px}
+    h1{font-size:20px;margin:0 0 8px}
+    h2{font-size:16px;margin:16px 0 8px}
+    p{margin:0 0 12px;line-height:1.55}
+    .muted{color:#555}
+    .kv{border:1px solid #eee;border-radius:12px;padding:16px;margin:8px 0;background:#fafafa}
+    .row{display:flex;gap:12px;margin:6px 0}
+    .label{min-width:160px;color:#555}
+    .val{flex:1}
+    .footer{padding:16px 24px 32px;color:#666;font-size:12px}
+    .cta{display:inline-block;background:#111;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="section">
+      <h1>Thanks! Your brief was received ✅</h1>
+      <p class="muted">I’ll get back to you within 1 hour with a short intro call and next steps.</p>
+    </div>
+
+    <div class="section">
+      <h2>Brief summary</h2>
+      <div class="kv">
+        <div class="row"><div class="label">Brand</div><div class="val">{{brand}}</div></div>
+        <div class="row"><div class="label">Industry</div><div class="val">{{industry}}</div></div>
+        <div class="row"><div class="label">Goals</div><div class="val">{{goals}}</div></div>
+        <div class="row"><div class="label">Audience</div><div class="val">{{audience}}</div></div>
+        <div class="row"><div class="label">USP</div><div class="val">{{usp}}</div></div>
+        <div class="row"><div class="label">Style</div><div class="val">{{style_joined}}</div></div>
+        <div class="row"><div class="label">Primary color</div><div class="val">{{primaryColor}}</div></div>
+        <div class="row"><div class="label">Font vibe</div><div class="val">{{fontVibe}}</div></div>
+        <div class="row"><div class="label">Pages</div><div class="val">{{pagesCount}}</div></div>
+        <div class="row"><div class="label">Languages</div><div class="val">{{langs}}</div></div>
+        <div class="row"><div class="label">Site map</div><div class="val">{{siteMap}}</div></div>
+        <div class="row"><div class="label">Modules</div><div class="val">{{modules_joined}}</div></div>
+        <div class="row"><div class="label">Features / Notes</div><div class="val">{{features}}</div></div>
+        <div class="row"><div class="label">Budget</div><div class="val">{{budget}}</div></div>
+        <div class="row"><div class="label">Deadline</div><div class="val">{{deadline}}</div></div>
+        <div class="row"><div class="label">Additional notes</div><div class="val">{{notes}}</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Contact details</h2>
+      <div class="kv">
+        <div class="row"><div class="label">Name</div><div class="val">{{name}}</div></div>
+        <div class="row"><div class="label">Email</div><div class="val">{{email}}</div></div>
+        <div class="row"><div class="label">Phone</div><div class="val">{{phone}}</div></div>
+      </div>
+      <p>Need a change? Just reply to this email.</p>
+      <p style="margin-top:14px">
+        <a class="cta" href="https://funweb.cz" target="_blank" rel="noopener">Visit website</a>
+      </p>
+    </div>
+
+    <div class="footer">
+      Sent from the “Brief” form. Sender: {{owner_from}}.
+    </div>
+  </div>
+</body>
+</html>
+
+

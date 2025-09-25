@@ -37,6 +37,12 @@
 </head>
   <body>
     <canvas id="bg" aria-hidden="true"></canvas>
+    <!-- Language Switcher -->
+    <nav class="lang-switch" aria-label="Language switcher">
+      <a href="#" data-lang="cs" class="lang-btn" aria-current="true">CZ</a>
+      <span>·</span>
+      <a href="#" data-lang="en" class="lang-btn">EN</a>
+    </nav>
     <a href="#uvod" class="sr-only">Přeskočit na obsah</a>
 
     <!-- Style Picker (stays at very top and scrolls normally) -->
@@ -65,65 +71,32 @@
                 <a href="#kontakt" class="cta">Domluvit konzultaci zdarma</a>
                 <a href="#estimator-title" class="cta">Kalkulace</a>
               </div>
-              <div class="chips" aria-label="Technologie a zkušenosti">
-                <span class="chip">Webflow</span>
-                <span class="chip">Shoptet</span>
-                <span class="chip">WordPress</span>
-                <span class="chip">Databáze & CRM</span>
-                <span class="chip">E-mailing</span>
-                <span class="chip">Sledování objednávek</span>
-                <span class="chip">SEO & Analytics</span>
-                <span class="chip">Vektorová grafika</span>
-                <span class="chip">Sociální sítě</span>
-              </div>
             </div>
             <p class="trustnote">Kombinuji obchodní praxi, grafiku a marketing. Výsledkem je web, který nejen vypadá dobře, ale skutečně prodává.</p>
           </div>
-          <aside class="hero-card col-media" aria-label="Profil">
-            <div class="profile-card" id="heroProfileCard">
-              <div class="profile-card__background"></div>
-              <div class="profile-card__content">
-                <div class="profile-card__header">
-                  <div class="profile-card__avatar">
-                    <div class="profile-card__avatar-image" style="background-image: url('IMG_1620.webp'); background-size: cover; background-position: center;"></div>
-                    <div class="profile-card__status" data-status="online"></div>
-                  </div>
-                  <div class="profile-card__user-info">
-                    <h3 class="profile-card__name">Stefan Kyzek</h3>
-                    <p class="profile-card__title">Web Developer & Designer</p>
-                    <p class="profile-card__handle">@stefankyzek</p>
-                  </div>
-                </div>
-                <div class="profile-card__status-info">
-                  <div class="profile-card__status-dot"></div>
-                  <span class="profile-card__status-text">Online</span>
-                </div>
-                <button class="profile-card__contact-btn" onclick="window.location.href='tel:+420123456789'">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                  Zavolejte
-                </button>
-                <button class="profile-card__contact-btn profile-card__contact-btn--secondary" onclick="window.location.href='mailto:stefan@example.com'">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                  </svg>
-                  Napište
-                </button>
-                <div class="profile-card__info">
-                  <div class="profile-card__info-row">
-                    <span class="profile-card__info-label">Dostupnost</span>
-                    <span class="profile-card__info-value profile-card__info-value--online">Dostupný</span>
-                  </div>
-                  <div class="profile-card__info-row">
-                    <span class="profile-card__info-label">Odezva</span>
-                    <span class="profile-card__info-value">< 1 hodina</span>
-                  </div>
-                </div>
+          <div class="col-media">
+            <div class="tech-scroll-container" id="heroTechScroll">
+              <div class="tech-scroll-content">
+                <div class="tech-item">Webflow</div>
+                <div class="tech-item">Shoptet</div>
+                <div class="tech-item">WordPress</div>
+                <div class="tech-item">Databáze & CRM</div>
+                <div class="tech-item">E-mailing</div>
+                <div class="tech-item">Sledování objednávek</div>
+                <div class="tech-item">SEO & Analytics</div>
+                <div class="tech-item">Vektorová grafika</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="tech-item">Webflow</div>
+                <div class="tech-item">Shoptet</div>
+                <div class="tech-item">WordPress</div>
+                <div class="tech-item">Databáze & CRM</div>
+                <div class="tech-item">E-mailing</div>
+                <div class="tech-item">Sledování objednávek</div>
+                <div class="tech-item">SEO & Analytics</div>
+                <div class="tech-item">Vektorová grafika</div>
               </div>
             </div>
-          </aside>
+          </div>
         </div>
       </section>
 
@@ -137,12 +110,47 @@
             </div>
           </div>
           <div class="about">
-          <div class="avatar" aria-label="Fotografie">
-            <div>
-              <div style="font-weight:700; font-size:18px;">Stefan Kyzek</div>
-              <div class="muted">Freelancer – weby, databáze, marketing</div>
-              <div class="spacer"></div>
-              <div class="muted" style="max-width: 32ch; margin: 0 auto;">Specializuji se na kompletní webová řešení s databázemi a automatizací.</div>
+          <div class="profile-card" id="aboutProfileCard">
+            <div class="profile-card__background"></div>
+            <div class="profile-card__content">
+              <div class="profile-card__header">
+                <div class="profile-card__avatar">
+                  <div class="profile-card__avatar-image" style="background-image: url('IMG_1620.webp'); background-size: cover; background-position: center;"></div>
+                  <div class="profile-card__status" data-status="online"></div>
+                </div>
+                <div class="profile-card__user-info">
+                  <h3 class="profile-card__name">Stefan Kyzek</h3>
+                  <p class="profile-card__title">Web Developer & Designer</p>
+                  <p class="profile-card__handle">@stefankyzek</p>
+                </div>
+              </div>
+              <div class="profile-card__status-info">
+                <div class="profile-card__status-dot"></div>
+                <span class="profile-card__status-text">Online</span>
+              </div>
+              <button class="profile-card__contact-btn" onclick="window.location.href='tel:+420705920948'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Zavolejte
+              </button>
+              <button class="profile-card__contact-btn profile-card__contact-btn--secondary" onclick="window.location.href='mailto:stefan@funweb.cz'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Napište
+              </button>
+              <div class="profile-card__info">
+                <div class="profile-card__info-row">
+                  <span class="profile-card__info-label">Dostupnost</span>
+                  <span class="profile-card__info-value profile-card__info-value--online">Dostupný</span>
+                </div>
+                <div class="profile-card__info-row">
+                  <span class="profile-card__info-label">Odezva</span>
+                  <span class="profile-card__info-value">< 1 hodina</span>
+                </div>
+              </div>
             </div>
           </div>
           <div>
@@ -389,38 +397,7 @@
         </div>
       </section>
 
-      <!-- Testimonials -->
-      <section id="reference" class="reveal" aria-labelledby="ref-title">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <span class="eyebrow">Reference</span>
-              <h2 id="ref-title">Co říkají klienti</h2>
-            </div>
-            <p class="lead">Reálné citace doplňte postupně. Níže je demo obsah.</p>
-          </div>
-          <div class="testimonials" aria-live="polite">
-          <div class="quotes" id="quotes">
-            <figure class="quote active">
-              <p>Spolupráce od prvního hovoru až po spuštění byla velmi profesionální a lidská. Web nám přináší nové poptávky.</p>
-              <figcaption class="meta">Jana, majitelka e‑shopu</figcaption>
-            </figure>
-            <figure class="quote">
-              <p>Líbí se mi, že řešení je jednoduché a dává obchodně smysl. Zbytečně se nic nekomplikovalo.</p>
-              <figcaption class="meta">Martin, stavební firma</figcaption>
-            </figure>
-            <figure class="quote">
-              <p>Dostali jsme jasný plán a hezký vizuál. Sociální sítě i reklama začaly konečně fungovat.</p>
-              <figcaption class="meta">Petra, službová značka</figcaption>
-            </figure>
-          </div>
-          <div class="quote-nav" id="quoteDots" role="tablist" aria-label="Přepínání referencí">
-            <button class="dot active" aria-label="1. reference" role="tab"></button>
-            <button class="dot" aria-label="2. reference" role="tab"></button>
-            <button class="dot" aria-label="3. reference" role="tab"></button>
-          </div>
-        </div>
-      </section>
+      
 
       <!-- Estimator -->
       <section class="reveal visible" aria-labelledby="estimator-title">
@@ -552,8 +529,8 @@
         "name": "Stefan Kyzek",
         "jobTitle": "Freelancer – weby, databáze, marketing",
         "url": "https://kyzek.cz/",
-        "email": "mailto:stefan@kyzek.cz",
-        "telephone": "+420123456789",
+        "email": "mailto:stefan@funweb.cz",
+        "telephone": "+420705920948",
         "sameAs": [
           "https://www.linkedin.com/in/uzivatelske-jmeno",
           "https://www.instagram.com/uzivatelske_jmeno"
@@ -612,6 +589,7 @@
   <script src="animated-list.js"></script>
   <script src="stepper.js"></script>
   <script src="light-rays.js"></script>
+  
   
   <!-- Portfolio responsive fallback script -->
   <script>
@@ -703,6 +681,8 @@
     };
   })();
   </script>
+  <script src="lang.js"></script>
+  <script src="aurora-webgl.js"></script>
 </body>
   </html>
 

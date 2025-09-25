@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Brief – Funweb</title>
+  <link rel="stylesheet" href="brief_form.css">
+  <link rel="stylesheet" href="themes_v2.css">
+  <link rel="stylesheet" href="themes_pro.css">
+</head>
+<body>
+<header class="site-header container">
+  <a href="index_en.html" class="back-link">← Back to homepage</a>
+  <h1>Project Brief</h1>
+  <p class="lead">Help me understand how your website should feel. Based on your answers I’ll prepare a <strong>one‑page preview</strong> for our first call.</p>
+</header>
+
+<main class="container">
+  <form id="briefForm" novalidate class="card">
+    <!-- Progress -->
+    <div class="progress"><div class="bar" id="progressBar"></div></div>
+
+    <!-- Step 1: Basics -->
+    <section class="step active" data-step="1">
+      <h2>1) Project basics</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="brand">Company / brand name*</label>
+          <input id="brand" name="brand" required placeholder="Acme Inc.">
+          <small>Exactly as it should appear on the website.</small>
+        </div>
+        <div class="field">
+          <label for="industry">Industry*</label>
+          <input id="industry" name="industry" required placeholder="Construction, services, SaaS…">
+        </div>
+        <div class="field">
+          <label for="goals">Main website goal*</label>
+          <select id="goals" name="goals" required>
+            <option value="">Select…</option>
+            <option>Generate leads</option>
+            <option>Sales (e‑shop)</option>
+            <option>Services / brand presentation</option>
+            <option>Hiring</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="audience">Target audience</label>
+          <input id="audience" name="audience" placeholder="Who should use the site?">
+        </div>
+        <div class="field full">
+          <label for="usp">What makes your offer unique?</label>
+          <textarea id="usp" name="usp" rows="2" placeholder="1–3 sentences, key benefits"></textarea>
+        </div>
+      </div>
+      <div class="actions"><button type="button" class="next">Continue</button></div>
+    </section>
+
+    <!-- Step 2: Visual style -->
+    <section class="step" data-step="2">
+      <h2>2) Style & visuals</h2>
+      <div class="grid">
+        <div class="field full">
+          <label>How should the site feel? (choose up to 5 adjectives)</label>
+          <div class="chips" id="styleChips" aria-label="Style adjectives">
+            <button type="button" data-val="Trustworthy">Trustworthy</button>
+            <button type="button" data-val="Modern">Modern</button>
+            <button type="button" data-val="Minimalist">Minimalist</button>
+            <button type="button" data-val="Luxurious">Luxurious</button>
+            <button type="button" data-val="Technical">Technical</button>
+            <button type="button" data-val="Friendly">Friendly</button>
+            <button type="button" data-val="Playful">Playful</button>
+            <button type="button" data-val="Traditional">Traditional</button>
+            <button type="button" data-val="Serious">Serious</button>
+            <button type="button" data-val="Dynamic">Dynamic</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="primaryColor">Primary color</label>
+          <input type="color" id="primaryColor" name="primaryColor" value="#0ea5e9">
+        </div>
+        <div class="field">
+          <label for="fontVibe">Typography</label>
+          <select id="fontVibe" name="fontVibe">
+            <option value="system-ui">Modern sans‑serif</option>
+            <option value="serif">Elegant serif</option>
+            <option value="mono">Technical monospace</option>
+            <option value="rounded">Friendly rounded</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="inspo">Inspiration links (webs, dribbble, behance…)</label>
+          <textarea id="inspo" name="inspo" rows="2" placeholder="https://… (one link per line)"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Back</button>
+        <button type="button" class="next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 3: Content & structure -->
+    <section class="step" data-step="3">
+      <h2>3) Content & structure</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="pagesCount">Estimated page count</label>
+          <input id="pagesCount" type="number" min="1" max="50" value="1">
+        </div>
+        <div class="field">
+          <label for="langs">Language versions</label>
+          <select id="langs">
+            <option>CZ</option>
+            <option>CZ + EN</option>
+            <option>Multiple</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="siteMap">Which sections/pages do you expect?</label>
+          <textarea id="siteMap" rows="3" placeholder="Home, Services, About, Case studies, Contact…"></textarea>
+        </div>
+        <div class="field full">
+          <label for="contentState">Do you have copy/photos ready?</label>
+          <textarea id="contentState" rows="2" placeholder="What’s ready and what do you need help with?"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Back</button>
+        <button type="button" class="next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 4: Features -->
+    <section class="step" data-step="4">
+      <h2>4) Features</h2>
+      <div class="grid">
+        <div class="field full">
+          <label>Select required modules</label>
+          <div class="checks">
+            <label><input type="checkbox" name="module" value="Contact form"> Contact form</label>
+            <label><input type="checkbox" name="module" value="Cart / product listing"> Cart / product listing</label>
+            <label><input type="checkbox" name="module" value="Payment gateway + order tracking (up to 20 products)"> Payment gateway + order tracking (up to 20 products)</label>
+            <label><input type="checkbox" name="module" value="More than 20 products"> More than 20 products</label>
+            <label><input type="checkbox" name="module" value="Admin panel (orders management)"> Admin panel (orders management)</label>
+            <label><input type="checkbox" name="module" value="Other integration (CRM, mailing…)"> Other integration (CRM, mailing…)</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label for="features">Feature/integration details</label>
+          <textarea id="features" rows="2" placeholder="How should inquiry / cart / connection work?"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Back</button>
+        <button type="button" class="next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 5: Budget & timeline -->
+    <section class="step" data-step="5">
+      <h2>5) Budget & timeline</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="budget">Approximate budget</label>
+          <select id="budget">
+            <option>up to 20 000 CZK</option>
+            <option>20–40 000 CZK</option>
+            <option>40–80 000 CZK</option>
+            <option>80 000+ CZK</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="deadline">Deadline</label>
+          <select id="deadline">
+            <option>Within 2 weeks</option>
+            <option>Within 1 month</option>
+            <option>2–3 months</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="2" placeholder="Anything else I should know"></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="prev">Back</button>
+        <button type="button" class="next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 6: Contact & submit -->
+    <section class="step" data-step="6">
+      <h2>6) Contact details</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="name">Name*</label>
+          <input id="name" required placeholder="John Doe">
+        </div>
+        <div class="field">
+          <label for="email">Email*</label>
+          <input id="email" type="email" required placeholder="name@company.com">
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" placeholder="+1 555 123 4567">
+        </div>
+        <div class="field full">
+          <label><input id="consent" type="checkbox" required> I agree with processing my data for inquiry purposes.</label>
+        </div>
+      </div>
+
+      <div class="summaryBox" id="summaryBox">
+        <div class="pdf-header">
+          <div class="brand-block">
+            <div class="logo-mark" id="sLogo">SK</div>
+            <div class="brand-meta">
+              <h3 id="sBrand">Project name</h3>
+              <p id="sMeta" class="muted">Industry • Goal • Language</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pdf-body">
+          <section class="pdf-section">
+            <h4>Visuals</h4>
+            <div class="chips-view" id="sStyle"></div>
+            <div class="two-col">
+              <div><span class="muted">Primary color</span><div class="color-pill" id="sColor"></div></div>
+              <div><span class="muted">Typography</span><div id="sFont">—</div></div>
+            </div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Content & structure</h4>
+            <div class="two-col">
+              <div><span class="muted">Page count</span><div id="sPages">—</div></div>
+              <div><span class="muted">Languages</span><div id="sLangs">—</div></div>
+            </div>
+            <div class="list" id="sMap"></div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Features</h4>
+            <div class="list" id="sModules"></div>
+            <div class="muted" id="sFeatNote"></div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Budget & timeline</h4>
+            <div class="two-col">
+              <div><span class="muted">Budget</span><div id="sBudget">—</div></div>
+              <div><span class="muted">Deadline</span><div id="sDeadline">—</div></div>
+            </div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Notes</h4>
+            <div id="sNotes">—</div>
+          </section>
+
+          <section class="pdf-section">
+            <h4>Next step</h4>
+            <p>I’ll get back to you with times for a short intro call. I’ll prepare a one‑page preview based on this brief.</p>
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #ddd;">
+              <h4 style="margin-bottom: 10px;">Contact</h4>
+              <div style="color: #333;">
+                <strong>Stefan Kyzek</strong><br>
+                stefan@funweb.cz<br>
+                +420 705 920 948
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="prev">Back</button>
+        <button type="button" id="btnCopy" class="btn">Copy summary as text</button>
+        <button type="button" id="btnPDF" class="btn">Download PDF</button>
+        <button type="submit" class="cta">Send inquiry</button>
+      </div>
+      <p class="tiny">After submission, you’ll receive a recap by email (and so will I).</p>
+    </section>
+  </form>
+</main>
+
+<footer class="site-footer container">
+  <p>© 2025 – Funweb Brief Form.</p>
+</footer>
+
+<script src="brief_form.js"></script>
+<script>
+  (function(){
+    function applyTheme(slug){
+      document.body.setAttribute('data-theme', slug);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if(!meta){ meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+      var accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ea5e9';
+      meta.setAttribute('content', accent);
+    }
+    window.addEventListener('message', function(e){
+      var m = e.data || {};
+      if(m && m.type === 'theme' && typeof m.value === 'string'){ applyTheme(m.value); }
+    });
+    try{
+      var slug = localStorage.getItem('siteTheme') || 'moderni';
+      applyTheme(slug);
+    }catch(e){}
+  })();
+</script>
+</body>
+</html>
+

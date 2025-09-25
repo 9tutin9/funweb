@@ -9,7 +9,7 @@ html, body {
 /* Force navbar to be visible */
 body {
   position: relative;
-  padding-bottom: 80px; /* Space for navbar */
+  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); /* Space for navbar + iOS safe area */
 }
 
 /* Keep navbar visible on mobile */
@@ -36,6 +36,7 @@ body {
   display: flex !important;
   justify-content: center;
   padding: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   pointer-events: none;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
   backdrop-filter: blur(20px);

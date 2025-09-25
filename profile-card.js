@@ -109,14 +109,15 @@ class ProfileCard {
     // Update response time
     const responseValue = this.element.querySelector('.profile-card__info-value:not(.profile-card__info-value--online)');
     if (responseValue) {
-      switch (this.status) {
-        case 'online':
-          responseValue.textContent = '< 1 hodina';
-          break;
-        case 'away':
-          responseValue.textContent = '1-2 hodiny';
-          break;
-        case 'offline':
+    const isEN = document.documentElement.lang === 'en' || document.body.getAttribute('data-lang') === 'en';
+    switch (this.status) {
+      case 'online':
+        responseValue.textContent = isEN ? '< 1 hour' : '< 1 hodina';
+        break;
+      case 'away':
+        responseValue.textContent = isEN ? '1-2 hours' : '1-2 hodiny';
+        break;
+      case 'offline':
           responseValue.textContent = '1-2 dny';
           break;
       }

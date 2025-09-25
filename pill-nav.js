@@ -145,7 +145,8 @@ class PillNav {
     this.container.appendChild(mobileMenu);
     
     // Add to page - find the insertion point
-    const insertionPoint = document.querySelector('main#uvod').previousElementSibling;
+    const mainElement = document.querySelector('main#uvod') || document.querySelector('main#home');
+    const insertionPoint = mainElement ? mainElement.previousElementSibling : null;
     if (insertionPoint) {
       insertionPoint.insertAdjacentElement('afterend', this.container);
       console.log('PillNav inserted after:', insertionPoint);
@@ -558,17 +559,29 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
   
+  // Detect language from HTML lang attribute
+  const isEnglish = document.documentElement.lang === 'en';
+  
+  // Navigation items based on language
+  const navItems = isEnglish ? [
+    { label: 'About me', href: '#about' },
+    { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Process', href: '#process' },
+    { label: 'Services', href: '#services' },
+    { label: 'Calculator', href: '#estimator-title' },
+    { label: 'Contact', href: '#contact' }
+  ] : [
+    { label: 'O mně', href: '#o-mne' },
+    { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Proces', href: '#jak-spolupracujeme' },
+    { label: 'Služby', href: '#sluzby' },
+    { label: 'Kalkulace', href: '#estimator-title' },
+    { label: 'Kontakt', href: '#kontakt' }
+  ];
+  
   const pillNav = new PillNav({
-    items: [
-      { label: 'O mně', href: '#o-mne' },
-      { label: 'Portfolio', href: '#portfolio' },
-      { label: 'Proces', href: '#jak-spolupracujeme' },
-      { label: 'Služby', href: '#sluzby' },
-      { label: 'Kalkulace', href: '#estimator-title' },
-      { label: 'Reference', href: '#reference' },
-      { label: 'Kontakt', href: '#kontakt' }
-    ],
-    activeHref: window.location.hash || '#o-mne',
+    items: navItems,
+    activeHref: window.location.hash || (isEnglish ? '#about' : '#o-mne'),
     baseColor: '#000000',
     pillColor: '#ffffff',
     hoveredPillTextColor: '#000000',

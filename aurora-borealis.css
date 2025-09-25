@@ -1,0 +1,191 @@
+/* Aurora Borealis Background Effect for Moderni Theme */
+.aurora-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* Behind content wrappers but above #bg */
+  overflow: hidden;
+}
+
+.aurora-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  filter: blur(28px) saturate(110%);
+}
+
+.aurora-layer-1 {
+  background: 
+    radial-gradient(ellipse 140% 80% at 50% -10%, rgba(82, 216, 255, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 120% 70% at 10% 10%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 85% at 90% 25%, rgba(34, 211, 238, 0.16) 0%, transparent 65%);
+  background-size: 140% 140%, 160% 160%, 150% 150%;
+  background-repeat: no-repeat;
+  animation: aurora1 22s ease-in-out infinite;
+}
+
+.aurora-layer-2 {
+  background: 
+    radial-gradient(ellipse 120% 85% at 80% -5%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 110% 90% at 0% 35%, rgba(6, 182, 212, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 130% 70% at 100% 70%, rgba(34, 211, 238, 0.12) 0%, transparent 75%);
+  background-size: 160% 160%, 150% 150%, 160% 160%;
+  background-repeat: no-repeat;
+  animation: aurora2 26s ease-in-out infinite reverse;
+}
+
+.aurora-layer-3 {
+  background: 
+    radial-gradient(ellipse 140% 70% at 50% 0%, rgba(82, 216, 255, 0.16) 0%, transparent 58%),
+    radial-gradient(ellipse 110% 120% at 60% 85%, rgba(124, 58, 237, 0.14) 0%, transparent 74%),
+    radial-gradient(ellipse 100% 60% at 35% 15%, rgba(34, 211, 238, 0.1) 0%, transparent 78%);
+  background-size: 150% 150%, 150% 150%, 140% 140%;
+  background-repeat: no-repeat;
+  animation: aurora3 32s ease-in-out infinite;
+}
+
+.aurora-layer-4 {
+  background: 
+    radial-gradient(ellipse 180% 110% at 50% -10%, rgba(82, 216, 255, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 140% 90% at 20% 110%, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+  background-size: 160% 160%, 160% 160%;
+  background-repeat: no-repeat;
+  animation: aurora4 34s ease-in-out infinite;
+}
+
+.aurora-layer-5 {
+  background: 
+    radial-gradient(ellipse 150% 90% at 85% 15%, rgba(6, 182, 212, 0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 110% 140% at 10% 85%, rgba(34, 211, 238, 0.12) 0%, transparent 75%),
+    radial-gradient(ellipse 130% 70% at 65% 55%, rgba(124, 58, 237, 0.1) 0%, transparent 80%);
+  background-size: 160% 160%, 150% 150%, 160% 160%;
+  background-repeat: no-repeat;
+  animation: aurora5 30s ease-in-out infinite reverse;
+}
+
+/* Animations - smoother, more organic */
+@keyframes aurora1 {
+  0%, 100% { 
+    transform: translateX(-18%) translateY(-10%) scale(1.05) rotate(1deg);
+    opacity: 0.35;
+  }
+  25% { 
+    transform: translateX(10%) translateY(5%) scale(1.15) rotate(-0.5deg);
+    opacity: 0.65;
+  }
+  50% { 
+    transform: translateX(5%) translateY(-12%) scale(0.95) rotate(2deg);
+    opacity: 0.45;
+  }
+  75% { 
+    transform: translateX(-14%) translateY(10%) scale(1.1) rotate(-1deg);
+    opacity: 0.55;
+  }
+}
+
+@keyframes aurora2 {
+  0%, 100% { 
+    transform: translateX(14%) translateY(16%) scale(0.92) rotate(-2deg);
+    opacity: 0.28;
+  }
+  33% { 
+    transform: translateX(-10%) translateY(-4%) scale(1.2) rotate(1.5deg);
+    opacity: 0.55;
+  }
+  66% { 
+    transform: translateX(16%) translateY(14%) scale(1.05) rotate(-0.8deg);
+    opacity: 0.38;
+  }
+}
+
+@keyframes aurora3 {
+  0%, 100% { 
+    transform: translateY(-22%) scale(1.12) rotate(0.8deg);
+    opacity: 0.46;
+  }
+  20% { 
+    transform: translateY(9%) scale(0.95) rotate(-1.5deg);
+    opacity: 0.28;
+  }
+  40% { 
+    transform: translateY(-14%) scale(1.25) rotate(2.5deg);
+    opacity: 0.66;
+  }
+  60% { 
+    transform: translateY(6%) scale(1.06) rotate(-0.8deg);
+    opacity: 0.36;
+  }
+  80% { 
+    transform: translateY(-18%) scale(0.92) rotate(1.2deg);
+    opacity: 0.54;
+  }
+}
+
+@keyframes aurora4 {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.38;
+  }
+  25% { 
+    transform: scale(1.2) rotate(1.5deg);
+    opacity: 0.64;
+  }
+  50% { 
+    transform: scale(0.95) rotate(-0.8deg);
+    opacity: 0.46;
+  }
+  75% { 
+    transform: scale(1.08) rotate(0.8deg);
+    opacity: 0.56;
+  }
+}
+
+@keyframes aurora5 {
+  0%, 100% { 
+    transform: translateX(10%) translateY(12%) scale(1.06) rotate(-1.5deg);
+    opacity: 0.28;
+  }
+  30% { 
+    transform: translateX(-16%) translateY(-8%) scale(0.92) rotate(2.5deg);
+    opacity: 0.56;
+  }
+  60% { 
+    transform: translateX(14%) translateY(16%) scale(1.28) rotate(-1deg);
+    opacity: 0.36;
+  }
+  90% { 
+    transform: translateX(-5%) translateY(5%) scale(1.15) rotate(1.8deg);
+    opacity: 0.44;
+  }
+}
+
+/* Gentle glow near horizon for more aurora realism */
+.aurora-horizon {
+  position: absolute;
+  bottom: -10vh;
+  left: -10vw;
+  right: -10vw;
+  height: 40vh;
+  background: radial-gradient(ellipse 120% 60% at 50% 100%, rgba(82, 216, 255, 0.18) 0%, rgba(124, 58, 237, 0.12) 40%, transparent 70%);
+  filter: blur(40px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Only show for moderni theme */
+body:not([data-theme="moderni"]) .aurora-container {
+  display: none !important;
+}
+
+/* Ensure it doesn't interfere with content */
+.aurora-container * {
+  pointer-events: none;
+}
