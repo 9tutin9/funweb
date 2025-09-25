@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const langButtons = document.querySelectorAll('.lang-btn');
   const currentPath = window.location.pathname;
   const isEnglishPage = currentPath.includes('index_en.html');
+  
+  // Get saved language preference first
+  const savedLang = localStorage.getItem('site_lang_pref');
 
   // Function to set active language button
   const setActiveLangButton = (lang) => {
@@ -282,6 +285,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const lang = button.dataset.lang;
       
+      // Always save language preference globally
+      localStorage.setItem('site_lang_pref', lang);
+      
       if (lang === 'en' && !isEnglishPage) {
         // Redirect to English page
         window.location.href = 'index_en.html';
@@ -292,13 +298,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Apply translations on current page
         applyTranslations(lang);
         setActiveLangButton(lang);
-        localStorage.setItem('site_lang_pref', lang);
       }
     });
   });
 
   // Auto-detect language on first visit
-  if (!localStorage.getItem('site_lang_pref')) {
+  if (!savedLang) {
     // Simple geo detection - redirect non-CZ/SK users to English
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const isCzSk = timezone.includes('Prague') || timezone.includes('Bratislava') || 
@@ -310,15 +315,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Set initial language
-  const savedLang = localStorage.getItem('site_lang_pref') || 'cs';
-  if (isEnglishPage) {
-    applyTranslations('en');
-    setActiveLangButton('en');
+  // Set initial language based on saved preference or page
+  let initialLang = savedLang || 'cs';
+  
+  // If we have a saved preference, use it regardless of current page
+  if (savedLang) {
+    if (savedLang === 'en' && !isEnglishPage) {
+      // Redirect to English page if preference is EN but we're on CZ page
+      window.location.href = 'index_en.html';
+      return;
+    } else if (savedLang === 'cs' && isEnglishPage) {
+      // Redirect to Czech page if preference is CS but we're on EN page
+      window.location.href = 'index.html';
+      return;
+    }
+    initialLang = savedLang;
   } else {
-    applyTranslations(savedLang);
-    setActiveLangButton(savedLang);
+    // No saved preference, use page-based detection
+    initialLang = isEnglishPage ? 'en' : 'cs';
   }
+  
+  applyTranslations(initialLang);
+  setActiveLangButton(initialLang);
 
   // Update year in footer
   const yearElement = document.getElementById('year');

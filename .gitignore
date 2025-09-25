@@ -81,3 +81,19 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# Backup and temporary files
+backup/
+backup_media/
+optimized/
+*-demo.html
+layout_snippet.html
+optimize_media.sh
+patch-example.diff
+media-replace-snippets.md
+README_OPTIMIZE.md
+README_hotfix.txt
+theme_debug.js
+translations_cz_en.csv
+next-env.d.ts
+package-lock.json
