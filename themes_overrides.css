@@ -1139,7 +1139,7 @@ body[data-theme="pratelsky"] {
 /* Mobile adjustments for language switcher */
 @media (max-width: 768px) {
   .lang-switch {
-    top: 20px; /* Keep same position as desktop */
+    top: 60px; /* Move down for mobile */
     right: 15px;
     padding: 6px 12px;
     font-size: 12px;
