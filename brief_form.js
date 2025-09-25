@@ -238,6 +238,59 @@
     }
   });
 
+  // Show notification function
+  function showNotification(message, type = "info") {
+    // Remove existing notifications
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#46bde5'};
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      z-index: 1000;
+      animation: slideIn 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease-in';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  // Add CSS for notifications
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+
   // Init
   showStep(0);
+  
+  // Show welcome message
+  setTimeout(() => {
+    const lang = (document.documentElement.getAttribute('lang')||'cs').toLowerCase().startsWith('en')?'en':'cs';
+    const message = lang === 'en' 
+      ? "Welcome to the brief form! All changes are saved automatically." 
+      : "Vítejte v brief formuláři! Všechny změny se ukládají automaticky.";
+    showNotification(message, "info");
+  }, 1000);
 })();

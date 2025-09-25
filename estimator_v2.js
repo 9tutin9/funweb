@@ -197,7 +197,11 @@
       
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(url).then(() => {
-          showNotification("Odkaz na konfiguraci zkopírován do schránky.", "success");
+          const isEnglish = document.documentElement.lang === 'en' || window.location.pathname.includes('_en');
+          const message = isEnglish 
+            ? "Configuration link copied to clipboard." 
+            : "Odkaz na konfiguraci zkopírován do schránky.";
+          showNotification(message, "success");
         }).catch(() => {
           fallbackShare(url);
         });
@@ -219,9 +223,17 @@
     
     try {
       document.execCommand('copy');
-      showNotification("Odkaz zkopírován do schránky.", "success");
+      const isEnglish = document.documentElement.lang === 'en' || window.location.pathname.includes('_en');
+      const message = isEnglish 
+        ? "Link copied to clipboard." 
+        : "Odkaz zkopírován do schránky.";
+      showNotification(message, "success");
     } catch (err) {
-      showNotification("Zkopírujte si odkaz: " + url, "info");
+      const isEnglish = document.documentElement.lang === 'en' || window.location.pathname.includes('_en');
+      const message = isEnglish 
+        ? "Copy the link: " + url 
+        : "Zkopírujte si odkaz: " + url;
+      showNotification(message, "info");
     }
     
     document.body.removeChild(textarea);
@@ -229,11 +241,19 @@
 
   function resetForm() {
     try {
-      if (confirm("Opravdu chcete resetovat všechny hodnoty?")) {
+      const isEnglish = document.documentElement.lang === 'en' || window.location.pathname.includes('_en');
+      const confirmMessage = isEnglish 
+        ? "Do you really want to reset all values?" 
+        : "Opravdu chcete resetovat všechny hodnoty?";
+      if (confirm(confirmMessage)) {
         form.reset();
         calculate();
         history.replaceState(null, "", location.pathname);
-        showNotification("Formulář byl resetován.", "info");
+        const isEnglish = document.documentElement.lang === 'en' || window.location.pathname.includes('_en');
+        const message = isEnglish 
+          ? "Form has been reset." 
+          : "Formulář byl resetován.";
+        showNotification(message, "info");
       }
     } catch (error) {
       console.error('Reset error:', error);
@@ -327,7 +347,12 @@
       
       // Show welcome message
       setTimeout(() => {
-        showNotification("Vítejte v konfigurátoru! Všechny změny se ukládají automaticky.", "info");
+        // Check if page is in English
+        const isEnglish = document.documentElement.lang === 'en' || window.location.pathname.includes('_en');
+        const message = isEnglish 
+          ? "Welcome to the configurator! All changes are saved automatically." 
+          : "Vítejte v konfigurátoru! Všechny změny se ukládají automaticky.";
+        showNotification(message, "info");
       }, 1000);
     } catch (error) {
       console.error('Initialization error:', error);
