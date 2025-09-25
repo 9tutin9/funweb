@@ -1095,7 +1095,7 @@ body[data-theme="pratelsky"] {
 
 /* Language Switcher Styles */
 .lang-switch {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
@@ -1139,7 +1139,7 @@ body[data-theme="pratelsky"] {
 /* Mobile adjustments for language switcher */
 @media (max-width: 768px) {
   .lang-switch {
-    top: 60px; /* Move up a bit */
+    top: 20px; /* Keep same position as desktop */
     right: 15px;
     padding: 6px 12px;
     font-size: 12px;
