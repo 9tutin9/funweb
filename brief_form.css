@@ -79,3 +79,50 @@ summaryBox pre{white-space:pre-wrap}
   .step[data-step="6"] .field label{color:#000 !important; font-weight:600}
   .step[data-step="6"] .field input{color:#000 !important; background:#fff !important; border:1px solid #ccc !important}
 }
+
+/* Header styles matching calculator */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.back-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.back-link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
