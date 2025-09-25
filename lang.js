@@ -264,8 +264,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.lang = lang;
     
     // Update portfolio section if it exists
-    if (window.portfolioAnimated) {
+    if (window.portfolioAnimated && typeof window.portfolioAnimated.updateLanguage === 'function') {
       window.portfolioAnimated.updateLanguage(lang);
+    } else {
+      // Wait for portfolioAnimated to load
+      setTimeout(() => {
+        if (window.portfolioAnimated && typeof window.portfolioAnimated.updateLanguage === 'function') {
+          window.portfolioAnimated.updateLanguage(lang);
+        }
+      }, 100);
     }
   };
 
