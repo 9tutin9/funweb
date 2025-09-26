@@ -1,6 +1,13 @@
 {
   "version": 2,
-  "builds": [],
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "**/*.html", "use": "@vercel/static" },
+    { "src": "**/*.css", "use": "@vercel/static" },
+    { "src": "**/*.js", "use": "@vercel/static" },
+    { "src": "**/*.json", "use": "@vercel/static" },
+    { "src": "**/*.{png,jpg,jpeg,webp,svg,mp4,webm,woff,woff2,ttf,eot}", "use": "@vercel/static" }
+  ],
   "routes": [
     { "src": "/api/send-brief", "dest": "/api/send-brief.js" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
