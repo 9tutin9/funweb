@@ -205,7 +205,14 @@ class PillNav {
     const img = document.createElement('img');
     img.src = this.config.logo || 'https://funweb.cz/logo-email.svg';
     img.alt = this.config.logoAlt || 'Funweb';
-    img.onerror = () => { img.src = 'https://funweb.cz/bee-logo.svg'; };
+    // Fallback: show letter F if logo fails to load
+    img.onerror = () => {
+      img.remove();
+      const text = document.createElement('div');
+      text.className = 'logo-text';
+      text.textContent = 'F';
+      logo.appendChild(text);
+    };
     logo.appendChild(img);
     
     logo.addEventListener('mouseenter', () => {
