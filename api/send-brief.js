@@ -43,16 +43,22 @@ module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Content-Type', 'application/json');
 
     if (method === 'OPTIONS') {
       res.statusCode = 204;
       return res.end();
     }
 
+    if (method === 'GET') {
+      res.statusCode = 200;
+      return res.end(JSON.stringify({ ok: true, method: 'GET', message: 'send-brief alive' }));
+    }
+
     if (method !== 'POST') {
       res.statusCode = 405;
-      res.setHeader('Allow', 'POST, OPTIONS');
-      return res.end('Method Not Allowed');
+      res.setHeader('Allow', 'POST, OPTIONS, GET');
+      return res.end(JSON.stringify({ error: 'Method Not Allowed', method }));
     }
 
     let body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
