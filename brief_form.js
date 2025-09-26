@@ -216,6 +216,11 @@
         body: JSON.stringify(payload)
       });
       if(!resp.ok) throw new Error('HTTP '+resp.status);
+      // Success toast
+      showNotification(
+        lang==='en' ? "Sent! I'll get back to you within 1 hour." : 'Odesláno! Do 1 hodiny se ozvu.',
+        'success'
+      );
       // Show confirmation screen instead of jumping to step 1
       const thanksTitle = lang==='en' ? 'Thanks! Your inquiry was sent ✅' : 'Děkuji! Poptávka byla odeslána ✅';
       const thanksText = lang==='en'
