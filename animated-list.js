@@ -206,6 +206,12 @@ class PortfolioAnimated {
   constructor() {
     this.translationMap = new Map();
     this.loadTranslations();
+    // Map EUR-based CZ strings to CZK equivalents for Czech locale rendering
+    this.priceCzMap = {
+      'Platby od 240 EUR': 'Platby od 5 900 Kč',
+      'Admin panel od 360 EUR': 'Admin panel od 8 900 Kč',
+      'Formulář od 160 EUR': 'Formulář od 3 900 Kč'
+    };
     this.portfolioItems = [
       {
         name: 'DetiDetem.eu',
@@ -549,8 +555,12 @@ class PortfolioAnimated {
     
     const currentLang = document.documentElement.lang || 'cs';
     const info = subPage.info;
+    // Choose currency per language: CZ -> Kč, EN -> EUR
+    const priceKey = currentLang === 'cs' && this.priceCzMap[info.price]
+      ? this.priceCzMap[info.price]
+      : info.price;
     infoContainer.innerHTML = `
-      <div class="info-price">${this.getTranslation(info.price, currentLang)}</div>
+      <div class="info-price">${this.getTranslation(priceKey, currentLang)}</div>
       <div class="info-title">${this.getTranslation(info.title, currentLang)}</div>
       <div class="info-description">${this.getTranslation(info.description, currentLang)}</div>
       <div class="info-tags">
