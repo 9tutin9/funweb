@@ -202,17 +202,10 @@ class PillNav {
     logo.href = this.config.items[0]?.href || '#';
     logo.setAttribute('aria-label', 'Home');
     
-    if (this.config.logo) {
-      const img = document.createElement('img');
-      img.src = this.config.logo;
-      img.alt = this.config.logoAlt;
-      logo.appendChild(img);
-    } else {
-      const text = document.createElement('div');
-      text.className = 'logo-text';
-      text.textContent = 'F';
-      logo.appendChild(text);
-    }
+    const img = document.createElement('img');
+    img.src = this.config.logo || '/logo-email.png';
+    img.alt = this.config.logoAlt || 'Funweb';
+    logo.appendChild(img);
     
     logo.addEventListener('mouseenter', () => {
       if (logo.querySelector('img')) {
