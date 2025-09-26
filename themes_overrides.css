@@ -103,6 +103,24 @@ body[data-theme="moderni"]::before,
 body[data-theme="moderni"]::after{ content: none !important; display: none !important; }
 body[data-theme="moderni"] #bg{ display: none !important; }
 
+/* Modern theme: make bottom glass effect visible behind navbar */
+body[data-theme="moderni"] .glass-effect-bottom{ 
+  /* subtle tint so blur is visible over dark background */
+  background: linear-gradient(to top, rgba(255,255,255,0.10), rgba(255,255,255,0.06), rgba(255,255,255,0.0)) !important;
+}
+body[data-theme="moderni"] .glass-effect-bottom .gradual-blur-inner{ position: relative !important; }
+body[data-theme="moderni"] .glass-effect-bottom .gradual-blur-inner::after{
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(255,255,255,0.10), rgba(255,255,255,0.06), rgba(255,255,255,0.0));
+  pointer-events: none;
+}
+body[data-theme="moderni"] .glass-effect-bottom .blur-layer{
+  opacity: 0.9 !important;
+  -webkit-backdrop-filter: blur(0.6rem) !important;
+  backdrop-filter: blur(0.6rem) !important;
+}
+
 
 
 /* Optional subtle stars layer using box-shadow trick */
@@ -583,10 +601,28 @@ body[data-theme="pratelsky"] {
 
 /* HARD FIX: Always show Services + Bundle on very small screens */
 @media (max-width: 600px){
+  /* Czech */
   #sluzby.reveal{ opacity: 1 !important; transform: none !important; }
   #sluzby .cards{ grid-template-columns: 1fr !important; }
   #sluzby .cards .card{ transform: none !important; opacity: 1 !important; }
   #sluzby .bundle{
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 16px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  /* English */
+  #services.reveal{ opacity: 1 !important; transform: none !important; }
+  #services .cards{ grid-template-columns: 1fr !important; }
+  #services .cards .card{ transform: none !important; opacity: 1 !important; }
+  #services .bundle{
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;

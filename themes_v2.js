@@ -5,7 +5,7 @@
 
 (function(){
   const STORAGE_KEY = 'siteTheme';
-  const DEFAULT_THEME = 'moderni';
+  const DEFAULT_THEME = 'duveryhodny';
 
   function applyTheme(slug){
     document.body.setAttribute('data-theme', slug);

@@ -579,7 +579,7 @@
     document.addEventListener('click', onClick);
     // init default if none
     if(!document.body.getAttribute('data-theme')){
-      var slug = (function(){ try{return localStorage.getItem('siteTheme')||'moderni';}catch(e){return 'moderni';} })();
+      var slug = (function(){ try{return localStorage.getItem('siteTheme')||'duveryhodny';}catch(e){return 'duveryhodny';} })();
       setDataTheme(slug);
     }
   })();
