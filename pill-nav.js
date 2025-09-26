@@ -203,17 +203,8 @@ class PillNav {
     logo.setAttribute('aria-label', 'Home');
     
     const img = document.createElement('img');
-    img.src = this.config.logo || 'https://funweb.cz/logo-email.svg?v=3';
+    img.src = this.config.logo || '/logo-email.svg';
     img.alt = this.config.logoAlt || 'Funweb';
-    // Fallback: show letter F if logo fails to load
-    img.onerror = () => {
-      img.remove();
-      const text = document.createElement('div');
-      text.className = 'logo-text';
-      text.textContent = 'F';
-      logo.classList.add('no-img');
-      logo.appendChild(text);
-    };
     logo.appendChild(img);
     
     logo.addEventListener('mouseenter', () => {
