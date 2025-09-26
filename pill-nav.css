@@ -149,7 +149,8 @@ body {
   transform: scale(1.05);
 }
 
-.pill-logo img { width: 32px; height: 32px; object-fit: cover; display: block; border-radius: 50%; background:#000; }
+.pill-logo img { width: 32px; height: 32px; object-fit: contain; display: block; border-radius: 50%; background:#000; }
+.pill-logo .logo-text { display: none; color:#fff; font-weight:800; font-size:14px; }
 
 .pill-logo .logo-text { display: none; }
 
