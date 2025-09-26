@@ -210,7 +210,7 @@
     const lang = (document.documentElement.getAttribute('lang')||'cs').toLowerCase().startsWith('en')?'en':'cs';
     const payload = { ...data, lang };
     try{
-      const resp = await fetch('/api/send-brief',{
+      const resp = await fetch('/api/send-brief.js',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
