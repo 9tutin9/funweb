@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Stefan Kyzek — Web Developer & Designer</title>
     <meta name="description" content="Custom websites, graphics and marketing strategies. I combine design, marketing and business experience to give you a website that not only looks great but also sells." />
-<!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Stefan Kyzek — Web Developer & Designer" />
     <meta property="og:description" content="Complete services: custom websites, graphics, marketing and consulting. Professional, modern and with a human approach." />
     <meta property="og:url" content="https://kyzek.cz/" />
     <meta property="og:image" content="https://kyzek.cz/og-image.jpg" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo-email.png" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -37,7 +34,6 @@
 </head>
   <body>
     <canvas id="bg" aria-hidden="true"></canvas>
-    <!-- Language Switcher -->
     <nav class="lang-switch" aria-label="Language switcher">
       <a href="#" data-lang="cs" class="lang-btn">CZ</a>
       <span>·</span>
@@ -45,7 +41,6 @@
     </nav>
     <a href="#home" class="sr-only">Skip to content</a>
 
-    <!-- Style Picker (stays at very top and scrolls normally) -->
     <div class="style-pills" role="group" aria-label="Style selection">
       <button class="pill" data-theme="duveryhodny" aria-pressed="false">Trusted</button>
       <button class="pill" data-theme="moderni" aria-pressed="true">Modern</button>
@@ -57,10 +52,8 @@
       <button class="pill" data-theme="seriozni" aria-pressed="false">Serious</button>
     </div>
 
-    <!-- PillNav will be inserted here by JavaScript -->
 
     <main id="home" class="container">
-      <!-- Hero -->
       <section class="hero reveal visible" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="col-text">
@@ -86,7 +79,6 @@
                 <div class="tech-item">Order tracking</div>
                 <div class="tech-item">SEO & Analytics</div>
                 <div class="tech-item">Vector graphics</div>
-                <!-- Duplicate for seamless loop -->
                 <div class="tech-item">Webflow</div>
                 <div class="tech-item">Shoptet</div>
                 <div class="tech-item">WordPress</div>
@@ -101,7 +93,6 @@
         </div>
       </section>
 
-      <!-- About -->
       <section id="about" class="reveal" aria-labelledby="about-title">
         <div class="container">
           <div class="section-head">
@@ -209,7 +200,6 @@
         </div>
       </section>
 
-  <!-- Jak probíhá spolupráce -->
       <section id="process" class="collab-section" aria-labelledby="collab-title">
         <div class="light-rays-container"></div>
         <div class="container">
@@ -225,7 +215,6 @@
           <div class="step-indicator-row"></div>
           
           <div class="step-content-default">
-            <!-- KROK 1 -->
             <div class="step-content step-default">
               <h3 class="step-title">Initial consultation</h3>
               <p class="step-description">We'll go through your goals, budget and priority outputs (website, emailing, database, graphics). I'll recommend a suitable platform (Webflow, Shoptet, WordPress).</p>
@@ -240,7 +229,6 @@
               </div>
             </div>
 
-            <!-- KROK 2 -->
             <div class="step-content step-default">
               <h3 class="step-title">Design and plan</h3>
               <p class="step-description">I'll prepare the website/content structure, wireframes and milestone plan. For tech projects, integration specifications (API, database, CRM).</p>
@@ -255,7 +243,6 @@
               </div>
             </div>
 
-            <!-- KROK 3 -->
             <div class="step-content step-default">
               <h3 class="step-title">Implementation</h3>
               <p class="step-description">I create the website/graphics/database and continuously share samples. I welcome short feedback so work flows without hiccups.</p>
@@ -270,7 +257,6 @@
               </div>
             </div>
 
-            <!-- KROK 4 -->
             <div class="step-content step-default">
               <h3 class="step-title">Communication &amp; feedback</h3>
               <p class="step-description">Without communication it doesn't work. We'll agree on a rhythm (e.g. 1× per week short sync) and clear channels (email, Slack, Trello).</p>
@@ -285,7 +271,6 @@
               </div>
             </div>
 
-            <!-- KROK 5 -->
             <div class="step-content step-default">
               <h3 class="step-title">Delivery &amp; launch</h3>
               <p class="step-description">Finalization, testing and deployment. I'll hand over access and a short manual, possibly train the team.</p>
@@ -300,7 +285,6 @@
               </div>
             </div>
 
-            <!-- KROK 6 -->
             <div class="step-content step-default">
               <h3 class="step-title">Support &amp; development</h3>
               <p class="step-description">I offer long-term management, optimization and marketing (campaigns, emailing, automation), according to what makes business sense.</p>
@@ -321,7 +305,6 @@
         </div>
       </section>
 
-      <!-- Services -->
       <section id="services" aria-labelledby="services-title">
         <div class="container">
           <div class="section-head">
@@ -400,7 +383,6 @@
 
       
 
-      <!-- Estimator -->
       <section class="reveal visible" aria-labelledby="estimator-title">
         <div class="container">
           <div class="section-head">
@@ -471,7 +453,6 @@
         </div>
       </section>
 
-      <!-- Final CTA - Brief Form -->
       <section id="contact" class="reveal" aria-labelledby="brief-title">
         <div class="container">
           <div class="final-cta-container">
@@ -522,7 +503,6 @@
       </div>
     </footer>
 
-    <!-- JSON-LD Person schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -543,7 +523,6 @@
     <script defer src="themes_v2.js"></script>
     <script defer src="aurora-effects.js"></script>
 
-    <!-- Mobile nav removed -->
 
     <script>
       // Smooth scroll for anchor links
@@ -591,7 +570,6 @@
   <script src="light-rays.js"></script>
   
   
-  <!-- Portfolio responsive fallback script -->
   <script>
   (function(){
     const root = document.querySelector('.portfolio-animated');
