@@ -38,18 +38,44 @@
     // Basic required fields on step 1 & 6
     if(i===0){
       const required = ['brand','industry','goals'];
+      let ok = true;
       for(const id of required){
         const el = document.getElementById(id);
-        if(!el.value.trim()){
-          el.focus(); return false;
-        }
+        const field = el.closest('.field');
+        const isEmpty = !el.value.trim();
+        field?.classList.toggle('invalid', isEmpty);
+        ok = ok && !isEmpty;
+      }
+      if(!ok){
+        const first = required.map(id=>document.getElementById(id)).find(el=>!el.value.trim());
+        first?.focus();
+        return false;
       }
     }
     if(i===5){
+      const name = document.getElementById('name');
       const email = document.getElementById('email');
       const consent = document.getElementById('consent');
-      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ email.focus(); return false; }
-      if(!consent.checked){ consent.focus(); return false; }
+      const required = [name, email];
+      let ok = true;
+      required.forEach(el=>{
+        const field = el.closest('.field');
+        const isEmpty = !el.value.trim();
+        field?.classList.toggle('invalid', isEmpty);
+        ok = ok && !isEmpty;
+      });
+      if(email){
+        const invalidEmail = !/^\S+@\S+\.\S+$/.test(email.value.trim());
+        if(invalidEmail){ email.closest('.field')?.classList.add('invalid'); ok = false; }
+      }
+      if(!consent.checked){
+        consent.closest('.field')?.classList.add('invalid');
+        ok = false;
+      }
+      if(!ok){
+        (name.value.trim()? email : name).focus();
+        return false;
+      }
     }
     return true;
   }
