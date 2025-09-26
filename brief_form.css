@@ -108,7 +108,7 @@ summaryBox pre{white-space:pre-wrap}
 }
 
 .brand-badge { display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background: #111; }
-.brand-badge::before{ content:''; width:32px; height:32px; display:block; background:url('/logo-email.png') center/cover no-repeat; border-radius:8px; }
+.brand-badge::before{ content:''; width:32px; height:32px; display:block; background:url('https://funweb.cz/logo-email.png?v=1') center/cover no-repeat; border-radius:8px; }
 
 .back-link {
   color: var(--muted);
