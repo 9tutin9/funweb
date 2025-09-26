@@ -38,14 +38,34 @@ function makePlainSummary(d) {
 
 module.exports = async function handler(req, res) {
   try {
-    const method = req.method || (req.body ? 'POST' : 'GET');
+    const method = (req.method || '').toUpperCase();
+    // Basic CORS (same-origin by default, but allow preflight just in case)
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (method === 'OPTIONS') {
+      res.statusCode = 204;
+      return res.end();
+    }
+
     if (method !== 'POST') {
       res.statusCode = 405;
-      res.setHeader('Allow', 'POST');
+      res.setHeader('Allow', 'POST, OPTIONS');
       return res.end('Method Not Allowed');
     }
 
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    let body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    if (!body) {
+      // Fallback: collect raw stream
+      const raw = await new Promise((resolve, reject) => {
+        let data = '';
+        req.on('data', chunk => (data += chunk));
+        req.on('end', () => resolve(data));
+        req.on('error', reject);
+      });
+      body = raw ? JSON.parse(raw) : {};
+    }
     const {
       brand, industry, goals, audience, usp, style = [], primaryColor, fontVibe,
       pagesCount, langs, siteMap, modules = [], features, budget, deadline, notes,
