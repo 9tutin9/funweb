@@ -210,19 +210,12 @@
     const lang = (document.documentElement.getAttribute('lang')||'cs').toLowerCase().startsWith('en')?'en':'cs';
     const payload = { ...data, lang };
     try{
-      let resp = await fetch('/api/send-brief',{
+      let resp = await fetch('/api/send-brief.js',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
-      if(resp.status === 405){
-        // fallback to function filename
-        resp = await fetch('/api/send-brief.js',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify(payload)
-        });
-      }
+      // No alias retry; we hit function path directly to avoid 405s
       if(!resp.ok) throw new Error('HTTP '+resp.status);
       // Success toast
       showNotification(
