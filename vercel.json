@@ -16,6 +16,14 @@
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/brief_form.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
   ]
 }
 
