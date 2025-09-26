@@ -45,23 +45,14 @@ class PillNav {
       const currentHeight = window.innerHeight;
       const heightDifference = lastViewportHeight - currentHeight;
       
-      // Force navbar to stay at bottom on mobile
-      if (window.innerWidth <= 768) {
-        this.container.style.bottom = '0px';
-        this.container.style.position = 'fixed';
-        this.container.style.transform = 'translateY(0)';
-        this.container.style.transition = 'none';
-        
-        // Force immediate positioning
-        requestAnimationFrame(() => {
-          this.container.style.bottom = '0px';
-          this.container.style.transform = 'translateY(0)';
-        });
-      } else {
-        // Desktop behavior - keep at bottom
-        this.container.style.bottom = '0px';
-        this.container.style.position = 'fixed';
-      }
+      // Force navbar to stay at bottom across viewports
+      this.container.style.position = 'fixed';
+      this.container.style.left = '0px';
+      this.container.style.right = '0px';
+      this.container.style.bottom = '0px';
+      this.container.style.top = '';
+      this.container.style.transform = 'translateY(0)';
+      this.container.style.transition = 'none';
       
       // If viewport height changed significantly, log it
       if (Math.abs(heightDifference) > 50) {
