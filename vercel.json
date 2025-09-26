@@ -12,6 +12,7 @@
     "api/send-brief.js": { "runtime": "nodejs18.x" }
   },
   "routes": [
+    { "src": "/api/send-brief", "dest": "/api/send-brief.js", "methods": ["GET", "POST", "OPTIONS"] },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }

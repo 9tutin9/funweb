@@ -210,11 +210,19 @@
     const lang = (document.documentElement.getAttribute('lang')||'cs').toLowerCase().startsWith('en')?'en':'cs';
     const payload = { ...data, lang };
     try{
-      const resp = await fetch('/api/send-brief.js',{
+      let resp = await fetch('/api/send-brief',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
+      if(resp.status === 405){
+        // fallback to function filename
+        resp = await fetch('/api/send-brief.js',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+      }
       if(!resp.ok) throw new Error('HTTP '+resp.status);
       // Success toast
       showNotification(
