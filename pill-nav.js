@@ -194,6 +194,50 @@ class PillNav {
         this.toggleMobileMenu();
       });
     }
+
+    // Enable horizontal drag-scroll on navbar list
+    const navScroll = this.container.querySelector('.pill-nav-items');
+    if (navScroll) {
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+      let hasDragged = false;
+
+      const onDown = (e) => {
+        isDown = true;
+        hasDragged = false;
+        startX = (e.touches ? e.touches[0].pageX : e.pageX) - navScroll.offsetLeft;
+        scrollLeft = navScroll.scrollLeft;
+      };
+
+      const onMove = (e) => {
+        if (!isDown) return;
+        const x = (e.touches ? e.touches[0].pageX : e.pageX) - navScroll.offsetLeft;
+        const walk = x - startX;
+        if (Math.abs(walk) > 3) hasDragged = true;
+        navScroll.scrollLeft = scrollLeft - walk;
+        e.preventDefault();
+      };
+
+      const onUp = () => { isDown = false; setTimeout(() => { hasDragged = false; }, 50); };
+
+      navScroll.addEventListener('mousedown', onDown, { passive: true });
+      navScroll.addEventListener('mousemove', onMove, { passive: false });
+      navScroll.addEventListener('mouseleave', onUp, { passive: true });
+      navScroll.addEventListener('mouseup', onUp, { passive: true });
+
+      navScroll.addEventListener('touchstart', onDown, { passive: true });
+      navScroll.addEventListener('touchmove', onMove, { passive: false });
+      navScroll.addEventListener('touchend', onUp, { passive: true });
+
+      // Prevent clicks after a drag to avoid accidental navigation
+      navScroll.addEventListener('click', (e) => {
+        if (hasDragged) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }, true);
+    }
   }
   
   createLogo() {

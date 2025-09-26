@@ -141,7 +141,15 @@ body {
   display: flex;
   align-items: center;
   height: var(--nav-h);
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+
+.pill-nav-items::-webkit-scrollbar { display: none; }
 
 .pill-logo { width: 40px; height: 40px; border-radius: 50%; background: #000; padding: 0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; margin-right: 12px; text-decoration: none; transition: transform 0.2s ease; }
 
@@ -159,6 +167,7 @@ body {
   list-style: none;
   display: flex;
   align-items: stretch;
+  flex-wrap: nowrap;
   gap: var(--pill-gap);
   margin: 0;
   padding: 0;
@@ -175,6 +184,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
+  flex: 0 0 auto;
   padding: 0 var(--pill-pad-x);
   background: rgba(255, 255, 255, 0.02);
   color: var(--text, #f3f6fb);
