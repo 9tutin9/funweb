@@ -332,11 +332,7 @@ body {
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .mobile-menu-button {
-    display: flex;
-  }
-}
+/* mobile hamburger removed */
 
 .hamburger-line {
   width: 16px;

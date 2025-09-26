@@ -134,15 +134,7 @@ class PillNav {
     const navItems = this.createNavItems();
     nav.appendChild(navItems);
     
-    // Mobile menu button
-    const mobileButton = this.createMobileButton();
-    nav.appendChild(mobileButton);
-    
     this.container.appendChild(nav);
-    
-    // Mobile menu
-    const mobileMenu = this.createMobileMenu();
-    this.container.appendChild(mobileMenu);
     
     // Add to page - find the insertion point
     const mainElement = document.querySelector('main#uvod') || document.querySelector('main#home');
@@ -183,17 +175,7 @@ class PillNav {
       item.addEventListener('mouseleave', () => this.handleLeave(index));
     });
     
-    // Bind mobile menu events
-    const mobileButton = this.container.querySelector('.mobile-menu-button');
-    console.log('Mobile button found:', !!mobileButton);
-    if (mobileButton) {
-      mobileButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile button clicked!');
-        this.toggleMobileMenu();
-      });
-    }
+    // Mobile menu removed (drag-scroll enabled instead)
 
     // Enable horizontal drag-scroll on navbar list
     const navScroll = this.container.querySelector('.pill-nav-items');
@@ -315,113 +297,6 @@ class PillNav {
     return navItems;
   }
   
-  createMobileButton() {
-    const button = document.createElement('button');
-    button.className = 'mobile-menu-button mobile-only';
-    button.setAttribute('aria-label', 'Toggle menu');
-    
-    const line1 = document.createElement('span');
-    line1.className = 'hamburger-line';
-    button.appendChild(line1);
-    
-    const line2 = document.createElement('span');
-    line2.className = 'hamburger-line';
-    button.appendChild(line2);
-    
-    console.log('Mobile menu button created');
-    return button;
-  }
-  
-  createMobileMenu() {
-    const menu = document.createElement('div');
-    menu.className = 'mobile-menu-popover mobile-only';
-    
-    const ul = document.createElement('ul');
-    ul.className = 'mobile-menu-list';
-    
-    this.config.items.forEach((item, i) => {
-      const li = document.createElement('li');
-      
-      const link = document.createElement('a');
-      link.href = item.href;
-      link.dataset.href = item.href; // Add data-href for consistency
-      link.className = `mobile-menu-link${this.config.activeHref === item.href ? ' is-active' : ''}`;
-      link.textContent = item.label;
-      
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile menu link clicked:', item.href);
-        
-        // Close menu immediately
-        this.isMobileMenuOpen = false;
-        this.updateMobileMenu();
-        
-        // Handle navigation immediately
-        if (item.href.startsWith('#')) {
-          const target = document.querySelector(item.href);
-          console.log('Target found:', !!target, item.href);
-          if (target) {
-            // Small delay to ensure menu is closed
-            setTimeout(() => {
-              target.scrollIntoView({ behavior: 'smooth' });
-              console.log('Scrolled to target:', item.href);
-            }, 150);
-          } else {
-            console.error('Target not found:', item.href);
-          }
-        } else {
-          window.location.href = item.href;
-        }
-      });
-      
-      // Add touch events for mobile
-      link.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile menu link touch start:', item.href);
-      });
-      
-      link.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile menu link touch end:', item.href);
-        
-        // Close menu immediately
-        this.isMobileMenuOpen = false;
-        this.updateMobileMenu();
-        
-        // Handle navigation immediately
-        if (item.href.startsWith('#')) {
-          const target = document.querySelector(item.href);
-          console.log('Target found (touch):', !!target, item.href);
-          if (target) {
-            setTimeout(() => {
-              target.scrollIntoView({ behavior: 'smooth' });
-              console.log('Scrolled to target (touch):', item.href);
-            }, 150);
-          } else {
-            console.error('Target not found (touch):', item.href);
-          }
-        } else {
-          window.location.href = item.href;
-        }
-      });
-      
-      // Add touchcancel for better mobile support
-      link.addEventListener('touchcancel', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile menu link touch cancel:', item.href);
-      });
-      
-      li.appendChild(link);
-      ul.appendChild(li);
-    });
-    
-    menu.appendChild(ul);
-    return menu;
-  }
   
   layout() {
     this.circleRefs.forEach((circle, i) => {
@@ -519,31 +394,6 @@ class PillNav {
     pill.style.color = 'var(--accent)';
   }
   
-  toggleMobileMenu() {
-    console.log('Toggle mobile menu clicked, current state:', this.isMobileMenuOpen);
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.updateMobileMenu();
-    this.config.onMobileMenuClick?.();
-  }
-  
-  updateMobileMenu() {
-    const button = this.container.querySelector('.mobile-menu-button');
-    const menu = this.container.querySelector('.mobile-menu-popover');
-    
-    console.log('Update mobile menu:', {
-      button: !!button,
-      menu: !!menu,
-      isOpen: this.isMobileMenuOpen
-    });
-    
-    if (button) {
-      button.classList.toggle('active', this.isMobileMenuOpen);
-    }
-    
-    if (menu) {
-      menu.classList.toggle('show', this.isMobileMenuOpen);
-    }
-  }
   
   animateInitialLoad() {
     const logo = this.container.querySelector('.pill-logo');
