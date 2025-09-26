@@ -2918,10 +2918,10 @@ body {
 
 .profile-card__background {
   position: absolute;
-  top: 44px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 140px;
+  height: 184px; /* 44px offset + previous 140px to keep lower edge */
   background: linear-gradient(135deg, var(--accent), var(--accent-600));
   opacity: 0.1;
   z-index: 1;
