@@ -203,7 +203,7 @@ class PillNav {
     logo.setAttribute('aria-label', 'Home');
     
     const img = document.createElement('img');
-    img.src = this.config.logo || '/logo-email.svg';
+    img.src = this.config.logo || '/logo-email.png';
     img.alt = this.config.logoAlt || 'Funweb';
     logo.appendChild(img);
     
