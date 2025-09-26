@@ -83,7 +83,8 @@ module.exports = async function handler(req, res) {
       return res.end(JSON.stringify({ error: 'Missing required fields (name, email)' }));
     }
 
-    const ownerFrom = 'stefan@funweb.cz';
+    // Display name so emails appear "from Funweb"
+    const ownerFrom = 'Funweb <stefan@funweb.cz>';
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const dataForTpl = {
