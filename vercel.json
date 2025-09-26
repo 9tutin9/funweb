@@ -1,7 +1,6 @@
 {
   "version": 2,
   "builds": [],
-  "functions": {},
   "routes": [
     { "src": "/api/send-brief", "dest": "/api/send-brief.js" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
