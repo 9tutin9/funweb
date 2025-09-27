@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Intro — full loader</title>
+    <style>
+      :root{--arrow-size:72px}
+      html,body{height:100%;margin:0;background:#000;color:#fff;font-family:Inter, system-ui, sans-serif}
+      .wrap{height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+
+      /* background image full screen */
+      .bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+
+      /* arrow area */
+      .arrow-wrap{position:absolute;left:50%;transform:translateX(-50%);bottom:48px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:1}
+      .hint{font-size:14px;color:#fff;letter-spacing:.06em;text-shadow:0 0 10px rgba(0,0,0,.9)}
+
+      .arrow{width:var(--arrow-size);height:var(--arrow-size);display:grid;place-items:center;
+        background:linear-gradient(145deg,#00d2ff,#007fa8);
+        border-radius:50%;
+        box-shadow:0 8px 24px rgba(0,210,255,.4),inset 0 0 12px rgba(255,255,255,.25);
+        cursor:pointer;
+        transition:transform .25s ease, box-shadow .25s ease;
+      }
+      .arrow:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 10px 28px rgba(0,210,255,.55),inset 0 0 16px rgba(255,255,255,.35)}
+      .arrow:active{transform:scale(.92)}
+      .arrow svg{width:44%;height:44%;fill:#fff;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));}
+
+      /* bounce to attract attention */
+      @keyframes bounce {0%{transform:translateY(0)}30%{transform:translateY(-12px)}60%{transform:translateY(0)}100%{transform:translateY(0)}}
+      .arrow-bounce{animation:bounce 1.8s infinite;}
+
+      /* skip button */
+      .skip{position:absolute;right:20px;top:20px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:14px;padding:8px 14px;border-radius:30px;cursor:pointer;z-index:1;transition:background .25s ease,transform .25s ease}
+      .skip:hover{background:rgba(0,0,0,.7);transform:translateY(-2px)}
+      .skip:focus{outline:2px solid rgba(0,210,255,.6)}
+
+      @media (max-width:600px){:root{--arrow-size:60px} .hint{display:none}}
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="wrap">
+      <button class="skip" id="skipBtn" aria-label="Přeskočit intro">Přeskočit</button>
+
+      <!-- Fullscreen background image -->
+      <img src="funweb-loader.webp" alt="Loader background" class="bg-img" />
+
+      <div class="arrow-wrap">
+        <div class="hint">Pro pokračování klikni / swipe up</div>
+        <div class="arrow arrow-bounce" id="goBtn" role="button" aria-label="Přejít na web">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 16l-6-6h12l-6 6z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const goBtn = document.getElementById('goBtn');
+        const skip = document.getElementById('skipBtn');
+        const wrap = document.getElementById('wrap');
+
+        const TARGET = 'index.html';
+
+        function proceed(){
+          goBtn.style.pointerEvents = 'none';
+          skip.style.pointerEvents = 'none';
+          document.removeEventListener('keydown', onKey);
+
+          wrap.style.transition = 'opacity .6s ease';
+          wrap.style.opacity = '0';
+
+          setTimeout(()=>{ window.location.href = TARGET; }, 600);
+        }
+
+        goBtn.addEventListener('click', proceed);
+        skip.addEventListener('click', proceed);
+
+        function onKey(e){ if(e.key==='Enter' || e.key===' ' || e.key==='ArrowDown'){ e.preventDefault(); proceed(); } }
+        document.addEventListener('keydown', onKey);
+
+        // swipe up support
+        let yStart = null; const threshold = 50;
+        wrap.addEventListener('touchstart', e=>{ if(e.touches && e.touches[0]) yStart = e.touches[0].clientY; }, {passive:true});
+        wrap.addEventListener('touchend', e=>{
+          if(yStart===null) return; const yEnd = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientY : null; if(yEnd===null) return;
+          const dy = yStart - yEnd; if(dy > threshold) proceed(); yStart = null;
+        }, {passive:true});
+
+        // click anywhere on mobile
+        wrap.addEventListener('pointerup', e=>{
+          if(e.target.closest('.arrow')||e.target.closest('.skip')) return;
+          if(window.matchMedia('(pointer: coarse)').matches) proceed();
+        });
+
+        let lastTap = 0;
+        wrap.addEventListener('touchend', e=>{ const now = Date.now(); if(now - lastTap < 300){ e.preventDefault(); } lastTap = now; }, {passive:false});
+
+      })();
+    </script>
+  </body>
+</html>
+
+
