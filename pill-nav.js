@@ -46,10 +46,11 @@ class PillNav {
           // Difference between layout and visual viewport bottoms
           bottomInset = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop || 0));
         }
-        this.container.style.cssText = `position:fixed;left:0;right:0;top:auto;transform:translateY(0);transition:none;bottom:${bottomInset}px !important;`;
+        // Only set bottom offset; keep other styles from CSS intact
+        this.container.style.setProperty('bottom', `${bottomInset}px`, 'important');
       } catch (e) {
         // Fallback
-        this.container.style.cssText = 'position:fixed;left:0;right:0;top:auto;transform:translateY(0);transition:none;bottom:0 !important;';
+        this.container.style.setProperty('bottom', '0px', 'important');
       }
     };
 
