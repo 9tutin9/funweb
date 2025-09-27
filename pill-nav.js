@@ -37,70 +37,44 @@ class PillNav {
   }
   
   setupViewportHandling() {
-    // Track viewport height changes for mobile browsers
-    let lastViewportHeight = window.innerHeight;
-    let isScrolling = false;
-    
-    const handleViewportChange = () => {
-      const currentHeight = window.innerHeight;
-      const heightDifference = lastViewportHeight - currentHeight;
-      
-      // Force navbar to stay at bottom across viewports
-      this.container.style.position = 'fixed';
-      this.container.style.left = '0px';
-      this.container.style.right = '0px';
-      this.container.style.bottom = '0px';
-      this.container.style.top = '';
-      this.container.style.transform = 'translateY(0)';
-      this.container.style.transition = 'none';
-      
-      // If viewport height changed significantly, log it
-      if (Math.abs(heightDifference) > 50) {
-        console.log('Viewport height changed:', heightDifference, 'px');
-        console.log('Navbar position forced to bottom: 0px');
-      }
-      
-      lastViewportHeight = currentHeight;
-    };
-    
-    // Handle scroll events to detect address bar changes
-    let scrollTimeout;
-    this.handleScroll = () => {
-      isScrolling = true;
-      clearTimeout(scrollTimeout);
-      
-      // On mobile, force navbar position immediately
-      if (window.innerWidth <= 768) {
-        this.container.style.bottom = '0px';
+    // Ensure navbar sticks to the VISIBLE viewport bottom on mobile browsers
+    const applyBottomInset = () => {
+      try {
+        const vv = window.visualViewport;
+        let bottomInset = 0;
+        if (vv && typeof vv.height === 'number') {
+          // Difference between layout and visual viewport bottoms
+          bottomInset = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop || 0));
+        }
+        this.container.style.position = 'fixed';
+        this.container.style.left = '0px';
+        this.container.style.right = '0px';
+        this.container.style.bottom = bottomInset + 'px';
+        this.container.style.top = '';
         this.container.style.transform = 'translateY(0)';
         this.container.style.transition = 'none';
-      }
-      
-      scrollTimeout = setTimeout(() => {
-        isScrolling = false;
-        handleViewportChange();
-      }, 150);
-    };
-    
-    // Handle resize events
-    this.handleResize = () => {
-      if (!isScrolling) {
-        handleViewportChange();
+      } catch (e) {
+        // Fallback
+        this.container.style.position = 'fixed';
+        this.container.style.left = '0px';
+        this.container.style.right = '0px';
+        this.container.style.bottom = '0px';
+        this.container.style.top = '';
       }
     };
-    
-    // Handle orientation change
-    this.handleOrientationChange = () => {
-      setTimeout(handleViewportChange, 500);
-    };
-    
-    // Add event listeners
-    window.addEventListener('scroll', this.handleScroll, { passive: true });
-    window.addEventListener('resize', this.handleResize);
-    window.addEventListener('orientationchange', this.handleOrientationChange);
-    
-    // Initial check
-    setTimeout(handleViewportChange, 100);
+
+    // Bind to visualViewport where available
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', applyBottomInset);
+      window.visualViewport.addEventListener('scroll', applyBottomInset);
+    }
+    // Fallbacks
+    window.addEventListener('resize', applyBottomInset);
+    window.addEventListener('orientationchange', () => setTimeout(applyBottomInset, 300));
+    window.addEventListener('scroll', applyBottomInset, { passive: true });
+
+    // Initial
+    setTimeout(applyBottomInset, 50);
   }
   
   createContainer() {
