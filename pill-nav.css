@@ -9,7 +9,7 @@ html, body {
 /* Force navbar to be visible */
 body {
   position: relative;
-  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); /* Space for navbar + iOS safe area */
+  padding-bottom: 0; /* No bottom padding; navbar anchors to visible viewport bottom via JS */
 }
 
 /* Keep navbar visible on mobile */
@@ -568,5 +568,5 @@ body {
     pointer-events: auto !important;
   }
   /* Fixed nav height spacing for content; no safe-area to keep nav flush */
-  body { padding-bottom: 64px !important; }
+  body { padding-bottom: 0 !important; }
 }
