@@ -115,8 +115,8 @@
                   
                 </div>
               </div>
-              <div class="profile-card__status-info">
-                <div class="profile-card__status-dot"></div>
+              <div class="profile-card__status-info" id="profileStatus">
+                <div class="profile-card__status-dot" data-status="online"></div>
                 <span class="profile-card__status-text">Online</span>
               </div>
               <button class="profile-card__contact-btn" onclick="window.location.href='tel:+420705920948'">
@@ -519,6 +519,8 @@
     </script>
 
     <script defer src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="supabase-config.js"></script>
     <script defer src="themes_v2.js"></script>
     <script defer src="aurora-effects.js"></script>
 
@@ -570,6 +572,39 @@
   
   
   <script>
+      // Load profile status from Supabase (fallback to API)
+      (function(){
+        async function applyStatus(s){
+          const pretty = s === 'away' ? 'Nedostupný' : (s === 'offline' ? 'Offline' : 'Online');
+          const root = document.getElementById('profileStatus');
+          if(!root) return;
+          const dot = root.querySelector('.profile-card__status-dot');
+          const txt = root.querySelector('.profile-card__status-text');
+          if(dot) dot.setAttribute('data-status', s);
+          if(txt) txt.textContent = pretty;
+        }
+
+        async function loadStatus(){
+          const hasSb = !!window.supabase && !!window.SUPABASE_CONFIG;
+          if(hasSb){
+            try {
+              const sb = window.supabase.createClient(window.SUPABASE_CONFIG.url, window.SUPABASE_CONFIG.anonKey);
+              const { data, error } = await sb.from('profile_status').select('status').eq('id', 1).single();
+              if(!error && data && data.status){
+                return applyStatus(data.status);
+              }
+            } catch(e) {}
+          }
+          // Fallback to API
+          try {
+            const r = await fetch('/api/profile-status', { cache: 'no-store' });
+            const j = await r.json();
+            return applyStatus((j && j.status) || 'online');
+          } catch(_) {}
+        }
+        window.addEventListener('load', loadStatus);
+      })();
+    </script>
   (function(){
     const root = document.querySelector('.portfolio-animated');
     const scrollContainers = document.querySelectorAll('.scroll-list-container');

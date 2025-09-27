@@ -10,6 +10,7 @@
   ],
   "routes": [
     { "src": "/api/send-brief", "dest": "/api/send-brief.js" },
+    { "src": "/admin(\.html)?", "dest": "/api/admin.js" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "^/$", "dest": "/intro.html" },
     { "handle": "filesystem" },
