@@ -519,7 +519,6 @@
     </script>
 
     <script defer src="script.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="themes_v2.js"></script>
     <script defer src="aurora-effects.js"></script>
 
@@ -571,7 +570,7 @@
   
   
   <script>
-      // Load profile status from Supabase (fallback to API)
+      // Load profile status from API
       (function(){
         async function applyStatus(s){
           const pretty = s === 'away' ? 'Nedostupný' : (s === 'offline' ? 'Offline' : 'Online');
@@ -584,17 +583,6 @@
         }
 
         async function loadStatus(){
-          const hasSb = !!window.supabase && !!window.SUPABASE_CONFIG;
-          if(hasSb){
-            try {
-              const sb = window.supabase.createClient(window.SUPABASE_CONFIG.url, window.SUPABASE_CONFIG.anonKey);
-              const { data, error } = await sb.from('profile_status').select('status').eq('id', 1).single();
-              if(!error && data && data.status){
-                return applyStatus(data.status);
-              }
-            } catch(e) {}
-          }
-          // Fallback to API
           try {
             const r = await fetch('/api/profile-status', { cache: 'no-store' });
             const j = await r.json();
