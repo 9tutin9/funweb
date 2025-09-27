@@ -22,14 +22,14 @@ body {
     position: fixed !important;
     left: 0 !important;
     right: 0 !important;
-    bottom: 0 !important;
+    bottom: 0;
   }
 }
 
 /* Ensure navbar is always at bottom */
 .pill-nav-container {
   position: fixed !important;
-  bottom: 0 !important;
+  bottom: 0;
   left: 0 !important;
   right: 0 !important;
   top: auto !important;
