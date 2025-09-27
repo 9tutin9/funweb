@@ -45,7 +45,7 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transform: translateY(0) !important;
-  transition: bottom 0.3s ease;
+  /* No bottom transition to avoid lag when browser UI shows/hides */
   width: 100% !important;
   max-width: 100% !important;
 }

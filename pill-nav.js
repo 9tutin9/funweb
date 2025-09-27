@@ -55,13 +55,14 @@ class PillNav {
 
     // Bind to visualViewport where available
     if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', applyBottomInset);
-      window.visualViewport.addEventListener('scroll', applyBottomInset);
+      // Use capture + passive to get earliest notification
+      window.visualViewport.addEventListener('resize', applyBottomInset, { passive: true, capture: true });
+      window.visualViewport.addEventListener('scroll', applyBottomInset, { passive: true, capture: true });
     }
     // Fallbacks
-    window.addEventListener('resize', applyBottomInset);
+    window.addEventListener('resize', applyBottomInset, { passive: true, capture: true });
     window.addEventListener('orientationchange', () => setTimeout(applyBottomInset, 300));
-    window.addEventListener('scroll', applyBottomInset, { passive: true });
+    window.addEventListener('scroll', applyBottomInset, { passive: true, capture: true });
 
     // Initial
     setTimeout(applyBottomInset, 50);
