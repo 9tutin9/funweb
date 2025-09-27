@@ -62,10 +62,20 @@
         function setMsg(text, cls){ msg.textContent = text; msg.className = 'hint ' + (cls || ''); }
 
         async function load(){
+          // Try Supabase first if config present
+          if (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.url) {
+            try {
+              const { data, error } = await sb.from('profile_status').select('status').eq('id', 1).single();
+              if(error) throw error;
+              statusEl.textContent = data.status || 'online';
+              return;
+            } catch(_){ /* fallback below */ }
+          }
+          // Fallback to API
           try {
-            const { data, error } = await sb.from('profile_status').select('status').eq('id', 1).single();
-            if(error) throw error;
-            statusEl.textContent = data.status || 'online';
+            const r = await fetch('/api/profile-status', { cache: 'no-store' });
+            const j = await r.json();
+            statusEl.textContent = j.status || 'online';
           } catch(e){ statusEl.textContent = 'online'; }
         }
 
@@ -87,7 +97,24 @@
 
         document.getElementById('save').addEventListener('click', async () => {
           if(!selected){ return setMsg('Nejprve vyberte stav', 'err'); }
-          saveStatus();
+          // Save via Supabase if available, otherwise fallback to API with Basic auth
+          if (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.url) {
+            return saveStatus();
+          }
+          try {
+            const creds = prompt('Zadej ADMIN_USER:ADMIN_PASS (pro dočasný zápis přes API)');
+            if(!creds || !creds.includes(':')) throw new Error('Zrušeno');
+            const b64 = btoa(creds);
+            const r = await fetch('/api/profile-status', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + b64 },
+              body: JSON.stringify({ status: selected })
+            });
+            const j = await r.json();
+            if(!r.ok) throw new Error(j.error || 'Chyba');
+            setMsg('Uloženo (API)', 'ok');
+            await load();
+          } catch(e){ setMsg(String(e.message || e), 'err'); }
         });
 
         async function onLogin(){

@@ -83,6 +83,16 @@ function writeToFile(payload){
   } catch(_){ return false; }
 }
 
+function parseBasic(header){
+  if(!header || !header.startsWith('Basic ')) return null;
+  try{
+    const raw = Buffer.from(header.slice(6), 'base64').toString('utf8');
+    const i = raw.indexOf(':');
+    if(i === -1) return null;
+    return { user: raw.slice(0,i), pass: raw.slice(i+1) };
+  }catch(_){ return null; }
+}
+
 async function getCurrentStatus(){
   // Try Gist
   const g = await readFromGist();
@@ -124,8 +134,20 @@ module.exports = async function handler(req, res){
 
     if(method === 'POST'){
       const auth = req.headers['authorization'] || '';
-      const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
-      if(!ADMIN_TOKEN || token !== ADMIN_TOKEN){
+      let isAuthorized = false;
+      if(ADMIN_TOKEN && auth.startsWith('Bearer ')){
+        const token = auth.slice(7);
+        isAuthorized = token === ADMIN_TOKEN;
+      }
+      if(!isAuthorized && auth.startsWith('Basic ')){
+        const creds = parseBasic(auth);
+        const u = process.env.ADMIN_USER || '';
+        const p = process.env.ADMIN_PASS || '';
+        if(creds && u && p && creds.user === u && creds.pass === p){
+          isAuthorized = true;
+        }
+      }
+      if(!isAuthorized){
         res.statusCode = 401; return res.end(JSON.stringify({ error: 'Unauthorized' }));
       }
       let body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
