@@ -54,16 +54,32 @@ module.exports = async function handler(req, res){
       return unauthorized(res);
     }
 
-    // Serve admin.html content
+    // Serve admin.html content with inline Supabase config and security headers
     const filePath = path.join(process.cwd(), 'admin.html');
     if(!fs.existsSync(filePath)){
       res.statusCode = 500;
       return res.end('Admin UI not found');
     }
-    const html = fs.readFileSync(filePath, 'utf8');
+    let html = fs.readFileSync(filePath, 'utf8');
+
+    // Remove potential external supabase-config.js reference (not needed when we inline config)
+    html = html.replace(/<script\s+src=["']supabase-config\.js["']><\/script>\s*/i, '');
+
+    const supabaseUrl = process.env.SUPABASE_URL || '';
+    const supabaseAnon = process.env.SUPABASE_ANON_KEY || '';
+    const configScript = `\n<script>window.SUPABASE_CONFIG = { url: ${JSON.stringify(supabaseUrl)}, anonKey: ${JSON.stringify(supabaseAnon)} };</script>\n`;
+    // Inject config before closing head tag if present, otherwise prepend
+    if (/<\/head>/i.test(html)) {
+      html = html.replace(/<\/head>/i, configScript + '</head>');
+    } else {
+      html = configScript + html;
+    }
+
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
     return res.end(html);
   } catch (err){
     console.error('admin gate error', err);

@@ -111,6 +111,7 @@ module.exports = async function handler(req, res){
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Content-Type', 'application/json');
+    res.setHeader('X-Robots-Tag', 'noindex');
 
     if(method === 'OPTIONS'){
       res.statusCode = 204; return res.end();
