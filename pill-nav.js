@@ -63,9 +63,25 @@ class PillNav {
     window.addEventListener('resize', applyBottomInset, { passive: true, capture: true });
     window.addEventListener('orientationchange', () => setTimeout(applyBottomInset, 300));
     window.addEventListener('scroll', applyBottomInset, { passive: true, capture: true });
+    window.addEventListener('focus', applyBottomInset, { passive: true, capture: true });
+    window.addEventListener('blur', applyBottomInset, { passive: true, capture: true });
+    document.addEventListener('visibilitychange', applyBottomInset, { passive: true, capture: true });
+    window.addEventListener('pageshow', applyBottomInset, { passive: true, capture: true });
 
     // Initial
-    setTimeout(applyBottomInset, 50);
+    setTimeout(applyBottomInset, 0);
+    setTimeout(applyBottomInset, 100);
+    setTimeout(applyBottomInset, 300);
+
+    // Early animation frame loop to follow browser UI animations
+    let startTs = performance.now();
+    function rafTick(ts){
+      if (ts - startTs < 1000) {
+        applyBottomInset();
+        requestAnimationFrame(rafTick);
+      }
+    }
+    requestAnimationFrame(rafTick);
   }
   
   createContainer() {
