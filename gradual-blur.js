@@ -257,20 +257,34 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile-specific behavior: adjust position based on scroll
   function adjustMobilePosition() {
     const container = navbarGlassEffect.container;
-    // Always keep fixed at bottom on all devices
     container.style.position = 'fixed';
-    container.style.bottom = '0px';
     container.style.top = 'auto';
     container.style.left = '0px';
     container.style.right = '0px';
     container.style.width = '100%';
     container.style.opacity = '1';
     container.style.display = 'block';
+
+    try {
+      const vv = window.visualViewport;
+      let bottomInset = 0;
+      if (vv && typeof vv.height === 'number') {
+        bottomInset = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop || 0));
+      }
+      container.style.setProperty('bottom', `${bottomInset}px`, 'important');
+    } catch (e) {
+      container.style.setProperty('bottom', '0px', 'important');
+    }
   }
   
-  // Listen for scroll events
-  window.addEventListener('scroll', adjustMobilePosition, { passive: true });
-  window.addEventListener('resize', adjustMobilePosition, { passive: true });
+  // Listen for viewport changes
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', adjustMobilePosition, { passive: true, capture: true });
+    window.visualViewport.addEventListener('scroll', adjustMobilePosition, { passive: true, capture: true });
+  }
+  window.addEventListener('resize', adjustMobilePosition, { passive: true, capture: true });
+  window.addEventListener('orientationchange', () => setTimeout(adjustMobilePosition, 300));
+  window.addEventListener('scroll', adjustMobilePosition, { passive: true, capture: true });
   
   // Initial adjustment
   adjustMobilePosition();
